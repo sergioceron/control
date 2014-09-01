@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages xmlns="http://jboss.org/schema/seam/pages"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://jboss.org/schema/seam/pages http://jboss.org/schema/seam/pages-2.3.xsd"
+
+       no-conversation-view-id="/index.xhtml"
+       login-view-id="/login.xhtml">
+
+    <page view-id="/index.xhtml">
+        <rewrite pattern="/" />
+    </page>
+
+    <page view-id="/place.xhtml" action="#{placeController.load}">
+        <rewrite pattern="/place/{id}" />
+
+        <param name="id"
+               value="#{placeEditController.id}"/>
+
+    </page>
+
+    <page view-id="/activation.xhtml" action="#{activationController.activate}">
+        <rewrite pattern="/activation/{code}" />
+
+        <param name="code"
+               value="#{activationController.code}"/>
+    </page>
+
+    <page view-id="/admin/materia.edit.xhtml">
+        <begin-conversation join="true" />
+
+        <navigation from-action="#{materiaController.save}">
+            <rule if-outcome="success">
+                <redirect view-id="/admin/materias.list.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+
+    <page view-id="/admin/plan.edit.xhtml">
+        <begin-conversation join="true" />
+
+        <navigation from-action="#{planEstudiosController.save}">
+            <rule if-outcome="success">
+                <redirect view-id="/admin/plan.list.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+
+    <page view-id="/admin/index.xhtml">
+        <begin-conversation join="true" />
+    </page>
+
+    <page view-id="/search.xhtml">
+        <rewrite pattern="/search/{searchPattern}"/>
+        <rewrite pattern="/search"/>
+
+        <param name="searchPattern"
+               value="#{searchController.searchPattern}"/>
+
+        <param name="modalidad"
+               value="#{searchController.modalidad}"/>
+
+        <param name="tipo"
+               value="#{searchController.tipo}"/>
+
+        <param name="page"
+               value="#{searchController.page}"/>
+    </page>
+
+    <page view-id="/login.xhtml">
+        <navigation from-action="#{identity.login}">
+            <rule if-outcome="loggedIn">
+                <redirect view-id="/admin/index.xhtml"/>
+            </rule>
+            <render view-id="/login.xhtml"/>
+        </navigation>
+    </page>
+
+    <page view-id="/*">
+        <navigation from-action="#{identity.login}">
+            <rule if-outcome="loggedIn">
+                <redirect view-id="/admin/index.xhtml"/>
+            </rule>
+            <render view-id="/login.xhtml"/>
+        </navigation>
+        <navigation from-action="#{registerController.register}">
+            <rule if-outcome="success">
+                <redirect view-id="/login.xhtml"/>
+            </rule>
+            <rule if-outcome="failed">
+                <redirect view-id="/register.xhtml"/>
+            </rule>
+        </navigation>
+        <navigation from-action="#{identity.logout}">
+            <redirect view-id="/index.xhtml"/>
+        </navigation>
+    </page>
+
+    <page view-id="/admin/*" login-required="true">
+    </page>
+
+    <exception class="org.jboss.seam.security.NotLoggedInException" log="false">
+        <redirect view-id="/login.xhtml">
+            <message severity="WARN">Primero debe iniciar sesión</message>
+        </redirect>
+    </exception>
+</pages>

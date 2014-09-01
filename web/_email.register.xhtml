@@ -1,0 +1,25 @@
+<m:message xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:m="http://jboss.org/schema/seam/mail"
+           xmlns:h="http://java.sun.com/jsf/html"
+           xmlns:f="http://java.sun.com/jsf/core">
+    <m:from name="AllPlacesBook">sceronf@gmail.com</m:from>
+    <m:to name="#{user.name}" address="#{user.username}"/>
+    <m:subject>AllPlacesBook Account Activation</m:subject>
+    <m:body>
+        <p>Dear #{user.name},</p>
+        <h:outputText value="Please click the following link to activate your account: "/>
+        <h:outputLink value="http://localhost:8080/seam/resource/rest/service/activation">
+            <h:outputText value="activate my account"/>
+            <f:param name="code" value="#{activation.code}"/>
+        </h:outputLink>
+        <br/>
+        <p>If the link above does not work then please use the following link:</p>
+        <span>http://localhost:8080/seam/resource/rest/service/activation?code=#{activation.code}</span>
+
+        <f:facet name="alternative">Dear #{user.name},
+            Please copy the following link and paste it into the location bar to
+            activate your account:
+            http://localhost:8080/seam/resource/rest/service/activation?code=#{activation.code}
+        </f:facet>
+    </m:body>
+</m:message>

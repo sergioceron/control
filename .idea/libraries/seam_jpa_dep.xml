@@ -1,0 +1,43 @@
+<component name="libraryTable">
+  <library name="seam-jpa-dep">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/bsh-2.0b4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-beanutils-1.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cssparser-0.9.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/el-api-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/guava-12.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hamcrest-core-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jboss-el-1.0_02.CR6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jboss-seam-2.3.1.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jboss-seam-ui-2.3.1.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jcommander-1.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jsr305-1.3.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit-4.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/richfaces-components-api-4.3.3.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/richfaces-components-ui-4.3.3.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/richfaces-core-api-4.3.3.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/richfaces-core-impl-4.3.3.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sac-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/snakeyaml-1.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/testng-5.14.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/hamcrest-core-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jsr305-1.3.9.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jboss-seam-2.3.1.Final-dist/jboss-seam-2.3.1.Final/lib/src/jboss-seam-debug-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jboss-seam-2.3.1.Final-dist/jboss-seam-2.3.1.Final/lib/src/jboss-seam-excel-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jboss-seam-2.3.1.Final-dist/jboss-seam-2.3.1.Final/lib/src/jboss-seam-flex-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jboss-seam-2.3.1.Final-dist/jboss-seam-2.3.1.Final/lib/src/jboss-seam-gen-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jboss-seam-2.3.1.Final-dist/jboss-seam-2.3.1.Final/lib/src/jboss-seam-ioc-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jboss-seam-2.3.1.Final-dist/jboss-seam-2.3.1.Final/lib/src/jboss-seam-mail-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jboss-seam-2.3.1.Final-dist/jboss-seam-2.3.1.Final/lib/src/jboss-seam-pdf-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jboss-seam-2.3.1.Final-dist/jboss-seam-2.3.1.Final/lib/src/jboss-seam-remoting-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jboss-seam-2.3.1.Final-dist/jboss-seam-2.3.1.Final/lib/src/jboss-seam-resteasy-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jboss-seam-2.3.1.Final-dist/jboss-seam-2.3.1.Final/lib/src/jboss-seam-rss-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jboss-seam-2.3.1.Final-dist/jboss-seam-2.3.1.Final/lib/src/jboss-seam-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jboss-seam-2.3.1.Final-dist/jboss-seam-2.3.1.Final/lib/src/jboss-seam-ui-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jboss-seam-2.3.1.Final-dist/jboss-seam-2.3.1.Final/lib/src/jboss-seam-wicket-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:seam="http://jboss.org/schema/seam/taglib"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+    <ui:composition template="../index.xhtml">
+
+        <ui:define name="content">
+
+            <h:messages/>
+            <rich:popupPanel id="loginPanel" width="420" height="340" modal="true" show="true" moveable="false">
+                <f:facet name="header">
+                    <h:panelGroup>
+                        <h:outputText value="Nuevo Programa"/>
+                    </h:panelGroup>
+                </f:facet>
+                <h:form id="loginForm">
+                    <h:panelGrid columns="1" footerClass="regFooter">
+                        <h:panelGroup styleClass="col0">
+                            <h:panelGrid columns="1" cellpadding="5" footerClass="prefFooter">
+                                <h:panelGrid columns="2" columnClasses="col0,col1" cellpadding="5">
+                                    <h:outputText value="Nombre"/>
+                                    <h:inputText required="true" value="#{planEstudiosController.plan.nombre}">
+                                        <f:validateLength minimum="4" />
+                                    </h:inputText>
+                                    <h:outputText value="Semestres"/>
+                                    <h:inputText required="true" value="#{planEstudiosController.plan.creditos}" size="17" maxlength="30" />
+                                    <h:outputText value="Vigente"/>
+                                    <h:selectBooleanCheckbox value="#{planEstudiosController.plan.vigente}" />
+                                </h:panelGrid>
+                            </h:panelGrid>
+                        </h:panelGroup>
+                        <f:facet name="footer">
+                            <h:panelGroup>
+                                <h:commandButton id="updatePrefButton" value="Guardar" action="#{planEstudiosController.save}"/>
+                            </h:panelGroup>
+                        </f:facet>
+                    </h:panelGrid>
+
+                </h:form>
+            </rich:popupPanel>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>

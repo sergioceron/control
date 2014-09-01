@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="drools-compiler">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/drools-compiler.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/drools-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/drools-decisiontables.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/drools-templates.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/knowledge-api-5.3.3.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mvel2-2.1.0.drools16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/antlr-3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/antlr-2.7.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/antlr-runtime-3.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="apb:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/apb_war</output-path>
+    <root id="archive" name="apb_war.war">
+      <element id="artifact" artifact-name="apb:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="hibernate-search" />
+          <element id="library" level="project" name="drools-compiler" />
+          <element id="library" level="project" name="commons-fileupload-1.3.1" />
+          <element id="library" level="project" name="org.jboss.seam:jboss-seam-resteasy:2.3.1.Final" />
+          <element id="library" level="project" name="jcaptcha-1.0-all" />
+          <element id="library" level="project" name="jboss-seam-mail" />
+        </element>
+      </element>
+      <element id="dir-copy" path="$PROJECT_DIR$/web/META-INF" />
+    </root>
+  </artifact>
+</component>

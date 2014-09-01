@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:seam="http://jboss.org/schema/seam/taglib"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+    <ui:composition template="../index.xhtml">
+
+        <ui:define name="content">
+
+            <h:messages/>
+            Hola, #{identity.username}
+            <rich:panel id="loginPanel" width="320" height="240" modal="true" show="true" moveable="false">
+                <f:facet name="header">
+                    <h:panelGroup>
+                        <h:outputText value="Cursos"/>
+                    </h:panelGroup>
+                </f:facet>
+                <h:form id="loginForm">
+                    <rich:dataTable value="#{listEntitiesController.cursos}" var="curso" style="width: 100%;">
+                        <rich:column>
+                            <f:facet name="header">Materia</f:facet>
+                            #{curso.materia.nombre}
+                        </rich:column>
+                        <rich:column>
+                            <f:facet name="header">Profesor</f:facet>
+                            #{curso.profesor.nombre}
+                        </rich:column>
+                        <rich:column>
+                            <f:facet name="header">Semestre</f:facet>
+                            #{curso.semestre}
+                        </rich:column>
+                        <rich:column>
+                            <f:facet name="header">Lugar</f:facet>
+                            #{curso.lugar}
+                        </rich:column>
+                        <rich:column>
+                            <f:facet name="header">Horario</f:facet>
+                            Ver horario
+                        </rich:column>
+                        <rich:column>
+                            <f:facet name="header">Accion</f:facet>
+                            Editar
+                        </rich:column>
+
+                    </rich:dataTable>
+                </h:form>
+            </rich:panel>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>

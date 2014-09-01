@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:seam="http://jboss.org/schema/seam/taglib"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+    <ui:composition template="../index.xhtml">
+
+        <ui:define name="content">
+
+            <h:messages/>
+            Hola, #{identity.username}
+            <rich:panel id="loginPanel" width="320" height="240" modal="true" show="true" moveable="false">
+                <f:facet name="header">
+                    <h:panelGroup>
+                        <h:outputText value="Profesores"/>
+                    </h:panelGroup>
+                </f:facet>
+                <h:form id="loginForm">
+                    <rich:dataTable value="#{listEntitiesController.profesores}" var="profesor" style="width: 100%;">
+                        <rich:column>
+                            <f:facet name="header">Nombre</f:facet>
+                            #{profesor.fullName}
+                        </rich:column>
+                        <rich:column>
+                            <f:facet name="header">Institucion</f:facet>
+                            #{profesor.institucion}
+                        </rich:column>
+                        <rich:column>
+                            <f:facet name="header">Plantel</f:facet>
+                            #{profesor.plantel}
+                        </rich:column>
+                        <rich:column>
+                            <f:facet name="header">Cursos actuales</f:facet>
+                            #{profesor.cursos.size()}
+                        </rich:column>
+                        <rich:column>
+                            <f:facet name="header">Accion</f:facet>
+                            Editar
+                        </rich:column>
+
+                    </rich:dataTable>
+                </h:form>
+            </rich:panel>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>

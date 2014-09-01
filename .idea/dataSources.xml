@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2776507792">
+    <data-source source="LOCAL" name="MySQL - allplacesbook@ec2-54-186-13-145.us-west-2.compute.amazonaws.com" uuid="bd56a146-d302-4d12-a2d0-56530ff4ce12">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://ec2-54-186-13-145.us-west-2.compute.amazonaws.com:3306/allplacesbook</jdbc-url>
+      <user-name>allplaces</user-name>
+      <user-password>dfe8dfc5dfc5dfc1df84dfe1dfcbdfd8dfc5</user-password>
+      <driver-properties>
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+      </driver-properties>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

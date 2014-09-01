@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="apb:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/apb_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="control" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final" />
+          <element id="library" level="project" name="seam-jpa-dep" />
+          <element id="library" level="project" name="hibernate-search" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="control/web/Web" />
+      <element id="dir-copy" path="$PROJECT_DIR$/web/META-INF" />
+    </root>
+  </artifact>
+</component>

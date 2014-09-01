@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+    <ui:composition template="/index.xhtml">
+
+        <ui:define name="content">
+
+            <h:messages/>
+            <rich:popupPanel id="loginPanel" width="320" height="240" modal="true" show="true" moveable="false">
+                <f:facet name="header">
+                    <h:panelGroup>
+                        <h:outputText value="Iniciar Sesion"/>
+                    </h:panelGroup>
+                </f:facet>
+                <h:form id="loginForm">
+                    <h:panelGrid columns="2" columnClasses="col0,col1" cellpadding="5" footerClass="authFooter">
+                        <h:outputText value="Username"/>
+                        <h:inputText id="username" value="#{identity.username}"/>
+                        <h:outputText value="Password"/>
+                        <h:inputSecret id="password" value="#{identity.password}"/>
+                        <h:outputText value=" "/>
+                        <h:panelGroup>
+                            <h:selectBooleanCheckbox id="rememberMe" value="#{identity.rememberMe}"/>
+                            <h:outputText value="Recordarme"/>
+                        </h:panelGroup>
+                        <f:facet name="footer">
+                            <h:panelGroup>
+                                <h:commandButton id="loginBtn" action="#{identity.login}" value="Entrar"/>
+                                <rich:message for="loginBtn">
+                                    <f:facet name="errorMarker">
+                                        <h:graphicImage value="img/forbidden.gif"/>
+                                    </f:facet>
+                                </rich:message>
+                            </h:panelGroup>
+                        </f:facet>
+                    </h:panelGrid>
+                    <br/><br/>
+                    <h:outputLink value="#" id="forgotLink">
+                        <h:outputText value="Olvide mi contrasenia"/>
+                    </h:outputLink>
+                </h:form>
+            </rich:popupPanel>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>
