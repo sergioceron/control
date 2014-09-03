@@ -1,10 +1,11 @@
-s<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
       xmlns:seam="http://jboss.org/schema/seam/taglib"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
@@ -21,7 +22,7 @@ s<?xml version="1.0" encoding="UTF-8"?>
                         <h:outputText value="Programas Escolares"/>
                     </h:panelGroup>
                 </f:facet>
-                <h:form id="loginForm">
+                <h:form id="loginForm" prependId="false">
                     <rich:dataTable value="#{listEntitiesController.programas}" var="programa" style="width: 100%;">
                         <rich:column>
                             <f:facet name="header">Nombre</f:facet>
@@ -40,11 +41,61 @@ s<?xml version="1.0" encoding="UTF-8"?>
                             </h:panelGroup>
                         </rich:column>
                         <rich:column>
+                            <f:facet name="header">Materias</f:facet>
+                            <h:commandLink value="Ver materias" actionListener="#{programaController.showMaterias(programa)}">
+                                <a4j:ajax event="click" render="popup" execute="@this" oncomplete="#{rich:component('popup')}.show()" />
+                            </h:commandLink>
+                        </rich:column>
+                        <rich:column>
                             <f:facet name="header">Accion</f:facet>
-                            Editar
+                            <h:commandLink action="programa.edit.xhtml">
+                                Editar
+                                <f:setPropertyActionListener target="#{programaController.programa}" value="#{programa}" />
+                            </h:commandLink>
                         </rich:column>
 
                     </rich:dataTable>
+
+                    <rich:popupPanel id="popup" modal="true" autosized="true" resizeable="false">
+                        <f:facet name="header">
+                            <h:outputText value="Materias" />
+                        </f:facet>
+                        <f:facet name="controls">
+                            <h:outputLink value="#" onclick="#{rich:component('popup')}.hide(); return false;">
+                                X
+                            </h:outputLink>
+                        </f:facet>
+
+                        <rich:dataTable value="#{programaController.materias}" var="materia"
+                                        style="width: 100%;" id="table" rows="20">
+                            <rich:column sortBy="#{materia.clave}" >
+                                <f:facet name="header">Clave</f:facet>
+                                #{materia.clave}
+                            </rich:column>
+                            <rich:column sortBy="#{materia.nombre}">
+                                <f:facet name="header">Nombre</f:facet>
+                                #{materia.nombre}
+                            </rich:column>
+                            <rich:column sortBy="#{materia.creditos}">
+                                <f:facet name="header">Creditos</f:facet>
+                                #{materia.creditos}
+                            </rich:column>
+                            <rich:column sortBy="#{materia.categoria.nombre}" >
+                                <f:facet name="header">Categoria</f:facet>
+                                #{materia.categoria.nombre}
+                            </rich:column>
+                            <rich:column sortBy="#{materia.tipo}" >
+                                <f:facet name="header">Tipo</f:facet>
+                                #{materia.tipo.name}
+                            </rich:column>
+                            <f:facet name="footer">
+                                <rich:dataScroller for="table" maxPages="5" />
+                            </f:facet>
+
+                        </rich:dataTable>
+
+                    </rich:popupPanel>
+
                 </h:form>
             </rich:panel>
 

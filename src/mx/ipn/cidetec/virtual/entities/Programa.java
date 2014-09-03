@@ -12,6 +12,7 @@ public class Programa {
     private String nombre;
 	private int semestres;
     private List<PlanEstudios> planes;
+	private List<Materia> materias;
 
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO )
@@ -39,7 +40,7 @@ public class Programa {
 		this.semestres = semestres;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy = "programa")
     public List<PlanEstudios> getPlanes() {
         return planes;
     }
@@ -47,4 +48,13 @@ public class Programa {
     public void setPlanes( List<PlanEstudios> planEstudios ) {
         this.planes = planEstudios;
     }
+
+	@ManyToMany
+	public List<Materia> getMaterias() {
+		return materias;
+	}
+
+	public void setMaterias(List<Materia> materias) {
+		this.materias = materias;
+	}
 }

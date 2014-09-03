@@ -1,54 +1,76 @@
 package mx.ipn.cidetec.virtual.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by sergio on 12/06/2014.
  */
 @Entity
 public class Hora {
-    private int diaSemana;
-    private int horaInicio;
-    private int horaFin;
+	private final String[] dias = new String[]{ "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" };
+	private Long id;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+	private int diaSemana = 0;
+	private double horaInicio = 0;
+	private double horaFin = 0;
 
-    public Long getId() {
-        return id;
-    }
+	public Hora() {
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Hora( int diaSemana ) {
+		this.diaSemana = diaSemana;
+	}
 
-    public int getDiaSemana() {
-        return diaSemana;
-    }
+	@Id
+	@GeneratedValue( strategy = GenerationType.AUTO )
+	public Long getId() {
+		return id;
+	}
 
-    public void setDiaSemana(int diaSemana) {
-        this.diaSemana = diaSemana;
-    }
+	public void setId( Long id ) {
+		this.id = id;
+	}
 
-    public double getHoraInicio() {
-        return horaInicio;
-    }
+	public int getDiaSemana() {
+		return diaSemana;
+	}
 
-    public void setHoraInicio(int horaInicio) {
-        this.horaInicio = horaInicio;
-    }
+	public void setDiaSemana( int diaSemana ) {
+		this.diaSemana = diaSemana;
+	}
 
-    public double getHoraFin() {
-        return horaFin;
-    }
+	public double getHoraInicio() {
+		return horaInicio;
+	}
 
-    public void setHoraFin(int horaFin) {
-        this.horaFin = horaFin;
-    }
+	public void setHoraInicio( double horaInicio ) {
+		this.horaInicio = horaInicio;
+	}
 
+	public double getHoraFin() {
+		return horaFin;
+	}
 
+	public void setHoraFin( double horaFin ) {
+		this.horaFin = horaFin;
+	}
+
+	@Transient
+	public String getDia(){
+		return dias[diaSemana];
+	}
+
+	@Override
+	public boolean equals( Object o ) {
+		if( this == o ) return true;
+		if( o == null || getClass() != o.getClass() ) return false;
+
+		Hora hora = (Hora) o;
+
+		if( diaSemana != hora.diaSemana ) return false;
+		if( Double.compare( hora.horaFin, horaFin ) != 0 ) return false;
+		if( Double.compare( hora.horaInicio, horaInicio ) != 0 ) return false;
+
+		return true;
+	}
 }

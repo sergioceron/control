@@ -10,13 +10,6 @@
         <rewrite pattern="/" />
     </page>
 
-    <page view-id="/place.xhtml" action="#{placeController.load}">
-        <rewrite pattern="/place/{id}" />
-
-        <param name="id"
-               value="#{placeEditController.id}"/>
-
-    </page>
 
     <page view-id="/activation.xhtml" action="#{activationController.activate}">
         <rewrite pattern="/activation/{code}" />
@@ -25,12 +18,32 @@
                value="#{activationController.code}"/>
     </page>
 
+    <page view-id="/admin/curso.edit.xhtml">
+        <begin-conversation join="true" />
+
+        <navigation from-action="#{cursoController.save}">
+            <rule if-outcome="success">
+                <redirect view-id="/admin/cursos.list.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+
     <page view-id="/admin/materia.edit.xhtml">
         <begin-conversation join="true" />
 
         <navigation from-action="#{materiaController.save}">
             <rule if-outcome="success">
                 <redirect view-id="/admin/materias.list.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+
+    <page view-id="/admin/programa.edit.xhtml">
+        <begin-conversation join="true" />
+
+        <navigation from-action="#{programaController.save}">
+            <rule if-outcome="success">
+                <redirect view-id="/admin/programas.list.xhtml"/>
             </rule>
         </navigation>
     </page>

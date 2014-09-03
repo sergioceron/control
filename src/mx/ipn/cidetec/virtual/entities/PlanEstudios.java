@@ -13,7 +13,7 @@ public class PlanEstudios {
     private String nombre;
 	private int creditos;
     private boolean vigente;
-    private List<Materia> materias;
+	private Programa programa;
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -41,14 +41,14 @@ public class PlanEstudios {
 		this.creditos = creditos;
 	}
 
-	@ManyToMany
-    public List<Materia> getMaterias() {
-        return materias;
-    }
+	@ManyToOne
+	public Programa getPrograma() {
+		return programa;
+	}
 
-    public void setMaterias(List<Materia> materias) {
-        this.materias = materias;
-    }
+	public void setPrograma( Programa programa ) {
+		this.programa = programa;
+	}
 
     public boolean isVigente() {
         return vigente;

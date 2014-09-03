@@ -29,6 +29,11 @@
                                     <h:inputText required="true" value="#{planEstudiosController.plan.nombre}">
                                         <f:validateLength minimum="4" />
                                     </h:inputText>
+                                    <h:outputText value="Programa"/>
+                                    <h:selectOneMenu required="true" value="#{planEstudiosController.plan.programa}" >
+                                        <f:selectItems value="#{listEntitiesController.programas}" var="programa" itemLabel="#{programa.nombre}" itemValue="#{programa}" />
+                                        <seam:convertEntity />
+                                    </h:selectOneMenu>
                                     <h:outputText value="Creditos"/>
                                     <h:inputText required="true" value="#{planEstudiosController.plan.creditos}" size="17" maxlength="30" />
                                     <h:outputText value="Vigente"/>
@@ -39,6 +44,7 @@
                         <f:facet name="footer">
                             <h:panelGroup>
                                 <h:commandButton id="updatePrefButton" value="Guardar" action="#{planEstudiosController.save}"/>
+                                <a href="plan.list.seam">Cancelar</a>
                             </h:panelGroup>
                         </f:facet>
                     </h:panelGrid>

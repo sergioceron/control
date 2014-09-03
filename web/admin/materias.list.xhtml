@@ -52,9 +52,11 @@
                                 <f:setPropertyActionListener target="#{materiaController.materia}" value="#{materia}" />
                             </h:commandLink>
                         </rich:column>
+                        <f:facet name="footer">
+                            <rich:dataScroller for="table" maxPages="5" />
+                        </f:facet>
 
                     </rich:dataTable>
-                    <rich:dataScroller for="table" maxPages="5" />
                 </h:form>
             </rich:panel>
 

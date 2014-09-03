@@ -59,7 +59,6 @@
                                             <h:panelGrid columns="2" columnClasses="col0,col0" cellpadding="0">
                                                 <h:inputSecret id="password" required="false" value="#{passwordSupport.password}" size="9" maxlength="12">
                                                     <f:validateLength minimum="8" maximum="12"/>
-                                                    <rich:beanValidator summary="#{messages.std_pass_err_msg}"/>
                                                 </h:inputSecret>
                                                 <h:panelGroup>
                                                     <h:outputText value="#{messages.re_enter_pswd}" escape="false"/>
@@ -78,7 +77,6 @@
                                     <h:panelGroup>
                                         <h:inputText label="#{messages.prefs_birth_year}" id="birthYear" required="false" value="#{currentUser.preferences.birthYear}" size="6" maxlength="40">
                                             <f:validateLength minimum="0" maximum="4"/>
-                                            <rich:beanValidator/>
                                         </h:inputText>
                                         <h:outputText value="#{messages.year_born_tip}" escape="false"/>
                                     </h:panelGroup>
@@ -89,7 +87,6 @@
                                     <h:outputText value="#{messages.prefs_country}"/>
                                     <h:selectOneListbox id="country" value="#{currentUser.preferences.country}" size="1">
                                         <f:selectItems value="#{facesSupport.countryOptions}"/>
-                                        <a:support event="onchange" reRender="region" ajaxSingle="true"/>
                                     </h:selectOneListbox>
                                     <h:outputText value="#{messages.prefs_region}"/>
                                     <h:selectOneListbox id="region" value="#{currentUser.preferences.region}" style="width: 180px;" size="1">
@@ -101,7 +98,6 @@
                         <h:panelGroup styleClass="col0">
                             <h:panelGrid columns="1" cellpadding="5" columnClasses="col0">
                                 <h:panelGroup>
-                                    <rich:spacer width="1" height="15"/>
                                     <b>
                                         <h:outputText value="#{messages.prefs_profilePolicy}"/>
                                     </b>
@@ -110,7 +106,6 @@
                                         <f:selectItem itemLabel="#{messages.policy_protected}" itemValue="PROTECTED"/>
                                         <f:selectItem itemLabel="#{messages.policy_public}" itemValue="PUBLIC"/>
                                     </h:selectOneRadio>
-                                    <rich:spacer width="1" height="25"/>
                                     <b>
                                         <h:outputText value="#{messages.prefs_marketing_optin}"/>
                                     </b>
@@ -123,7 +118,6 @@
                         </h:panelGroup>
                         <f:facet name="footer">
                             <h:panelGroup>
-                                <rich:spacer width="1" height="30"/>
                                 <h:commandButton type="button" id="updatePrefButton" value="#{messages.update_prefs}" action="#{updatePreferences.savePreferences}"/>
                             </h:panelGroup>
                         </f:facet>

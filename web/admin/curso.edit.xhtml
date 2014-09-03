@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:seam="http://jboss.org/schema/seam/taglib"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+    <ui:composition template="../index.xhtml">
+
+        <ui:define name="content">
+
+            <h:messages/>
+            <rich:popupPanel id="loginPanel" width="420" height="440" modal="true" show="true" moveable="false">
+                <f:facet name="header">
+                    <h:panelGroup>
+                        <h:outputText value="Nuevo Curso"/>
+                    </h:panelGroup>
+                </f:facet>
+                <h:form id="loginForm">
+                    <rich:focus />
+                    <h:panelGrid columns="1" footerClass="regFooter">
+                        <h:panelGroup styleClass="col0">
+                            <h:panelGrid columns="1" cellpadding="5" footerClass="prefFooter">
+                                <h:panelGrid columns="2" columnClasses="col0,col1" cellpadding="5">
+                                    <h:outputText value="Materia"/>
+                                    <h:selectOneMenu value="#{cursoController.curso.materia}">
+                                        <f:selectItems var="materia" value="#{listEntitiesController.materias}" itemLabel="#{materia.nombre}" />
+                                        <seam:convertEntity />
+                                    </h:selectOneMenu>
+                                    <h:outputText value="Nombre"/>
+                                    <h:selectOneMenu value="#{cursoController.curso.profesor}">
+                                        <f:selectItems var="profesor" value="#{listEntitiesController.profesores}" itemLabel="#{profesor.fullName}" />
+                                        <seam:convertEntity />
+                                    </h:selectOneMenu>
+                                    <h:outputText value="Lugar"/>
+                                    <h:inputText required="true" value="#{cursoController.curso.lugar}" size="17" maxlength="30" />
+                                    <h:outputText value="Semestre"/>
+                                    <h:inputText required="true" value="#{cursoController.curso.semestre}" size="17" maxlength="30" />
+                                    <h:outputText value="Horario"/>
+                                    <rich:pickList value="#{cursoController.curso.horario}" var="hora" listHeight="200px">
+                                        <f:selectItems value="#{listEntitiesController.horas}" />
+                                        <seam:convertEntity />
+                                        <rich:column>
+                                            <f:facet name="header">Dia</f:facet>
+                                            #{hora.dia}
+                                        </rich:column>
+                                        <rich:column>
+                                            <f:facet name="header">Hora Inicio</f:facet>
+                                            #{hora.horaInicio}
+                                        </rich:column>
+                                        <rich:column>
+                                            <f:facet name="header">Hora Fin</f:facet>
+                                            #{hora.horaFin}
+                                        </rich:column>
+                                    </rich:pickList>
+
+                                </h:panelGrid>
+                            </h:panelGrid>
+                        </h:panelGroup>
+                        <f:facet name="footer">
+                            <h:panelGroup>
+                                <h:commandButton value="Guardar" action="#{cursoController.save}"/>
+                                <a href="cursos.list.seam">Cancelar</a>
+                            </h:panelGroup>
+                        </f:facet>
+                    </h:panelGrid>
+
+                </h:form>
+            </rich:popupPanel>
+
+
+            <rich:popupPanel id="popup" modal="true" autosized="true" resizeable="false">
+                <f:facet name="header">
+                    <h:outputText value="Materias" />
+                </f:facet>
+                <f:facet name="controls">
+                    <h:outputLink value="#" onclick="#{rich:component('popup')}.hide(); return false;">
+                        X
+                    </h:outputLink>
+                </f:facet>
+
+
+            </rich:popupPanel>
+
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>

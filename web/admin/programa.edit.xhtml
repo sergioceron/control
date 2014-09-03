@@ -26,19 +26,18 @@
                             <h:panelGrid columns="1" cellpadding="5" footerClass="prefFooter">
                                 <h:panelGrid columns="2" columnClasses="col0,col1" cellpadding="5">
                                     <h:outputText value="Nombre"/>
-                                    <h:inputText required="true" value="#{planEstudiosController.plan.nombre}">
+                                    <h:inputText required="true" value="#{programaController.programa.nombre}">
                                         <f:validateLength minimum="4" />
                                     </h:inputText>
                                     <h:outputText value="Semestres"/>
-                                    <h:inputText required="true" value="#{planEstudiosController.plan.creditos}" size="17" maxlength="30" />
-                                    <h:outputText value="Vigente"/>
-                                    <h:selectBooleanCheckbox value="#{planEstudiosController.plan.vigente}" />
+                                    <h:inputText required="true" value="#{programaController.programa.semestres}" size="17" maxlength="30" />
                                 </h:panelGrid>
                             </h:panelGrid>
                         </h:panelGroup>
                         <f:facet name="footer">
                             <h:panelGroup>
                                 <h:commandButton id="updatePrefButton" value="Guardar" action="#{planEstudiosController.save}"/>
+                                <a href="programas.list.seam">Cancelar</a>
                             </h:panelGroup>
                         </f:facet>
                     </h:panelGrid>

@@ -54,4 +54,9 @@ public class ListEntitiesController {
 		Query query = entityManager.createQuery( "from Curso c" );
 		return query.getResultList();
 	}
+
+	public List<Hora> getHoras(){
+		Query query = entityManager.createQuery( "from Hora h" );
+		return query.getResultList();
+	}
 }

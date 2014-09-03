@@ -1,6 +1,7 @@
 package mx.ipn.cidetec.virtual.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,6 +16,12 @@ public class Curso {
 	private String semestre;
 	private List<Hora> horario;
 
+	public Curso() {
+		horario = new ArrayList<Hora>();
+		for( int i = 0; i < 7; i++ ) {
+			horario.add( new Hora( i ) );
+		}
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
