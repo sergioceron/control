@@ -20,7 +20,7 @@ import javax.persistence.EntityManager;
 @Name( "horaController" )
 @Scope( ScopeType.CONVERSATION )
 public class HoraController {
-	private Hora hora;
+	private Hora hora = new Hora();
 
 	@In
 	private EntityManager entityManager;

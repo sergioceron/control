@@ -2,26 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="4e0f8c4e-93c0-4ccd-a8dd-01fff014d59c" name="Default" comment="" />
-    <list default="true" id="346ee933-8a84-44ff-b899-b16407a3f280" name="- Pagination  - Favorites Front End  - Edit &amp; Delete My Places (cherry picked from commit bbb369b)" comment="Cambios">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/assets/img/segi ipn.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/CursoController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/HoraController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/ProgramaController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/admin/curso.edit.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Curso.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Curso.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Hora.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Hora.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/ListEntitiesController.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/ListEntitiesController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/PlanEstudios.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/PlanEstudios.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Programa.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Programa.java" />
+    <list default="true" id="346ee933-8a84-44ff-b899-b16407a3f280" name="- Pagination  - Favorites Front End  - Edit &amp; Delete My Places (cherry picked from commit bbb369b)" comment="Cursos">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/CursoController.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/CursoController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/HoraController.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/HoraController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/admin/curso.edit.xhtml" afterPath="$PROJECT_DIR$/web/admin/curso.edit.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.xhtml" afterPath="$PROJECT_DIR$/web/index.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/admin/index.xhtml" afterPath="$PROJECT_DIR$/web/admin/index.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/admin/materia.edit.xhtml" afterPath="$PROJECT_DIR$/web/admin/materia.edit.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/admin/materias.list.xhtml" afterPath="$PROJECT_DIR$/web/admin/materias.list.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/pages.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/pages.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/admin/plan.edit.xhtml" afterPath="$PROJECT_DIR$/web/admin/plan.edit.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/admin/plan.list.xhtml" afterPath="$PROJECT_DIR$/web/admin/plan.list.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/admin/programa.edit.xhtml" afterPath="$PROJECT_DIR$/web/admin/programa.edit.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/admin/programas.list.xhtml" afterPath="$PROJECT_DIR$/web/admin/programas.list.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="apb.iws" />
@@ -102,96 +87,80 @@
     <favorites_list name="apb" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="curso.edit.xhtml" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/web/admin/curso.edit.xhtml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="53" column="60" selection-start="3399" selection-end="3399" vertical-scroll-proportion="0.546091" vertical-offset="486" max-vertical-offset="1818">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="HoraController.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/HoraController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="34" column="27" selection-start="749" selection-end="749" vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="720">
-                  <folding>
-                    <element signature="e#766#767#0" expanded="true" />
-                    <element signature="e#803#804#0" expanded="true" />
-                    <element signature="e#826#827#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Hora.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Hora.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="59" column="31" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.0" vertical-offset="603" max-vertical-offset="1296">
-                  <folding>
-                    <element signature="e#526#527#0" expanded="true" />
-                    <element signature="e#542#543#0" expanded="true" />
-                    <element signature="e#575#576#0" expanded="true" />
-                    <element signature="e#594#595#0" expanded="true" />
-                    <element signature="e#967#968#0" expanded="true" />
-                    <element signature="e#996#997#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CursoController.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/CursoController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="44" column="5" selection-start="1000" selection-end="1000" vertical-scroll-proportion="0.0" vertical-offset="99" max-vertical-offset="702">
-                  <folding>
-                    <element signature="e#915#916#0" expanded="true" />
-                    <element signature="e#934#935#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ListEntitiesController.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/ListEntitiesController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="56" column="4" selection-start="1429" selection-end="1429" vertical-scroll-proportion="0.0" vertical-offset="387" max-vertical-offset="1080">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MateriaController.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/MateriaController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="56" column="5" selection-start="1202" selection-end="1359" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="918">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="HoraController.java" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/HoraController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="42" column="20" selection-start="830" selection-end="830" vertical-scroll-proportion="0.6295082" vertical-offset="0" max-vertical-offset="915">
-                  <folding>
-                    <element signature="e#748#749#0" expanded="true" />
-                    <element signature="e#766#767#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="HoraController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/HoraController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="22" selection-start="672" selection-end="672" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="curso.edit.xhtml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/admin/curso.edit.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="93" column="79" selection-start="5499" selection-end="5499" vertical-scroll-proportion="0.271777" vertical-offset="1440" max-vertical-offset="2682">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="template.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/template.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="41" selection-start="647" selection-end="647" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="7020">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pages.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/pages.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="38" selection-start="938" selection-end="938" vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="2232">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Hora.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Hora.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="62" column="41" selection-start="1076" selection-end="1076" vertical-scroll-proportion="0.0" vertical-offset="940" max-vertical-offset="1476">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CursoController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/CursoController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="45" column="34" selection-start="1015" selection-end="1015" vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="954">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListEntitiesController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/ListEntitiesController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="40" selection-start="746" selection-end="746" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="1080">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MateriaController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/MateriaController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="56" column="5" selection-start="1202" selection-end="1359" vertical-scroll-proportion="0.0" vertical-offset="1008" max-vertical-offset="1242">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -253,15 +222,15 @@
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Programa.java" />
         <option value="$PROJECT_DIR$/web/admin/programas.list.xhtml" />
         <option value="$PROJECT_DIR$/web/admin/materias.list.xhtml" />
-        <option value="$PROJECT_DIR$/web/index.xhtml" />
         <option value="$PROJECT_DIR$/web/admin/index.xhtml" />
         <option value="$PROJECT_DIR$/web/WEB-INF/pages.xml" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Horario.java" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Curso.java" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Hora.java" />
-        <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/CursoController.java" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/ListEntitiesController.java" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/HoraController.java" />
+        <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/CursoController.java" />
+        <option value="$PROJECT_DIR$/web/index.xhtml" />
         <option value="$PROJECT_DIR$/web/admin/curso.edit.xhtml" />
       </list>
     </option>
@@ -276,8 +245,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-4" />
     <option name="y" value="-4" />
-    <option name="width" value="1928" />
-    <option name="height" value="1060" />
+    <option name="width" value="1688" />
+    <option name="height" value="1030" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -335,6 +304,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -482,7 +452,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -506,7 +475,7 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
     <property name="full.screen.before.presentation.mode" value="true" />
-    <property name="SearchEverywhereHistory" value="pages&#10;register" />
+    <property name="SearchEverywhereHistory" value="{&#10;pages&#10;register" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -1347,7 +1316,11 @@
       <workItem from="1409609988585" duration="3124000" />
       <workItem from="1409670759697" duration="2708000" />
       <workItem from="1409706547291" duration="1800000" />
-      <workItem from="1409758534626" duration="2038000" />
+      <workItem from="1409758534626" duration="2919000" />
+      <workItem from="1409781294689" duration="6660000" />
+      <workItem from="1409844395781" duration="2788000" />
+      <workItem from="1409874178939" duration="778000" />
+      <workItem from="1409875671303" duration="2196000" />
     </task>
     <task id="LOCAL-00001" summary="boot">
       <created>1405105148708</created>
@@ -1373,11 +1346,15 @@
       <created>1409022221129</created>
       <updated>1409022221129</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Cambios">
+      <created>1409772438200</created>
+      <updated>1409772438200</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="662318000" />
+    <option name="totallyTimeSpent" value="675621000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1400,26 +1377,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1928" height="1060" extended-state="6" />
-    <editor active="false" />
+    <frame x="-4" y="-4" width="1688" height="1030" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34976152" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34930778" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23504274" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23504274" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32853982" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38283828" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5263158" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14529915" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32563257" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32481363" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13844515" sideWeight="0.4988938" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38277513" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22466423" sideWeight="0.4988938" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5263158" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1438,7 +1415,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32853982" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hibernate Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5269527" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5260916" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1462,7 +1439,9 @@
     <MESSAGE value=" - Pagination&#10; - Favorites Front End&#10; - Edit &amp; Delete My Places&#10;&#10;" />
     <MESSAGE value="Mejoras en el login" />
     <MESSAGE value="Cambios:&#10; - Registro sobre blur&#10; - Otras cosas mas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambios:&#10; - Registro sobre blur&#10; - Otras cosas mas" />
+    <MESSAGE value="Cambios" />
+    <MESSAGE value="Cursos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cursos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1473,13 +1452,13 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/faces-config.xml">
+      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="72" selection-start="902" selection-end="902" vertical-scroll-proportion="-14.4" vertical-offset="0" max-vertical-offset="468">
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Evaluacion.java">
@@ -1590,18 +1569,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Profesor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="846">
-          <folding>
-            <element signature="e#326#327#0" expanded="true" />
-            <element signature="e#351#352#0" expanded="true" />
-            <element signature="e#404#405#0" expanded="true" />
-            <element signature="e#441#442#0" expanded="true" />
-            <element signature="e#472#473#0" expanded="true" />
-            <element signature="e#493#494#0" expanded="true" />
-            <element signature="e#538#539#0" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="23" column="0" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="846" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/admin/profesores.list.xhtml">
@@ -1631,9 +1599,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="35" selection-start="764" selection-end="764" vertical-scroll-proportion="0.0" vertical-offset="59" max-vertical-offset="720">
           <folding>
-            <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#826#827#0" expanded="true" />
-            <element signature="e#849#850#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="false" />
+            <element signature="e#826#827#0" expanded="false" />
+            <element signature="e#849#850#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1641,13 +1609,6 @@
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="49" selection-start="774" selection-end="774" vertical-scroll-proportion="0.7401869" vertical-offset="0" max-vertical-offset="2016">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/template.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="40" selection-start="834" selection-end="834" vertical-scroll-proportion="0.57831323" vertical-offset="0" max-vertical-offset="7020">
           <folding />
         </state>
       </provider>
@@ -1665,13 +1626,6 @@
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/PlanEstudios.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="50" column="5" selection-start="891" selection-end="891" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="810" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/admin/materia.edit.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="61" selection-start="3894" selection-end="3894" vertical-scroll-proportion="0.0" vertical-offset="594" max-vertical-offset="1440">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Materia.java">
@@ -1719,64 +1673,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="19" selection-start="464" selection-end="464" vertical-scroll-proportion="0.0" vertical-offset="67" max-vertical-offset="1710">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/admin/index.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="49" selection-start="1241" selection-end="1341" vertical-scroll-proportion="0.2971698" vertical-offset="270" max-vertical-offset="3006">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/pages.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="45" selection-start="950" selection-end="950" vertical-scroll-proportion="0.32616082" vertical-offset="216" max-vertical-offset="2232">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.seam.fileEditor.PagesGraphFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/MateriaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="5" selection-start="1202" selection-end="1359" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="918">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Hora.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="31" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.0" vertical-offset="603" max-vertical-offset="1296">
-          <folding>
-            <element signature="e#526#527#0" expanded="true" />
-            <element signature="e#542#543#0" expanded="true" />
-            <element signature="e#575#576#0" expanded="true" />
-            <element signature="e#594#595#0" expanded="true" />
-            <element signature="e#967#968#0" expanded="true" />
-            <element signature="e#996#997#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/CursoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="5" selection-start="1000" selection-end="1000" vertical-scroll-proportion="0.0" vertical-offset="99" max-vertical-offset="702">
-          <folding>
-            <element signature="e#915#916#0" expanded="true" />
-            <element signature="e#934#935#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/ListEntitiesController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="4" selection-start="1429" selection-end="1429" vertical-scroll-proportion="0.0" vertical-offset="387" max-vertical-offset="1080">
           <folding />
         </state>
       </provider>
@@ -1818,20 +1717,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/admin/materia.edit.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="61" selection-start="3894" selection-end="3894" vertical-scroll-proportion="0.6328125" vertical-offset="756" max-vertical-offset="1440">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/MateriaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="5" selection-start="1202" selection-end="1359" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="918">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/CursoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="34" selection-start="1015" selection-end="1015" vertical-scroll-proportion="0.0" vertical-offset="130" max-vertical-offset="666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/pages.xml">
+      <provider editor-type-id="com.intellij.seam.fileEditor.PagesGraphFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="38" selection-start="938" selection-end="938" vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="2232">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Hora.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="41" selection-start="1076" selection-end="1076" vertical-scroll-proportion="0.0" vertical-offset="940" max-vertical-offset="1476">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="52" selection-start="2282" selection-end="2282" vertical-scroll-proportion="0.85365856" vertical-offset="201" max-vertical-offset="1764">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/template.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="41" selection-start="647" selection-end="647" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="7020">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/ListEntitiesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="40" selection-start="746" selection-end="746" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="1080">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/HoraController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="27" selection-start="749" selection-end="749" vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="720">
-          <folding>
-            <element signature="e#766#767#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-            <element signature="e#826#827#0" expanded="true" />
-          </folding>
+        <state line="29" column="22" selection-start="672" selection-end="672" vertical-scroll-proportion="0.0" vertical-offset="112" max-vertical-offset="648">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/admin/curso.edit.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="60" selection-start="3399" selection-end="3399" vertical-scroll-proportion="0.546091" vertical-offset="486" max-vertical-offset="1818">
+        <state line="93" column="79" selection-start="5499" selection-end="5499" vertical-scroll-proportion="0.271777" vertical-offset="1440" max-vertical-offset="2682">
           <folding />
         </state>
       </provider>

@@ -12,38 +12,44 @@
     <ui:composition template="../index.xhtml">
 
         <ui:define name="content">
+            <h:form id="loginForm" prependId="false">
 
-            <h:messages/>
-            <rich:popupPanel id="loginPanel" width="420" height="440" modal="true" show="true" moveable="false">
-                <f:facet name="header">
-                    <h:panelGroup>
-                        <h:outputText value="Nuevo Curso"/>
-                    </h:panelGroup>
-                </f:facet>
-                <h:form id="loginForm">
-                    <rich:focus />
+                <h:messages/>
+                <rich:popupPanel id="loginPanel" width="650" height="540" modal="true" show="true" moveable="false" domElementAttachment="form">
+                    <f:facet name="header">
+                        <h:panelGroup>
+                            <h:outputText value="Nuevo Curso"/>
+                        </h:panelGroup>
+                    </f:facet>
+                    <rich:focus/>
                     <h:panelGrid columns="1" footerClass="regFooter">
                         <h:panelGroup styleClass="col0">
                             <h:panelGrid columns="1" cellpadding="5" footerClass="prefFooter">
                                 <h:panelGrid columns="2" columnClasses="col0,col1" cellpadding="5">
                                     <h:outputText value="Materia"/>
-                                    <h:selectOneMenu value="#{cursoController.curso.materia}">
-                                        <f:selectItems var="materia" value="#{listEntitiesController.materias}" itemLabel="#{materia.nombre}" />
-                                        <seam:convertEntity />
+                                    <h:selectOneMenu value="#{cursoController.curso.materia}" style="width: 250px">
+                                        <f:selectItems var="materia" value="#{listEntitiesController.materias}"
+                                                       itemLabel="#{materia.nombre}" itemValue="#{materia}"/>
+                                        <seam:convertEntity/>
                                     </h:selectOneMenu>
-                                    <h:outputText value="Nombre"/>
+                                    <h:outputText value="Profesor"/>
                                     <h:selectOneMenu value="#{cursoController.curso.profesor}">
-                                        <f:selectItems var="profesor" value="#{listEntitiesController.profesores}" itemLabel="#{profesor.fullName}" />
-                                        <seam:convertEntity />
+                                        <f:selectItems var="profesor" value="#{listEntitiesController.profesores}"
+                                                       itemLabel="#{profesor.fullName}" itemValue="#{profesor}"/>
+                                        <seam:convertEntity/>
                                     </h:selectOneMenu>
                                     <h:outputText value="Lugar"/>
-                                    <h:inputText required="true" value="#{cursoController.curso.lugar}" size="17" maxlength="30" />
+                                    <h:inputText required="true" value="#{cursoController.curso.lugar}" size="17"
+                                                 maxlength="30"/>
                                     <h:outputText value="Semestre"/>
-                                    <h:inputText required="true" value="#{cursoController.curso.semestre}" size="17" maxlength="30" />
+                                    <h:inputText required="true" value="#{cursoController.curso.semestre}" size="17"
+                                                 maxlength="30"/>
                                     <h:outputText value="Horario"/>
-                                    <rich:pickList value="#{cursoController.curso.horario}" var="hora" listHeight="200px">
-                                        <f:selectItems value="#{listEntitiesController.horas}" />
-                                        <seam:convertEntity />
+                                    <rich:pickList value="#{cursoController.curso.horario}" var="hora"
+                                                   listHeight="200px"
+                                                   id="horas">
+                                        <f:selectItems value="#{listEntitiesController.horas}"/>
+                                        <seam:convertEntity/>
                                         <rich:column>
                                             <f:facet name="header">Dia</f:facet>
                                             #{hora.dia}
@@ -57,7 +63,10 @@
                                             #{hora.horaFin}
                                         </rich:column>
                                     </rich:pickList>
-
+                                    <h:outputText value=""/>
+                                    <h:outputLink value="#" onclick="#{rich:component('popup')}.show(); return false;">
+                                        Registrar Hora
+                                    </h:outputLink>
                                 </h:panelGrid>
                             </h:panelGrid>
                         </h:panelGroup>
@@ -69,23 +78,62 @@
                         </f:facet>
                     </h:panelGrid>
 
-                </h:form>
-            </rich:popupPanel>
+                </rich:popupPanel>
 
 
-            <rich:popupPanel id="popup" modal="true" autosized="true" resizeable="false">
-                <f:facet name="header">
-                    <h:outputText value="Materias" />
-                </f:facet>
-                <f:facet name="controls">
-                    <h:outputLink value="#" onclick="#{rich:component('popup')}.hide(); return false;">
-                        X
-                    </h:outputLink>
-                </f:facet>
+                <rich:popupPanel id="popup" modal="true" autosized="true" resizeable="false" domElementAttachment="form">
+
+                    <f:facet name="header">
+                        <h:outputText value="Hora"/>
+                    </f:facet>
+                    <f:facet name="controls">
+                        <h:outputLink value="#" onclick="#{rich:component('popup')}.hide(); return false;">
+                            X
+                        </h:outputLink>
+                    </f:facet>
+
+                    <h:panelGrid columns="1" footerClass="regFooter">
+                        <h:panelGroup styleClass="col0">
+                            <h:panelGrid columns="1" cellpadding="5" footerClass="prefFooter">
+                                <h:panelGrid columns="2" columnClasses="col0,col1" cellpadding="5">
+                                    <h:outputText value="Día"/>
+                                    <h:selectOneMenu value="#{horaController.hora.diaSemana}" id="dia">
+                                        <f:selectItem itemLabel="Lunes" itemValue="0"/>
+                                        <f:selectItem itemLabel="Martes" itemValue="1"/>
+                                        <f:selectItem itemLabel="Miercoles" itemValue="2"/>
+                                        <f:selectItem itemLabel="Jueves" itemValue="3"/>
+                                        <f:selectItem itemLabel="Viernes" itemValue="4"/>
+                                        <f:selectItem itemLabel="Sabado" itemValue="5"/>
+                                    </h:selectOneMenu>
+                                    <h:outputText value="Inicio"/>
+                                    <h:inputText required="true" value="#{horaController.hora.horaInicio}" size="17"
+                                                 maxlength="30" id="inicio"/>
+                                    <h:outputText value="Fin"/>
+                                    <h:inputText required="true" value="#{horaController.hora.horaFin}" size="17"
+                                                 maxlength="30" id="fin"/>
+
+                                </h:panelGrid>
+                            </h:panelGrid>
+                        </h:panelGroup>
+                        <h:panelGroup>
+                            <h:commandButton value="Guardar" action="#{horaController.save}">
+                                <f:ajax execute="dia inicio fin @this" render="horas" onevent="newHora" />
+                            </h:commandButton>
+                            <a href="#" onclick="#{rich:component('popup')}.hide(); return false;">Cancelar</a>
+                        </h:panelGroup>
+                    </h:panelGrid>
+
+                </rich:popupPanel>
+            </h:form>
 
 
-            </rich:popupPanel>
-
+            <script type="text/javascript">
+                function newHora(data) {
+                    if (data.status == "success") {
+                        RichFaces.$('popup').hide();
+                    }
+                }
+            </script>
 
         </ui:define>
 

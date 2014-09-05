@@ -24,7 +24,7 @@ import java.util.List;
 @Name( "cursoController" )
 @Scope( ScopeType.CONVERSATION )
 public class CursoController {
-	private Curso curso;
+	private Curso curso = new Curso();
 
 	@In
 	private EntityManager entityManager;
