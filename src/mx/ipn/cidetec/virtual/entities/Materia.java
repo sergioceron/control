@@ -19,7 +19,12 @@ public class Materia {
 	private int creditos;
 	private boolean externa;
 
-    @Id
+	public Materia() {
+		tipo = Tipo.OBLIGATORIA;
+		creditos = 8;
+	}
+
+	@Id
     @NotNull
     public String getClave() {
         return clave;

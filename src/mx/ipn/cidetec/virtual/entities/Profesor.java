@@ -40,7 +40,21 @@ public class Profesor extends Account {
     }
 
 	public enum Tipo {
-		COLEGIADO,
+		COLEGIADO("Colegiado"),
+		TITULAR("Titular");
 
+		private String name;
+
+		Tipo( String name ) {
+			this.name = name;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName( String name ) {
+			this.name = name;
+		}
 	}
 }

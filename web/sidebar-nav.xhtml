@@ -1,0 +1,67 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ul class="nav">
+    <li class="nav-header">Navigation</li>
+    <li class="has-sub active">
+        <a href="javascript:;">
+            <b class="caret pull-right"></b>
+            <i class="fa fa-list-ul"></i>
+            <span>Materias</span>
+        </a>
+        <ul class="sub-menu">
+            <li><a href="/admin/materia.edit.seam">Nueva</a></li>
+            <li class="active"><a href="/admin/materias.list.seam">Lista</a></li>
+        </ul>
+    </li>
+    <li class="has-sub">
+        <a href="javascript:;">
+            <b class="caret pull-right"></b>
+            <i class="fa fa-newspaper-o"></i>
+            <span>Cursos</span>
+        </a>
+        <ul class="sub-menu">
+            <li><a href="/admin/curso.edit.seam">Nueva</a></li>
+            <li><a href="/admin/cursos.list.seam">Lista</a></li>
+        </ul>
+    </li>
+    <li class="has-sub">
+        <a href="javascript:;">
+            <b class="caret pull-right"></b>
+            <i class="fa fa-archive"></i>
+            <span>Programas</span>
+        </a>
+        <ul class="sub-menu">
+            <li><a href="/admin/programa.edit.seam">Nuevo</a></li>
+            <li><a href="/admin/programas.list.seam">Lista</a></li>
+        </ul>
+    </li>
+    <li class="has-sub">
+        <a href="javascript:;">
+            <b class="caret pull-right"></b>
+            <i class="fa fa-bars"></i>
+            <span>Planes de Estudio</span>
+        </a>
+        <ul class="sub-menu">
+            <li><a href="/admin/plan.edit.seam">Nuevo</a></li>
+            <li><a href="/admin/plan.list.seam">Lista</a></li>
+        </ul>
+    </li>
+    <li class="has-sub">
+        <a href="javascript:;">
+            <b class="caret pull-right"></b>
+            <i class="fa fa-users"></i>
+            <span>Usuarios</span>
+        </a>
+        <ul class="sub-menu">
+            <li><a href="/admin/profesores.list.seam">Profesores</a></li>
+            <li><a href="/admin/alumnos.list.seam">Alumnos</a></li>
+        </ul>
+    </li>
+    <!-- begin sidebar minify button -->
+    <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+    <!-- end sidebar minify button -->
+    </ul>
+
+</ui:composition>

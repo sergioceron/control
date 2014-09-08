@@ -15,6 +15,41 @@
             <renderer-type>javax.faces.Secret</renderer-type>
             <renderer-class>mx.ipn.cidetec.virtual.utils.CustomSecretinputRenderer</renderer-class>
         </renderer>
+        <renderer>
+            <component-family>javax.faces.Input</component-family>
+            <renderer-type>javax.faces.Textarea</renderer-type>
+            <renderer-class>mx.ipn.cidetec.virtual.utils.CustomTextareaRenderer</renderer-class>
+        </renderer>
+        <renderer>
+            <component-family>javax.faces.SelectOne</component-family>
+            <renderer-type>javax.faces.Listbox</renderer-type>
+            <renderer-class>mx.ipn.cidetec.virtual.utils.CustomSelectinputRenderer</renderer-class>
+        </renderer>
+        <renderer>
+            <component-family>javax.faces.SelectMany</component-family>
+            <renderer-type>javax.faces.Listbox</renderer-type>
+            <renderer-class>mx.ipn.cidetec.virtual.utils.CustomSelectinputRenderer</renderer-class>
+        </renderer>
+        <renderer>
+            <component-family>javax.faces.SelectBoolean</component-family>
+            <renderer-type>javax.faces.Checkbox</renderer-type>
+            <renderer-class>mx.ipn.cidetec.virtual.utils.CustomCheckboxinputRenderer</renderer-class>
+        </renderer>
+        <renderer>
+            <component-family>javax.faces.SelectOne</component-family>
+            <renderer-type>javax.faces.Radio</renderer-type>
+            <renderer-class>mx.ipn.cidetec.virtual.utils.CustomRadioinputRenderer</renderer-class>
+        </renderer>
+        <renderer>
+            <component-family>javax.faces.Form</component-family>
+            <renderer-type>javax.faces.Form</renderer-type>
+            <renderer-class>mx.ipn.cidetec.virtual.utils.CustomFormRenderer</renderer-class>
+        </renderer>
+        <renderer>
+            <component-family>javax.faces.Command</component-family>
+            <renderer-type>javax.faces.Link</renderer-type>
+            <renderer-class>mx.ipn.cidetec.virtual.utils.CustomLinkRenderer</renderer-class>
+        </renderer>
     </render-kit>
 
 </faces-config>
