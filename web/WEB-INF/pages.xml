@@ -3,10 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://jboss.org/schema/seam/pages http://jboss.org/schema/seam/pages-2.3.xsd"
 
-       no-conversation-view-id="/index.xhtml"
+       no-conversation-view-id="/login.xhtml"
        login-view-id="/login.xhtml">
 
-    <page view-id="/index.xhtml">
+    <page view-id="/login.xhtml">
         <rewrite pattern="/" />
     </page>
 
@@ -54,6 +54,16 @@
         <navigation from-action="#{planEstudiosController.save}">
             <rule if-outcome="success">
                 <redirect view-id="/admin/plan.list.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+
+    <page view-id="/admin/profesor.edit.xhtml">
+        <begin-conversation join="true" />
+
+        <navigation from-action="#{profesorController.save}">
+            <rule if-outcome="success">
+                <redirect view-id="/admin/profesores.list.xhtml"/>
             </rule>
         </navigation>
     </page>

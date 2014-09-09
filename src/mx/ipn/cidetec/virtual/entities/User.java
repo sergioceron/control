@@ -21,7 +21,7 @@ public class User {
 	private String lastname;
 	private boolean enabled;
 	private List<Role> roles;
-	private Object account;
+	private Account account;
 
 	@Id
 	@NotNull
@@ -84,12 +84,12 @@ public class User {
 		this.roles = roles;
 	}
 
-	@Transient
-	public Object getAccount() {
+	@OneToOne(cascade = CascadeType.ALL)
+	public Account getAccount() {
 		return account;
 	}
 
-	public void setAccount( Object account ) {
+	public void setAccount( Account account ) {
 		this.account = account;
 	}
 }

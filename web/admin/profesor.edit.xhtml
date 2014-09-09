@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:seam="http://jboss.org/schema/seam/taglib"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+
+        <ui:define name="title">Profesores</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/parsley/src/parsley.css" rel="stylesheet" />
+            <link href="/assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+        </ui:define>
+
+        <ui:define name="content">
+
+            <!-- begin row -->
+            <div class="row">
+                <!-- begin col-6 -->
+                <div class="col-md-6">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">#{profesorController.profesor.id eq null ? "Nuevo Profesor" : "Editar Profesor" }</h4>
+                        </div>
+                        <div class="panel-body panel-form">
+
+                            <h:form prependId="false" styleClass="form-horizontal form-bordered" data-parsley-validate="true">
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Nombre :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:inputText value="#{profesorController.profesor.nombre}" styleClass="form-control" placeholder="Nombre"
+                                                     data-parsley-required="true" data-parsley-minlength="4" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Apellido Paterno :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:inputText value="#{profesorController.profesor.apellidoP}" styleClass="form-control" placeholder="Apellido Paterno"
+                                                     data-parsley-required="true" data-parsley-minlength="2" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Apellido Materno :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:inputText value="#{profesorController.profesor.apellidoM}" styleClass="form-control" placeholder="Apellido Materno"
+                                                     data-parsley-required="true" data-parsley-minlength="2" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Institucion :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:selectOneMenu value="#{profesorController.profesor.institucion}" styleClass="form-control"
+                                                         data-parsley-required="true">
+                                            <f:selectItem itemLabel="Instituto Politécnico Nacional" itemValue="IPN"/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Plantel :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:selectOneMenu value="#{profesorController.profesor.plantel}" styleClass="form-control"
+                                                         data-parsley-required="true">
+                                            <f:selectItem itemLabel="CIDETEC" itemValue="CIDETEC"/>
+                                            <f:selectItem itemLabel="CIC" itemValue="CIC"/>
+                                            <f:selectItem itemLabel="CINVESTAV" itemValue="CINVESTAV"/>
+                                            <f:selectItem itemLabel="ESCOM" itemValue="ESCOM"/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Cuenta :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:selectBooleanCheckbox value="#{materiaController.materia.externa}" data-render="switchery" data-theme="default" data-switchery="true">
+                                            <f:ajax execute="@this" />
+                                        </h:selectBooleanCheckbox>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4"></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:commandButton value="Guardar" action="#{profesorController.save}" styleClass="btn btn-sm btn-primary m-r-5"/>
+                                        <a href="profesores.list.seam">Cancelar</a>
+                                    </div>
+                                </div>
+
+                            </h:form>
+                        </div>
+                        <!-- end panel -->
+                    </div>
+                    <!-- end col-6 -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end #content -->
+
+        </ui:define>
+
+        <ui:define name="scripts">
+            <script src="/assets/plugins/switchery/switchery.min.js" type="text/javascript"></script>
+            <script src="/assets/js/form-slider-switcher.demo.min.js" type="text/javascript"></script>
+            <script src="/assets/plugins/parsley/dist/parsley.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    FormSliderSwitcher.init();
+                });
+            </script>
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>

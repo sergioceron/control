@@ -2,157 +2,95 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:rich="http://richfaces.org/rich"
-      xmlns:seam="http://jboss.org/schema/seam/taglib"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 
-    <ui:composition template="../index.xhtml">
+    <ui:composition template="../template.xhtml">
+
+        <ui:define name="title">Panel de Control</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
+            <link href="/assets/plugins/bootstrap-calendar/css/bootstrap_calendar.css" rel="stylesheet" />
+            <link href="/assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+            <link href="/assets/plugins/morris/morris.css" rel="stylesheet" />
+        </ui:define>
 
         <ui:define name="content">
 
-            <h:messages/>
-            Hola, #{identity.username}
-            <rich:popupPanel id="loginPanel" width="320" height="240" modal="true" show="true" moveable="false">
-                <f:facet name="header">
-                    <h:panelGroup>
-                        <h:outputText value="Registrar alumno"/>
-                    </h:panelGroup>
-                </f:facet>
-                <h:form id="loginForm">
+            <div class="row">
+                <!-- begin col-3 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget widget-stats bg-green">
+                        <div class="stats-icon stats-icon-lg"><i class="fa fa-navicon fa-fw"></i></div>
+                        <div class="stats-title underline">CURSOS</div>
+                        <div class="stats-number">10</div>
+                        <div class="stats-progress progress">
+                            <div class="progress-bar" style="width: 70.1%;"></div>
+                        </div>
+                        <div class="stats-desc">Cursos impartiendose éste semestre</div>
+                    </div>
+                </div>
+                <!-- end col-3 -->
+                <!-- begin col-3 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget widget-stats bg-blue">
+                        <div class="stats-icon stats-icon-lg"><i class="fa fa-users fa-fw"></i></div>
+                        <div class="stats-title">ALUMNOS</div>
+                        <div class="stats-number">56</div>
+                        <div class="stats-progress progress">
+                            <div class="progress-bar" style="width: 40.5%;"></div>
+                        </div>
+                        <div class="stats-desc">Alumnos inscritos éste semestre</div>
+                    </div>
+                </div>
+                <!-- end col-3 -->
+                <!-- begin col-3 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget widget-stats bg-purple">
+                        <div class="stats-icon stats-icon-lg"><i class="fa fa-user fa-fw"></i></div>
+                        <div class="stats-title">PROFESORES</div>
+                        <div class="stats-number">25</div>
+                        <div class="stats-progress progress">
+                            <div class="progress-bar" style="width: 76.3%;"></div>
+                        </div>
+                        <div class="stats-desc">Profesores impartiendo clases</div>
+                    </div>
+                </div>
+                <!-- end col-3 -->
+                <!-- begin col-3 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget widget-stats bg-black">
+                        <div class="stats-icon stats-icon-lg"><i class="fa fa-university fa-fw"></i></div>
+                        <div class="stats-title">PROGRAMAS</div>
+                        <div class="stats-number">2</div>
+                        <div class="stats-progress progress">
+                            <div class="progress-bar" style="width: 54.9%;"></div>
+                        </div>
+                        <div class="stats-desc">Maestría y Doctorado</div>
+                    </div>
+                </div>
+                <!-- end col-3 -->
+            </div>
 
+        </ui:define>
 
-                    <h:panelGrid columns="1" footerClass="regFooter">
-                        <h:panelGroup styleClass="col0">
-                            <h:panelGrid columns="2" cellpadding="5" footerClass="prefFooter">
-                                <h:panelGrid columns="2" columnClasses="col0,col1" cellpadding="5">
-                                    <h:outputText value="Nombre"/>
-                                    <h:inputText id="displayName" required="false" value="#{currentUser.preferences.displayName}" size="17" maxlength="30">
-                                        <f:validateLength minimum="4" maximum="30"/>
-                                    </h:inputText>
-                                    <h:outputText value="#{messages.login_email}"/>
-                                    <h:inputText label="#{messages.login_email}" id="email" required="false" value="#{currentUser.email}" size="20" maxlength="60"/>
-                                    <h:outputText value="#{messages.firstName}"/>
-                                    <h:inputText label="#{messages.firstName}" id="firstName" required="false" value="#{currentUser.firstName}" size="17" maxlength="30">
-                                        <f:validateLength minimum="1" maximum="30"/>
-                                    </h:inputText>
-                                    <h:outputText value="#{messages.middleName}"/>
-                                    <h:inputText label="#{messages.middleName}" id="middleName" required="false" value="#{currentUser.middleName}" size="17" maxlength="30">
-                                        <f:validateLength minimum="0" maximum="30"/>
-                                    </h:inputText>
-                                    <h:outputText value="#{messages.lastName}"/>
-                                    <h:inputText label="#{messages.lastName}" id="lastName" required="false" value="#{currentUser.lastName}" size="17" maxlength="30">
-                                        <f:validateLength minimum="1" maximum="30"/>
-                                    </h:inputText>
-                                </h:panelGrid>
-                                <h:panelGrid columns="2" columnClasses="col0,col1" cellpadding="5">
-                                    <h:outputText value="#{messages.login_password}"/>
-                                    <rich:togglePanel switchType="client" stateOrder="closed,changePswd">
-                                        <f:facet name="closed">
-                                            <rich:toggleControl>
-                                                <h:outputText value="#{messages.prefs_change_password}"/>
-                                            </rich:toggleControl>
-                                        </f:facet>
-                                        <f:facet name="changePswd">
-                                            <h:panelGrid columns="2" columnClasses="col0,col0" cellpadding="0">
-                                                <h:inputSecret id="password" required="false" value="#{passwordSupport.password}" size="9" maxlength="12">
-                                                    <f:validateLength minimum="8" maximum="12"/>
-                                                </h:inputSecret>
-                                                <h:panelGroup>
-                                                    <h:outputText value="#{messages.re_enter_pswd}" escape="false"/>
-                                                    <h:inputSecret id="passwordConfirm" value="#{passwordSupport.passwordConfirm}" required="false" size="9" maxlength="12"/>
-                                                </h:panelGroup>
-                                            </h:panelGrid>
-                                        </f:facet>
-                                    </rich:togglePanel>
-                                    <h:outputText value="#{messages.prefs_gender}"/>
-                                    <h:selectOneRadio id="gender" value="#{currentUser.preferences.gender}" styleClass="col1">
-                                        <f:selectItem id="gender_2" itemLabel="#{messages.female}" itemValue="FEMALE"/>
-                                        <f:selectItem id="gender_1" itemLabel="#{messages.male}" itemValue="MALE"/>
-                                        <f:selectItem id="gender_0" itemLabel="#{messages.secret}" itemValue="SECRET"/>
-                                    </h:selectOneRadio>
-                                    <h:outputText value="#{messages.prefs_birth_year}"/>
-                                    <h:panelGroup>
-                                        <h:inputText label="#{messages.prefs_birth_year}" id="birthYear" required="false" value="#{currentUser.preferences.birthYear}" size="6" maxlength="40">
-                                            <f:validateLength minimum="0" maximum="4"/>
-                                        </h:inputText>
-                                        <h:outputText value="#{messages.year_born_tip}" escape="false"/>
-                                    </h:panelGroup>
-                                    <h:outputText value="#{messages.prefs_description}"/>
-                                    <h:inputTextarea id="description" value="#{currentUser.preferences.description}" rows="4" cols="32">
-                                        <f:validateLength minimum="0" maximum="90"/>
-                                    </h:inputTextarea>
-                                    <h:outputText value="#{messages.prefs_country}"/>
-                                    <h:selectOneListbox id="country" value="#{currentUser.preferences.country}" size="1">
-                                        <f:selectItems value="#{facesSupport.countryOptions}"/>
-                                    </h:selectOneListbox>
-                                    <h:outputText value="#{messages.prefs_region}"/>
-                                    <h:selectOneListbox id="region" value="#{currentUser.preferences.region}" style="width: 180px;" size="1">
-                                        <f:selectItems value="#{facesSupport.getRegionOptions(currentUser.preferences.country)}"/>
-                                    </h:selectOneListbox>
-                                </h:panelGrid>
-                            </h:panelGrid>
-                        </h:panelGroup>
-                        <h:panelGroup styleClass="col0">
-                            <h:panelGrid columns="1" cellpadding="5" columnClasses="col0">
-                                <h:panelGroup>
-                                    <b>
-                                        <h:outputText value="#{messages.prefs_profilePolicy}"/>
-                                    </b>
-                                    <h:selectOneRadio id="profilePolicy" value="#{currentUser.preferences.profilePolicy}" layout="pageDirection" styleClass="col1">
-                                        <f:selectItem itemLabel="#{messages.policy_private}" itemValue="PRIVATE"/>
-                                        <f:selectItem itemLabel="#{messages.policy_protected}" itemValue="PROTECTED"/>
-                                        <f:selectItem itemLabel="#{messages.policy_public}" itemValue="PUBLIC"/>
-                                    </h:selectOneRadio>
-                                    <b>
-                                        <h:outputText value="#{messages.prefs_marketing_optin}"/>
-                                    </b>
-                                    <h:selectOneRadio id="marketingOptIn" value="#{currentUser.preferences.marketingOptIn}" layout="pageDirection" styleClass="col1">
-                                        <f:selectItem itemLabel="#{messages.opt_out}" itemValue="false"/>
-                                        <f:selectItem itemLabel="#{messages.opt_in}" itemValue="true"/>
-                                    </h:selectOneRadio>
-                                </h:panelGroup>
-                            </h:panelGrid>
-                        </h:panelGroup>
-                        <f:facet name="footer">
-                            <h:panelGroup>
-                                <h:commandButton type="button" id="updatePrefButton" value="#{messages.update_prefs}" action="#{updatePreferences.savePreferences}"/>
-                            </h:panelGroup>
-                        </f:facet>
-                    </h:panelGrid>
-
-                    <h:panelGrid columns="2" columnClasses="col0,col1" cellpadding="5" footerClass="authFooter">
-                        <h:outputText value="Matricula"/>
-                        <h:inputText value="#{alumnoController.alumno.matricula}"/>
-                        <h:outputText value="Semestre"/>
-                        <h:inputText value="#{alumnoController.alumno.semestre}"/>
-                        <h:outputText value="Status"/>
-                        <h:selectOneMenu value="#{alumnoController.alumno.status}">
-                            <f:selectItems var="status" value="#{alumnoController.statuses}" itemLabel="#{status.name}" />
-                        </h:selectOneMenu>
-                        <h:outputText value="Asesor"/>
-                        <h:selectOneMenu value="#{alumnoController.alumno.asesor}">
-                            <f:selectItems var="asesor" value="#{alumnoController.profesores}" itemLabel="#{asesor.nombre}" itemValue="#{asesor}" />
-                            <seam:convertEntity />
-                        </h:selectOneMenu>
-
-                        <f:facet name="footer">
-                            <h:panelGroup>
-                                <h:commandButton id="loginBtn" action="#{alumnoController.guardar}" value="Guardar"/>
-                                <rich:message for="loginBtn">
-                                    <f:facet name="errorMarker">
-                                        <h:graphicImage value="img/forbidden.gif"/>
-                                    </f:facet>
-                                </rich:message>
-                            </h:panelGroup>
-                        </f:facet>
-                    </h:panelGrid>
-
-                </h:form>
-            </rich:popupPanel>
-
+        <ui:define name="scripts">
+            <script src="/assets/plugins/morris/raphael.min.js" type="text/javascript"></script>
+            <script src="/assets/plugins/morris/morris.js" type="text/javascript"></script>
+            <script src="/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
+            <script src="/assets/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js" type="text/javascript"></script>
+            <script src="/assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js" type="text/javascript"></script>
+            <script src="/assets/plugins/gritter/js/jquery.gritter.js" type="text/javascript"></script>
+            <script src="/assets/js/dashboard-v2.min.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    App.init();
+                    DashboardV2.init();
+                });
+            </script>
         </ui:define>
 
     </ui:composition>

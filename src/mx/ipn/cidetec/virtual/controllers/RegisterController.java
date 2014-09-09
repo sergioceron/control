@@ -99,10 +99,6 @@ public class RegisterController {
 		return DigestUtils.md5Hex( raw );
 	}
 
-	@Observer(JpaIdentityStore.EVENT_PRE_PERSIST_USER)
-	public void prePersistUser( User pNewUser ) {
-		//pNewUser.setActivated( false );
-	}
 
 	public User getUser() {
 		return user;

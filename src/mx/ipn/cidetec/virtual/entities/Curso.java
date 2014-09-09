@@ -16,13 +16,6 @@ public class Curso {
 	private String semestre;
 	private List<Hora> horario;
 
-	public Curso() {
-		horario = new ArrayList<Hora>();
-		for( int i = 0; i < 7; i++ ) {
-			horario.add( new Hora( i ) );
-		}
-	}
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
@@ -67,7 +60,7 @@ public class Curso {
 		this.semestre = semestre;
 	}
 
-	@OneToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	public List<Hora> getHorario() {
 		return horario;
 	}
