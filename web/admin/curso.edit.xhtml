@@ -4,137 +4,193 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:rich="http://richfaces.org/rich"
       xmlns:seam="http://jboss.org/schema/seam/taglib"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 
-    <ui:composition template="../index.xhtml">
+    <ui:composition template="../template.xhtml">
+
+        <ui:define name="title">Cursos</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/parsley/src/parsley.css" rel="stylesheet"/>
+            <link href="/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" />
+        </ui:define>
 
         <ui:define name="content">
-            <h:form id="loginForm" prependId="false">
 
-                <h:messages/>
-                <rich:popupPanel id="loginPanel" width="650" height="540" modal="true" show="true" moveable="false" domElementAttachment="form">
-                    <f:facet name="header">
-                        <h:panelGroup>
-                            <h:outputText value="Nuevo Curso"/>
-                        </h:panelGroup>
-                    </f:facet>
-                    <rich:focus/>
-                    <h:panelGrid columns="1" footerClass="regFooter">
-                        <h:panelGroup styleClass="col0">
-                            <h:panelGrid columns="1" cellpadding="5" footerClass="prefFooter">
-                                <h:panelGrid columns="2" columnClasses="col0,col1" cellpadding="5">
-                                    <h:outputText value="Materia"/>
-                                    <h:selectOneMenu value="#{cursoController.curso.materia}" style="width: 250px">
-                                        <f:selectItems var="materia" value="#{listEntitiesController.materias}"
-                                                       itemLabel="#{materia.nombre}" itemValue="#{materia}"/>
-                                        <seam:convertEntity/>
-                                    </h:selectOneMenu>
-                                    <h:outputText value="Profesor"/>
-                                    <h:selectOneMenu value="#{cursoController.curso.profesor}">
-                                        <f:selectItems var="profesor" value="#{listEntitiesController.profesores}"
-                                                       itemLabel="#{profesor.fullName}" itemValue="#{profesor}"/>
-                                        <seam:convertEntity/>
-                                    </h:selectOneMenu>
-                                    <h:outputText value="Lugar"/>
-                                    <h:inputText required="true" value="#{cursoController.curso.lugar}" size="17"
-                                                 maxlength="30"/>
-                                    <h:outputText value="Semestre"/>
-                                    <h:inputText required="true" value="#{cursoController.curso.semestre}" size="17"
-                                                 maxlength="30"/>
-                                    <h:outputText value="Horario"/>
-                                    <rich:pickList value="#{cursoController.curso.horario}" var="hora"
-                                                   listHeight="200px"
-                                                   id="horas">
-                                        <f:selectItems value="#{listEntitiesController.horas}"/>
-                                        <seam:convertEntity/>
-                                        <rich:column>
-                                            <f:facet name="header">Dia</f:facet>
-                                            #{hora.dia}
-                                        </rich:column>
-                                        <rich:column>
-                                            <f:facet name="header">Hora Inicio</f:facet>
-                                            #{hora.horaInicio}
-                                        </rich:column>
-                                        <rich:column>
-                                            <f:facet name="header">Hora Fin</f:facet>
-                                            #{hora.horaFin}
-                                        </rich:column>
-                                    </rich:pickList>
-                                    <h:outputText value=""/>
-                                    <h:outputLink value="#" onclick="#{rich:component('popup')}.show(); return false;">
-                                        Registrar Hora
-                                    </h:outputLink>
-                                </h:panelGrid>
-                            </h:panelGrid>
-                        </h:panelGroup>
-                        <f:facet name="footer">
-                            <h:panelGroup>
-                                <h:commandButton value="Guardar" action="#{cursoController.save}"/>
-                                <a href="cursos.list.seam">Cancelar</a>
-                            </h:panelGroup>
-                        </f:facet>
-                    </h:panelGrid>
+            <!-- begin row -->
+            <div class="row">
+                <!-- begin col-6 -->
+                <div class="col-md-6">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">#{cursoController.curso.id eq null ? "Nuevo Curso" : "Editar Curso" }</h4>
+                        </div>
+                        <div class="panel-body panel-form">
 
-                </rich:popupPanel>
+                            <h:form prependId="false" styleClass="form-horizontal form-bordered"
+                                    data-parsley-validate="true">
 
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Materia :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:selectOneMenu value="#{cursoController.curso.materia}" styleClass="form-control"
+                                                         data-parsley-required="true">
+                                            <f:selectItems var="materia" value="#{listEntitiesController.materias}"
+                                                           itemLabel="#{materia.nombre}" itemValue="#{materia}"/>
+                                            <seam:convertEntity/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Profesor :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:selectOneMenu value="#{cursoController.curso.profesor}" styleClass="form-control"
+                                                         data-parsley-required="true">
+                                            <f:selectItems var="profesor" value="#{listEntitiesController.profesores}"
+                                                           itemLabel="#{profesor.fullName}" itemValue="#{profesor}"/>
+                                            <seam:convertEntity/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Lugar :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:inputText value="#{cursoController.curso.lugar}" styleClass="form-control" placeholder="Unidad Académica"
+                                                     data-type="alphanum" data-parsley-minlength="3"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Semestre :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:selectOneMenu value="#{cursoController.curso.semestre}" styleClass="form-control"
+                                                         data-parsley-required="true">
+                                            <f:selectItem itemLabel="1" itemValue="1"/>
+                                            <f:selectItem itemLabel="2" itemValue="2"/>
+                                            <f:selectItem itemLabel="3" itemValue="3"/>
+                                            <f:selectItem itemLabel="4" itemValue="4"/>
+                                            <f:selectItem itemLabel="5" itemValue="5"/>
+                                            <f:selectItem itemLabel="6" itemValue="6"/>
+                                            <f:selectItem itemLabel="7" itemValue="7"/>
+                                            <f:selectItem itemLabel="8" itemValue="8"/>
+                                            <f:selectItem itemLabel="9" itemValue="9"/>
+                                            <f:selectItem itemLabel="10" itemValue="10"/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Horario :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:selectManyListbox value="#{cursoController.curso.horario}" var="hora"
+                                                       id="horas" styleClass="form-control"
+                                                       data-parsley-required="true">
+                                            <f:selectItems value="#{listEntitiesController.horas}"/>
+                                            <seam:convertEntity/>
+                                        </h:selectManyListbox>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4"></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:outputLink value="#" onclick="$('#dialog').modal('toggle'); return false;">
+                                            Registrar Hora
+                                        </h:outputLink>
+                                    </div>
+                                </div>
 
-                <rich:popupPanel id="popup" modal="true" autosized="true" resizeable="false" domElementAttachment="form">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4"></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:commandButton value="Guardar" action="#{cursoController.save}" styleClass="btn btn-sm btn-primary m-r-5"/>
+                                        <a href="cursos.list.seam">Cancelar</a>
+                                    </div>
+                                </div>
 
-                    <f:facet name="header">
-                        <h:outputText value="Hora"/>
-                    </f:facet>
-                    <f:facet name="controls">
-                        <h:outputLink value="#" onclick="#{rich:component('popup')}.hide(); return false;">
-                            X
-                        </h:outputLink>
-                    </f:facet>
+                                <h:panelGroup styleClass="modal fade" id="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Nueva Hora</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4 col-sm-4">Dia :</label>
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <h:selectOneMenu value="#{horaController.hora.diaSemana}" styleClass="form-control"
+                                                                         data-parsley-required="true" id="dia">
+                                                            <f:selectItem itemLabel="Lunes" itemValue="0"/>
+                                                            <f:selectItem itemLabel="Martes" itemValue="1"/>
+                                                            <f:selectItem itemLabel="Miercoles" itemValue="2"/>
+                                                            <f:selectItem itemLabel="Jueves" itemValue="3"/>
+                                                            <f:selectItem itemLabel="Viernes" itemValue="4"/>
+                                                            <f:selectItem itemLabel="Sabado" itemValue="5"/>
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4 col-sm-4">Inicio :</label>
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <div class="input-group bootstrap-timepicker">
+                                                            <h:inputText value="#{horaController.hora.horaInicio}" styleClass="form-control" placeholder="Hora de inicio"
+                                                                         data-parsley-required="true" id="inicio"/>
+                                                            <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4 col-sm-4">Fin :</label>
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <div class="input-group bootstrap-timepicker">
+                                                            <h:inputText value="#{horaController.hora.horaFin}" styleClass="form-control" placeholder="Hora de termino"
+                                                                         data-parsley-required="true" id="fin"/>
+                                                            <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                    <h:panelGrid columns="1" footerClass="regFooter">
-                        <h:panelGroup styleClass="col0">
-                            <h:panelGrid columns="1" cellpadding="5" footerClass="prefFooter">
-                                <h:panelGrid columns="2" columnClasses="col0,col1" cellpadding="5">
-                                    <h:outputText value="Día"/>
-                                    <h:selectOneMenu value="#{horaController.hora.diaSemana}" id="dia">
-                                        <f:selectItem itemLabel="Lunes" itemValue="0"/>
-                                        <f:selectItem itemLabel="Martes" itemValue="1"/>
-                                        <f:selectItem itemLabel="Miercoles" itemValue="2"/>
-                                        <f:selectItem itemLabel="Jueves" itemValue="3"/>
-                                        <f:selectItem itemLabel="Viernes" itemValue="4"/>
-                                        <f:selectItem itemLabel="Sabado" itemValue="5"/>
-                                    </h:selectOneMenu>
-                                    <h:outputText value="Inicio"/>
-                                    <h:inputText required="true" value="#{horaController.hora.horaInicio}" size="17"
-                                                 maxlength="30" id="inicio"/>
-                                    <h:outputText value="Fin"/>
-                                    <h:inputText required="true" value="#{horaController.hora.horaFin}" size="17"
-                                                 maxlength="30" id="fin"/>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4 col-sm-4"></label>
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <h:commandButton value="Guardar" action="#{horaController.save}">
+                                                            <f:ajax execute="dia inicio fin @this" render="horas"
+                                                                    onevent="hideModal"/>
+                                                        </h:commandButton>
+                                                        <a href="#"
+                                                           onclick="$('#dialog').modal('hide'); return false;">Cancelar</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </h:panelGroup>
 
-                                </h:panelGrid>
-                            </h:panelGrid>
-                        </h:panelGroup>
-                        <h:panelGroup>
-                            <h:commandButton value="Guardar" action="#{horaController.save}">
-                                <f:ajax execute="dia inicio fin @this" render="horas" onevent="newHora" />
-                            </h:commandButton>
-                            <a href="#" onclick="#{rich:component('popup')}.hide(); return false;">Cancelar</a>
-                        </h:panelGroup>
-                    </h:panelGrid>
+                            </h:form>
+                        </div>
+                        <!-- end panel -->
+                    </div>
+                    <!-- end col-6 -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end #content -->
 
-                </rich:popupPanel>
-            </h:form>
+        </ui:define>
 
-
+        <ui:define name="scripts">
+            <script src="/assets/plugins/parsley/dist/parsley.js" type="text/javascript"></script>
+            <script src="/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
             <script type="text/javascript">
-                function newHora(data) {
-                    if (data.status == "success") {
-                        RichFaces.$('popup').hide();
+                function hideModal(data) {
+                    if (data.status === 'success') {
+                        $('#dialog').modal('hide');
                     }
                 }
+                $("#inicio").timepicker();
+                $("#fin").timepicker();
             </script>
-
         </ui:define>
 
     </ui:composition>

@@ -15,7 +15,11 @@ public class PlanEstudios {
     private boolean vigente;
 	private Programa programa;
 
-    @Id
+	public PlanEstudios() {
+		vigente = true;
+	}
+
+	@Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     public Long getId() {
         return id;

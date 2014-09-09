@@ -29,6 +29,7 @@ public class HoraController {
 	public String save(){
 		entityManager.persist( hora );
 		entityManager.flush();
+		hora = new Hora();
 		return "success";
 	}
 

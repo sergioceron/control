@@ -11,8 +11,8 @@ public class Hora {
 	private Long id;
 
 	private int diaSemana = 0;
-	private double horaInicio = 0;
-	private double horaFin = 0;
+	private String horaInicio = "";
+	private String horaFin = "";
 
 	public Hora() {
 	}
@@ -39,25 +39,30 @@ public class Hora {
 		this.diaSemana = diaSemana;
 	}
 
-	public double getHoraInicio() {
+	public String getHoraInicio() {
 		return horaInicio;
 	}
 
-	public void setHoraInicio( double horaInicio ) {
+	public void setHoraInicio( String horaInicio ) {
 		this.horaInicio = horaInicio;
 	}
 
-	public double getHoraFin() {
+	public String getHoraFin() {
 		return horaFin;
 	}
 
-	public void setHoraFin( double horaFin ) {
+	public void setHoraFin( String horaFin ) {
 		this.horaFin = horaFin;
 	}
 
 	@Transient
 	public String getDia(){
 		return dias[diaSemana];
+	}
+
+	@Override
+	public String toString() {
+		return getDia() + " - " + horaInicio + " a " + horaFin;
 	}
 
 	@Override
@@ -68,8 +73,8 @@ public class Hora {
 		Hora hora = (Hora) o;
 
 		if( diaSemana != hora.diaSemana ) return false;
-		if( Double.compare( hora.horaFin, horaFin ) != 0 ) return false;
-		if( Double.compare( hora.horaInicio, horaInicio ) != 0 ) return false;
+		if( hora.horaFin.equals( horaFin ) ) return false;
+		if( hora.horaInicio.equals( horaInicio ) ) return false;
 
 		return true;
 	}

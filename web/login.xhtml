@@ -1,56 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html [
+        <!ENTITY nbsp "&#160;">
+        ]>
+
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:rich="http://richfaces.org/rich"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <meta charset="utf-8" />
+    <title>SAE Admin | Login</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="assets/plugins/jquery-ui-1.10.4/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap-3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/plugins/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="assets/css/animate.min.css" rel="stylesheet" />
+    <link href="assets/css/style.min.css" rel="stylesheet" />
+    <link href="assets/css/style-responsive.min.css" rel="stylesheet" />
+    <link href="assets/css/theme/default.css" rel="stylesheet" id="theme" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+</h:head>
 <h:body>
 
-    <ui:composition template="/index.xhtml">
+    <!-- begin #page-loader -->
+    <div id="page-loader" class="fade in"><span class="spinner"></span></div>
+    <!-- end #page-loader -->
 
-        <ui:define name="content">
-
-            <h:messages/>
-            <rich:popupPanel id="loginPanel" width="320" height="240" modal="true" show="true" moveable="false">
-                <f:facet name="header">
-                    <h:panelGroup>
-                        <h:outputText value="Iniciar Sesion"/>
-                    </h:panelGroup>
-                </f:facet>
-                <h:form id="loginForm">
-                    <h:panelGrid columns="2" columnClasses="col0,col1" cellpadding="5" footerClass="authFooter">
-                        <h:outputText value="Username"/>
-                        <h:inputText id="username" value="#{identity.username}"/>
-                        <h:outputText value="Password"/>
-                        <h:inputSecret id="password" value="#{identity.password}"/>
-                        <h:outputText value=" "/>
-                        <h:panelGroup>
-                            <h:selectBooleanCheckbox id="rememberMe" value="#{identity.rememberMe}"/>
-                            <h:outputText value="Recordarme"/>
-                        </h:panelGroup>
-                        <f:facet name="footer">
-                            <h:panelGroup>
-                                <h:commandButton id="loginBtn" action="#{identity.login}" value="Entrar"/>
-                                <rich:message for="loginBtn">
-                                    <f:facet name="errorMarker">
-                                        <h:graphicImage value="img/forbidden.gif"/>
-                                    </f:facet>
-                                </rich:message>
-                            </h:panelGroup>
-                        </f:facet>
-                    </h:panelGrid>
-                    <br/><br/>
-                    <h:outputLink value="#" id="forgotLink">
-                        <h:outputText value="Olvide mi contrasenia"/>
-                    </h:outputLink>
+    <div class="login-cover">
+        <div class="login-cover-image"><img src="assets/img/login-bg/cidetec.jpg" data-id="login-cover-image" alt="" /></div>
+        <div class="login-cover-bg"></div>
+    </div>
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade">
+        <!-- begin login -->
+        <div class="login login-v2" data-pageload-addclass="animated flipInX">
+            <!-- begin brand -->
+            <div class="login-header">
+                <div class="brand">
+                    <span class="logo"></span> SAE Admin
+                    <small>Sistema de Administración Escolar</small>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-sign-in"></i>
+                </div>
+            </div>
+            <!-- end brand -->
+            <div class="login-content">
+                <h:form styleClass="margin-bottom-0">
+                    <div class="form-group m-b-20">
+                        <h:inputText id="username" value="#{identity.username}" styleClass="form-control input-lg" placeholder="Nombre de usuario"/>
+                    </div>
+                    <div class="form-group m-b-20">
+                        <h:inputSecret id="password" value="#{identity.password}" styleClass="form-control input-lg" placeholder="Contraseña"/>
+                    </div>
+                    <div class="checkbox m-b-20">
+                        <label>
+                            <h:selectBooleanCheckbox id="rememberMe" value="#{identity.rememberMe}"/> Recordarme
+                        </label>
+                    </div>
+                    <div class="login-buttons">
+                        <h:commandButton id="loginBtn" action="#{identity.login}" value="Entrar al sistema" styleClass="btn btn-success btn-block btn-lg"/>
+                    </div>
                 </h:form>
-            </rich:popupPanel>
+            </div>
+        </div>
+        <!-- end login -->
 
-        </ui:define>
+    </div>
+    <!-- end page container -->
 
-    </ui:composition>
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="assets/plugins/jquery-1.8.2/jquery-1.8.2.min.js"></script>
+    <script src="assets/plugins/jquery-ui-1.10.4/ui/minified/jquery-ui.min.js"></script>
+    <script src="assets/plugins/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="assets/crossbrowserjs/html5shiv.js"></script>
+        <script src="assets/crossbrowserjs/respond.min.js"></script>
+        <script src="assets/crossbrowserjs/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <!-- ================== END BASE JS ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="assets/js/login-v2.demo.min.js"></script>
+    <script src="assets/js/apps.min.js"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script>
+        $(document).ready(function() {
+            App.init();
+            LoginV2.init();
+        });
+    </script>
 
 </h:body>
 

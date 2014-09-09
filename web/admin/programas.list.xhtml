@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:a4j="http://richfaces.org/a4j"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 
@@ -51,8 +50,10 @@
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">Materias</f:facet>
-                                            <h:commandLink value="Ver materias"
+                                            <h:commandLink value="Ver materias" id="materi"
                                                            actionListener="#{programaController.showMaterias(programa)}">
+                                                <f:ajax render=":dialog" execute="@this"
+                                                          onevent="showModal"/>
                                             </h:commandLink>
                                         </h:column>
                                         <h:column>
@@ -66,42 +67,30 @@
 
                                     </h:dataTable>
 
-                                    <h:panelGroup styleClass="modal fade" id="modal-dialog">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Modal Dialog</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <h:dataTable value="#{programaController.materias}" var="materia" styleClass="table table-striped table-bordered">
-                                                        <h:column>
-                                                            <f:facet name="header">Clave</f:facet>
-                                                            #{materia.clave}
-                                                        </h:column>
-                                                        <h:column>
-                                                            <f:facet name="header">Nombre</f:facet>
-                                                            #{materia.nombre}
-                                                        </h:column>
-                                                        <h:column>
-                                                            <f:facet name="header">Creditos</f:facet>
-                                                            #{materia.creditos}
-                                                        </h:column>
-                                                        <h:column>
-                                                            <f:facet name="header">Categoria</f:facet>
-                                                            #{materia.categoria.nombre}
-                                                        </h:column>
-                                                        <h:column>
-                                                            <f:facet name="header">Tipo</f:facet>
-                                                            #{materia.tipo.name}
-                                                        </h:column>
-                                                    </h:dataTable>
-                                                </div>
+                                </h:form>
+
+                                <h:panelGroup styleClass="modal fade" id="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Materias</h4>
+                                            </div>
+                                            <div class="modal-body" style="max-height: 400px ;overflow: auto">
+                                                <h:dataTable value="#{programaController.materias}" var="materia" styleClass="table table-striped table-bordered">
+                                                    <h:column>
+                                                        <f:facet name="header">Clave</f:facet>
+                                                        #{materia.clave}
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">Nombre</f:facet>
+                                                        #{materia.nombre}
+                                                    </h:column>
+                                                </h:dataTable>
                                             </div>
                                         </div>
+                                    </div>
+                                </h:panelGroup>
 
-                                    </h:panelGroup>
-
-                                </h:form>
                             </div>
                         </div>
                     </div>
@@ -116,6 +105,13 @@
             <script src="/assets/plugins/DataTables-1.9.4/js/jquery.dataTables.js" type="text/javascript"></script>
             <script src="/assets/plugins/DataTables-1.9.4/js/data-table.js" type="text/javascript"></script>
             <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                function showModal(data) {
+                    if (data.status === 'success') {
+                        $('#dialog').modal('toggle');
+                    }
+                }
+            </script>
         </ui:define>
 
     </ui:composition>
