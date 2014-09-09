@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="4e0f8c4e-93c0-4ccd-a8dd-01fff014d59c" name="Default" comment="" />
-    <list default="true" id="346ee933-8a84-44ff-b899-b16407a3f280" name="- Pagination  - Favorites Front End  - Edit &amp; Delete My Places (cherry picked from commit bbb369b)" comment="template full">
+    <list default="true" id="346ee933-8a84-44ff-b899-b16407a3f280" name="- Pagination  - Favorites Front End  - Edit &amp; Delete My Places (cherry picked from commit bbb369b)" comment="template full v2">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/assets/img/login-bg/cidetec.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Hora.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Hora.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/HoraController.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/HoraController.java" />
@@ -103,13 +103,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="navbar-header.xhtml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="navbar-header.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/navbar-header.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="15" selection-start="694" selection-end="694" vertical-scroll-proportion="0.5975104" vertical-offset="0" max-vertical-offset="482">
+            <state line="101" column="55" selection-start="5035" selection-end="5035" vertical-scroll-proportion="-13.5" vertical-offset="0" max-vertical-offset="468">
               <folding>
                 <element signature="tag#ul#0;tag#ui:composition#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Hora.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Hora.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="35" selection-start="363" selection-end="363" vertical-scroll-proportion="0.45762712" vertical-offset="0" max-vertical-offset="1278">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1305,7 +1314,7 @@
       <workItem from="1410195517670" duration="2956000" />
       <workItem from="1410204407464" duration="229000" />
       <workItem from="1410204659286" duration="351000" />
-      <workItem from="1410215234308" duration="20821000" />
+      <workItem from="1410215234308" duration="20959000" />
     </task>
     <task id="LOCAL-00001" summary="boot">
       <created>1405105148708</created>
@@ -1347,11 +1356,15 @@
       <created>1410233445463</created>
       <updated>1410233445463</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="template full v2">
+      <created>1410237593849</created>
+      <updated>1410237593849</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="733025000" />
+    <option name="totallyTimeSpent" value="733163000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1389,11 +1402,11 @@
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14529915" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32233223" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32233223" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930845" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20818071" sideWeight="0.4981203" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4147415" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4147415" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1479,7 +1492,8 @@
     <MESSAGE value="Cursos" />
     <MESSAGE value="template" />
     <MESSAGE value="template full" />
-    <option name="LAST_COMMIT_MESSAGE" value="template full" />
+    <MESSAGE value="template full v2" />
+    <option name="LAST_COMMIT_MESSAGE" value="template full v2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1762,13 +1776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Hora.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="31" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1278">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/admin/profesores.list.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="57" selection-start="2632" selection-end="2632" vertical-scroll-proportion="-11.25" vertical-offset="594" max-vertical-offset="1548">
@@ -1853,10 +1860,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/navbar-header.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="15" selection-start="694" selection-end="694" vertical-scroll-proportion="0.5975104" vertical-offset="0" max-vertical-offset="482">
+        <state line="101" column="55" selection-start="5035" selection-end="5035" vertical-scroll-proportion="-13.5" vertical-offset="0" max-vertical-offset="468">
           <folding>
             <element signature="tag#ul#0;tag#ui:composition#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Hora.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="35" selection-start="363" selection-end="363" vertical-scroll-proportion="0.45762712" vertical-offset="0" max-vertical-offset="1278">
+          <folding />
         </state>
       </provider>
     </entry>
