@@ -84,7 +84,7 @@
                                     <label class="control-label col-md-4 col-sm-4">Horario :</label>
                                     <div class="col-md-6 col-sm-6">
                                         <h:selectManyListbox value="#{cursoController.curso.horario}" var="hora"
-                                                       id="horas" styleClass="form-control"
+                                                       id="horas" styleClass="form-control" collectionType="java.util.ArrayList"
                                                        data-parsley-required="true">
                                             <f:selectItems value="#{listEntitiesController.horas}"/>
                                             <seam:convertEntity/>
