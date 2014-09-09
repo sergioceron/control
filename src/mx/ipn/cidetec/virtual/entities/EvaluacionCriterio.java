@@ -13,7 +13,6 @@ public class EvaluacionCriterio {
     private Long id;
     private String texto;
     private String categoria;
-    private int valor;
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -39,13 +38,5 @@ public class EvaluacionCriterio {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
-    }
-
-    public int getValor() {
-        return valor;
-    }
-
-    public void setValor(int valor) {
-        this.valor = valor;
     }
 }

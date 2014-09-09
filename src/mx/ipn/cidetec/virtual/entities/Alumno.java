@@ -19,6 +19,7 @@ public class Alumno extends Account {
 	private Programa programa;
 	private List<Curso> cursos;
 	private List<Calificacion> calificaciones;
+    private List<EvaluacionAlumno> evaluaciones;
 	private PlanEstudios planEstudios;
 
 	public String getMatricula() {
@@ -81,7 +82,16 @@ public class Alumno extends Account {
 		this.calificaciones = calificaciones;
 	}
 
-	@ManyToOne
+    @OneToMany
+    public List<EvaluacionAlumno> getEvaluaciones() {
+        return evaluaciones;
+    }
+
+    public void setEvaluaciones(List<EvaluacionAlumno> evaluaciones) {
+        this.evaluaciones = evaluaciones;
+    }
+
+    @ManyToOne
 	public PlanEstudios getPlanEstudios() {
 		return planEstudios;
 	}

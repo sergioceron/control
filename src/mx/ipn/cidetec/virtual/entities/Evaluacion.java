@@ -2,6 +2,7 @@ package mx.ipn.cidetec.virtual.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by sergio on 12/06/2014.
@@ -9,8 +10,8 @@ import java.util.Date;
 @Entity
 public class Evaluacion {
     private Long id;
-    private Alumno alumno;
-    private Curso curso;
+    private String nombre;
+    private List<EvaluacionCriterio> criterios;
     private Date fecha;
 
     @Id
@@ -23,22 +24,21 @@ public class Evaluacion {
         this.id = id;
     }
 
-    @ManyToOne
-    public Alumno getAlumno() {
-        return alumno;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    @ManyToOne
-    public Curso getCurso() {
-        return curso;
+    @ManyToMany
+    public List<EvaluacionCriterio> getCriterios() {
+        return criterios;
     }
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
+    public void setCriterios(List<EvaluacionCriterio> criterios) {
+        this.criterios = criterios;
     }
 
     public Date getFecha() {
