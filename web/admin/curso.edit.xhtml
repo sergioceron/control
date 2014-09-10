@@ -63,6 +63,17 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Turrno :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:selectOneMenu value="#{cursoController.curso.turno}" styleClass="form-control"
+                                                         data-parsley-required="true">
+                                            <f:selectItem itemLabel="1" itemValue="Matutino"/>
+                                            <f:selectItem itemLabel="2" itemValue="Vespertino"/>
+                                            <f:selectItem itemLabel="3" itemValue="Completo"/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label col-md-4 col-sm-4">Semestre :</label>
                                     <div class="col-md-6 col-sm-6">
                                         <h:selectOneMenu value="#{cursoController.curso.semestre}" styleClass="form-control"

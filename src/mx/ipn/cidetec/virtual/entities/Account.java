@@ -17,6 +17,7 @@ public class Account {
 	private String nombre;
 	private String apellidoP;
 	private String apellidoM;
+	private String correo;
 	private int edad;
 	private int sexo;
 
@@ -52,6 +53,14 @@ public class Account {
 
 	public void setApellidoM( String apellidoM ) {
 		this.apellidoM = apellidoM;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo( String correo ) {
+		this.correo = correo;
 	}
 
 	public int getEdad() {

@@ -1,6 +1,7 @@
 package mx.ipn.cidetec.virtual.entities;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,6 +12,8 @@ public class Profesor extends Account {
 
 	private String institucion;
 	private String plantel;
+	private String grado;
+	private Date fechaGrado;
 	private Tipo tipo;
     private List<Curso> cursos;
 
@@ -28,6 +31,30 @@ public class Profesor extends Account {
 
 	public void setPlantel( String plantel ) {
 		this.plantel = plantel;
+	}
+
+	public String getGrado() {
+		return grado;
+	}
+
+	public void setGrado( String grado ) {
+		this.grado = grado;
+	}
+
+	public Date getFechaGrado() {
+		return fechaGrado;
+	}
+
+	public void setFechaGrado( Date fechaGrado ) {
+		this.fechaGrado = fechaGrado;
+	}
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo( Tipo tipo ) {
+		this.tipo = tipo;
 	}
 
 	@OneToMany

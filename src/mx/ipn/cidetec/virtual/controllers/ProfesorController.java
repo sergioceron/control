@@ -1,5 +1,6 @@
 package mx.ipn.cidetec.virtual.controllers;
 
+import mx.ipn.cidetec.virtual.entities.Materia;
 import mx.ipn.cidetec.virtual.entities.Profesor;
 import mx.ipn.cidetec.virtual.entities.User;
 import org.jboss.seam.ScopeType;
@@ -23,7 +24,7 @@ public class ProfesorController {
 	private User user = new User();
 	private Profesor profesor = new Profesor();
 
-	private boolean account;
+	private boolean account = false;
 
 	@In
 	private EntityManager entityManager;
@@ -57,6 +58,10 @@ public class ProfesorController {
 	@Observer(JpaIdentityStore.EVENT_PRE_PERSIST_USER)
 	public void prePersistUser( User pNewUser ) {
 		pNewUser.setAccount( profesor );
+	}
+
+	public Profesor.Tipo[] getTipos(){
+		return Profesor.Tipo.values();
 	}
 
 	public Profesor getProfesor() {

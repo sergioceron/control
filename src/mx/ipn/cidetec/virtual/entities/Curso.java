@@ -14,6 +14,7 @@ public class Curso {
 	private Profesor profesor;
 	private String lugar;
 	private String semestre;
+	private int turno;
 	private List<Hora> horario;
 
 	@Id
@@ -58,6 +59,14 @@ public class Curso {
 
 	public void setSemestre( String semestre ) {
 		this.semestre = semestre;
+	}
+
+	public int getTurno() {
+		return turno;
+	}
+
+	public void setTurno( int turno ) {
+		this.turno = turno;
 	}
 
 	@ManyToMany(fetch = FetchType.EAGER)
