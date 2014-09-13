@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <ui:define name="title">Inscripcion</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/DataTables-1.9.4/css/data-table.css" rel="stylesheet"/>
+            <style type="text/css">
+                .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+                    padding: 5px!important;
+                }
+                .result-list .btn-row a {
+                    opacity: .6;
+                }
+            </style>
+        </ui:define>
+
+        <ui:define name="content">
+            <div class="row">
+                <!-- begin col-12 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="table-responsive">
+                                <h:form id="loginForm" prependId="false">
+                                    <h:dataTable value="#{listEntitiesController.cursos}" var="curso"
+                                                 id="data-table" styleClass="table">
+                                        <h:column>
+                                            <f:facet name="header">Curso</f:facet>
+
+                                            <ul class="result-list">
+                                                <li>
+                                                    <div class="result-image" style="width: 160px">
+                                                        <a href="javascript:;"><img src="/assets/img/gallery/gallery-1.jpg" alt="" /></a>
+                                                    </div>
+                                                    <div class="result-info">
+                                                        <h4 class="title"><a href="javascript:;">#{curso.materia.nombre}</a></h4>
+                                                        <p class="location">
+                                                            <span class="label label-warning">#{curso.materia.categoria.nombre}</span> - <span class="label label-primary">#{curso.materia.tipo.name}</span>
+                                                        </p>
+                                                        <p class="desc" style="margin-bottom: 5px">
+                                                            #{curso.materia.descripcion}
+                                                        </p>
+                                                        <div class="btn-row">
+                                                            <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Temario" data-original-title="" title=""><i class="fa fa-list-alt"></i></a>
+                                                            <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Horario" data-original-title="" title=""><i class="fa fa-calendar"></i></a>
+                                                            <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Profesor" data-original-title="" title=""><i class="fa fa-user"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="result-price" style="padding-top: 0px">
+                                                        #{curso.materia.creditos} <small>CREDITOS</small>
+                                                        <a href="javascript:;" class="btn btn-inverse btn-block">Inscribirme</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </h:column>
+                                    </h:dataTable>
+                                </h:form>
+                            </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+            </div>
+
+        </ui:define>
+
+        <ui:define name="scripts">
+            <script src="/assets/plugins/DataTables-1.9.4/js/jquery.dataTables.js" type="text/javascript"></script>
+            <script src="/assets/plugins/DataTables-1.9.4/js/data-table.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+        </ui:define>
+    </ui:composition>
+
+</h:body>
+
+</html>

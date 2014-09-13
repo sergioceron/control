@@ -18,6 +18,7 @@ public class Materia {
 	private MateriaCategoria categoria;
 	private int creditos;
 	private boolean externa;
+    private String descripcion;
 
 	public Materia() {
 		tipo = Tipo.OBLIGATORIA;
@@ -84,7 +85,15 @@ public class Materia {
 		this.externa = externa;
 	}
 
-	public enum Tipo {
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public enum Tipo {
 		OBLIGATORIA("Obligatoria"),
 		SEMINARIO("Seminario"),
 		OPTATIVA("Optativa");
