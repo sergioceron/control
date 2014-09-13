@@ -125,11 +125,13 @@
         </ui:define>
 
         <ui:define name="scripts">
+            <script src="/assets/plugins/parsley/dist/es.js" type="text/javascript"></script>
             <script src="/assets/plugins/switchery/switchery.min.js" type="text/javascript"></script>
             <script src="/assets/js/form-slider-switcher.demo.min.js" type="text/javascript"></script>
             <script src="/assets/plugins/parsley/dist/parsley.js" type="text/javascript"></script>
             <script src="/assets/js/apps.min.js" type="text/javascript"></script>
             <script type="text/javascript">
+                window.ParsleyValidator.setLocale('es');
                 $(document).ready(function() {
                     FormSliderSwitcher.init();
                 });
