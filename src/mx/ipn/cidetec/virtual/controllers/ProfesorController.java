@@ -25,6 +25,7 @@ public class ProfesorController {
 	private Profesor profesor = new Profesor();
 
 	private boolean account = false;
+    private boolean persisting = false;
 
 	@In
 	private EntityManager entityManager;
@@ -34,12 +35,12 @@ public class ProfesorController {
 
 	@End
 	public String save() {
-
 		if( account ) {
 			new RunAsOperation() {
 				public void execute() {
 					try {
 						if( !identityManager.userExists( user.getUsername() ) ) {
+                            persisting = true;
 							identityManager.createUser( user.getUsername(),
 									user.getHash(), user.getName(), "" );
 						}
@@ -57,7 +58,10 @@ public class ProfesorController {
 
 	@Observer(JpaIdentityStore.EVENT_PRE_PERSIST_USER)
 	public void prePersistUser( User pNewUser ) {
-		pNewUser.setAccount( profesor );
+        if( persisting ) {
+            pNewUser.setAccount( profesor );
+            persisting = false;
+        }
 	}
 
 	public Profesor.Tipo[] getTipos(){

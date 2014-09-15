@@ -59,4 +59,19 @@ public class ListEntitiesController {
 		Query query = entityManager.createQuery( "from Hora h" );
 		return query.getResultList();
 	}
+
+    public List<Colonia> getColonias(){
+        Query query = entityManager.createQuery( "from Colonia c" );
+        return query.getResultList();
+    }
+
+    public List<Colonia> getEstados(){
+        Query query = entityManager.createQuery( "from Colonia c group by c.estado" );
+        return query.getResultList();
+    }
+
+    public List<Colonia> getMunicipios(){
+        Query query = entityManager.createQuery( "from Colonia c group by c.municipio" );
+        return query.getResultList();
+    }
 }

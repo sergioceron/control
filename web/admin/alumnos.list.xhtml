@@ -4,52 +4,79 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:rich="http://richfaces.org/rich"
-      xmlns:seam="http://jboss.org/schema/seam/taglib"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 
-    <ui:composition template="../index.xhtml">
+    <ui:composition template="../template.xhtml">
+        <ui:define name="title">Alumnos</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/DataTables-1.9.4/css/data-table.css" rel="stylesheet"/>
+        </ui:define>
 
         <ui:define name="content">
+            <div class="row">
+                <!-- begin col-12 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="/admin/alumno.edit.seam" class="btn btn-primary btn-xs">Nuevo Alumno</a>
+                            </div>
+                            <h4 class="panel-title">Materias</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <h:form id="loginForm" prependId="false">
+                                    <h:dataTable value="#{listEntitiesController.alumnos}" var="alumno"
+                                                 id="data-table" styleClass="table table-striped table-bordered">
+                                        <h:column>
+                                            <f:facet name="header">Matricula</f:facet>
+                                            #{alumno.matricula}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Nombre</f:facet>
+                                            #{alumno.fullName}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Programa</f:facet>
+                                            #{alumno.programa.nombre}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Plan</f:facet>
+                                            #{alumno.planEstudios.nombre}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Status</f:facet>
+                                            #{alumno.status.name}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Accion</f:facet>
+                                            <h:commandLink action="alumno.edit.xhtml">
+                                                Editar
+                                                <f:setPropertyActionListener target="#{alumnoController.alumno}"
+                                                                             value="#{alumno}"/>
+                                            </h:commandLink>
+                                        </h:column>
 
-            <h:messages/>
-            Hola, #{identity.username}
-            <rich:panel id="loginPanel" width="320" height="240" modal="true" show="true" moveable="false">
-                <f:facet name="header">
-                    <h:panelGroup>
-                        <h:outputText value="Lista de alumnos"/>
-                    </h:panelGroup>
-                </f:facet>
-                <h:form id="loginForm">
-                    <rich:dataTable value="#{alumnoController.alumnos}" var="alumno" style="width: 100%;">
-                        <rich:column>
-                            <f:facet name="header">Matricula</f:facet>
-                            #{alumno.matricula}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Semestre</f:facet>
-                            #{alumno.semestre}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Status</f:facet>
-                            #{alumno.status.name}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Asesor</f:facet>
-                            #{alumno.asesor.nombre}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Accion</f:facet>
-                            Editar
-                        </rich:column>
-
-                    </rich:dataTable>
-                </h:form>
-            </rich:panel>
+                                    </h:dataTable>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+            </div>
 
         </ui:define>
 
+        <ui:define name="scripts">
+            <script src="/assets/plugins/DataTables-1.9.4/js/jquery.dataTables.js" type="text/javascript"></script>
+            <script src="/assets/plugins/DataTables-1.9.4/js/data-table.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+        </ui:define>
     </ui:composition>
 
 </h:body>

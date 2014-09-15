@@ -68,6 +68,16 @@
         </navigation>
     </page>
 
+    <page view-id="/admin/alumno.edit.xhtml">
+        <begin-conversation join="true" />
+
+        <navigation from-action="#{alumnoController.save}">
+            <rule if-outcome="success">
+                <redirect view-id="/admin/alumnos.list.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+
     <page view-id="/admin/index.xhtml">
         <begin-conversation join="true" />
     </page>

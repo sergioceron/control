@@ -13,8 +13,9 @@ import java.util.List;
 public class Alumno extends Account {
 
 	private String matricula;
-	private String semestre;
-	private Status status;
+    private String grado;
+	private Semestre semestre;
+	private Status status = Status.NUEVO;
 	private Profesor asesor;
 	private Programa programa;
 	private List<Curso> cursos;
@@ -30,11 +31,20 @@ public class Alumno extends Account {
 		this.matricula = matricula;
 	}
 
-	public String getSemestre() {
+    public String getGrado() {
+        return grado;
+    }
+
+    public void setGrado(String grado) {
+        this.grado = grado;
+    }
+
+    @ManyToOne
+	public Semestre getSemestre() {
 		return semestre;
 	}
 
-	public void setSemestre( String semestre ) {
+	public void setSemestre( Semestre semestre ) {
 		this.semestre = semestre;
 	}
 

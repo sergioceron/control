@@ -1,6 +1,7 @@
 package mx.ipn.cidetec.virtual.entities;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * -
@@ -10,7 +11,7 @@ import javax.persistence.*;
  * @date 30/08/14 05:25 PM
  */
 @Entity
-@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
+@Inheritance( strategy = InheritanceType.JOINED )
 public class Account {
 
 	private Long id;
@@ -18,7 +19,8 @@ public class Account {
 	private String apellidoP;
 	private String apellidoM;
 	private String correo;
-	private int edad;
+	private Date fechaNacimiento;
+    private Direccion direccion = new Direccion();
 	private int sexo;
 
 	@Id
@@ -63,15 +65,24 @@ public class Account {
 		this.correo = correo;
 	}
 
-	public int getEdad() {
-		return edad;
-	}
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
 
-	public void setEdad( int edad ) {
-		this.edad = edad;
-	}
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
 
-	public int getSexo() {
+    @Embedded
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
+    }
+
+    public int getSexo() {
 		return sexo;
 	}
 

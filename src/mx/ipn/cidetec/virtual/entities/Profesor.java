@@ -57,7 +57,7 @@ public class Profesor extends Account {
 		this.tipo = tipo;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy = "profesor")
     public List<Curso> getCursos() {
         return cursos;
     }
