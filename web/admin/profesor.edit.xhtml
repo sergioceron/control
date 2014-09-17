@@ -4,8 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough" >
+      xmlns:ui="http://java.sun.com/jsf/facelets" >
 <h:body>
 
     <ui:composition template="../template.xhtml">
@@ -162,7 +161,7 @@
                                                 <h:panelGroup styleClass="form-group" rendered="#{profesorController.account}">
                                                     <label class="control-label col-md-4 col-sm-4">Correo :</label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <h:inputText value="#{profesorController.user.username}" styleClass="form-control" placeholder="Correo Electronico"
+                                                        <h:inputText value="#{profesorController.profesor.correo}" styleClass="form-control" placeholder="Correo Electronico"
                                                                      data-parsley-type="email" data-parsley-required="true" data-parsley-minlength="4" data-parsley-group="wizard-step-3" />
                                                     </div>
                                                 </h:panelGroup>

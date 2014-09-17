@@ -19,7 +19,7 @@ public class User {
 	private String hash;
 	private String name;
 	private String lastname;
-	private boolean enabled;
+	private boolean enabled = true;
 	private List<Role> roles;
 	private Account account;
 

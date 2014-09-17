@@ -230,28 +230,28 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4 col-sm-4">Cuenta :</label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <h:selectBooleanCheckbox value="#{alumnoController.account}" immediate="true">
+                                                        <h:selectBooleanCheckbox value="#{alumnoController.register}" immediate="true">
                                                             <f:ajax event="click" execute="@this" render="account" onevent="generatePass" />
                                                         </h:selectBooleanCheckbox>
 
                                                     </div>
                                                 </div>
                                                 <h:panelGroup id="account">
-                                                <h:panelGroup styleClass="form-group" rendered="#{alumnoController.account}">
+                                                <h:panelGroup styleClass="form-group" rendered="#{alumnoController.register}">
                                                     <label class="control-label col-md-4 col-sm-4">Correo :</label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <h:inputText value="#{alumnoController.user.username}" styleClass="form-control" placeholder="Correo Electronico"
+                                                        <h:inputText value="#{alumnoController.alumno.correo}" styleClass="form-control" placeholder="Correo Electronico"
                                                                      data-parsley-type="email" data-parsley-required="true" data-parsley-minlength="4" data-parsley-group="wizard-step-4" />
                                                     </div>
                                                 </h:panelGroup>
-                                                <h:panelGroup styleClass="form-group" rendered="#{alumnoController.account}">
+                                                <h:panelGroup styleClass="form-group" rendered="#{alumnoController.register}">
                                                     <label class="control-label col-md-4 col-sm-4">Usuario :</label>
                                                     <div class="col-md-6 col-sm-6">
                                                         <h:inputText value="#{alumnoController.user.username}" styleClass="form-control" placeholder="Nombre de usuario"
                                                                      data-parsley-required="true" data-parsley-minlength="4" data-parsley-group="wizard-step-4" />
                                                     </div>
                                                 </h:panelGroup>
-                                                <h:panelGroup styleClass="form-group" rendered="#{alumnoController.account}">
+                                                <h:panelGroup styleClass="form-group" rendered="#{alumnoController.register}">
                                                     <label class="control-label col-md-4 col-sm-4">Contraseña :</label>
                                                     <div class="col-md-6 col-sm-6">
                                                         <h:inputSecret value="#{alumnoController.user.hash}" styleClass="form-control" placeholder="Contraseña"

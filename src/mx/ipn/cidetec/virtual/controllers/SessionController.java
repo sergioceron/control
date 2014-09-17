@@ -1,9 +1,14 @@
 package mx.ipn.cidetec.virtual.controllers;
 
+import mx.ipn.cidetec.virtual.entities.Account;
+import mx.ipn.cidetec.virtual.entities.Alumno;
+import mx.ipn.cidetec.virtual.entities.User;
 import org.jboss.seam.ScopeType;
-import org.jboss.seam.annotations.Name;
-import org.jboss.seam.annotations.Observer;
-import org.jboss.seam.annotations.Scope;
+import org.jboss.seam.annotations.*;
+import org.jboss.seam.security.Identity;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  * -
@@ -17,6 +22,15 @@ import org.jboss.seam.annotations.Scope;
 public class SessionController {
 	private int loginTries = 0;
 	private boolean captcha = false;
+
+    @In
+    private Identity identity;
+
+    @Out(required = false)
+    private Account account;
+
+    @In
+    private EntityManager entityManager;
 
 	@Observer("org.jboss.seam.security.loginFailed")
 	public void loginFailed(){
@@ -32,6 +46,17 @@ public class SessionController {
 	public void loginSuccessful(){
 		loginTries = 0;
 		captcha = false;
+
+        String username = identity.getCredentials().getUsername();
+        Query query = entityManager.createQuery("from User u where u.username=:username");
+        query.setParameter("username", username);
+        Object object = query.getSingleResult();
+        if( object != null ) {
+            User user = (User) object;
+            account = user.getAccount();
+        } else {
+            account = null;
+        }
 	}
 
 	public boolean isCaptcha() {

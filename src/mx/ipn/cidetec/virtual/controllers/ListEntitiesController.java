@@ -74,4 +74,14 @@ public class ListEntitiesController {
         Query query = entityManager.createQuery( "from Colonia c group by c.municipio" );
         return query.getResultList();
     }
+
+    public List<Role> getRoles(){
+        Query query = entityManager.createQuery( "from Role r" );
+        return query.getResultList();
+    }
+
+    public List<User> getUsers(){
+        Query query = entityManager.createQuery( "from User u" );
+        return query.getResultList();
+    }
 }

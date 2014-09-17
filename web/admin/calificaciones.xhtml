@@ -8,7 +8,7 @@
 <h:body>
 
     <ui:composition template="../template.xhtml">
-        <ui:define name="title">Alumnos</ui:define>
+        <ui:define name="title">Calificaciones</ui:define>
 
         <ui:define name="styles">
             <link href="/assets/plugins/DataTables-1.9.4/css/data-table.css" rel="stylesheet"/>
@@ -22,41 +22,33 @@
                     <div class="panel panel-inverse">
                         <div class="panel-heading">
                             <div class="panel-heading-btn">
-                                <a href="/admin/alumno.edit.seam" class="btn btn-primary btn-xs">Nuevo Alumno</a>
+                                <a href="/admin/curso.edit.seam" class="btn btn-primary btn-xs">Nuevo Curso</a>
                             </div>
-                            <h4 class="panel-title">Alumnos</h4>
+                            <h4 class="panel-title">Calificaciones</h4>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <h:form id="loginForm" prependId="false">
-                                    <h:dataTable value="#{listEntitiesController.alumnos}" var="alumno"
+                                    <h:dataTable value="#{alumnoController.alumno.calificaciones}" var="calificacion"
                                                  id="data-table" styleClass="table table-striped table-bordered">
                                         <h:column>
-                                            <f:facet name="header">Matricula</f:facet>
-                                            #{alumno.matricula}
+                                            <f:facet name="header">Materia</f:facet>
+                                            #{calificacion.curso.materia.nombre}
                                         </h:column>
                                         <h:column>
-                                            <f:facet name="header">Nombre</f:facet>
-                                            #{alumno.fullName}
+                                            <f:facet name="header">Profesor</f:facet>
+                                            #{calificacion.curso.profesor.fullName}
                                         </h:column>
                                         <h:column>
-                                            <f:facet name="header">Programa</f:facet>
-                                            #{alumno.programa.nombre}
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">Plan</f:facet>
-                                            #{alumno.planEstudios.nombre}
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">Status</f:facet>
-                                            #{alumno.status.name}
+                                            <f:facet name="header">Calificacion</f:facet>
+                                            #{calificacion.calificacion}
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">Accion</f:facet>
-                                            <h:commandLink action="alumno.edit.xhtml">
+                                            <h:commandLink action="curso.edit.xhtml">
                                                 Editar
-                                                <f:setPropertyActionListener target="#{alumnoController.alumno}"
-                                                                             value="#{alumno}"/>
+                                                <f:setPropertyActionListener target="#{cursoController.curso}"
+                                                                             value="#{curso}"/>
                                             </h:commandLink>
                                         </h:column>
 

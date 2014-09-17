@@ -43,6 +43,7 @@ public class ProfesorController {
                             persisting = true;
 							identityManager.createUser( user.getUsername(),
 									user.getHash(), user.getName(), "" );
+                            identityManager.grantRole(user.getUsername(), "profesor");
 						}
 					} catch ( Exception e ) {
 						e.printStackTrace();

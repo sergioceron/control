@@ -18,6 +18,26 @@
                value="#{activationController.code}"/>
     </page>
 
+    <page view-id="/admin/role.edit.xhtml">
+        <begin-conversation join="true" />
+
+        <navigation from-action="#{roleController.save}">
+            <rule if-outcome="success">
+                <redirect view-id="/admin/roles.list.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+
+    <page view-id="/admin/user.edit.xhtml">
+        <begin-conversation join="true" />
+
+        <navigation from-action="#{userController.save}">
+            <rule if-outcome="success">
+                <redirect view-id="/admin/users.list.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+
     <page view-id="/admin/curso.edit.xhtml">
         <begin-conversation join="true" />
 

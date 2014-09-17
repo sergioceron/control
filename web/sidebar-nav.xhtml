@@ -1,6 +1,8 @@
 <ui:composition
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:s="http://jboss.org/schema/seam/taglib"
+        xmlns:h="http://java.sun.com/jsf/core">
 
     <ul class="nav">
     <li class="nav-header">Navigation</li>
@@ -13,6 +15,17 @@
         <ul class="sub-menu">
             <li><a href="/admin/materia.edit.seam">Nueva</a></li>
             <li class="active"><a href="/admin/materias.list.seam">Lista</a></li>
+        </ul>
+    </li>
+    <li class="has-sub">
+        <a href="javascript:;">
+            <b class="caret pull-right"></b>
+            <i class="fa fa-bars"></i>
+            <span>Usuarios</span>
+        </a>
+        <ul class="sub-menu">
+            <li><a href="/admin/users.list.seam">Usuarios</a></li>
+            <li><a href="/admin/roles.list.seam">Roles</a></li>
         </ul>
     </li>
     <li class="has-sub">
@@ -59,13 +72,14 @@
             <li><a href="/admin/alumnos.list.seam">Alumnos</a></li>
         </ul>
     </li>
-        <li class="has-sub">
-            <a href="/admin/inscripcion.seam">
-                <b class="caret pull-right"></b>
-                <i class="fa fa-check"></i>
-                <span>Inscripción</span>
-            </a>
-        </li>
+    <h:verbatim rendered="#{s:hasRole('alumno')}">
+    <li>
+        <a href="/admin/inscripcion.seam">
+            <i class="fa fa-check"> </i>
+            <span>Inscripción</span>
+        </a>
+    </li>
+    </h:verbatim>
     <!-- begin sidebar minify button -->
     <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
     <!-- end sidebar minify button -->

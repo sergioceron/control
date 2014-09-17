@@ -8,7 +8,7 @@
 <h:body>
 
     <ui:composition template="../template.xhtml">
-        <ui:define name="title">Alumnos</ui:define>
+        <ui:define name="title">Usuarios</ui:define>
 
         <ui:define name="styles">
             <link href="/assets/plugins/DataTables-1.9.4/css/data-table.css" rel="stylesheet"/>
@@ -22,41 +22,39 @@
                     <div class="panel panel-inverse">
                         <div class="panel-heading">
                             <div class="panel-heading-btn">
-                                <a href="/admin/alumno.edit.seam" class="btn btn-primary btn-xs">Nuevo Alumno</a>
+                                <a href="/admin/user.edit.seam" class="btn btn-primary btn-xs">Nuevo Usuario</a>
                             </div>
-                            <h4 class="panel-title">Alumnos</h4>
+                            <h4 class="panel-title">Usuarios</h4>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <h:form id="loginForm" prependId="false">
-                                    <h:dataTable value="#{listEntitiesController.alumnos}" var="alumno"
+                                    <h:dataTable value="#{listEntitiesController.users}" var="user"
                                                  id="data-table" styleClass="table table-striped table-bordered">
                                         <h:column>
-                                            <f:facet name="header">Matricula</f:facet>
-                                            #{alumno.matricula}
-                                        </h:column>
-                                        <h:column>
                                             <f:facet name="header">Nombre</f:facet>
-                                            #{alumno.fullName}
+                                            #{user.account eq null ? '-' : user.account.fullName }
                                         </h:column>
                                         <h:column>
-                                            <f:facet name="header">Programa</f:facet>
-                                            #{alumno.programa.nombre}
+                                            <f:facet name="header">Usuario</f:facet>
+                                            #{user.username}
                                         </h:column>
                                         <h:column>
-                                            <f:facet name="header">Plan</f:facet>
-                                            #{alumno.planEstudios.nombre}
+                                            <f:facet name="header">Roles</f:facet>
+                                            <ui:repeat value="#{user.roles}" var="role">
+                                                <h:outputText value="#{role.rolename}"/><br/>
+                                            </ui:repeat>
                                         </h:column>
                                         <h:column>
-                                            <f:facet name="header">Status</f:facet>
-                                            #{alumno.status.name}
+                                            <f:facet name="header">Habilitado</f:facet>
+                                            <span class="label label-#{user.enabled ? 'success' : 'danger'}">#{user.enabled ? 'Habilitado' : 'Deshabilitado'}</span>
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">Accion</f:facet>
-                                            <h:commandLink action="alumno.edit.xhtml">
+                                            <h:commandLink action="user.edit.xhtml">
                                                 Editar
-                                                <f:setPropertyActionListener target="#{alumnoController.alumno}"
-                                                                             value="#{alumno}"/>
+                                                <f:setPropertyActionListener target="#{userController.user}"
+                                                                             value="#{user}"/>
                                             </h:commandLink>
                                         </h:column>
 

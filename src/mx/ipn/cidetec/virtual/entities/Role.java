@@ -18,6 +18,7 @@ import javax.persistence.Id;
 public class Role {
 	private Integer roleId;
 	private String rolename;
+    private String description;
 
 	@Id
 	@GeneratedValue( strategy = GenerationType.AUTO )
@@ -37,4 +38,12 @@ public class Role {
 	public void setRolename( String rolename ) {
 		this.rolename = rolename;
 	}
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

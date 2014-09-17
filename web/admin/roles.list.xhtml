@@ -8,7 +8,7 @@
 <h:body>
 
     <ui:composition template="../template.xhtml">
-        <ui:define name="title">Alumnos</ui:define>
+        <ui:define name="title">Roles</ui:define>
 
         <ui:define name="styles">
             <link href="/assets/plugins/DataTables-1.9.4/css/data-table.css" rel="stylesheet"/>
@@ -22,41 +22,29 @@
                     <div class="panel panel-inverse">
                         <div class="panel-heading">
                             <div class="panel-heading-btn">
-                                <a href="/admin/alumno.edit.seam" class="btn btn-primary btn-xs">Nuevo Alumno</a>
+                                <a href="/admin/role.edit.seam" class="btn btn-primary btn-xs">Nuevo Role</a>
                             </div>
-                            <h4 class="panel-title">Alumnos</h4>
+                            <h4 class="panel-title">Roles</h4>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <h:form id="loginForm" prependId="false">
-                                    <h:dataTable value="#{listEntitiesController.alumnos}" var="alumno"
+                                    <h:dataTable value="#{listEntitiesController.roles}" var="role"
                                                  id="data-table" styleClass="table table-striped table-bordered">
                                         <h:column>
-                                            <f:facet name="header">Matricula</f:facet>
-                                            #{alumno.matricula}
-                                        </h:column>
-                                        <h:column>
                                             <f:facet name="header">Nombre</f:facet>
-                                            #{alumno.fullName}
+                                            #{role.rolename}
                                         </h:column>
                                         <h:column>
-                                            <f:facet name="header">Programa</f:facet>
-                                            #{alumno.programa.nombre}
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">Plan</f:facet>
-                                            #{alumno.planEstudios.nombre}
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">Status</f:facet>
-                                            #{alumno.status.name}
+                                            <f:facet name="header">Descripcion</f:facet>
+                                            #{role.description}
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">Accion</f:facet>
-                                            <h:commandLink action="alumno.edit.xhtml">
+                                            <h:commandLink action="role.edit.xhtml">
                                                 Editar
-                                                <f:setPropertyActionListener target="#{alumnoController.alumno}"
-                                                                             value="#{alumno}"/>
+                                                <f:setPropertyActionListener target="#{roleController.role}"
+                                                                             value="#{role}"/>
                                             </h:commandLink>
                                         </h:column>
 
