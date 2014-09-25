@@ -16,6 +16,7 @@ public class Curso {
 	private String semestre;
 	private int turno;
 	private List<Hora> horario;
+    private List<Calificacion> calificaciones;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +28,7 @@ public class Curso {
 		this.id = id;
 	}
 
-	@ManyToOne
+	@ManyToOne()
 	public Materia getMateria() {
 		return materia;
 	}
@@ -78,4 +79,12 @@ public class Curso {
 		this.horario = horario;
 	}
 
+    @OneToMany(cascade = CascadeType.REMOVE)
+    public List<Calificacion> getCalificaciones() {
+        return calificaciones;
+    }
+
+    public void setCalificaciones(List<Calificacion> calificaciones) {
+        this.calificaciones = calificaciones;
+    }
 }

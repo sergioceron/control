@@ -1,9 +1,6 @@
 package mx.ipn.cidetec.virtual.controllers;
 
 import mx.ipn.cidetec.virtual.entities.Curso;
-import mx.ipn.cidetec.virtual.entities.Hora;
-import mx.ipn.cidetec.virtual.entities.Materia;
-import mx.ipn.cidetec.virtual.entities.MateriaCategoria;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.End;
 import org.jboss.seam.annotations.In;
@@ -11,8 +8,6 @@ import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import java.util.List;
 
 /**
  * -
@@ -35,6 +30,16 @@ public class CursoController {
 		entityManager.flush();
 		return "success";
 	}
+
+    public void remove(){
+        entityManager.remove( curso );
+        entityManager.flush();
+        curso = null;
+    }
+
+    public int getCalificacionesCount(){
+        return curso.getCalificaciones().size();
+    }
 
 	public Curso getCurso() {
 		return curso;

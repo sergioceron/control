@@ -61,11 +61,29 @@ public class AlumnoController {
     }
 
     public void inscribir(Curso curso) {
-        if (account != null) {
-            if (account instanceof Alumno) {
+                if (account != null) {
+                    if (account instanceof Alumno) {
                 ((Alumno) user.getAccount()).getCursos().add(curso);
             }
         }
+    }
+
+    public void remove(){
+        Query query = entityManager.createQuery("from User u where u.account=:account");
+        query.setParameter("account", alumno);
+        for (Object o : query.getResultList()) {
+            User u = (User) o;
+            entityManager.remove(u);
+        }
+        for (Calificacion calificacion : alumno.getCalificaciones()) {
+            entityManager.remove(calificacion);
+        }
+        for (EvaluacionAlumno evaluacionAlumno : alumno.getEvaluaciones()) {
+            entityManager.remove(evaluacionAlumno);
+        }
+        entityManager.remove( alumno );
+        entityManager.flush();
+        alumno = null;
     }
 
     @End

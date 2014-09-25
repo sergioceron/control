@@ -2,9 +2,8 @@ package mx.ipn.cidetec.virtual.entities;
 
 import com.sun.istack.internal.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by sergio on 12/06/2014.
@@ -19,6 +18,7 @@ public class Materia {
 	private int creditos;
 	private boolean externa;
     private String descripcion;
+    private List<Curso> cursos;
 
 	public Materia() {
 		tipo = Tipo.OBLIGATORIA;
@@ -91,6 +91,16 @@ public class Materia {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,
+            mappedBy = "materia")
+    public List<Curso> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(List<Curso> cursos) {
+        this.cursos = cursos;
     }
 
     public enum Tipo {

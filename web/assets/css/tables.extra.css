@@ -1,0 +1,12 @@
+.table td a {
+    color: #666;
+    font-size: 20px;
+    line-height: 14px;
+    opacity: .6;
+    text-decoration: none;
+}
+
+.table td a:hover{
+    color: #428bca;
+    opacity: 1;
+}

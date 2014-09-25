@@ -50,6 +50,12 @@ public class UserController {
         return "success";
     }
 
+    public void remove(){
+        entityManager.remove( user );
+        entityManager.flush();
+        user = null;
+    }
+
     public void changePassword(){
         new RunAsOperation() {
             public void execute() {

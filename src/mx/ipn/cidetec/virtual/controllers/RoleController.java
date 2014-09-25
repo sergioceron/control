@@ -27,6 +27,12 @@ public class RoleController {
         return "success";
     }
 
+    public void remove(){
+        entityManager.remove( role );
+        entityManager.flush();
+        role = null;
+    }
+
     public Role getRole() {
         return role;
     }

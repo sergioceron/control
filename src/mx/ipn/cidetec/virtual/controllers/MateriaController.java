@@ -1,5 +1,6 @@
 package mx.ipn.cidetec.virtual.controllers;
 
+import mx.ipn.cidetec.virtual.entities.Curso;
 import mx.ipn.cidetec.virtual.entities.Materia;
 import mx.ipn.cidetec.virtual.entities.MateriaCategoria;
 import org.jboss.seam.ScopeType;
@@ -22,8 +23,6 @@ import java.util.List;
 @Name( "materiaController" )
 @Scope( ScopeType.CONVERSATION )
 public class MateriaController {
-	private String claveFilter;
-
 	private Materia materia = new Materia();
 
 	@In
@@ -36,15 +35,20 @@ public class MateriaController {
 		return "success";
 	}
 
-	public String getClaveFilter() {
-		return claveFilter;
-	}
+    public int getCursosCount(){
+        Query query = entityManager.createQuery( "from Curso c where c.materia=:materia" );
+        query.setParameter("materia", materia);
+        return query.getResultList().size();
+    }
 
-	public void setClaveFilter( String claveFilter ) {
-		this.claveFilter = claveFilter;
-	}
+    public void remove(){
+        entityManager.remove( materia );
+        entityManager.flush();
+        materia = null;
+    }
 
-	public Materia getMateria() {
+
+    public Materia getMateria() {
 		return materia;
 	}
 

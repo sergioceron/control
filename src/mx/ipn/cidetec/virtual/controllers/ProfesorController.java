@@ -1,6 +1,5 @@
 package mx.ipn.cidetec.virtual.controllers;
 
-import mx.ipn.cidetec.virtual.entities.Materia;
 import mx.ipn.cidetec.virtual.entities.Profesor;
 import mx.ipn.cidetec.virtual.entities.User;
 import org.jboss.seam.ScopeType;
@@ -10,6 +9,7 @@ import org.jboss.seam.security.management.IdentityManager;
 import org.jboss.seam.security.management.JpaIdentityStore;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  * -
@@ -57,6 +57,17 @@ public class ProfesorController {
 		return "success";
 	}
 
+    public void remove(){Query query = entityManager.createQuery("from User u where u.account=:account");
+        query.setParameter("account", profesor);
+        for (Object o : query.getResultList()) {
+            User u = (User) o;
+            entityManager.remove(u);
+        }
+        entityManager.remove( profesor );
+        entityManager.flush();
+        profesor = null;
+    }
+
 	@Observer(JpaIdentityStore.EVENT_PRE_PERSIST_USER)
 	public void prePersistUser( User pNewUser ) {
         if( persisting ) {
@@ -64,6 +75,17 @@ public class ProfesorController {
             persisting = false;
         }
 	}
+
+    public int getCursosCount() {
+        if (profesor == null){
+            return 0;
+        }else {
+            if (profesor.getCursos() == null)
+                return 0;
+        }
+
+        return profesor.getCursos().size();
+    }
 
 	public Profesor.Tipo[] getTipos(){
 		return Profesor.Tipo.values();

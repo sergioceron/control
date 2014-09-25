@@ -37,6 +37,12 @@ public class ProgramaController {
 		return "success";
 	}
 
+    public void remove(){
+        entityManager.remove( programa );
+        entityManager.flush();
+        programa = null;
+    }
+
 	public void showMaterias(Programa programa){
 		Query query = entityManager.createQuery( "from Materia m where m.programa.id=:pid" );
 		query.setParameter( "pid", programa.getId() );

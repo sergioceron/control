@@ -31,6 +31,12 @@ public class PlanEstudiosController {
 		return "success";
 	}
 
+    public void remove(){
+        entityManager.remove( plan );
+        entityManager.flush();
+        plan = null;
+    }
+
 	public PlanEstudios getPlan() {
 		return plan;
 	}
