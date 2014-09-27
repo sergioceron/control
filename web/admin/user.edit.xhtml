@@ -88,7 +88,6 @@
                                     </div>
                                 </div>
 
-
                                 <h:panelGroup styleClass="modal fade" id="dialog">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -99,8 +98,8 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4 col-sm-4">Contraseña :</label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <h:inputText value="#{userController.user.hash}" styleClass="form-control" placeholder="Contraseña"
-                                                                     data-parsley-required="true" data-parsley-minlength="6" id="password2" data-parsley-group="wizard-step-4" />
+                                                        <h:inputText value="#{userController.password}" styleClass="form-control" placeholder="Contraseña"
+                                                                     data-parsley-minlength="6" id="password2"  />
                                                         <div id="passwordStrengthDiv2" class="is0 m-t-5"></div>
                                                     </div>
                                                 </div>

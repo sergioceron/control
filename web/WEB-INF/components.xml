@@ -78,4 +78,5 @@
         </core:bundle-names>
     </core:resource-loader>
 
+    <component name="calificacionService" class="mx.ipn.cidetec.virtual.controllers.CalificacionService" />
 </components>

@@ -79,12 +79,29 @@ public class Curso {
 		this.horario = horario;
 	}
 
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.REMOVE)
     public List<Calificacion> getCalificaciones() {
         return calificaciones;
     }
 
     public void setCalificaciones(List<Calificacion> calificaciones) {
         this.calificaciones = calificaciones;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Curso curso = (Curso) o;
+
+        if (id != null ? !id.equals(curso.id) : curso.id != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

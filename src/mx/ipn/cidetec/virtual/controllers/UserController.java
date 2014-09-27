@@ -51,21 +51,23 @@ public class UserController {
     }
 
     public void remove(){
-        entityManager.remove( user );
+        entityManager.remove(user);
         entityManager.flush();
         user = null;
     }
 
     public void changePassword(){
-        new RunAsOperation() {
-            public void execute() {
-                try {
-                    identityManager.changePassword(user.getUsername(), password);
-                } catch (Exception e) {
-                    e.printStackTrace();
+        if (!password.isEmpty()) {
+            new RunAsOperation() {
+                public void execute() {
+                    try {
+                        identityManager.changePassword(user.getUsername(), password);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        }.addRole("admin").run();
+            }.addRole("admin").run();
+        }
         password = "";
     }
 

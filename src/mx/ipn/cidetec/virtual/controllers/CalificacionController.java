@@ -1,6 +1,7 @@
 package mx.ipn.cidetec.virtual.controllers;
 
 import mx.ipn.cidetec.virtual.entities.Calificacion;
+import mx.ipn.cidetec.virtual.entities.Curso;
 import mx.ipn.cidetec.virtual.entities.Hora;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.End;
@@ -20,6 +21,7 @@ import javax.persistence.EntityManager;
 @Name( "calificacionController" )
 @Scope( ScopeType.CONVERSATION )
 public class CalificacionController {
+    private Curso curso;
     private Calificacion calificacion = new Calificacion();
 
 	@In
@@ -31,6 +33,14 @@ public class CalificacionController {
 		entityManager.flush();
 		return "success";
 	}
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = entityManager.find(Curso.class, curso.getId());
+    }
 
     public Calificacion getCalificacion() {
         return calificacion;

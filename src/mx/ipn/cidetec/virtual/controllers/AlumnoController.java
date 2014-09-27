@@ -32,9 +32,6 @@ public class AlumnoController {
     private Account account;
 
     @In
-    private Identity identity;
-
-    @In
     private IdentityManager identityManager;
 
     @In
@@ -61,11 +58,38 @@ public class AlumnoController {
     }
 
     public void inscribir(Curso curso) {
-                if (account != null) {
-                    if (account instanceof Alumno) {
-                ((Alumno) user.getAccount()).getCursos().add(curso);
+        if (account != null) {
+            if (account instanceof Alumno) {
+                Alumno _alumno = (Alumno) account;
+                if (!isInscrito(curso)) {
+                    Calificacion calificacion = new Calificacion();
+                    calificacion.setAlumno(_alumno);
+                    calificacion.setCurso(curso);
+                    _alumno.getCalificaciones().add(calificacion);
+                }else {
+                    for (Calificacion calificacion : _alumno.getCalificaciones()) {
+                        if (calificacion.getCurso().equals(curso)) {
+                            entityManager.remove(calificacion);
+                        }
+                    }
+                }
             }
         }
+        entityManager.persist(entityManager.merge(account));
+        entityManager.flush();
+    }
+
+    public boolean isInscrito(Curso curso){
+        if (account != null) {
+            if (account instanceof Alumno) {
+                for (Calificacion calificacion : ((Alumno) account).getCalificaciones()) {
+                    if (calificacion.getCurso().equals(curso)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     public void remove(){

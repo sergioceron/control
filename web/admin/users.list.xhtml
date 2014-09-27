@@ -34,7 +34,7 @@
                                     <h:dataTable value="#{listEntitiesController.users}" var="user"
                                                  id="data-table" styleClass="table table-striped table-bordered">
                                         <h:column>
-                                            <f:facet name="header">Nombre</f:facet>
+                                            <f:facet name="header">Cuenta</f:facet>
                                             #{user.account eq null ? '-' : user.account.fullName }
                                         </h:column>
                                         <h:column>

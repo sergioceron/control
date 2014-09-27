@@ -17,6 +17,7 @@ public class Calificacion {
 	private Curso curso;
 	private double calificacion;
 	private Calificacion recurse;
+    private boolean setted = false;
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
@@ -62,4 +63,12 @@ public class Calificacion {
 	public void setRecurse( Calificacion parent ) {
 		this.recurse = parent;
 	}
+
+    public boolean isSetted() {
+        return setted;
+    }
+
+    public void setSetted(boolean setted) {
+        this.setted = setted;
+    }
 }

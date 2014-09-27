@@ -1,8 +1,6 @@
 package mx.ipn.cidetec.virtual.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -18,7 +16,6 @@ public class Alumno extends Account {
 	private Status status = Status.NUEVO;
 	private Profesor asesor;
 	private Programa programa;
-	private List<Curso> cursos;
 	private List<Calificacion> calificaciones;
     private List<EvaluacionAlumno> evaluaciones;
 	private PlanEstudios planEstudios;
@@ -74,16 +71,7 @@ public class Alumno extends Account {
 		this.programa = programa;
 	}
 
-	@OneToMany
-	public List<Curso> getCursos() {
-		return cursos;
-	}
-
-	public void setCursos( List<Curso> cursos ) {
-		this.cursos = cursos;
-	}
-
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	public List<Calificacion> getCalificaciones() {
 		return calificaciones;
 	}

@@ -28,7 +28,7 @@
                 <div class="col-md-12">
                     <!-- begin panel -->
                     <div class="table-responsive">
-                                <h:form id="loginForm" prependId="false">
+                                <h:form id="loginForm">
                                     <h:dataTable value="#{listEntitiesController.cursos}" var="curso"
                                                  id="data-table" styleClass="table">
                                         <h:column>
@@ -53,7 +53,11 @@
                                                     </div>
                                                     <div class="result-price" style="padding-top: 0px">
                                                         #{curso.materia.creditos} <small>CREDITOS</small>
-                                                        <h:commandLink action="#{alumnoController.inscribir(curso)}" styleClass="btn btn-inverse btn-block">Inscribirme</h:commandLink>
+                                                        <h:commandLink action="#{alumnoController.inscribir(curso)}"
+                                                                       styleClass="btn #{alumnoController.isInscrito(curso) ? 'btn-danger' : 'btn-inverse'} btn-block"
+                                                                       value="#{alumnoController.isInscrito(curso) ? 'Dar de baja' : 'Inscribirme'}">
+                                                            <f:ajax execute="@this" render="@this" />
+                                                        </h:commandLink>
                                                     </div>
                                                 </li>
                                             </ul>

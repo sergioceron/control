@@ -148,7 +148,7 @@
         </navigation>
     </page>
 
-    <page view-id="/admin/*" login-required="true">
+    <page view-id="/*" login-required="true">
     </page>
 
     <exception class="org.jboss.seam.security.NotLoggedInException" log="false">

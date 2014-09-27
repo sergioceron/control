@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <ui:define name="title">Calificaciones</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/DataTables-1.9.4/css/data-table.css" rel="stylesheet"/>
+            <link href="/assets/plugins/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
+
+        </ui:define>
+
+        <ui:define name="content">
+            <div class="row">
+                <!-- begin col-12 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">#{calificacionController.curso.materia.nombre}</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <h:form id="loginForm" prependId="false">
+                                    <h:dataTable value="#{calificacionController.curso.calificaciones}" var="calificacion"
+                                                 id="data-table" styleClass="table table-striped table-bordered">
+                                        <h:column>
+                                            <f:facet name="header">Materia</f:facet>
+                                            #{calificacion.alumno.fullName}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Calificación</f:facet>
+                                            <a href="#" data-type="text" data-disabled="#{calificacion.setted}" data-pk="#{calificacion.id}"
+                                               data-url="/seam/resource/rest/calificacion/set" data-title="Introduzca la calificación"
+                                               class="editable editable-click" data-original-title="" title="" style="background-color: rgba(0, 0, 0, 0);">
+                                                #{calificacion.calificacion}
+                                            </a>
+                                        </h:column>
+
+                                    </h:dataTable>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+            </div>
+
+        </ui:define>
+
+        <ui:define name="scripts">
+            <script src="/assets/plugins/DataTables-1.9.4/js/jquery.dataTables.js" type="text/javascript"></script>
+            <script src="/assets/plugins/DataTables-1.9.4/js/data-table.js" type="text/javascript"></script>
+            <script src="/assets/plugins/bootstrap3-editable/js/bootstrap-editable.min.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                $(".editable").editable({
+                    success: function(response, newValue){
+                        //$(this).attr('data-disabled', 'true');
+                        $(this).editable("disable");
+                    }
+                });
+
+            </script>
+        </ui:define>
+    </ui:composition>
+
+</h:body>
+
+</html>

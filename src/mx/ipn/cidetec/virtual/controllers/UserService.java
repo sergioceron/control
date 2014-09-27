@@ -25,7 +25,7 @@ public class UserService {
 	@RequestParameter( "email" )
 	String email;
 
-	@GET
+	@POST
 	@Path( "/exist" )
 	@Produces( "application/json" )
 	public boolean validate() {
