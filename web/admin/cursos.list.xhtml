@@ -24,6 +24,15 @@
                     <div class="panel panel-inverse">
                         <div class="panel-heading">
                             <div class="panel-heading-btn">
+                                <div class="btn-group">
+                                    <a href="javascript:;" data-toggle="dropdown" class="btn btn-warning dropdown-toggle btn-xs">Exportar <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#" onclick ="$('#loginForm\\:data-table').tableExport({type:'csv',escape:'false',filename:'cursos',ignoreColumn:[4]});">Excel</a></li>
+                                        <li><a href="#" onclick ="$('#loginForm\\:data-table').tableExport({type:'xml',escape:'false',filename:'cursos',ignoreColumn:[4]});">XML</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#" onclick="window.print();">Imprimir</a></li>
+                                    </ul>
+                                </div>
                                 <a href="/admin/curso.edit.seam" class="btn btn-primary btn-xs">Nuevo Curso</a>
                             </div>
                             <h4 class="panel-title">Cursos</h4>
@@ -50,11 +59,14 @@
                                             #{curso.lugar}
                                         </h:column>
                                         <h:column>
-                                            <f:facet name="header">Horario</f:facet>
-                                            Ver horario
-                                        </h:column>
-                                        <h:column>
                                             <f:facet name="header">Accion</f:facet>
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Horario">
+                                                <i class="fa fa-list"></i>
+                                                <f:setPropertyActionListener target="#{cursoController.curso}"
+                                                                             value="#{curso}"/>
+                                                <f:ajax execute="@this" render=":horario:popup_horario"
+                                                        onevent="showModal_horario"/>
+                                            </h:commandLink>
                                             <h:commandLink action="curso.edit.xhtml" data-toggle="tooltip" data-container="body" data-title="Editar">
                                                 <i class="fa fa-pencil-square-o"></i>
                                                 <f:setPropertyActionListener target="#{cursoController.curso}"
@@ -71,6 +83,49 @@
                                         </h:column>
                                     </h:dataTable>
 
+                                </h:form>
+                                <h:form id="horario">
+                                    <h:panelGroup id="popup_horario">
+                                        <div class="modal fade" id="modal_horario">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title"><h:outputText value="#{cursoController.curso.materia.nombre}" rendered="#{cursoController.curso.id != null}" /></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h:panelGroup rendered="#{cursoController.curso.id != null}">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-bordered">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>Lunes</th>
+                                                                        <th>Martes</th>
+                                                                        <th>Miercoles</th>
+                                                                        <th>Jueves</th>
+                                                                        <th>Viernes</th>
+                                                                        <th>Sabado</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <ui:repeat value="#{cursoController.horarioOrdenado}" var="hora" >
+                                                                        <td class="text-center">
+                                                                            <h:outputText style="width: 84px" value="#{hora.horaInicio}" rendered="#{hora.horaInicio ne null}"/>
+                                                                            <br/>-<br/>
+                                                                            <h:outputText style="width: 84px" value="#{hora.horaFin}" rendered="#{hora.horaInicio ne null}"/>
+                                                                        </td>
+                                                                        </ui:repeat>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </h:panelGroup>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
                                 </h:form>
                                 <h:form id="mod">
                                     <h:panelGroup id="popup">
@@ -127,9 +182,19 @@
 
         <ui:define name="scripts">
             <script src="/assets/plugins/DataTables-1.9.4/js/jquery.dataTables.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/tableExport.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jquery.base64.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/libs/sprintf.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/jspdf.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/libs/base64.js" type="text/javascript"></script>
             <script src="/assets/plugins/DataTables-1.9.4/js/data-table.js" type="text/javascript"></script>
             <script src="/assets/js/apps.min.js" type="text/javascript"></script>
             <script type="text/javascript">
+                function showModal_horario(data) {
+                    if (data.status === 'success') {
+                        $('#modal_horario').modal('show');
+                    }
+                }
                 function showModal(data) {
                     if (data.status === 'success') {
                         $('#modal').modal('show');

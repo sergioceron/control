@@ -42,17 +42,19 @@
                                             <small>Información personal del alumno </small>
                                         </li>
                                         <li>
-                                            Académica
-                                            <small>Información academica, programa y plan de estudios.</small>
-                                        </li>
-                                        <li>
                                             Direccion
                                             <small>Información de su residencia donde vive.</small>
                                         </li>
                                         <li>
+                                            Académicos
+                                            <small>Información academica, programa y plan de estudios.</small>
+                                        </li>
+                                        <f:verbatim rendered="#{alumnoController.alumno.id eq null}">
+                                        <li>
                                             Usuario
                                             <small>Información de acceso al sistema.</small>
                                         </li>
+                                        </f:verbatim>
                                     </ol>
 
                                     <div class="wizard-step-1">
@@ -97,7 +99,7 @@
                                                         <div class="input-group date" id="fecha-nacimiento" data-date-format="dd-mm-yyyy">
                                                             <h:inputText value="#{alumnoController.alumno.fechaNacimiento}" styleClass="form-control" placeholder="Fecha de nacimiento"
                                                                          data-parsley-required="true" data-parsley-minlength="2" data-parsley-group="wizard-step-2" >
-                                                                <f:convertDateTime pattern="dd-mm-yyyy" />
+                                                                <f:convertDateTime pattern="dd-MM-yyyy" />
                                                             </h:inputText>
                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                         </div>
@@ -179,13 +181,30 @@
 
                                     <div class="wizard-step-3">
                                         <fieldset>
-                                            <legend class="pull-left width-full">Académica</legend>
+                                            <legend class="pull-left width-full">Académicos</legend>
                                                 <!-- begin row -->
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4 col-sm-4">Matricula :</label>
                                                     <div class="col-md-6 col-sm-6">
                                                         <h:inputText value="#{alumnoController.alumno.matricula}" styleClass="form-control" placeholder="Número de Boleta"
-                                                                     data-parsley-required="true" data-parsley-type="digits" data-parsley-length="[5, 10]" data-parsley-group="wizard-step-3" />
+                                                                     data-parsley-required="true" data-parsley-type="alphanum" data-parsley-length="[5, 10]" data-parsley-group="wizard-step-3" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4 col-sm-4">Semestre :</label>
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <h:selectOneMenu value="#{alumnoController.alumno.semestre}" styleClass="form-control"
+                                                                         data-parsley-required="true" data-parsley-group="wizard-step-3">
+                                                            <f:selectItem itemLabel="0" itemValue="0"/>
+                                                            <f:selectItem itemLabel="1" itemValue="1"/>
+                                                            <f:selectItem itemLabel="2" itemValue="2"/>
+                                                            <f:selectItem itemLabel="3" itemValue="3"/>
+                                                            <f:selectItem itemLabel="4" itemValue="4"/>
+                                                            <f:selectItem itemLabel="5" itemValue="5"/>
+                                                            <f:selectItem itemLabel="6" itemValue="6"/>
+                                                            <f:selectItem itemLabel="7" itemValue="7"/>
+                                                            <f:selectItem itemLabel="8" itemValue="8"/>
+                                                        </h:selectOneMenu>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -193,8 +212,8 @@
                                                     <div class="col-md-6 col-sm-6">
                                                         <h:selectOneMenu value="#{alumnoController.alumno.grado}" styleClass="form-control"
                                                                          data-parsley-required="true" data-parsley-group="wizard-step-3">
+                                                            <f:selectItem itemLabel="Licenciatura" itemValue="L"/>
                                                             <f:selectItem itemLabel="Maestría" itemValue="M"/>
-                                                            <f:selectItem itemLabel="Doctorado" itemValue="D"/>
                                                         </h:selectOneMenu>
                                                     </div>
                                                 </div>
@@ -218,11 +237,33 @@
                                                         </h:selectOneMenu>
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4 col-sm-4">Tiempo :</label>
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <h:selectOneMenu value="#{alumnoController.alumno.tiempo}" styleClass="form-control"
+                                                                         data-parsley-required="true" data-parsley-group="wizard-step-3">
+                                                            <f:selectItems value="#{alumnoController.tiempos}" var="tiempo" itemLabel="#{tiempo.name}" itemValue="#{tiempo}"/>
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4 col-sm-4">Status :</label>
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <h:selectOneMenu value="#{alumnoController.alumno.status}" styleClass="form-control"
+                                                                         data-parsley-required="true" data-parsley-group="wizard-step-3">
+                                                            <f:selectItems value="#{alumnoController.statuses}" var="status" itemLabel="#{status.name}" itemValue="#{status}"/>
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                </div>
+                                                <seam:div styleClass="text-right m-b-0" rendered="#{alumnoController.alumno.id ne null}">
+                                                    <h:commandButton value="Guardar" action="#{alumnoController.save}" styleClass="btn btn-primary"/>
+                                                    <a href="alumnos.list.seam">Cancelar</a>
+                                                </seam:div>
                                             <!-- end row -->
                                         </fieldset>
                                     </div>
 
-                                    <div class="wizard-step-4">
+                                    <seam:div styleClass="wizard-step-4" rendered="#{alumnoController.alumno.id eq null}">
                                         <fieldset>
                                             <legend class="pull-left width-full">Usuario</legend>
                                             <!-- begin row -->
@@ -262,12 +303,12 @@
                                                 </h:panelGroup>
                                                 <div class="text-right m-b-0">
                                                     <h:commandButton value="Guardar" action="#{alumnoController.save}" styleClass="btn btn-primary"/>
-                                                    <a href="profesores.list.seam">Cancelar</a>
+                                                    <a href="alumnos.list.seam">Cancelar</a>
                                                 </div>
                                             </div>
                                             <!-- end row -->
                                         </fieldset>
-                                    </div>
+                                    </seam:div>
 
 
                                 </div>

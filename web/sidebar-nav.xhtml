@@ -1,96 +1,37 @@
 <ui:composition
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:ui="http://java.sun.com/jsf/facelets"
-        xmlns:s="http://jboss.org/schema/seam/taglib"
         xmlns:h="http://java.sun.com/jsf/core">
 
     <ul class="nav">
-    <li class="nav-header">Navigation</li>
-    <li class="has-sub active">
-        <a href="javascript:;">
-            <b class="caret pull-right"></b>
-            <i class="fa fa-list-ul"></i>
-            <span>Materias</span>
-        </a>
-        <ul class="sub-menu">
-            <li><a href="/admin/materia.edit.seam">Nueva</a></li>
-            <li class="active"><a href="/admin/materias.list.seam">Lista</a></li>
-        </ul>
-    </li>
-    <li class="has-sub">
-        <a href="javascript:;">
-            <b class="caret pull-right"></b>
-            <i class="fa fa-bars"></i>
-            <span>Usuarios</span>
-        </a>
-        <ul class="sub-menu">
-            <li><a href="/admin/users.list.seam">Usuarios</a></li>
-            <li><a href="/admin/roles.list.seam">Roles</a></li>
-        </ul>
-    </li>
-    <li class="has-sub">
-        <a href="javascript:;">
-            <b class="caret pull-right"></b>
-            <i class="fa fa-newspaper-o"></i>
-            <span>Cursos</span>
-        </a>
-        <ul class="sub-menu">
-            <li><a href="/admin/curso.edit.seam">Nueva</a></li>
-            <li><a href="/admin/cursos.list.seam">Lista</a></li>
-        </ul>
-    </li>
-    <li class="has-sub">
-        <a href="javascript:;">
-            <b class="caret pull-right"></b>
-            <i class="fa fa-archive"></i>
-            <span>Programas</span>
-        </a>
-        <ul class="sub-menu">
-            <li><a href="/admin/programa.edit.seam">Nuevo</a></li>
-            <li><a href="/admin/programas.list.seam">Lista</a></li>
-        </ul>
-    </li>
-    <li class="has-sub">
-        <a href="javascript:;">
-            <b class="caret pull-right"></b>
-            <i class="fa fa-bars"></i>
-            <span>Planes de Estudio</span>
-        </a>
-        <ul class="sub-menu">
-            <li><a href="/admin/plan.edit.seam">Nuevo</a></li>
-            <li><a href="/admin/plan.list.seam">Lista</a></li>
-        </ul>
-    </li>
-    <li class="has-sub">
-        <a href="javascript:;">
-            <b class="caret pull-right"></b>
-            <i class="fa fa-users"></i>
-            <span>Usuarios</span>
-        </a>
-        <ul class="sub-menu">
-            <li><a href="/admin/profesores.list.seam">Profesores</a></li>
-            <li><a href="/admin/alumnos.list.seam">Alumnos</a></li>
-        </ul>
-    </li>
-    <h:verbatim rendered="#{s:hasRole('alumno')}">
-    <li>
-        <a href="/admin/inscripcion.seam">
-            <i class="fa fa-check"> </i>
-            <span>Inscripción</span>
-        </a>
-    </li>
-    </h:verbatim>
-    <h:verbatim rendered="#{s:hasRole('profesor')}">
+        <li class="nav-header">Menú</li>
+
         <li>
-            <a href="/admin/profesor.cursos.seam">
-                <i class="fa fa-check"> </i>
-                <span>Mis cursos</span>
+            <a href="/admin/index.seam">
+                <i class="fa fa-signal"> </i>
+                <span>Estadisticas</span>
             </a>
         </li>
-    </h:verbatim>
-    <!-- begin sidebar minify button -->
-    <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
-    <!-- end sidebar minify button -->
+
+        <ui:repeat value="#{menuController.menuList}" var="menu">
+        <li class="#{menu.hasSub ? 'has-sub' : ''} #{menu.active ? 'active' : ''}">
+            <a href="#{menu.hasSub ? 'javascript:;' : menu.action}">
+                <h:verbatim rendered="#{menu.hasSub}"><b class="caret pull-right"> </b></h:verbatim>
+                <i class="fa #{menu.icon}"> </i>
+                <span>#{menu.label}</span>
+            </a>
+
+            <ul class="sub-menu">
+                <ui:repeat value="#{menu.submenu}" var="submenu">
+                <li class="#{submenu.active ? 'active' : ''}"><a href="#{submenu.action}">#{submenu.label}</a></li>
+                </ui:repeat>
+            </ul>
+
+        </li>
+        </ui:repeat>
+        <!-- begin sidebar minify button -->
+        <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+        <!-- end sidebar minify button -->
     </ul>
 
 </ui:composition>

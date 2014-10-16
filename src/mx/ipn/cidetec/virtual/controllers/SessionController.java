@@ -2,6 +2,7 @@ package mx.ipn.cidetec.virtual.controllers;
 
 import mx.ipn.cidetec.virtual.entities.Account;
 import mx.ipn.cidetec.virtual.entities.Alumno;
+import mx.ipn.cidetec.virtual.entities.Menu;
 import mx.ipn.cidetec.virtual.entities.User;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.*;
@@ -9,6 +10,8 @@ import org.jboss.seam.security.Identity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * -
@@ -28,6 +31,12 @@ public class SessionController {
 
     @Out(required = false)
     private Account account;
+
+    @In(create = true)
+    private MenuController menuController;
+
+    @In
+    private SystemController systemController;
 
     @In
     private EntityManager entityManager;
@@ -57,6 +66,23 @@ public class SessionController {
         } else {
             account = null;
         }
+
+        query = entityManager.createQuery("from Menu m");
+        List<Menu> menuList = new ArrayList<Menu>();
+        for (Menu menu : (List<Menu>)query.getResultList()) {
+            if (identity.hasRole(menu.getRole())) {
+                menuList.add(menu);
+                if (account instanceof Alumno){
+                    if (menu.getAction().equals("/admin/inscripcion.seam")) {
+                        if (!(systemController.getConfiguration("inscripciones").equals("true") &&
+                                (((Alumno) account).getStatus() == Alumno.Status.DESCONOCIDO || ((Alumno) account).getStatus() == Alumno.Status.NUEVO))) {
+                            menuList.remove(menu);
+                        }
+                    }
+                }
+            }
+        }
+        menuController.setMenuList(menuList);
 	}
 
 	public boolean isCaptcha() {

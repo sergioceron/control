@@ -1,6 +1,8 @@
 <ui:composition
     xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:s="http://jboss.org/schema/seam/taglib"
     xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <!-- begin mobile sidebar expand / collapse button -->
@@ -14,15 +16,8 @@
     </div>
     <!-- end mobile sidebar expand / collapse button -->
     <!-- begin header navigation right -->
+    <h:form id="logoutForm">
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            <form class="navbar-form full-width">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Introduzca su búsqueda" />
-                    <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-                </div>
-            </form>
-        </li>
         <li class="dropdown">
             <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
                 <i class="fa fa-bell-o"></i>
@@ -92,12 +87,19 @@
                 <li><a href="javascript:;">Editar Perfil</a></li>
                 <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Mensajes</a></li>
                 <li><a href="javascript:;">Calendario</a></li>
-                <li><a href="javascript:;">Configuracion</a></li>
+                <f:verbatim rendered="#{s:hasRole('super')}">
+                <li>
+                    <a href="/admin/settings.seam">
+                        <span>Configuracion</span>
+                    </a>
+                </li>
+                </f:verbatim>
                 <li class="divider"></li>
                 <li><h:commandLink action="#{identity.logout}">Salir</h:commandLink></li>
             </ul>
         </li>
     </ul>
+    </h:form>
     <!-- end header navigation right -->
 
 </ui:composition>

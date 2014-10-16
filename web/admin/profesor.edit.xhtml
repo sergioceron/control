@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:seam="http://jboss.org/schema/seam/taglib"
       xmlns:ui="http://java.sun.com/jsf/facelets" >
 <h:body>
 
@@ -87,6 +88,13 @@
                                             <!-- begin row -->
                                             <div class="row">
                                                 <div class="form-group">
+                                                    <label class="control-label col-md-4 col-sm-4">Registro :</label>
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <h:inputText value="#{profesorController.profesor.clave}" styleClass="form-control" placeholder="Número de Registro"
+                                                                     data-parsley-required="true" data-parsley-type="alphanum" data-parsley-length="[5, 15]" data-parsley-group="wizard-step-2" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
                                                     <label class="control-label col-md-4 col-sm-4">Tipo :</label>
                                                     <div class="col-md-6 col-sm-6">
                                                         <h:selectOneMenu value="#{profesorController.profesor.tipo}" styleClass="form-control"
@@ -111,7 +119,7 @@
                                                         <div class="input-group date" id="fecha-grado" data-date-format="dd-mm-yyyy">
                                                             <h:inputText value="#{profesorController.profesor.fechaGrado}" styleClass="form-control" placeholder="Fecha de obtención del grado"
                                                                          data-parsley-required="true" data-parsley-minlength="2" data-parsley-group="wizard-step-2" >
-                                                                <f:convertDateTime pattern="dd-mm-yyyy" />
+                                                                <f:convertDateTime pattern="dd-MM-yyyy" />
                                                             </h:inputText>
                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                         </div>
@@ -139,11 +147,15 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <seam:div styleClass="text-right m-b-0" rendered="#{profesorController.profesor.id ne null}">
+                                                <h:commandButton value="Guardar" action="#{profesorController.save}" styleClass="btn btn-primary"/>
+                                                <a href="profesores.list.seam">Cancelar</a>
+                                            </seam:div>
                                             <!-- end row -->
                                         </fieldset>
                                     </div>
 
-                                    <div class="wizard-step-3">
+                                    <seam:div styleClass="wizard-step-3" rendered="#{profesorController.profesor.id eq null}">
                                         <fieldset>
                                             <legend class="pull-left width-full">Usuario</legend>
                                             <!-- begin row -->
@@ -151,28 +163,28 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4 col-sm-4">Cuenta :</label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <h:selectBooleanCheckbox value="#{profesorController.account}" immediate="true">
+                                                        <h:selectBooleanCheckbox value="#{profesorController.register}" immediate="true">
                                                             <f:ajax event="click" execute="@this" render="account" onevent="generatePass" />
                                                         </h:selectBooleanCheckbox>
 
                                                     </div>
                                                 </div>
                                                 <h:panelGroup id="account">
-                                                <h:panelGroup styleClass="form-group" rendered="#{profesorController.account}">
+                                                <h:panelGroup styleClass="form-group" rendered="#{profesorController.register}">
                                                     <label class="control-label col-md-4 col-sm-4">Correo :</label>
                                                     <div class="col-md-6 col-sm-6">
                                                         <h:inputText value="#{profesorController.profesor.correo}" styleClass="form-control" placeholder="Correo Electronico"
                                                                      data-parsley-type="email" data-parsley-required="true" data-parsley-minlength="4" data-parsley-group="wizard-step-3" />
                                                     </div>
                                                 </h:panelGroup>
-                                                <h:panelGroup styleClass="form-group" rendered="#{profesorController.account}">
+                                                <h:panelGroup styleClass="form-group" rendered="#{profesorController.register}">
                                                     <label class="control-label col-md-4 col-sm-4">Usuario :</label>
                                                     <div class="col-md-6 col-sm-6">
                                                         <h:inputText value="#{profesorController.user.username}" styleClass="form-control" placeholder="Nombre de usuario"
                                                                      data-parsley-required="true" data-parsley-minlength="4" data-parsley-group="wizard-step-3" />
                                                     </div>
                                                 </h:panelGroup>
-                                                <h:panelGroup styleClass="form-group" rendered="#{profesorController.account}">
+                                                <h:panelGroup styleClass="form-group" rendered="#{profesorController.register}">
                                                     <label class="control-label col-md-4 col-sm-4">Contraseña :</label>
                                                     <div class="col-md-6 col-sm-6">
                                                         <h:inputSecret value="#{profesorController.user.hash}" styleClass="form-control" placeholder="Contraseña"
@@ -188,7 +200,7 @@
                                             </div>
                                             <!-- end row -->
                                         </fieldset>
-                                    </div>
+                                    </seam:div>
 
 
                                 </div>

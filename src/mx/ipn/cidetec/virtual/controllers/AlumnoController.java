@@ -28,9 +28,6 @@ public class AlumnoController {
     private boolean register = false;
     private boolean persisting = false;
 
-    @In(scope = ScopeType.SESSION, required = false)
-    private Account account;
-
     @In
     private IdentityManager identityManager;
 
@@ -39,57 +36,11 @@ public class AlumnoController {
 
     private List<Colonia> colonias;
 
-    public Alumno getAlumno() {
-        return alumno;
-    }
-
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
-        Query query = entityManager.createQuery("from User u where u.account=:account");
-        query.setParameter("account", alumno);
-        if (query.getResultList().size() > 0) {
-            user = (User) query.getSingleResult();
-            register = true;
-        }
-    }
-
     public Alumno.Status[] getStatuses() {
         return Alumno.Status.values();
     }
-
-    public void inscribir(Curso curso) {
-        if (account != null) {
-            if (account instanceof Alumno) {
-                Alumno _alumno = (Alumno) account;
-                if (!isInscrito(curso)) {
-                    Calificacion calificacion = new Calificacion();
-                    calificacion.setAlumno(_alumno);
-                    calificacion.setCurso(curso);
-                    _alumno.getCalificaciones().add(calificacion);
-                }else {
-                    for (Calificacion calificacion : _alumno.getCalificaciones()) {
-                        if (calificacion.getCurso().equals(curso)) {
-                            entityManager.remove(calificacion);
-                        }
-                    }
-                }
-            }
-        }
-        entityManager.persist(entityManager.merge(account));
-        entityManager.flush();
-    }
-
-    public boolean isInscrito(Curso curso){
-        if (account != null) {
-            if (account instanceof Alumno) {
-                for (Calificacion calificacion : ((Alumno) account).getCalificaciones()) {
-                    if (calificacion.getCurso().equals(curso)) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
+    public Alumno.Tiempo[] getTiempos() {
+        return Alumno.Tiempo.values();
     }
 
     public void remove(){
@@ -112,7 +63,7 @@ public class AlumnoController {
 
     @End
     public String save() {
-        if (register) {
+        if (register && alumno.getId() == null) {
             new RunAsOperation() {
                 public void execute() {
                     try {
@@ -120,7 +71,11 @@ public class AlumnoController {
                             persisting = true;
                             identityManager.createUser(user.getUsername(),
                                     user.getHash(), user.getName(), "");
+                            entityManager.flush();
+                            if (user.isEnabled())
+                                identityManager.enableUser(user.getUsername());
                             identityManager.grantRole(user.getUsername(), "alumno");
+                            entityManager.flush();
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -151,6 +106,14 @@ public class AlumnoController {
             alumno.getDireccion().setMunicipio(colonias.get(0).getMunicipio());
             this.colonias = colonias;
         }
+    }
+
+    public Alumno getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
     }
 
     public List<Colonia> getColonias() {

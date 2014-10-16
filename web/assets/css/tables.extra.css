@@ -10,3 +10,19 @@
     color: #428bca;
     opacity: 1;
 }
+
+@media print {
+    .page-header-fixed,
+    .content,
+    .panel-body{
+        margin: 0px;
+        padding: 0px;
+    }
+    .sidebar,
+    .dataTables_wrapper>div>.col-sm-6,
+    .panel-heading,
+    .dataTables_length,
+    .dataTables_filter{
+        display: none;
+    }
+}

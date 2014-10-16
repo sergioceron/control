@@ -1,20 +1,17 @@
 package mx.ipn.cidetec.virtual.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Usuario on 14/09/2014.
+ * Created by Usuario on 28/09/2014.
  */
 @Entity
-public class Semestre {
-
+public class Periodo {
     private Long id;
-    private int anio;
-    private char tipo;
+    private int anyo;
+    private String semestre;
     private Date inicio;
     private Date termino;
 
@@ -28,22 +25,23 @@ public class Semestre {
         this.id = id;
     }
 
-    public int getAnio() {
-        return anio;
+    public int getAnyo() {
+        return anyo;
     }
 
-    public void setAnio(int anio) {
-        this.anio = anio;
+    public void setAnyo(int anyo) {
+        this.anyo = anyo;
     }
 
-    public char getTipo() {
-        return tipo;
+    public String getSemestre() {
+        return semestre;
     }
 
-    public void setTipo(char tipo) {
-        this.tipo = tipo;
+    public void setSemestre(String semestre) {
+        this.semestre = semestre;
     }
 
+    @Temporal(TemporalType.DATE)
     public Date getInicio() {
         return inicio;
     }
@@ -52,11 +50,17 @@ public class Semestre {
         this.inicio = inicio;
     }
 
+    @Temporal(TemporalType.DATE)
     public Date getTermino() {
         return termino;
     }
 
     public void setTermino(Date termino) {
         this.termino = termino;
+    }
+
+    @Override
+    public String toString() {
+        return anyo + "/" + semestre;
     }
 }

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <ui:define name="title">Horario</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
+        </ui:define>
+
+        <ui:define name="content">
+            <div class="row">
+                <!-- begin col-12 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Horario</h4>
+                        </div>
+                        <div class="panel-body p-0">
+                            <div class="vertical-box">
+                                <div id="calendar" class="vertical-box-column p-15 calendar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+            </div>
+
+        </ui:define>
+
+        <ui:define name="scripts">
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script src="/assets/plugins/fullcalendar/fullcalendar/fullcalendar.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                //<![CDATA[
+                var index = 0;
+                var event = [];
+                var e = {left: "",center: "",right: ""};
+                var t = new Date;
+                var n = t.getMonth();
+                var r = t.getFullYear();
+                var d = t.getDay();
+                var colors = ['bg-purple','bg-blue','bg-green','bg-orange','bg-red'];
+
+                function parseTime(timeStr, dt) {
+                    if (!dt) {
+                        dt = new Date();
+                    }
+
+                    var time = timeStr.match(/(\d+)(?::(\d\d))?\s*/i);
+                    var hours = parseInt(time[1], 10);
+                    if (timeStr.indexOf('PM') != -1 && hours < 12) {
+                        hours += 12;
+                    }
+
+                    dt.setHours(hours);
+                    dt.setMinutes(parseInt(time[2], 10) || 0);
+                    dt.setSeconds(0, 0);
+                    return dt;
+                }
+                //]]>
+            </script>
+            <ui:repeat value="#{account.calificaciones}" var="calificacion" varStatus="i">
+                <ui:repeat value="#{calificacion.curso.horario}" var="hora">
+                    <h:outputScript type="text/javascript">
+                        var distance = ((#{hora.diaSemana} + 7 - new Date().getDay()) % 7) + 1;
+                        di = parseTime('#{hora.horaInicio}');
+                        di.setDate(di.getDate()+distance);
+                        df = parseTime('#{hora.horaFin}');
+                        df.setDate(df.getDate()+distance);
+                        event[index++] = {
+                        title: '#{calificacion.curso.materia.nombre}',
+                        start: di,
+                        end: df,
+                        className: colors[#{i.index}],
+                        allDay: false,
+                        media: '<i class="fa fa-users"> </i>',
+                        description: '#{calificacion.curso.profesor.fullName}'
+                        };
+                    </h:outputScript>
+                </ui:repeat>
+            </ui:repeat>
+            <script type="text/javascript">
+                //<![CDATA[
+                var i = $("#calendar").fullCalendar(
+                        {
+                            header: e,
+                            selectable: false,
+                            selectHelper: false,
+                            droppable: false,
+                            editable: false,
+                            allDaySlot: false,
+                            firstDay: 1,
+                            columnFormat:{
+                                month: 'ddd',    // Mon
+                                week: 'ddd', // Mon 9/7
+                                day: 'dddd'      // Monday
+                            },
+                            minTime: 8,
+                            axisFormat:'H:mm',
+                            dayNamesShort: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+                            maxTime: 20,
+                            hiddenDays: [ 0, 6 ],
+                            defaultView: 'agendaWeek',
+                            slotEventOverlap: false,
+                            eventRender: function(e, t, n) {
+                                var r = e.media ? e.media : "";
+                                var i = e.description ? e.description : "";
+                                t.find(".fc-event-time").remove();
+                                //t.find(".fc-event-title").after($('<span class="fc-event-icons"></span>').html(r));
+                                t.find(".fc-event-title").append("<small>" + i + "</small>");
+                            },
+                            events: event
+                        }
+                );
+                $("#calendar").fullCalendar( 'next' );
+                window.setTimeout(function() {
+                    $("#calendar").fullCalendar( 'render' );
+                }, 1000);
+                //]]>
+            </script>
+        </ui:define>
+    </ui:composition>
+
+</h:body>
+
+</html>

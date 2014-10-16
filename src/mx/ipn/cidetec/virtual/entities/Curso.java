@@ -17,6 +17,7 @@ public class Curso {
 	private int turno;
 	private List<Hora> horario;
     private List<Calificacion> calificaciones;
+    private boolean enabled = true;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +29,7 @@ public class Curso {
 		this.id = id;
 	}
 
-	@ManyToOne()
+	@ManyToOne
 	public Materia getMateria() {
 		return materia;
 	}
@@ -86,6 +87,14 @@ public class Curso {
 
     public void setCalificaciones(List<Calificacion> calificaciones) {
         this.calificaciones = calificaciones;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     @Override

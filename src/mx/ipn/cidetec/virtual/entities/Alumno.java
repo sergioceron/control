@@ -12,9 +12,10 @@ public class Alumno extends Account {
 
 	private String matricula;
     private String grado;
-	private Semestre semestre;
+	private int semestre;
 	private Status status = Status.NUEVO;
 	private Profesor asesor;
+    private Tiempo tiempo;
 	private Programa programa;
 	private List<Calificacion> calificaciones;
     private List<EvaluacionAlumno> evaluaciones;
@@ -36,12 +37,11 @@ public class Alumno extends Account {
         this.grado = grado;
     }
 
-    @ManyToOne
-	public Semestre getSemestre() {
+	public int getSemestre() {
 		return semestre;
 	}
 
-	public void setSemestre( Semestre semestre ) {
+	public void setSemestre( int semestre ) {
 		this.semestre = semestre;
 	}
 
@@ -62,7 +62,15 @@ public class Alumno extends Account {
 		this.asesor = asesor;
 	}
 
-	@ManyToOne
+    public Tiempo getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(Tiempo tiempo) {
+        this.tiempo = tiempo;
+    }
+
+    @ManyToOne
 	public Programa getPrograma() {
 		return programa;
 	}
@@ -100,6 +108,7 @@ public class Alumno extends Account {
 
 	public enum Status {
 		NUEVO( "Nuevo" ),
+		DESCONOCIDO( "Desconocido" ),
 		INSCRITO( "Inscrito" ),
 		BAJA( "Baja" ),
 		EGRESADO( "Egresado" );
@@ -114,4 +123,19 @@ public class Alumno extends Account {
 			return name;
 		}
 	}
+
+    public enum Tiempo {
+        COMPLETO ( "Completo" ),
+        PARCIAL ( "Parcial" );
+
+        private String name;
+
+        Tiempo(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
 }

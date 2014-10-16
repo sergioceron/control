@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:s="http://jboss.org/schema/seam/taglib"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
     <meta charset="utf-8" />
@@ -23,6 +23,7 @@
     <link href="/assets/css/style.min.css" rel="stylesheet" />
     <link href="/assets/css/style-responsive.min.css" rel="stylesheet" />
     <link href="/assets/css/theme/black.css" rel="stylesheet" id="theme" />
+    <link href="/assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
     <!-- ================== END BASE CSS STYLE ================== -->
 
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
@@ -111,16 +112,30 @@
 <![endif]-->
 <script src="/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <script src="/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+<script src="/assets/plugins/gritter/js/jquery.gritter.js"></script>
 <!-- ================== END BASE JS ================== -->
 
 <!-- ================== BEGIN PAGE LEVEL JS ================== -->
 <ui:insert name="scripts" />
 <!-- ================== END PAGE LEVEL JS ================== -->
 <script>
+    //<![CDATA[
     $(document).ready(function() {
         App.init();
     });
+    //]]>
 </script>
+<f:verbatim rendered="#{systemController.periodoActual eq null}">
+    <script>
+        //<![CDATA[
+        $(window).load(function() {
+            setTimeout(function() {
+                $.gritter.add({title: "Nuevo Periodo Escolar", text: "Ha iniciado un nuevo periodo escolar y no se han definido fechas.<br><br><a href='/admin/periodo.edit.seam' class='btn btn-primary btn-xs m-r-5'>Definir un nuevo periodo</a>",sticky: true,time: "",class_name: "my-sticky-class"})
+            }, 1e3)
+        });
+        //]]>
+        </script>
+</f:verbatim>
 </h:body>
 
 </html>

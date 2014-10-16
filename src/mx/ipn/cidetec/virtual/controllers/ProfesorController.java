@@ -24,7 +24,7 @@ public class ProfesorController {
 	private User user = new User();
 	private Profesor profesor = new Profesor();
 
-	private boolean account = false;
+	private boolean register = false;
     private boolean persisting = false;
 
 	@In
@@ -35,7 +35,7 @@ public class ProfesorController {
 
 	@End
 	public String save() {
-		if( account ) {
+		if( register && profesor.getId() == null ) {
 			new RunAsOperation() {
 				public void execute() {
 					try {
@@ -43,7 +43,11 @@ public class ProfesorController {
                             persisting = true;
 							identityManager.createUser( user.getUsername(),
 									user.getHash(), user.getName(), "" );
+                            entityManager.flush();
+                            if (user.isEnabled())
+                                identityManager.enableUser(user.getUsername());
                             identityManager.grantRole(user.getUsername(), "profesor");
+                            entityManager.flush();
 						}
 					} catch ( Exception e ) {
 						e.printStackTrace();
@@ -107,11 +111,11 @@ public class ProfesorController {
 		this.user = user;
 	}
 
-	public boolean isAccount() {
-		return account;
-	}
+    public boolean isRegister() {
+        return register;
+    }
 
-	public void setAccount( boolean account ) {
-		this.account = account;
-	}
+    public void setRegister(boolean register) {
+        this.register = register;
+    }
 }

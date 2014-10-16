@@ -84,4 +84,14 @@ public class ListEntitiesController {
         Query query = entityManager.createQuery( "from User u" );
         return query.getResultList();
     }
+
+    public List<Periodo> getPeriodos(){
+        Query query = entityManager.createQuery( "from Periodo p" );
+        return query.getResultList();
+    }
+
+    public List<Menu> getMenus(){
+        Query query = entityManager.createQuery( "from Menu m" );
+        return query.getResultList();
+    }
 }

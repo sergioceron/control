@@ -32,6 +32,7 @@ public class CustomFormRenderer extends FormRenderer {
 
     @Override
     public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
+        super.encodeBegin(context, component);
         final ResponseWriter originalResponseWriter = context.getResponseWriter();
         context.setResponseWriter(new ResponseWriterWrapper() {
 
@@ -43,7 +44,7 @@ public class CustomFormRenderer extends FormRenderer {
             @Override
             public void startElement(String name, UIComponent component) throws IOException {
                 super.startElement(name, component);
-                if ("form".equalsIgnoreCase(name)) {
+                if ("form".equalsIgnoreCase(name) && component != null) {
                     for (String attr : attributes) {
                         final String value = (String) component.getAttributes().get(attr);
                         if (value != null) {
@@ -53,8 +54,9 @@ public class CustomFormRenderer extends FormRenderer {
                 }
             }
         });
-        super.encodeBegin(context, component);
     }
+
+
 
     @Override
     public void encodeEnd(FacesContext context, UIComponent component) throws IOException {

@@ -27,7 +27,7 @@ public class CustomSelectinputRenderer extends ListboxRenderer {
 			"data-parsley-mincheck", "data-parsley-maxcheck", "data-parsley-check", "data-parsley-equalto"
 	};
 
-	@Override
+	/*@Override
 	protected void getEndTextToRender(FacesContext context, UIComponent component, String currentValue) throws IOException {
 		final ResponseWriter originalResponseWriter = context.getResponseWriter();
 		context.setResponseWriter(new ResponseWriterWrapper() {
@@ -53,5 +53,32 @@ public class CustomSelectinputRenderer extends ListboxRenderer {
 
 		super.getEndTextToRender(context, component, currentValue);
 		context.setResponseWriter(originalResponseWriter);
-	}
+	}*/
+
+
+    @Override
+    public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
+        super.encodeBegin(context, component);
+        final ResponseWriter originalResponseWriter = context.getResponseWriter();
+        context.setResponseWriter(new ResponseWriterWrapper() {
+
+            @Override
+            public ResponseWriter getWrapped() {
+                return originalResponseWriter;
+            }
+
+            @Override
+            public void startElement(String name, UIComponent component) throws IOException {
+                super.startElement(name, component);
+                if ("select".equalsIgnoreCase(name)) {
+                    for (String attr : attributes) {
+                        final String value = (String) component.getAttributes().get(attr);
+                        if (value != null) {
+                            super.writeAttribute(attr, value, attr);
+                        }
+                    }
+                }
+            }
+        });
+    }
 }

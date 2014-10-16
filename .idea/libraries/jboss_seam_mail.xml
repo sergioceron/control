@@ -4,6 +4,8 @@
       <root url="jar://$PROJECT_DIR$/lib/jboss-seam-mail.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/activation.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jboss-seam-excel.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jxl.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

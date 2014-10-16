@@ -35,8 +35,12 @@ public class UserController {
                     if (!identityManager.userExists(user.getUsername())) {
                         identityManager.createUser(user.getUsername(),
                                 user.getHash(), user.getName(), "");
+                        entityManager.flush();
+                        if (user.isEnabled())
+                            identityManager.enableUser(user.getUsername());
                         for (Role role : user.getRoles())
                             identityManager.grantRole(user.getUsername(), role.getRolename());
+                        entityManager.flush();
                     } else {
                         entityManager.persist(user);
                     }
@@ -62,6 +66,7 @@ public class UserController {
                 public void execute() {
                     try {
                         identityManager.changePassword(user.getUsername(), password);
+                        entityManager.flush();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

@@ -28,8 +28,8 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <h:form id="loginForm" prependId="false">
-                                    <h:dataTable value="#{alumnoController.alumno.calificaciones}" var="calificacion"
+                                <h:form id="loginForm">
+                                    <h:dataTable value="#{account.calificaciones}" var="calificacion"
                                                  id="data-table" styleClass="table table-striped table-bordered">
                                         <h:column>
                                             <f:facet name="header">Materia</f:facet>
@@ -41,15 +41,7 @@
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">Calificacion</f:facet>
-                                            #{calificacion.calificacion}
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">Accion</f:facet>
-                                            <h:commandLink action="curso.edit.xhtml">
-                                                Editar
-                                                <f:setPropertyActionListener target="#{cursoController.curso}"
-                                                                             value="#{curso}"/>
-                                            </h:commandLink>
+                                            #{calificacionController.calificacion.setted ? calificacion.calificacion : 'No asignada'}
                                         </h:column>
 
                                     </h:dataTable>

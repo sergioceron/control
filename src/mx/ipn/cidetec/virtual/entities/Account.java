@@ -65,6 +65,7 @@ public class Account {
 		this.correo = correo;
 	}
 
+    @Temporal(TemporalType.DATE)
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }

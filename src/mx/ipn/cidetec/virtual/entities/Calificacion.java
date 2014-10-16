@@ -15,6 +15,7 @@ public class Calificacion {
 	private Long id;
 	private Alumno alumno;
 	private Curso curso;
+    private Periodo periodo;
 	private double calificacion;
 	private Calificacion recurse;
     private boolean setted = false;
@@ -47,7 +48,17 @@ public class Calificacion {
 		this.curso = curso;
 	}
 
-	public double getCalificacion() {
+    // TODO: change to mapped by owner class
+    @ManyToOne
+    public Periodo getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(Periodo periodo) {
+        this.periodo = periodo;
+    }
+
+    public double getCalificacion() {
 		return calificacion;
 	}
 

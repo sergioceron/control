@@ -3,7 +3,7 @@ $.extend( true, $.fn.dataTable.defaults, {
 	"sDom": "<'row'<'col-md-6 col-sm-6'l><'col-md-6 col-sm-6'f>r>t<'row'<'col-md-6 col-sm-6'i><'col-md-6 col-sm-6'p>>",
 	"sPaginationType": "bootstrap",
 	"oLanguage": {
-		"sLengthMenu": "_MENU_ records per page"
+		"sLengthMenu": "_MENU_ registros por página"
 	}
 } );
 
@@ -45,8 +45,8 @@ $.extend( $.fn.dataTableExt.oPagination, {
 
 			$(nPaging).addClass('pagination').append(
 				'<ul class="pagination m-t-0 m-b-0">'+
-					'<li class="prev disabled"><a href="#">&larr; '+oLang.sPrevious+'</a></li>'+
-					'<li class="next disabled"><a href="#">'+oLang.sNext+' &rarr; </a></li>'+
+					'<li class="prev disabled"><a href="#">&larr; Anterior</a></li>'+
+					'<li class="next disabled"><a href="#">Siguiente &rarr; </a></li>'+
 				'</ul>'
 			);
 			var els = $('a', nPaging);
@@ -148,13 +148,21 @@ if ( $.fn.DataTable.TableTools ) {
 
 /* Table initialisation */
 $(document).ready(function() {
-    if ( $('#data-table tr td').length > 1 ) {
-        $('#data-table').dataTable( {
+    if ( $('#loginForm\\:data-table tr td').length > 1 ) {
+        $('#loginForm\\:data-table').dataTable( {
             "sDom": "<'row'<'col-md-6 col-sm-6'l><'col-md-6 col-sm-6'f>r>t<'row'<'col-md-6 col-sm-6'i><'col-md-6 col-sm-6'p>>",
             "sPaginationType": "bootstrap",
             "oLanguage": {
-                "sLengthMenu": "_MENU_ records per page"
+                "sLengthMenu": "_MENU_ registros por página",
+                "sSearch": "Busqueda: ",
+                "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                "sInfoFiltered": " - filtrado de _MAX_ registros",
+                "sInfoEmpty": "Ningún registro encontrado",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
             }
         });
+        $('#loginForm\\:data-table_filter input').attr('id','loginForm:data-table_search');
+        $('#loginForm\\:data-table_filter input').attr('name','loginForm:data-table_search');
     }
 } );

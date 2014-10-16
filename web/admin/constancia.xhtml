@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <ui:define name="title">Constancia</ui:define>
+        <ui:define name="subtitle">(#{constanciaController.alumno.fullName})</ui:define>
+
+
+        <ui:define name="content">
+            <div class="row">
+                <!-- begin col-12 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="#" onclick="window.editor.execCommand( 'print' );" class="btn btn-primary btn-xs">Imprimir</a>
+                            </div>
+                            <h4 class="panel-title">Constancia de Avance</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div id="editor"> </div>
+                            <div id="constancia-wrapper" class="hidden">
+                                <ui:include src="/admin/constancias/sip8.xhtml" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+            </div>
+
+        </ui:define>
+
+        <ui:define name="scripts">
+            <script src="/assets/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                var config = {
+                    extraPlugins: 'print',
+                    height: '500px'
+                };
+                window.editor = CKEDITOR.appendTo( 'editor', config, document.getElementById('constancia-wrapper').innerHTML );
+                });
+            </script>
+        </ui:define>
+    </ui:composition>
+
+</h:body>
+
+</html>

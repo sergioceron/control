@@ -18,8 +18,26 @@
                value="#{activationController.code}"/>
     </page>
 
+    <page view-id="/admin/periodos.list.xhtml">
+        <action execute="#{menuController.setActive('/admin/periodos.list.seam')}" />
+    </page>
+    <page view-id="/admin/periodo.edit.xhtml">
+        <begin-conversation join="true" />
+        <action execute="#{menuController.setActive('/admin/periodos.list.seam')}" />
+
+        <navigation from-action="#{periodoController.save}">
+            <rule if-outcome="success">
+                <redirect view-id="/admin/periodos.list.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+
+    <page view-id="/admin/roles.list.xhtml">
+        <action execute="#{menuController.setActive('/admin/roles.list.seam')}" />
+    </page>
     <page view-id="/admin/role.edit.xhtml">
         <begin-conversation join="true" />
+        <action execute="#{menuController.setActive('/admin/roles.list.seam')}" />
 
         <navigation from-action="#{roleController.save}">
             <rule if-outcome="success">
@@ -28,8 +46,12 @@
         </navigation>
     </page>
 
+    <page view-id="/admin/users.list.xhtml">
+        <action execute="#{menuController.setActive('/admin/users.list.seam')}" />
+    </page>
     <page view-id="/admin/user.edit.xhtml">
         <begin-conversation join="true" />
+        <action execute="#{menuController.setActive('/admin/users.list.seam')}" />
 
         <navigation from-action="#{userController.save}">
             <rule if-outcome="success">
@@ -38,8 +60,12 @@
         </navigation>
     </page>
 
+    <page view-id="/admin/cursos.list.xhtml">
+        <action execute="#{menuController.setActive('/admin/cursos.list.seam')}" />
+    </page>
     <page view-id="/admin/curso.edit.xhtml">
         <begin-conversation join="true" />
+        <action execute="#{menuController.setActive('/admin/cursos.list.seam')}" />
 
         <navigation from-action="#{cursoController.save}">
             <rule if-outcome="success">
@@ -48,8 +74,12 @@
         </navigation>
     </page>
 
+    <page view-id="/admin/materias.list.xhtml">
+        <action execute="#{menuController.setActive('/admin/materias.list.seam')}" />
+    </page>
     <page view-id="/admin/materia.edit.xhtml">
         <begin-conversation join="true" />
+        <action execute="#{menuController.setActive('/admin/materias.list.seam')}" />
 
         <navigation from-action="#{materiaController.save}">
             <rule if-outcome="success">
@@ -58,8 +88,12 @@
         </navigation>
     </page>
 
+    <page view-id="/admin/programas.list.xhtml">
+        <action execute="#{menuController.setActive('/admin/programas.list.seam')}" />
+    </page>
     <page view-id="/admin/programa.edit.xhtml">
         <begin-conversation join="true" />
+        <action execute="#{menuController.setActive('/admin/programas.list.seam')}" />
 
         <navigation from-action="#{programaController.save}">
             <rule if-outcome="success">
@@ -68,8 +102,12 @@
         </navigation>
     </page>
 
+    <page view-id="/admin/plan.list.xhtml">
+        <action execute="#{menuController.setActive('/admin/plan.list.seam')}" />
+    </page>
     <page view-id="/admin/plan.edit.xhtml">
         <begin-conversation join="true" />
+        <action execute="#{menuController.setActive('/admin/plan.list.seam')}" />
 
         <navigation from-action="#{planEstudiosController.save}">
             <rule if-outcome="success">
@@ -78,8 +116,12 @@
         </navigation>
     </page>
 
+    <page view-id="/admin/profesores.list.xhtml">
+        <action execute="#{menuController.setActive('/admin/profesores.list.seam')}" />
+    </page>
     <page view-id="/admin/profesor.edit.xhtml">
         <begin-conversation join="true" />
+        <action execute="#{menuController.setActive('/admin/profesores.list.seam')}" />
 
         <navigation from-action="#{profesorController.save}">
             <rule if-outcome="success">
@@ -88,12 +130,27 @@
         </navigation>
     </page>
 
+    <page view-id="/admin/alumnos.list.xhtml">
+        <action execute="#{menuController.setActive('/admin/alumnos.list.seam')}" />
+    </page>
     <page view-id="/admin/alumno.edit.xhtml">
         <begin-conversation join="true" />
+        <action execute="#{menuController.setActive('/admin/alumnos.list.seam')}" />
 
         <navigation from-action="#{alumnoController.save}">
             <rule if-outcome="success">
                 <redirect view-id="/admin/alumnos.list.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+
+    <page view-id="/admin/inscripcion.xhtml">
+        <begin-conversation join="true" />
+        <action execute="#{menuController.setActive('/admin/inscripcion.seam')}" />
+
+        <navigation from-action="#{inscripcionController.save}">
+            <rule if-outcome="success">
+                <redirect view-id="/admin/alumno.horario.xhtml"/>
             </rule>
         </navigation>
     </page>

@@ -22,6 +22,7 @@
 
     <core:manager conversation-timeout="120000"
                   concurrent-request-timeout="500"
+                  default-flush-mode="MANUAL"
                   conversation-id-parameter="cid"/>
 
     <transaction:entity-transaction entity-manager="#{entityManager}"/>
@@ -79,4 +80,5 @@
     </core:resource-loader>
 
     <component name="calificacionService" class="mx.ipn.cidetec.virtual.controllers.CalificacionService" />
+    <component name="systemService" class="mx.ipn.cidetec.virtual.controllers.SystemService" />
 </components>

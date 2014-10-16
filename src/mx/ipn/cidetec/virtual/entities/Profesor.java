@@ -10,6 +10,7 @@ import java.util.List;
 @Entity
 public class Profesor extends Account {
 
+    private String clave;
 	private String institucion;
 	private String plantel;
 	private String grado;
@@ -17,7 +18,15 @@ public class Profesor extends Account {
 	private Tipo tipo;
     private List<Curso> cursos;
 
-	public String getInstitucion() {
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public String getInstitucion() {
 		return institucion;
 	}
 
@@ -41,6 +50,7 @@ public class Profesor extends Account {
 		this.grado = grado;
 	}
 
+    @Temporal(TemporalType.DATE)
 	public Date getFechaGrado() {
 		return fechaGrado;
 	}
@@ -68,7 +78,7 @@ public class Profesor extends Account {
 
 	public enum Tipo {
 		COLEGIADO("Colegiado"),
-		TITULAR("Titular");
+		TITULAR("Asignatura");
 
 		private String name;
 

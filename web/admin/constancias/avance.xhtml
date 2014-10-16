@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+    <style type="text/css">
+        #constancia {
+            height: 11in;
+            width: 8.5in;
+        }
+
+        #constancia {
+            font-family: "Arial";
+            font-size: 15px;
+        }
+
+        .tabla{
+            margin: 0px auto;
+            border-collapse: collapse;
+        }
+
+        .tabla,
+        .tabla td,
+        .tabla th{
+            font-size: 14px;
+            border: 1px solid black;
+        }
+
+        small{
+            font-size: 11px;
+        }
+
+        .c1{
+            width:62px;
+            text-align: center;
+        }
+
+        .c2{
+            width:365px;
+            text-align: left;
+        }
+
+        .c3{
+            width:71px;
+            text-align: center;
+        }
+
+        .c4{
+            width:88px;
+            text-align: center;
+        }
+
+        .left{
+            text-align: left;
+        }
+
+        .center{
+            text-align: center;
+        }
+
+        @media print {
+            .eee {
+                color: #eee;;
+            }
+            .bottom-center{
+                position: absolute;
+                bottom: 0px;
+            }
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div id="constancia">
+        <div id="header">
+            <div style="text-align:right; font-size:12px; height:100px; vertical-align: bottom; line-height: 100px; color: #ccc">
+                <img src="/assets/img/sep.png" style="float: left" width="200px" alt="SEP" />
+                <b>Instituto Politécnico Nacional</b>
+                <img src="/assets/img/ipn.png" style="float: right; margin-left: 8px" width="50px" alt="IPN" />
+            </div>
+            <div style="clear: both;"> </div>
+            <div style="text-align:right; font-size:12px;vertical-align: bottom; height: 55px; line-height: 55px; margin-right: 45px;" class="eee">
+                <b>Centro de Innovación y Desarrollo Tecnológico en Cómputo</b>
+                <img src="/assets/img/cidetec.png" style="float: right; margin-left: 8px" width="50px" alt="CIDETEC" />
+            </div>
+            <div style="clear: both; height: 10px"> </div>
+            <div style="text-align: right; font-family: 'Arial Narrow'; font-size: 10px; margin-right: 45px; " class="eee">
+                “2014, Año de Octavio Paz”<br/>
+                “90 Aniversario del CECyT 1 Gonzalo Vázquez Vela”<br/>
+                “80 Aniversario de la Escuela Nacional de Ciencias Biológicas”<br/>
+                “70 Aniversario de la Escuela Superior de Medicina”<br/>
+                “55 Aniversario de la Unidad Profesional Adolfo López Mateos”<br/>
+            </div>
+        </div>
+
+        <div style="margin: 10px 45px 10px 45px">
+            <code>Constancia/2014</code>
+            <p><strong>A QUIEN CORRESPONDA:</strong></p>
+            <p style="line-height: 180%;text-align: justify">
+                Por medio de la presente se hace constar que el C. #{constanciaController.alumno.fullName}, con No. de Registro #{constanciaController.alumno.matricula}-,
+                se encuentra inscrito en el <strong>#{constanciaController.semestre} semestre</strong>
+                de la #{constanciaController.alumno.programa.nombre} que en este Centro se imparte, el cual inició el
+                #{constanciaController.inicioFormateado} y termina el #{constanciaController.terminoFormateado} del año en curso, y a la fecha ha cursado las siguientes materias:
+            </p>
+            <div>
+                <h:dataTable value="#{constanciaController.calificaciones}" styleClass="tabla" var="calificacion" columnClasses="center,left,center,center">
+                    <h:column headerClass="c1">
+                        <f:facet name="header">Clave</f:facet>
+                        #{calificacion.curso.materia.clave}
+                    </h:column>
+                    <h:column headerClass="c2">
+                        <f:facet name="header">Materia</f:facet>
+                        #{calificacion.curso.materia.nombre}
+                    </h:column>
+                    <h:column headerClass="c3">
+                        <f:facet name="header">No. Créditos</f:facet>
+                        #{calificacion.curso.materia.creditos}
+                    </h:column>
+                    <h:column headerClass="c4">
+                        <f:facet name="header">Calificación</f:facet>
+                        #{calificacion.calificacion}
+                    </h:column>
+                </h:dataTable>
+            </div>
+            <p>
+                <small>NOTA: AVANCE DEL #{constanciaController.porcentajeAvance} % EN CRÉDITOS POR ASIGNATURAS, PROMEDIO GENERAL: #{constanciaController.promedioGeneral} (#{constanciaController.creditosCursados}).</small>
+            </p>
+            <br/>
+            <p><strong>ATENTAMENTE</strong><br/>
+                <strong>"LA TÉCNICA AL SERVICIO DE LA PATRIA"</strong></p>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <p>
+                <strong>COORDINADOR DE LA MAESTRÍA</strong><br/>
+                <strong>O SUBDIRECTOR ACADÉMICO</strong><br/>
+                <strong>O DIRECTOR</strong>
+            </p>
+        </div>
+        <div style="width: 100%" class="bottom-center">
+            <p>c.i.p. expediente</p>
+            <p>/STM/</p>
+            <p style="font-size: 10px; margin: 0 auto; text-align: center; " class="eee">
+                “Unidad Profesional Adolfo López Mateos”, Av. Juan de Dios Bátiz s/n Esq. Miguel Othón de Mendizábal,<br/>
+                Col. Nueva Industrial Vallejo, Deleg. Gustavo A. Madero, México, D.F., C.P. 07700<br/>
+                Tel.: 5729 6000 ext. 52516, Fax en la ext. 52541, email: cidetec@ipn.mx<br/>
+                www.cidetec.ipn.mx
+            </p>
+        </div>
+    </div>
+
+</h:body>
+
+</html>

@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+    <style type="text/css">
+        #constancia{
+            font-family:Arial;
+        }
+        .fecha {
+            border-collapse: collapse;
+        }
+
+        .fecha td{
+            font-size: 13px;
+            text-align:center;
+        }
+        .border-bottom{
+            border-bottom: 1px solid #000;
+            width: 35px;
+        }
+        .border-top{
+            border-top: 1px solid #000;
+        }
+        .border-right{
+            border-right: 1px solid #000;
+        }
+
+        .small{
+            font-size: 10px;
+        }
+
+        .boleta{
+            border-collapse: collapse;
+            -webkit-print-color-adjust: exact;
+        }
+
+        .boleta td{
+            font-size: 13px;
+            text-align:center;
+        }
+
+        .tiempo{
+            width: 100%;
+            font-size: 13px;
+        }
+
+        .numero{
+            background-color: #ddd;
+            width: 20px;
+            height: 27px;
+        }
+
+        .nombre{
+            font-size: 13px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .nombre td{
+            text-align: center;
+        }
+
+        .programa{
+            font-size: 12px;
+            border-collapse: collapse;
+        }
+
+        .graduacion{
+            font-size: 12px;
+            border-collapse: collapse;
+        }
+
+        .firmas{
+            font-size: 11px;
+            border-collapse: collapse;
+        }
+
+        .firmas td{
+            text-align: center;
+        }
+
+        .programa td,
+        .programa th{
+            border: 1px solid #000;
+        }
+
+        .programa td{
+            font-family: "Arial Narrow", Arial, sans-serif;
+            font-size: 12px;
+            font-stretch: condensed;
+        }
+        .programa th{
+            text-align: center;
+            background-color: #ddd;
+            -webkit-print-color-adjust: exact;
+        }
+
+        .creditos{
+            font-size: 13px;
+            border-collapse: collapse;
+        }
+
+    </style>
+</h:head>
+<h:body>
+<div id="constancia">
+<div style="text-align: center; line-height: 170%">
+    <div style="font-size: 22px"><strong>INSTITUTO POLITÉCNICO NACIONAL</strong></div>
+    <div style="font-size: 16px"><strong>SECRETARIA DE INVESTIGACIÓN Y POSGRADO</strong></div>
+    <div style="font-size: 16px"><em>PROGRAMA INDIVIDUAL DE ACTIVIDADES</em></div>
+</div>
+
+<br/>
+
+<table class="fecha" align="right">
+    <tr>
+        <td>Fecha: </td>
+        <td class="border-bottom border-right">#{constanciaController.date.date}</td>
+        <td class="border-bottom border-right">#{constanciaController.date.month + 1}</td>
+        <td class="border-bottom">#{constanciaController.date.year + 1900}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td style="font-size: 11px">d</td>
+        <td style="font-size: 11px">m</td>
+        <td style="font-size: 11px">a</td>
+    </tr>
+</table>
+
+<div style="clear: both; margin-bottom: 20px"></div>
+
+<table class="boleta" align="right">
+    <tr>
+        <td style="padding-right: 10px">Con el número de registro: </td>
+        <ui:repeat value="#{constanciaController.matricula}" var="c">
+            <td class="numero">#{c}</td>
+        </ui:repeat>
+    </tr>
+</table>
+
+<div style="clear:both;margin-bottom:20px"></div>
+
+<div>
+    <table class="nombre">
+        <tr>
+            <td width="22%" style="text-align:left;padding-right:10px">En virtud de que el C. </td>
+            <td>#{constanciaController.alumno.apellidoP}</td>
+            <td>#{constanciaController.alumno.apellidoM}</td>
+            <td>#{constanciaController.alumno.nombre}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="border-top small">Apellido Paterno</td>
+            <td class="border-top small">Apellido Materno</td>
+            <td class="border-top small">Nombre(s)</td>
+        </tr>
+    </table>
+</div>
+
+<div style="clear:both;height: 0"></div>
+
+<div>
+    <table class="tiempo">
+        <tr>
+            <td style="text-align:left;padding-right:10px">cumplió con los requisitos de admisión como alumno de tiempo <span class="small">(Marcar con una X):</span> </td>
+            <td style="border: 1px solid #000; width: 20px; height: 20px; text-align: center">#{constanciaController.alumno.tiempo.name eq  'Completo' ? 'X' : ''}</td>
+            <td style="padding-left: 5px; padding-right:10px">Completo</td>
+            <td style="border: 1px solid #000; width: 20px; height: 20px; text-align: center">#{constanciaController.alumno.tiempo.name eq  'Parcial' ? 'X' : ''}</td>
+            <td style="padding-left: 5px">Parcial</td>
+        </tr>
+    </table>
+</div>
+
+<div style="clear:both;height: 0"></div>
+
+<div>
+    <table class="nombre">
+        <tr>
+            <td width="27%" style="text-align:left;padding-right:10px">para cursar el programa de: </td>
+            <td>#{constanciaController.alumno.programa.nombre}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="border-top small"></td>
+        </tr>
+    </table>
+</div>
+
+<div style="clear:both;height: 0"></div>
+
+<div>
+    <table class="nombre">
+        <tr>
+            <td width="15%" style="text-align:left;padding-right:10px">en la  escuela: </td>
+            <td>#{systemController.getConfiguration('institution')}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="border-top small"></td>
+        </tr>
+    </table>
+</div>
+
+<div style="clear:both;height: 0"></div>
+
+<div class="nombre">
+    De acuerdo a lo que marca el reglamento vigente (Art. 34), se le asigna el siguiente programa que el estudiante
+    tendrá que cumplir para obtener su diploma o su grado, así mismo, se informa que le fue asignado como consejero
+    de estudios al C.
+    <table class="nombre" style="float:right;width:85%;">
+        <tr>
+            <td>#{constanciaController.alumno.asesor.apellidoP}</td>
+            <td>#{constanciaController.alumno.asesor.apellidoM}</td>
+            <td>#{constanciaController.alumno.asesor.nombre}</td>
+        </tr>
+        <tr>
+            <td class="border-top small">Apellido Paterno</td>
+            <td class="border-top small">Apellido Materno</td>
+            <td class="border-top small">Nombre(s)</td>
+        </tr>
+    </table>
+</div>
+
+<div style="clear:both;height: 0"></div>
+
+<div class="nombre">
+    quien además deberá avalar cualquier modificación a este programa.
+</div>
+
+<table style="width:695px" class="programa">
+    <tbody>
+    <tr>
+        <th colspan="8" style="height:51px; width:150px">
+            <p><strong>CLAVE</strong></p>
+        </th>
+        <th style="height:51px; width:299px">
+            <p><strong>ASIGNATURA</strong></p>
+        </th>
+        <th style="height:51px; width:66px">
+            <p><strong>CREDITOS</strong></p>
+        </th>
+        <th style="height:51px; width:180px">
+            <p><strong>LUGAR DE REALIZACIÓN</strong></p>
+        </th>
+    </tr>
+    <ui:repeat value="#{constanciaController.alumno.calificaciones}" var="calificacion">
+    <tr>
+        <ui:repeat value="#{constanciaController.getClaveMateria(calificacion.curso.materia.clave)}" var="car">
+        <td style="height:28px; width:19px; text-align: center;">
+            <p>#{car}</p>
+        </td>
+        </ui:repeat>
+        <td style="height:28px; width:299px">
+            <p>#{calificacion.curso.materia.nombre}</p>
+        </td>
+        <td style="height:28px; width:66px; text-align: center;">
+            <p>#{calificacion.curso.materia.creditos}</p>
+        </td>
+        <td style="height:28px; width:180px; text-align: center;">
+            <p>#{calificacion.curso.lugar}</p>
+        </td>
+    </tr>
+    </ui:repeat>
+    </tbody>
+</table>
+
+<div style="clear:both;margin-bottom:20px"></div>
+
+<table class="creditos">
+    <tbody>
+    <tr>
+        <td style="height:23px; width:449px">
+            <strong>Total de créditos mínimos a cubrir de acuerdo al programa registrado vigente autorizado:</strong>
+        </td>
+        <td style="height:23px; width:66px;border: 1px solid #000;text-align: center;">
+            #{constanciaController.alumno.planEstudios.creditos}
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div style="clear:both;margin-bottom:20px"></div>
+
+<table class="graduacion">
+    <tbody>
+    <tr>
+        <td style="width:420px; text-align: right; padding-right: 5px">
+            <p>Fecha límite para cubrir créditos y presentar examen de grado:</p>
+        </td>
+        <td style="width:41px; height: 20px; border:1px solid #000; text-align: center">
+        </td>
+        <td style="width:41px; border:1px solid #000; text-align: center">
+        </td>
+        <td style="width:41px; border:1px solid #000; text-align: center">
+        </td>
+    </tr>
+    <tr>
+        <td style="width:420px">
+            <p>&nbsp;</p>
+        </td>
+        <td style="width:41px">
+            <p>d</p>
+        </td>
+        <td style="width:41px">
+            <p>m</p>
+        </td>
+        <td style="width:41px">
+            <p>a</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div style="clear:both;margin-bottom:20px"></div>
+
+<table style="width:695px" class="firmas">
+    <tbody>
+    <tr>
+        <td colspan="3" style="width:227px">
+            <p>INTERESADO</p>
+        </td>
+        <td colspan="3" style="width:222px">
+            <p>CONSEJERO DE ESTUDIOS</p>
+        </td>
+        <td colspan="3" style="width:246px">
+            <p>JEFE(A) DE SECCIÓN O DIRECTOR(A) DE CENTRO</p>
+        </td>
+    </tr>
+    <tr>
+        <td style="width:24px; height: 40px"></td>
+        <td style="width:180px; border-bottom: 1px solid #000"></td>
+        <td style="width:24px"></td>
+        <td style="width:23px"></td>
+        <td style="width:180px; border-bottom: 1px solid #000"></td>
+        <td style="width:19px"></td>
+        <td style="width:28px"></td>
+        <td style="width:180px; border-bottom: 1px solid #000"></td>
+        <td style="width:38px"></td>
+    </tr>
+    <tr>
+        <td colspan="3" style="width:227px">
+            <p>(Nombre y firma)</p>
+        </td>
+        <td colspan="3" style="width:222px">
+            <p>(Nombre y firma)</p>
+        </td>
+        <td colspan="3" style="width:246px">
+            <p>(Nombre, firma y sello)</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<div style="page-break-before: always; font-size: 13.5px; line-height: 150%">
+
+    <p><strong><em>NOTA IMPORTANTE: </em></strong></p>
+
+    <div style="margin-left:38pt">
+        <ol type="a">
+            <li><em>Mínimo de créditos a cubrir (art. 17): en el SIP-8 se debe asentar el número de créditos mínimo a cubrir para alumnos admitidos a nivel posgrado de especialidad, maestría y doctorado.</em></li>
+            <li><em>Designación de director de tesina o director de tesis (art. 37): alumnos de tiempo completo, a más tardar al término del primer semestre; en el caso de alumnos de tiempo parcial, al término, del segundo semestre. (formato SIP-8-BIS)</em></li>
+            <li><em>Designación del Comité tutorial (art. 38): debe designarse como consecuencia de la designación de director de tesis o tesina y las funciones del comité tutorial deberán entrar en vigor a más tardar al <strong>INICIO DEL SEGUNDO</strong>, lo que implica inscribir a los alumnos a la asignatura de <strong>comité tutorial </strong>a partir del 2do. semestre.</em></li>
+            <li><em>Registro de tema de tesis o tesina (art. 56): para alumnos de <strong>tiempo completo</strong> inscritos en maestría y especialidad médica <strong>al término del primer semestre</strong>, para alumnos de tiempo parcial al del segundo semestre. Para alumnos de doctorado, al finalizar el primer semestre, siendo este <strong>uno de los requisitos para el examen predoctoral</strong>. El incumplimiento de lo anterior implica el sentamiento de una calificación REPROBATORIA por parte del comité tutorial. (formato SIP-13)</em></li>
+            <li><em>Presentación del examen predoctoral (art. 68): a partir del primer semestre y como máximo al cuarto semestre, lo que implica realizar la solicitud en tiempo y forma.</em></li>
+            <li><em>Los estudiantes extranjeros deberán presentar documentos originales de los antecedentes académicos autenticados por el Consulado Mexicano correspondiente, así mismo, deberá contar con FM-3 actualizada.</em></li>
+        </ol>
+    </div>
+</div>
+</div>
+
+</h:body>
+
+</html>
