@@ -27,8 +27,8 @@
                                 <div class="btn-group">
                                     <a href="javascript:;" data-toggle="dropdown" class="btn btn-warning dropdown-toggle btn-xs">Exportar <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#" onclick ="$('#loginForm\\:data-table').tableExport({type:'csv',escape:'false',filename:'cursos',ignoreColumn:[4]});">Excel</a></li>
-                                        <li><a href="#" onclick ="$('#loginForm\\:data-table').tableExport({type:'xml',escape:'false',filename:'cursos',ignoreColumn:[4]});">XML</a></li>
+                                        <li><a href="#" onclick ="$('#loginForm\\:data-table').tableExport({type:'csv',escape:'false',filename:'cursos',ignoreColumn:[5]});">Excel</a></li>
+                                        <li><a href="#" onclick ="$('#loginForm\\:data-table').tableExport({type:'xml',escape:'false',filename:'cursos',ignoreColumn:[5]});">XML</a></li>
                                         <li class="divider"></li>
                                         <li><a href="#" onclick="window.print();">Imprimir</a></li>
                                     </ul>
@@ -41,7 +41,8 @@
                             <div class="table-responsive">
                                 <h:form id="loginForm">
                                     <h:dataTable value="#{listEntitiesController.cursos}" var="curso"
-                                                 id="data-table" styleClass="table table-striped table-bordered">
+                                                 id="data-table" styleClass="table table-striped table-bordered"
+                                                 columnClasses=",,text-center,text-center,text-center,no-print">
                                         <h:column>
                                             <f:facet name="header">Materia</f:facet>
                                             #{curso.materia.nombre}
@@ -50,16 +51,26 @@
                                             <f:facet name="header">Profesor</f:facet>
                                             #{curso.profesor.fullName}
                                         </h:column>
-                                        <h:column>
-                                            <f:facet name="header">Semestre</f:facet>
-                                            #{curso.semestre}
+                                        <h:column headerClass="text-center">
+                                            <f:facet name="header">Periodo</f:facet>
+                                            #{curso.periodo}
                                         </h:column>
-                                        <h:column>
+                                        <h:column headerClass="text-center">
+                                            <f:facet name="header">Grupo</f:facet>
+                                            #{curso.grupo}
+                                        </h:column>
+                                        <h:column headerClass="text-center">
                                             <f:facet name="header">Lugar</f:facet>
                                             #{curso.lugar}
                                         </h:column>
-                                        <h:column>
+                                        <h:column headerClass="no-print">
                                             <f:facet name="header">Accion</f:facet>
+                                            <h:commandLink action="admin.calificaciones.xhtml" data-toggle="tooltip" data-container="body" data-title="Calificaciones">
+                                                <i class="fa fa-check-square-o"></i>
+                                                <s:conversationPropagation type="begin" />
+                                                <f:setPropertyActionListener target="#{calificacionController.curso}"
+                                                                             value="#{curso}"/>
+                                            </h:commandLink>
                                             <h:commandLink data-toggle="tooltip" data-container="body" data-title="Horario">
                                                 <i class="fa fa-list"></i>
                                                 <f:setPropertyActionListener target="#{cursoController.curso}"
@@ -72,11 +83,10 @@
                                                 <f:setPropertyActionListener target="#{cursoController.curso}"
                                                                              value="#{curso}"/>
                                             </h:commandLink>
-                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar">
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar"
+                                                    actionListener="#{cursoController.prepareToRemove(curso)}">
                                                 <i class="fa fa-times"></i>
                                                 <s:conversationPropagation type="begin" />
-                                                <f:setPropertyActionListener target="#{cursoController.curso}"
-                                                                             value="#{curso}"/>
                                                 <f:ajax execute="@this" render=":mod:popup"
                                                         onevent="showModal"/>
                                             </h:commandLink>
@@ -137,14 +147,18 @@
                                                         <h4 class="modal-title">Eliminar curso</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <div class="alert alert-danger m-b-0">
+                                                        <s:div styleClass="alert alert-danger m-b-0" rendered="#{not cursoController.removable}">
                                                             <h4><i class="fa fa-info-circle"> </i> Alerta</h4>
-                                                            <p>Si continua, se perderan todas las calificaciones asociadas al curso.</p>
-                                                        </div>
+                                                            <p>No se puede eliminar el curso debido a que existen alumnos inscritos al mismo.</p>
+                                                        </s:div>
+                                                        <s:div styleClass="alert alert-warning m-b-0" rendered="#{cursoController.removable}">
+                                                            <h4><i class="fa fa-info-circle"> </i> Advertencia</h4>
+                                                            <p>¿Está seguro que desea eliminar el curso?</p>
+                                                        </s:div>
                                                         <h:panelGroup rendered="#{cursoController.curso.id != null}">
                                                             <h5>Datos del curso</h5>
                                                             <p class="media media-sm">
-                                                                <label class="col-md-4 col-sm-4"><b>Nombre:</b></label>
+                                                                <label class="col-md-4 col-sm-4"><b>Materia:</b></label>
                                                                 <span class="col-md-8 col-sm-8">#{cursoController.curso.materia.nombre} </span>
                                                             </p>
                                                             <p class="media media-sm">
@@ -152,14 +166,15 @@
                                                                 <span class="col-md-8 col-sm-8">#{cursoController.curso.profesor.fullName} </span>
                                                             </p>
                                                             <p class="media media-sm">
-                                                                <label class="col-md-4 col-sm-4"><b>Calificaciones afectadas:</b></label>
-                                                                <span class="col-md-8 col-sm-8">#{cursoController.calificacionesCount} </span>
+                                                                <label class="col-md-4 col-sm-4"><b>Grupo:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{cursoController.curso.grupo} </span>
                                                             </p>
                                                         </h:panelGroup>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
-                                                        <h:commandLink action="#{cursoController.remove}" styleClass="btn btn-sm btn-danger">
+                                                        <h:commandLink action="#{cursoController.remove}" styleClass="btn btn-sm btn-danger"
+                                                                rendered="#{cursoController.removable}">
                                                             Eliminar
                                                             <f:ajax execute="@this" render=":loginForm:data-table" onevent="hideModal"/>
                                                         </h:commandLink>

@@ -31,7 +31,11 @@
                                     <h:dataTable value="#{calificacionController.curso.calificaciones}" var="calificacion"
                                                  id="data-table" styleClass="table table-striped table-bordered">
                                         <h:column>
-                                            <f:facet name="header">Materia</f:facet>
+                                            <f:facet name="header">Matricula</f:facet>
+                                            #{calificacion.alumno.matricula}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Alumno</f:facet>
                                             #{calificacion.alumno.fullName}
                                         </h:column>
                                         <h:column>
@@ -39,8 +43,12 @@
                                             <a href="#" data-type="text" data-disabled="#{calificacion.setted}" data-pk="#{calificacion.id}"
                                                data-url="/seam/resource/rest/calificacion/set" data-title="Introduzca la calificación"
                                                class="editable editable-click" data-original-title="" title="" style="background-color: rgba(0, 0, 0, 0);">
-                                                #{calificacionController.calificacion.setted ? calificacion.calificacion : 'No asignada'}
+                                                #{calificacion.setted ? calificacion.calificacion : 'No asignada'}
                                             </a>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Folio Acta</f:facet>
+                                            #{calificacion.curso.acta}
                                         </h:column>
 
                                     </h:dataTable>

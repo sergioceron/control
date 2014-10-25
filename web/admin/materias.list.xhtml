@@ -42,7 +42,8 @@
 
                                 <h:form id="loginForm">
                                     <h:dataTable value="#{listEntitiesController.materias}" var="materia"
-                                                 id="data-table" styleClass="table table-striped table-bordered">
+                                                 id="data-table" styleClass="table table-striped table-bordered"
+                                                 columnClasses=",,text-center,,,no-print">
                                         <h:column>
                                             <f:facet name="header">Clave</f:facet>
                                             #{materia.clave}
@@ -64,18 +65,17 @@
                                             <f:facet name="header">Tipo</f:facet>
                                             #{materia.tipo.name}
                                         </h:column>
-                                        <h:column>
+                                        <h:column headerClass="no-print">
                                             <f:facet name="header">Accion</f:facet>
                                             <h:commandLink action="materia.edit.xhtml" data-toggle="tooltip" data-container="body" data-title="Editar">
                                                 <i class="fa fa-pencil-square-o"></i>
                                                 <f:setPropertyActionListener target="#{materiaController.materia}"
                                                                              value="#{materia}"/>
                                             </h:commandLink>
-                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar">
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar"
+                                                    actionListener="#{materiaController.prepareToRemove(materia)}">
                                                 <i class="fa fa-times"></i>
                                                 <s:conversationPropagation type="begin" />
-                                                <f:setPropertyActionListener target="#{materiaController.materia}"
-                                                                             value="#{materia}"/>
                                                 <f:ajax execute="@this" render=":mod:popup"
                                                         onevent="showModal"/>
                                             </h:commandLink>
@@ -94,10 +94,22 @@
                                                         <h4 class="modal-title">Eliminar Materia</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <div class="alert alert-danger m-b-0">
+                                                        <s:div styleClass="alert alert-danger m-b-0" rendered="#{not materiaController.removable}">
                                                             <h4><i class="fa fa-info-circle"> </i> Alerta</h4>
-                                                            <p>Se eliminaran los cursos asociados a la materia.</p>
-                                                        </div>
+                                                            <p>No se puede eliminar la materia debido a que existen cursos asociados a la misma, los cuales tiene a su vez alumnos inscritos</p>
+                                                        </s:div>
+                                                        <s:div styleClass="alert alert-warning m-b-0" rendered="#{materiaController.removable and materiaController.materia.clave != null}">
+                                                            <h4><i class="fa fa-info-circle"> </i> Advertencia</h4>
+                                                            <p>¿Está seguro que desea eliminar la materia?</p>
+                                                            <f:verbatim rendered="#{materiaController.cursosCount > 0}">
+                                                            <p>Se eliminarán los siguientes cursos asociados a la materia:</p>
+                                                            </f:verbatim>
+                                                            <ul>
+                                                                <ui:repeat value="#{materiaController.materia.cursos}" var="curso">
+                                                                <li>#{curso.grupo} - #{curso.profesor.fullName}</li>
+                                                                </ui:repeat>
+                                                            </ul>
+                                                        </s:div>
                                                         <h:panelGroup rendered="#{materiaController.materia.clave != null}">
                                                             <h5>Datos de la Materia</h5>
                                                             <p class="media media-sm">
@@ -128,7 +140,8 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
-                                                        <h:commandLink action="#{materiaController.remove}" styleClass="btn btn-sm btn-danger">
+                                                        <h:commandLink action="#{materiaController.remove}" styleClass="btn btn-sm btn-danger"
+                                                                rendered="#{materiaController.removable}">
                                                             Eliminar
                                                             <f:ajax execute="@this" render=":loginForm:data-table" onevent="hideModal"/>
                                                         </h:commandLink>

@@ -68,7 +68,7 @@
                 }
                 //]]>
             </script>
-            <ui:repeat value="#{account.calificaciones}" var="calificacion" varStatus="i">
+            <ui:repeat value="#{alumnoController.calificacionesActuales}" var="calificacion" varStatus="i">
                 <ui:repeat value="#{calificacion.curso.horario}" var="hora">
                     <h:outputScript type="text/javascript">
                         var distance = ((#{hora.diaSemana} + 7 - new Date().getDay()) % 7) + 1;

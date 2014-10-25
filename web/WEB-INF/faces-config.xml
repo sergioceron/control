@@ -22,12 +22,12 @@
         </renderer>
         <renderer>
             <component-family>javax.faces.SelectOne</component-family>
-            <renderer-type>javax.faces.Listbox</renderer-type>
+            <renderer-type>javax.faces.Menu</renderer-type>
             <renderer-class>mx.ipn.cidetec.virtual.utils.CustomSelectinputRenderer</renderer-class>
         </renderer>
         <renderer>
             <component-family>javax.faces.SelectMany</component-family>
-            <renderer-type>javax.faces.Listbox</renderer-type>
+            <renderer-type>javax.faces.Menu</renderer-type>
             <renderer-class>mx.ipn.cidetec.virtual.utils.CustomSelectinputRenderer</renderer-class>
         </renderer>
         <renderer>

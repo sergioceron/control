@@ -62,7 +62,7 @@ public class SessionController {
         Object object = query.getSingleResult();
         if( object != null ) {
             User user = (User) object;
-            account = user.getAccount();
+            account = entityManager.merge(user.getAccount());
         } else {
             account = null;
         }

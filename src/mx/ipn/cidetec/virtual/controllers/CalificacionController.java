@@ -22,17 +22,25 @@ import javax.persistence.EntityManager;
 @Scope( ScopeType.CONVERSATION )
 public class CalificacionController {
     private Curso curso;
-    private Calificacion calificacion = new Calificacion();
+    private Calificacion calificacion;
 
 	@In
 	private EntityManager entityManager;
 
-	@End
-	public String save(){
-		entityManager.persist( calificacion );
-		entityManager.flush();
-		return "success";
-	}
+    @In(create = true)
+    private InscripcionController inscripcionController;
+
+    public void alta(){
+        inscripcionController.inscribir();
+        entityManager.flush();
+        entityManager.refresh(curso);
+    }
+
+    public void baja(){
+        curso.getCalificaciones().remove(calificacion);
+        entityManager.persist(curso);
+        entityManager.flush();
+    }
 
     public Curso getCurso() {
         return curso;

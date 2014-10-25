@@ -95,4 +95,11 @@ public class Account {
 	public String getFullName(){
 		return nombre + " " + apellidoP + " " + apellidoM;
 	}
+
+    @Transient
+    public int getType(){
+        if (this instanceof Profesor)
+            return 0;
+        return 1;
+    }
 }

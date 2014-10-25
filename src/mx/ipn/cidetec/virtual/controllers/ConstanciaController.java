@@ -22,12 +22,24 @@ public class ConstanciaController {
     private final String semestres[] = { "", "primer", "segundo", "tercer", "cuarto", "quinto", "sexto", "séptimo", "octavo" };
 
     private Alumno alumno;
+    private String constancia;
+    private List<String> constancias = new ArrayList<String>();
 
     @In
     private SystemController systemController;
 
-    public Alumno getAlumno() {
-        return alumno;
+
+    public void prepare(Alumno alumno) {
+        constancias = new ArrayList<String>();
+        if (alumno.getStatus() == Alumno.Status.INSCRITO || alumno.getStatus() == Alumno.Status.BAJA
+                || alumno.getStatus() == Alumno.Status.EGRESADO){
+            if (alumno.getSemestre() > 1)
+                constancias.add("avance");
+            constancias.add("sip8");
+            constancias.add("sip8bis");
+            //if (alumno.getStatus() == )
+        }
+        this.alumno = alumno;
     }
 
     public List<Calificacion> getCalificaciones(){
@@ -101,8 +113,19 @@ public class ConstanciaController {
         return semestres[alumno.getSemestre()];
     }
 
+    public Alumno getAlumno() {
+        return alumno;
+    }
 
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
+    public List<String> getConstancias() {
+        return constancias;
+    }
+
+    public String getConstancia() {
+        return constancia;
+    }
+
+    public void setConstancia(String constancia) {
+        this.constancia = constancia;
     }
 }

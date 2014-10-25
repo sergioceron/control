@@ -41,12 +41,13 @@
                             <div class="table-responsive">
                                 <h:form id="loginForm">
                                     <h:dataTable value="#{listEntitiesController.planes}" var="plan"
-                                                 id="data-table" styleClass="table table-striped table-bordered">
+                                                 id="data-table" styleClass="table table-striped table-bordered"
+                                                 columnClasses=",text-center,,text-center,no-print">
                                         <h:column>
                                             <f:facet name="header">Plan</f:facet>
                                             #{plan.nombre}
                                         </h:column>
-                                        <h:column>
+                                        <h:column headerClass="text-center">
                                             <f:facet name="header">Creditos</f:facet>
                                             #{plan.creditos}
                                         </h:column>
@@ -54,22 +55,21 @@
                                             <f:facet name="header">Programa</f:facet>
                                             #{plan.programa.nombre}
                                         </h:column>
-                                        <h:column>
+                                        <h:column headerClass="text-center">
                                             <f:facet name="header">Vigente</f:facet>
-                                            #{plan.vigente}
+                                            #{plan.vigente ? 'Si' : 'No'}
                                         </h:column>
-                                        <h:column>
+                                        <h:column headerClass="no-print">
                                             <f:facet name="header">Accion</f:facet>
                                             <h:commandLink action="plan.edit.xhtml" data-toggle="tooltip" data-container="body" data-title="Editar">
                                                 <i class="fa fa-pencil-square-o"></i>
                                                 <f:setPropertyActionListener target="#{planEstudiosController.plan}"
                                                                              value="#{plan}"/>
                                             </h:commandLink>
-                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar">
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar"
+                                                    actionListener="#{planEstudiosController.prepareToRemove(plan)}">
                                                 <i class="fa fa-times"></i>
                                                 <s:conversationPropagation type="begin" />
-                                                <f:setPropertyActionListener target="#{planEstudiosController.plan}"
-                                                                             value="#{plan}"/>
                                                 <f:ajax execute="@this" render=":mod:popup"
                                                         onevent="showModal"/>
                                             </h:commandLink>
@@ -87,10 +87,14 @@
                                                         <h4 class="modal-title">Eliminar Plan de Estudio</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <div class="alert alert-danger m-b-0">
+                                                        <s:div styleClass="alert alert-danger m-b-0" rendered="#{not planEstudiosController.removable}">
                                                             <h4><i class="fa fa-info-circle"> </i> Alerta</h4>
-                                                            <p>Esta operación es irreversible.</p>
-                                                        </div>
+                                                            <p>No se puede eliminar el Plan de Estudios seleccionado debido a que existen alumnos registrados con este plan.</p>
+                                                        </s:div>
+                                                        <s:div styleClass="alert alert-warning m-b-0" rendered="#{planEstudiosController.removable}">
+                                                            <h4><i class="fa fa-info-circle"> </i> Advertencia</h4>
+                                                            <p>¿Está seguro que desea eliminar el siguiente Plan de Estudios?</p>
+                                                        </s:div>
                                                         <h:panelGroup rendered="#{planEstudiosController.plan.id != null}">
                                                             <h5>Datos del Plan</h5>
                                                             <p class="media media-sm">
@@ -105,7 +109,8 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
-                                                        <h:commandLink action="#{planEstudiosController.remove}" styleClass="btn btn-sm btn-danger">
+                                                        <h:commandLink action="#{planEstudiosController.remove}" styleClass="btn btn-sm btn-danger"
+                                                                rendered="#{planEstudiosController.removable}">
                                                             Eliminar
                                                             <f:ajax execute="@this" render=":loginForm:data-table" onevent="hideModal"/>
                                                         </h:commandLink>

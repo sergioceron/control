@@ -21,19 +21,20 @@
                     <!-- begin panel -->
                     <div class="panel panel-inverse">
                         <div class="panel-heading">
-                            <div class="panel-heading-btn">
-                                <a href="/admin/curso.edit.seam" class="btn btn-primary btn-xs">Nuevo Curso</a>
-                            </div>
                             <h4 class="panel-title">Calificaciones</h4>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <h:form id="loginForm">
-                                    <h:dataTable value="#{account.calificaciones}" var="calificacion"
+                                    <h:dataTable value="#{alumnoController.calificacionesActuales}" var="calificacion"
                                                  id="data-table" styleClass="table table-striped table-bordered">
                                         <h:column>
                                             <f:facet name="header">Materia</f:facet>
                                             #{calificacion.curso.materia.nombre}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Grupo</f:facet>
+                                            #{calificacion.curso.grupo}
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">Profesor</f:facet>
@@ -41,7 +42,7 @@
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">Calificacion</f:facet>
-                                            #{calificacionController.calificacion.setted ? calificacion.calificacion : 'No asignada'}
+                                            #{calificacion.setted ? calificacion.calificacion : 'No asignada'}
                                         </h:column>
 
                                     </h:dataTable>

@@ -1,5 +1,6 @@
 package mx.ipn.cidetec.virtual.controllers;
 
+import mx.ipn.cidetec.virtual.entities.Alumno;
 import mx.ipn.cidetec.virtual.entities.Materia;
 import mx.ipn.cidetec.virtual.entities.PlanEstudios;
 import mx.ipn.cidetec.virtual.entities.Programa;
@@ -26,6 +27,8 @@ import java.util.List;
 public class ProgramaController {
 	private Programa programa = new Programa();
 	private List<Materia> materias;
+    private boolean[] usage = {false, false, false};
+    private boolean removable = true;
 
 	@In
 	private EntityManager entityManager;
@@ -36,6 +39,23 @@ public class ProgramaController {
 		entityManager.flush();
 		return "success";
 	}
+
+    public void prepareToRemove(Programa programa){
+        this.programa = programa;
+        Query query = entityManager.createQuery("from Materia m where m.programa = :programa");
+        query.setParameter("programa", programa);
+        usage[0] = query.getResultList().size() > 0;
+
+        query = entityManager.createQuery("from PlanEstudios p where p.programa = :programa");
+        query.setParameter("programa", programa);
+        usage[1] = query.getResultList().size() > 0;
+
+        query = entityManager.createQuery("from Alumno a where a.programa = :programa");
+        query.setParameter("programa", programa);
+        usage[2] = query.getResultList().size() > 0;
+
+        removable = !usage[0] && !usage[1] && !usage[2];
+    }
 
     public void remove(){
         entityManager.remove( programa );
@@ -64,4 +84,12 @@ public class ProgramaController {
 	public void setMaterias( List<Materia> materias ) {
 		this.materias = materias;
 	}
+
+    public boolean[] getUsage() {
+        return usage;
+    }
+
+    public boolean isRemovable() {
+        return removable;
+    }
 }

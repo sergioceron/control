@@ -15,7 +15,6 @@ public class Calificacion {
 	private Long id;
 	private Alumno alumno;
 	private Curso curso;
-    private Periodo periodo;
 	private double calificacion;
 	private Calificacion recurse;
     private boolean setted = false;
@@ -30,7 +29,7 @@ public class Calificacion {
 		this.id = id;
 	}
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.DETACH)
 	public Alumno getAlumno() {
 		return alumno;
 	}
@@ -39,7 +38,7 @@ public class Calificacion {
 		this.alumno = alumno;
 	}
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.DETACH)
 	public Curso getCurso() {
 		return curso;
 	}
@@ -47,16 +46,6 @@ public class Calificacion {
 	public void setCurso( Curso curso ) {
 		this.curso = curso;
 	}
-
-    // TODO: change to mapped by owner class
-    @ManyToOne
-    public Periodo getPeriodo() {
-        return periodo;
-    }
-
-    public void setPeriodo(Periodo periodo) {
-        this.periodo = periodo;
-    }
 
     public double getCalificacion() {
 		return calificacion;
@@ -81,5 +70,19 @@ public class Calificacion {
 
     public void setSetted(boolean setted) {
         this.setted = setted;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Calificacion that = (Calificacion) o;
+
+        if (Double.compare(that.calificacion, calificacion) != 0) return false;
+        if (alumno != null ? !alumno.equals(that.alumno) : that.alumno != null) return false;
+        if (curso != null ? !curso.equals(that.curso) : that.curso != null) return false;
+
+        return true;
     }
 }

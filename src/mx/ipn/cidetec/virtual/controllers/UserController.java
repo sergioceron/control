@@ -1,5 +1,6 @@
 package mx.ipn.cidetec.virtual.controllers;
 
+import mx.ipn.cidetec.virtual.entities.Programa;
 import mx.ipn.cidetec.virtual.entities.Role;
 import mx.ipn.cidetec.virtual.entities.User;
 import org.jboss.seam.ScopeType;
@@ -11,6 +12,7 @@ import org.jboss.seam.security.RunAsOperation;
 import org.jboss.seam.security.management.IdentityManager;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  * Created by Usuario on 16/09/2014.
@@ -20,6 +22,7 @@ import javax.persistence.EntityManager;
 public class UserController {
     private String password = "";
     private User user = new User();
+    private boolean removable = true;
 
     @In
     private IdentityManager identityManager;
@@ -52,6 +55,11 @@ public class UserController {
 
         user = new User();
         return "success";
+    }
+
+    public void prepareToRemove(User user){
+        this.user = user;
+        removable = user.getAccount() == null;
     }
 
     public void remove(){
@@ -90,5 +98,9 @@ public class UserController {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isRemovable() {
+        return removable;
     }
 }

@@ -41,7 +41,8 @@
                             <div class="table-responsive">
                                 <h:form id="loginForm">
                                     <h:dataTable value="#{listEntitiesController.roles}" var="role"
-                                                 id="data-table" styleClass="table table-striped table-bordered">
+                                                 id="data-table" styleClass="table table-striped table-bordered"
+                                                 columnClasses=",,no-print">
                                         <h:column>
                                             <f:facet name="header">Nombre</f:facet>
                                             #{role.rolename}
@@ -50,7 +51,7 @@
                                             <f:facet name="header">Descripcion</f:facet>
                                             #{role.description}
                                         </h:column>
-                                        <h:column>
+                                        <h:column headerClass="no-print">
                                             <f:facet name="header">Accion</f:facet>
                                             <h:commandLink action="role.edit.xhtml" data-toggle="tooltip" data-container="body" data-title="Editar">
                                                 <i class="fa fa-pencil-square-o"></i>

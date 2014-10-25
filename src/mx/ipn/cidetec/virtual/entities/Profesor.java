@@ -67,7 +67,7 @@ public class Profesor extends Account {
 		this.tipo = tipo;
 	}
 
-	@OneToMany(mappedBy = "profesor")
+	@OneToMany(mappedBy = "profesor", cascade = CascadeType.REMOVE, orphanRemoval = true)
     public List<Curso> getCursos() {
         return cursos;
     }

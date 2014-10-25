@@ -41,7 +41,8 @@
                             <div class="table-responsive">
                                 <h:form id="loginForm">
                                     <h:dataTable value="#{listEntitiesController.alumnos}" var="alumno"
-                                                 id="data-table" styleClass="table table-striped table-bordered">
+                                                 id="data-table" styleClass="table table-striped table-bordered"
+                                                 columnClasses=",,,,,no-print">
                                         <h:column>
                                             <f:facet name="header">Matricula</f:facet>
                                             #{alumno.matricula}
@@ -62,25 +63,24 @@
                                             <f:facet name="header">Status</f:facet>
                                             #{alumno.status.name}
                                         </h:column>
-                                        <h:column>
+                                        <h:column headerClass="no-print">
                                             <f:facet name="header">Accion</f:facet>
-                                            <h:commandLink action="/admin/constancia.xhtml" data-toggle="tooltip" data-container="body" data-title="Constancias"
-                                                           >
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Constancias"
+                                                    actionListener="#{constanciaController.prepare(alumno)}">
                                                 <i class="fa fa-book"></i>
                                                 <s:conversationPropagation type="begin" />
-                                                <f:setPropertyActionListener target="#{constanciaController.alumno}"
-                                                                             value="#{alumno}"/>
+                                                <f:ajax execute="@this" render=":const:popup_constancias"
+                                                        onevent="showModal_constancia"/>
                                             </h:commandLink>
                                             <h:commandLink action="alumno.edit.xhtml" data-toggle="tooltip" data-container="body" data-title="Editar">
                                                 <i class="fa fa-pencil-square-o"></i>
                                                 <f:setPropertyActionListener target="#{alumnoController.alumno}"
                                                                              value="#{alumno}"/>
                                             </h:commandLink>
-                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar">
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar"
+                                                    actionListener="#{alumnoController.prepareToRemove(alumno)}">
                                                 <i class="fa fa-times"></i>
                                                 <s:conversationPropagation type="begin" />
-                                                <f:setPropertyActionListener target="#{alumnoController.alumno}"
-                                                                             value="#{alumno}"/>
                                                 <f:ajax execute="@this" render=":mod:popup"
                                                         onevent="showModal"/>
                                             </h:commandLink>
@@ -100,10 +100,15 @@
                                                         <h4 class="modal-title">Eliminar Alumno</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <div class="alert alert-danger m-b-0">
+                                                        <s:div styleClass="alert alert-danger m-b-0" rendered="#{not alumnoController.removable}">
                                                             <h4><i class="fa fa-info-circle"> </i> Alerta</h4>
-                                                            <p>Si continua, se eliminaran todas las calificaciones y evaluaciones del alumno.</p>
-                                                        </div>
+                                                            <p>No se puede eliminar el alumno seleccionado debido a que tiene materias inscritas.</p>
+                                                            <p>Debe dar de baja las materias que tiene inscritas al alumno.</p>
+                                                        </s:div>
+                                                        <s:div styleClass="alert alert-warning m-b-0" rendered="#{alumnoController.removable}">
+                                                            <h4><i class="fa fa-info-circle"> </i> Advertencia</h4>
+                                                            <p>Se eliminarán los usuarios asociados al alumno, asi como, las evaluaciónes que haya realizado</p>
+                                                        </s:div>
                                                         <h:panelGroup rendered="#{alumnoController.alumno.id != null}">
                                                             <h5>Datos del Alumno</h5>
                                                             <p class="media media-sm">
@@ -130,10 +135,37 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
-                                                        <h:commandLink action="#{alumnoController.remove}" styleClass="btn btn-sm btn-danger">
+                                                        <h:commandLink action="#{alumnoController.remove}" styleClass="btn btn-sm btn-danger" rendered="#{alumnoController.removable}">
                                                             Eliminar
                                                             <f:ajax execute="@this" render=":loginForm:data-table" onevent="hideModal"/>
                                                         </h:commandLink>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                </h:form>
+
+                                <h:form id="const">
+                                    <h:panelGroup id="popup_constancias">
+                                        <div class="modal fade" id="modal_constancias">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title">Seleccione la constancia</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h:panelGroup rendered="#{constanciaController.alumno.id != null}">
+                                                            <ui:repeat value="#{constanciaController.constancias}" var="constancia">
+                                                                <h:commandLink action="/admin/constancia.xhtml" value="#{constancia}" styleClass="btn btn-white btn-block"
+                                                                        style="text-transform: uppercase">
+                                                                    <s:conversationPropagation type="join" />
+                                                                    <f:setPropertyActionListener target="#{constanciaController.constancia}"
+                                                                                                 value="#{constancia}"/>
+                                                                </h:commandLink>
+                                                            </ui:repeat>
+                                                        </h:panelGroup>
                                                     </div>
                                                 </div>
                                             </div>
@@ -164,6 +196,11 @@
                 function showModal(data) {
                     if (data.status === 'success') {
                         $('#modal').modal('show');
+                    }
+                }
+                function showModal_constancia(data) {
+                    if (data.status === 'success') {
+                        $('#modal_constancias').modal('show');
                     }
                 }
                 function hideModal(data) {

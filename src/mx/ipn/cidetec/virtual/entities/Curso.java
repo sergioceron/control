@@ -18,6 +18,9 @@ public class Curso {
 	private List<Hora> horario;
     private List<Calificacion> calificaciones;
     private boolean enabled = true;
+    private String grupo;
+    private String acta;
+    private Periodo periodo;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -80,7 +83,7 @@ public class Curso {
 		this.horario = horario;
 	}
 
-    @OneToMany(mappedBy = "curso", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Calificacion> getCalificaciones() {
         return calificaciones;
     }
@@ -95,6 +98,32 @@ public class Curso {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public String getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(String grupo) {
+        this.grupo = grupo;
+    }
+
+    // TODO: change to mapped by owner class
+    @ManyToOne
+    public Periodo getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(Periodo periodo) {
+        this.periodo = periodo;
+    }
+
+    public String getActa() {
+        return acta;
+    }
+
+    public void setActa(String acta) {
+        this.acta = acta;
     }
 
     @Override

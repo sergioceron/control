@@ -42,12 +42,13 @@
 
                                 <h:form id="loginForm" >
                                     <h:dataTable value="#{listEntitiesController.programas}" var="programa"
-                                                 id="data-table" styleClass="table table-striped table-bordered">
+                                                 id="data-table" styleClass="table table-striped table-bordered"
+                                                 columnClasses=",text-center,,no-print">
                                         <h:column>
                                             <f:facet name="header">Nombre</f:facet>
                                             #{programa.nombre}
                                         </h:column>
-                                        <h:column>
+                                        <h:column headerClass="text-center">
                                             <f:facet name="header">Semestres</f:facet>
                                             #{programa.semestres}
                                         </h:column>
@@ -59,7 +60,7 @@
                                                 </ui:repeat>
                                             </h:panelGroup>
                                         </h:column>
-                                        <h:column>
+                                        <h:column headerClass="no-print">
                                             <f:facet name="header">Accion</f:facet>
                                             <h:commandLink data-toggle="tooltip" data-container="body" data-title="Materias"
                                                            actionListener="#{programaController.showMaterias(programa)}">
@@ -72,11 +73,10 @@
                                                 <f:setPropertyActionListener target="#{programaController.programa}"
                                                                              value="#{programa}"/>
                                             </h:commandLink>
-                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar">
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar"
+                                                    actionListener="#{programaController.prepareToRemove(programa)}">
                                                 <i class="fa fa-times"></i>
                                                 <s:conversationPropagation type="begin" />
-                                                <f:setPropertyActionListener target="#{programaController.programa}"
-                                                                             value="#{programa}"/>
                                                 <f:ajax execute="@this" render=":mod:popup"
                                                         onevent="showModal2"/>
                                             </h:commandLink>
@@ -95,10 +95,19 @@
                                                         <h4 class="modal-title">Eliminar Plan de Estudio</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <div class="alert alert-danger m-b-0">
+                                                        <s:div styleClass="alert alert-danger m-b-0" rendered="#{not programaController.removable}">
                                                             <h4><i class="fa fa-info-circle"> </i> Alerta</h4>
-                                                            <p>Esta operación es irreversible.</p>
-                                                        </div>
+                                                            <p>No se puede eliminar el programa seleccionado debido la(s) siguiente(s) razon(es):</p>
+                                                            <ul>
+                                                                <f:verbatim rendered="#{programaController.usage[0]}"><li>Una o mas materias pertenecen al programa</li></f:verbatim>
+                                                                <f:verbatim rendered="#{programaController.usage[2]}"><li>Esta asignado a uno o mas alumnos</li></f:verbatim>
+                                                                <f:verbatim rendered="#{programaController.usage[1]}"><li>Existen planes de estudios para este programa</li></f:verbatim>
+                                                            </ul>
+                                                        </s:div>
+                                                        <s:div styleClass="alert alert-warning m-b-0" rendered="#{programaController.removable}">
+                                                            <h4><i class="fa fa-info-circle"> </i> Advertencia</h4>
+                                                            <p>¿Está seguro que desea eliminar el siguiente programa?</p>
+                                                        </s:div>
                                                         <h:panelGroup rendered="#{programaController.programa.id != null}">
                                                             <h5>Datos del Programa</h5>
                                                             <p class="media media-sm">
@@ -109,15 +118,11 @@
                                                                 <label class="col-md-4 col-sm-4"><b>Semestres</b></label>
                                                                 <span class="col-md-8 col-sm-8">#{programaController.programa.semestres} </span>
                                                             </p>
-                                                            <p class="media media-sm">
-                                                                <label class="col-md-4 col-sm-4"><b>Materias</b></label>
-                                                                <span class="col-md-8 col-sm-8">#{programaController.programa.materias.size()} </span>
-                                                            </p>
                                                         </h:panelGroup>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
-                                                        <h:commandLink action="#{programaController.remove}" styleClass="btn btn-sm btn-danger">
+                                                        <h:commandLink action="#{programaController.remove}" styleClass="btn btn-sm btn-danger" rendered="#{programaController.removable}">
                                                             Eliminar
                                                             <f:ajax execute="@this" render=":loginForm:data-table" onevent="hideModal"/>
                                                         </h:commandLink>

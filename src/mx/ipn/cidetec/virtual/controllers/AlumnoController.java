@@ -3,13 +3,13 @@ package mx.ipn.cidetec.virtual.controllers;
 import mx.ipn.cidetec.virtual.entities.*;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.*;
-import org.jboss.seam.security.Identity;
 import org.jboss.seam.security.RunAsOperation;
 import org.jboss.seam.security.management.IdentityManager;
 import org.jboss.seam.security.management.JpaIdentityStore;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,9 +27,13 @@ public class AlumnoController {
 
     private boolean register = false;
     private boolean persisting = false;
+    private boolean removable = true;
 
     @In
     private IdentityManager identityManager;
+
+    @In
+    private SystemController systemController;
 
     @In
     private EntityManager entityManager;
@@ -50,15 +54,19 @@ public class AlumnoController {
             User u = (User) o;
             entityManager.remove(u);
         }
-        for (Calificacion calificacion : alumno.getCalificaciones()) {
-            entityManager.remove(calificacion);
-        }
         for (EvaluacionAlumno evaluacionAlumno : alumno.getEvaluaciones()) {
             entityManager.remove(evaluacionAlumno);
         }
         entityManager.remove( alumno );
         entityManager.flush();
         alumno = null;
+    }
+
+    public void prepareToRemove(Alumno alumno){
+        this.alumno = alumno;
+        Query query = entityManager.createQuery("from Calificacion c where c.alumno=:alumno");
+        query.setParameter("alumno", alumno);
+        removable = query.getResultList().size() == 0;
     }
 
     @End
@@ -108,6 +116,16 @@ public class AlumnoController {
         }
     }
 
+    public List<Calificacion> getCalificacionesActuales(){
+        List<Calificacion> calificaciones = new ArrayList<Calificacion>();
+        for (Calificacion calificacion : alumno.getCalificaciones()) {
+            if (calificacion.getCurso().getPeriodo().equals(systemController.getPeriodoActual())){
+                calificaciones.add(calificacion);
+            }
+        }
+        return calificaciones;
+    }
+
     public Alumno getAlumno() {
         return alumno;
     }
@@ -134,5 +152,9 @@ public class AlumnoController {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean isRemovable() {
+        return removable;
     }
 }

@@ -16,6 +16,7 @@
             <link href="/assets/plugins/parsley/src/parsley.css" rel="stylesheet"/>
             <link href="/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" />
             <link href="/assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+            <link href="/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
         </ui:define>
 
         <ui:define name="content">
@@ -48,12 +49,15 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-4 col-sm-4">Profesor :</label>
                                     <div class="col-md-6 col-sm-6">
-                                        <h:selectOneMenu value="#{cursoController.curso.profesor}" styleClass="form-control"
-                                                         data-parsley-required="true">
-                                            <f:selectItems var="profesor" value="#{listEntitiesController.profesores}"
-                                                           itemLabel="#{profesor.fullName}" itemValue="#{profesor}"/>
-                                            <seam:convertEntity/>
-                                        </h:selectOneMenu>
+                                        <div id="profesor_wrapper">
+                                            <h:selectOneMenu value="#{cursoController.curso.profesor}" styleClass="form-control selectpicker" data-parsley-required="true"
+                                                             data-size="10" data-live-search="true" data-style="btn-white btn-sm" data-parsley-class-handler="#profesor_wrapper">
+                                                <f:selectItem itemLabel="(Seleccione un profesor)" itemValue="" />
+                                                <f:selectItems var="profesor" value="#{listEntitiesController.profesores}"
+                                                               itemLabel="#{profesor.fullName}" itemValue="#{profesor}"/>
+                                                <seam:convertEntity/>
+                                            </h:selectOneMenu>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -72,6 +76,12 @@
                                             <f:selectItem itemLabel="Vespertino" itemValue="2"/>
                                             <f:selectItem itemLabel="Completo" itemValue="3"/>
                                         </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Grupo :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:inputText value="#{cursoController.curso.grupo}" styleClass="form-control" placeholder="Grupo Asignado"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -203,6 +213,7 @@
             <script src="/assets/js/form-slider-switcher.demo.min.js" type="text/javascript"></script>
             <script src="/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
             <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script src="/assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
             <script type="text/javascript">
                 window.ParsleyValidator.setLocale('es');
                 function hideModal(data) {
@@ -218,6 +229,11 @@
                 });
                 $(document).ready(function() {
                     FormSliderSwitcher.init();
+                });
+
+                $(document).ready(function() {
+                    $(".selectpicker").selectpicker("render");
+                    $(".bootstrap-select-searchbox input").attr('name', 'searchbox');
                 });
             </script>
         </ui:define>

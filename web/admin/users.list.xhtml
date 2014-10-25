@@ -41,7 +41,8 @@
                             <div class="table-responsive">
                                 <h:form id="loginForm">
                                     <h:dataTable value="#{listEntitiesController.users}" var="user"
-                                                 id="data-table" styleClass="table table-striped table-bordered">
+                                                 id="data-table" styleClass="table table-striped table-bordered"
+                                                 columnClasses=",,,text-center,no-print">
                                         <h:column>
                                             <f:facet name="header">Cuenta</f:facet>
                                             #{user.account eq null ? '-' : user.account.fullName }
@@ -56,22 +57,21 @@
                                                 <h:outputText value="#{role.rolename}"/><br/>
                                             </ui:repeat>
                                         </h:column>
-                                        <h:column>
-                                            <f:facet name="header">Habilitado</f:facet>
+                                        <h:column headerClass="text-center">
+                                            <f:facet name="header">Status</f:facet>
                                             <span class="label label-#{user.enabled ? 'success' : 'danger'}">#{user.enabled ? 'Habilitado' : 'Deshabilitado'}</span>
                                         </h:column>
-                                        <h:column>
+                                        <h:column headerClass="no-print">
                                             <f:facet name="header">Accion</f:facet>
                                             <h:commandLink action="user.edit.xhtml" data-toggle="tooltip" data-container="body" data-title="Editar">
                                                 <i class="fa fa-pencil-square-o"></i>
                                                 <f:setPropertyActionListener target="#{userController.user}"
                                                                              value="#{user}"/>
                                             </h:commandLink>
-                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar">
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar"
+                                                    actionListener="#{userController.prepareToRemove(user)}">
                                                 <i class="fa fa-times"></i>
                                                 <s:conversationPropagation type="begin" />
-                                                <f:setPropertyActionListener target="#{userController.user}"
-                                                                             value="#{user}"/>
                                                 <f:ajax execute="@this" render=":mod:popup"
                                                         onevent="showModal"/>
                                             </h:commandLink>
@@ -90,10 +90,15 @@
                                                         <h4 class="modal-title">Eliminar usuario</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <div class="alert alert-danger m-b-0">
+                                                        <s:div styleClass="alert alert-danger m-b-0" rendered="#{not userController.removable}">
                                                             <h4><i class="fa fa-info-circle"> </i> Alerta</h4>
-                                                            <p>Esta operación es irreversible.</p>
-                                                        </div>
+                                                            <p>No se puede eliminar el usuario seleccionado debido a que esta asociado a una cuenta de <b>#{userController.user.account.type == 0 ? 'Profesor' : 'Alumno'}</b>.</p>
+                                                            <p>Clave/Matricula: #{userController.user.account.type == 0 ? userController.user.account.clave : userController.user.account.matricula}</p>
+                                                        </s:div>
+                                                        <s:div styleClass="alert alert-warning m-b-0" rendered="#{userController.removable}">
+                                                            <h4><i class="fa fa-info-circle"> </i> Advertencia</h4>
+                                                            <p>¿Está seguro que desea eliminar el usuario seleccionado?</p>
+                                                        </s:div>
                                                         <h:panelGroup rendered="#{userController.user.username != null}">
                                                             <h5>Datos del usuario</h5>
                                                             <p class="media media-sm">
@@ -120,7 +125,8 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
-                                                        <h:commandLink action="#{userController.remove}" styleClass="btn btn-sm btn-danger">
+                                                        <h:commandLink action="#{userController.remove}" styleClass="btn btn-sm btn-danger"
+                                                                rendered="#{userController.removable}">
                                                             Eliminar
                                                             <f:ajax execute="@this" render=":loginForm:data-table" onevent="hideModal"/>
                                                         </h:commandLink>

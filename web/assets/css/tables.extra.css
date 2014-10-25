@@ -12,6 +12,9 @@
 }
 
 @media print {
+    .no-print{
+        display: none;
+    }
     .page-header-fixed,
     .content,
     .panel-body{

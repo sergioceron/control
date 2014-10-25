@@ -58,9 +58,11 @@
                                                     </div>
                                                     <div class="result-price" style="padding-top: 0px">
                                                         #{curso.materia.creditos} <small>CREDITOS</small>
-                                                        <h:commandLink action="#{inscripcionController.inscribir(curso)}"
+                                                        <h:commandLink action="#{inscripcionController.inscribir}"
                                                                        styleClass="btn #{inscripcionController.hasCurso(curso) ? 'btn-danger' : 'btn-inverse'} btn-block"
                                                                        value="#{inscripcionController.hasCurso(curso) ? 'Dar de baja' : 'Inscribirme'}">
+                                                            <f:setPropertyActionListener target="#{inscripcionController.curso}"
+                                                                                         value="#{curso}"/>
                                                             <f:ajax execute="@this" render="@this" />
                                                         </h:commandLink>
                                                     </div>

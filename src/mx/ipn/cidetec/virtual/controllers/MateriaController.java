@@ -1,8 +1,8 @@
 package mx.ipn.cidetec.virtual.controllers;
 
-import mx.ipn.cidetec.virtual.entities.Curso;
 import mx.ipn.cidetec.virtual.entities.Materia;
 import mx.ipn.cidetec.virtual.entities.MateriaCategoria;
+import mx.ipn.cidetec.virtual.entities.Programa;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.End;
 import org.jboss.seam.annotations.In;
@@ -24,6 +24,7 @@ import java.util.List;
 @Scope( ScopeType.CONVERSATION )
 public class MateriaController {
 	private Materia materia = new Materia();
+    private boolean removable = true;
 
 	@In
 	private EntityManager entityManager;
@@ -39,6 +40,14 @@ public class MateriaController {
         Query query = entityManager.createQuery( "from Curso c where c.materia=:materia" );
         query.setParameter("materia", materia);
         return query.getResultList().size();
+    }
+
+    public void prepareToRemove(Materia materia){
+        this.materia = materia;
+        Query query = entityManager.createQuery("from Curso c where c.materia= :materia and c.calificaciones.size > 0");
+        query.setParameter("materia", materia);
+
+        removable = query.getResultList().size() == 0;
     }
 
     public void remove(){
@@ -64,4 +73,8 @@ public class MateriaController {
 		Query query = entityManager.createQuery( "from MateriaCategoria mc" );
 		return query.getResultList();
 	}
+
+    public boolean isRemovable() {
+        return removable;
+    }
 }

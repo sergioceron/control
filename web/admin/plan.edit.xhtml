@@ -64,6 +64,17 @@
                                         <h:selectBooleanCheckbox value="#{planEstudiosController.plan.vigente}" data-render="switchery" data-theme="default" data-switchery="true"/>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Materias :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:selectManyListbox value="#{planEstudiosController.plan.materias}" var="materia"
+                                                             id="materias" styleClass="form-control" collectionType="java.util.ArrayList"
+                                                             data-parsley-required="true" size="10">
+                                            <f:selectItems value="#{listEntitiesController.materias}" var="materia" itemValue="#{materia}" itemLabel="#{materia.clave} #{materia.nombre}"/>
+                                            <seam:convertEntity/>
+                                        </h:selectManyListbox>
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <label class="control-label col-md-4 col-sm-4"></label>

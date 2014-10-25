@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:s="http://jboss.org/schema/seam/taglib"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <ui:define name="title">Calificaciones</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/DataTables-1.9.4/css/data-table.css" rel="stylesheet"/>
+            <link href="/assets/plugins/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
+            <link href="/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+
+        </ui:define>
+
+        <ui:define name="content">
+            <div class="row">
+                <!-- begin col-12 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <h:form id="btnForm">
+                                    <h:commandLink styleClass="btn btn-primary btn-xs">
+                                        Inscribir Alumno
+                                        <f:setPropertyActionListener target="#{inscripcionController.curso}"
+                                                                     value="#{calificacionController.curso}"/>
+                                        <f:ajax execute="@this" render=":mod:popup_inscripcion"
+                                                onevent="showModal_inscripcion"/>
+                                    </h:commandLink>
+                                </h:form>
+                            </div>
+                            <h4 class="panel-title">#{calificacionController.curso.materia.nombre}</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6" style="min-height: 25px">Profesor:</div>
+                                <div class="col-md-6" style="min-height: 25px">#{calificacionController.curso.profesor.fullName}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6" style="min-height: 25px">Turno:</div>
+                                <div class="col-md-6" style="min-height: 25px">#{calificacionController.curso.turno}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6" style="min-height: 25px">Grupo:</div>
+                                <div class="col-md-6" style="min-height: 25px">#{calificacionController.curso.grupo}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6" style="min-height: 25px">Semestre:</div>
+                                <div class="col-md-6" style="min-height: 25px">#{calificacionController.curso.semestre}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6" style="min-height: 25px">Folio del Acta:</div>
+                                <div class="col-md-6" style="min-height: 25px">
+                                    <a href="#" data-type="text" data-pk="#{calificacionController.curso.id}"
+                                       data-url="/seam/resource/rest/calificacion/acta" data-title="Folio del Acta"
+                                       class="editable-click editable_acta" data-original-title="" title="" style="background-color: rgba(0, 0, 0, 0);">
+                                        #{calificacionController.curso.acta}
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6"> </div>
+                                <div class="col-md-6"> </div>
+                            </div>
+                            <div class="table-responsive">
+                                <h:form id="loginForm" prependId="false">
+                                    <h:dataTable value="#{calificacionController.curso.calificaciones}" var="calificacion"
+                                                 id="data-table" styleClass="table table-striped table-bordered">
+                                        <h:column>
+                                            <f:facet name="header">Boleta</f:facet>
+                                            #{calificacion.alumno.matricula}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Alumno</f:facet>
+                                            #{calificacion.alumno.fullName}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Calificación</f:facet>
+                                            <a href="#" data-type="text" data-pk="#{calificacion.id}"
+                                               data-url="/seam/resource/rest/calificacion/set" data-title="Introduzca la calificación"
+                                               class="editable editable-click" data-original-title="" title="" style="background-color: rgba(0, 0, 0, 0);">
+                                                #{calificacion.calificacion}
+                                            </a>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Status</f:facet>
+                                            <a href="#" data-type="select" data-pk="#{calificacion.id}"
+                                               data-url="/seam/resource/rest/calificacion/enable" data-title="Permitir Editar" data-value=""
+                                               class="editable-click editable_boolean" data-original-title="" title="" style="background-color: rgba(0, 0, 0, 0);">
+                                                #{calificacion.setted ? 'Establecida' : 'No establecida'}
+                                            </a>
+                                        </h:column>
+                                        <h:column headerClass="no-print">
+                                            <f:facet name="header">Accion</f:facet>
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Dar de baja">
+                                                <i class="fa fa-times"></i>
+                                                <f:setPropertyActionListener target="#{calificacionController.calificacion}"
+                                                                             value="#{calificacion}"/>
+                                                <f:ajax execute="@this" render=":mod:popup"
+                                                        onevent="showModal"/>
+                                            </h:commandLink>
+                                        </h:column>
+
+                                    </h:dataTable>
+                                </h:form>
+
+                                <h:form id="mod">
+                                    <h:panelGroup id="popup">
+                                        <div class="modal fade" id="modal">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title">Baja de alumno</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="alert alert-warning m-b-0">
+                                                            <h4><i class="fa fa-info-circle"> </i> Alerta</h4>
+                                                            <p>Si continua, se dará de baja el alumno y se eliminaran las calificaciones asociadas.</p>
+                                                        </div>
+                                                        <h:panelGroup rendered="#{calificacionController.calificacion.id!= null}">
+                                                            <h5>Datos del Alumno</h5>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Boleta:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{calificacionController.calificacion.alumno.matricula} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Nombre:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{calificacionController.calificacion.alumno.fullName} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Curso:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{calificacionController.calificacion.curso.materia.nombre} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Profesor:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{calificacionController.calificacion.curso.profesor.fullName} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Calificacion:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{calificacionController.calificacion.setted ? calificacionController.calificacion.calificacion : 'Sin asignar'} </span>
+                                                            </p>
+                                                        </h:panelGroup>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                                                        <h:commandLink action="#{calificacionController.baja}" styleClass="btn btn-sm btn-danger">
+                                                            Dar de baja
+                                                            <f:ajax execute="@this" render=":loginForm:data-table" onevent="hideModal"/>
+                                                        </h:commandLink>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+
+                                    <h:panelGroup id="popup_inscripcion">
+                                        <div class="modal fade" id="modal_inscripcion">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title">Inscribir Alumno</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="alert alert-info m-b-0">
+                                                            <h4><i class="fa fa-info-circle"> </i> Información</h4>
+                                                            <p>Solo se podrán inscribir alumnos que se encuentren en el Status INSCRITO.</p>
+                                                        </div>
+                                                        <h:panelGroup rendered="#{inscripcionController.curso.id!= null}">
+                                                            <h5>Datos del Alumno</h5>
+                                                            <fieldset>
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-4 col-sm-4">Alumno :</label>
+                                                                    <div class="col-md-6 col-sm-6">
+                                                                        <h:selectOneMenu value="#{inscripcionController.alumno}" styleClass="form-control selectpicker"
+                                                                                         data-size="10" data-live-search="true" data-style="btn-white btn-sm" id="alumno">
+                                                                            <s:selectItems value="#{inscripcionController.alumnosInscritos}" var="alumno" label="#{alumno.matricula} - #{alumno.fullName}" noSelectionLabel="(Alumno a inscribir)"/>
+                                                                            <s:convertEntity />
+                                                                        </h:selectOneMenu>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </h:panelGroup>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                                                        <h:commandLink action="#{calificacionController.alta}" styleClass="btn btn-sm btn-danger">
+                                                            Inscribir
+                                                            <f:ajax execute="alumno @this" render=":loginForm:data-table" onevent="hideModal_inscripcion"/>
+                                                        </h:commandLink>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                </h:form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+            </div>
+
+        </ui:define>
+
+        <ui:define name="scripts">
+            <script src="/assets/plugins/DataTables-1.9.4/js/jquery.dataTables.js" type="text/javascript"></script>
+            <script src="/assets/plugins/DataTables-1.9.4/js/data-table.js" type="text/javascript"></script>
+            <script src="/assets/plugins/bootstrap3-editable/js/bootstrap-editable.min.js" type="text/javascript"></script>
+            <script src="/assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                //<![CDATA[
+                $(".editable").editable({
+                    success: function(response, newValue){
+                        $(this).editable("disable");
+                    },
+                    validate: function(value) {
+                        if(!(!isNaN(value) && value >= 0 && value <= 10)) {
+                            return 'La calificación debe ser un número entrre 0 y 10';
+                        }
+                    }
+                });
+                $(".editable_boolean").editable({
+                    source: [{value: "1", text: "Establecida"}, {value: "2", text: "No establecida"}]
+                });
+                $(".editable_acta").editable();
+                //]]>
+            </script>
+            <script type="text/javascript">
+                function showModal(data) {
+                    if (data.status === 'success') {
+                        $('#modal').modal('show');
+                    }
+                }
+                function hideModal(data) {
+                    if (data.status === 'success') {
+                        $('#modal').modal('hide');
+                    }
+                }
+                function showModal_inscripcion(data) {
+                    if (data.status === 'success') {
+                        $('#modal_inscripcion').modal('show');
+                        $(".selectpicker").selectpicker("render");
+                        $(".bootstrap-select-searchbox input").attr('name', 'searchbox');
+                    }
+                }
+                function hideModal_inscripcion(data) {
+                    if (data.status === 'success') {
+                        $('#modal_inscripcion').modal('hide');
+                    }
+                }
+            </script>
+        </ui:define>
+    </ui:composition>
+
+</h:body>
+
+</html>

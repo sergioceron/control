@@ -19,6 +19,8 @@
             <link href="/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
             <link href="/assets/plugins/bootstrap-wizard/css/bwizard.min.css" rel="stylesheet" />
             <link href="/assets/plugins/password-indicator/css/password-indicator.css" rel="stylesheet" />
+            <link href="/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+
         </ui:define>
 
         <ui:define name="content">
@@ -43,7 +45,7 @@
                                         </li>
                                         <li>
                                             Direccion
-                                            <small>Información de su residencia donde vive.</small>
+                                            <small>Información de domicilio del estudiante.</small>
                                         </li>
                                         <li>
                                             Académicos
@@ -118,37 +120,44 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4 col-sm-4">C.P.:</label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <h:inputText value="#{alumnoController.alumno.direccion.cp}" styleClass="form-control" placeholder="Código Postal"
-                                                                     data-parsley-required="true" data-parsley-type="digits" data-parsley-length="[5, 5]" data-parsley-group="wizard-step-2" >
-                                                            <f:ajax event="blur" render="cols" execute="@this" listener="#{alumnoController.calcularDireccion()}" />
-                                                        </h:inputText>
+                                                        <div class="input-group">
+                                                            <h:inputText value="#{alumnoController.alumno.direccion.cp}" styleClass="form-control" placeholder="Código Postal"
+                                                                         data-parsley-type="digits" data-parsley-length="[5, 5]" data-parsley-group="wizard-step-2" id="cp">
+
+                                                            </h:inputText>
+                                                            <div class="input-group-btn">
+                                                                <h:commandLink styleClass="btn btn-success" value="Buscar ubicación">
+                                                                    <f:ajax event="click" render="cols" execute="cp" listener="#{alumnoController.calcularDireccion()}" />
+                                                                </h:commandLink>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <h:panelGroup id="cols">
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4 col-sm-4">Estado :</label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <h:selectOneMenu value="#{alumnoController.alumno.direccion.estado}" styleClass="form-control"
-                                                                         data-parsley-required="true" data-parsley-group="wizard-step-2">
-                                                            <f:selectItems value="#{listEntitiesController.estados}" var="estado" itemLabel="#{estado.estado}" itemValue="#{estado.estado}"/>
+                                                        <h:selectOneMenu value="#{alumnoController.alumno.direccion.estado}" styleClass="form-control selectpicker" data-parsley-group="wizard-step-2"
+                                                                         data-size="10" data-style="btn-white btn-sm">
+                                                            <seam:selectItems value="#{listEntitiesController.estados}" var="estado" label="#{estado.estado}" itemValue="#{estado.estado}" noSelectionLabel="(Seleccione un estado)"/>
                                                         </h:selectOneMenu>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4 col-sm-4">Municipio :</label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <h:selectOneMenu value="#{alumnoController.alumno.direccion.municipio}" styleClass="form-control"
-                                                                         data-parsley-required="true" data-parsley-group="wizard-step-2">
-                                                            <f:selectItems value="#{listEntitiesController.municipios}" var="municipio" itemLabel="#{municipio.municipio}" itemValue="#{municipio.municipio}"/>
+                                                        <h:selectOneMenu value="#{alumnoController.alumno.direccion.municipio}" styleClass="form-control selectpicker" data-parsley-group="wizard-step-2"
+                                                                         data-size="10" data-live-search="true" data-style="btn-white btn-sm">
+                                                            <seam:selectItems value="#{listEntitiesController.municipios}" var="municipio" label="#{municipio.municipio}" itemValue="#{municipio.municipio}" noSelectionLabel="(Seleccione un municipio)"/>
                                                         </h:selectOneMenu>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4 col-sm-4">Colonia :</label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <h:selectOneMenu value="#{alumnoController.alumno.direccion.colonia}" styleClass="form-control"
-                                                                         data-parsley-required="true" data-parsley-group="wizard-step-2">
-                                                            <f:selectItems value="#{alumnoController.colonias != null ? alumnoController.colonias : listEntitiesController.colonias}" var="colonia" itemLabel="#{colonia.nombre}" itemValue="#{colonia.nombre}"/>
+                                                        <h:selectOneMenu value="#{alumnoController.alumno.direccion.colonia}" styleClass="form-control selectpicker" data-parsley-group="wizard-step-2"
+                                                                         data-size="10" data-live-search="true" data-style="btn-white btn-sm">
+                                                            <seam:selectItems value="#{alumnoController.colonias}" var="colonia" label="#{colonia.nombre}" itemValue="#{colonia.nombre}" noSelectionLabel="(Seleccione una colonia)"/>
                                                         </h:selectOneMenu>
                                                     </div>
                                                 </div>
@@ -156,21 +165,21 @@
                                                     <label class="control-label col-md-4 col-sm-4">Calle :</label>
                                                     <div class="col-md-6 col-sm-6">
                                                         <h:inputText value="#{alumnoController.alumno.direccion.calle}" styleClass="form-control" placeholder="Calle"
-                                                                     data-parsley-required="true" data-parsley-minlength="2" data-parsley-group="wizard-step-2" />
+                                                                     data-parsley-minlength="2" data-parsley-group="wizard-step-2" />
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4 col-sm-4">Num. Ext. :</label>
                                                     <div class="col-md-6 col-sm-6">
                                                         <h:inputText value="#{alumnoController.alumno.direccion.numExt}" styleClass="form-control" placeholder="Número Exterior"
-                                                                     data-parsley-required="true" data-parsley-type="alphanum" data-parsley-minlength="1" data-parsley-group="wizard-step-2" />
+                                                                     data-parsley-group="wizard-step-2" />
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4 col-sm-4">Num. Int. :</label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <h:inputText value="#{alumnoController.alumno.direccion.numInt}" styleClass="form-control" placeholder="Numero Interior"
-                                                                     data-parsley-required="true" data-parsley-type="alphanum" data-parsley-minlength="1" data-parsley-group="wizard-step-2" />
+                                                        <h:inputText value="#{alumnoController.alumno.direccion.numInt}" styleClass="form-control" placeholder="Número Interior"
+                                                                     data-parsley-group="wizard-step-2" />
                                                     </div>
                                                 </div>
                                                 </h:panelGroup>
@@ -233,6 +242,16 @@
                                                         <h:selectOneMenu value="#{alumnoController.alumno.planEstudios}" styleClass="form-control"
                                                                          data-parsley-required="true" data-parsley-group="wizard-step-3">
                                                             <f:selectItems value="#{listEntitiesController.planes}" var="plan" itemLabel="#{plan.nombre}" itemValue="#{plan}"/>
+                                                            <seam:convertEntity />
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4 col-sm-4">Consejero :</label>
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <h:selectOneMenu value="#{alumnoController.alumno.asesor}" styleClass="form-control selectpicker" data-parsley-group="wizard-step-3"
+                                                                         data-size="10" data-live-search="true" data-style="btn-white btn-sm">
+                                                            <seam:selectItems value="#{listEntitiesController.profesores}" var="profesor" label="#{profesor.fullName}" noSelectionLabel="(Profesor Consejero)"/>
                                                             <seam:convertEntity />
                                                         </h:selectOneMenu>
                                                     </div>
@@ -333,6 +352,7 @@
             <script src="/assets/js/apps.min.js" type="text/javascript"></script>
             <script src="/assets/plugins/bootstrap-wizard/js/bwizard.js" type="text/javascript"></script>
             <script src="/assets/plugins/password-indicator/js/password-indicator.js" type="text/javascript"></script>
+            <script src="/assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
             <script type="text/javascript">
                 window.ParsleyValidator.setLocale('es');
                 $(document).ready(function() {
@@ -359,6 +379,8 @@
                     }});
 
                     $("#password").passwordStrength();
+                    $(".selectpicker").selectpicker("render");
+                    $(".bootstrap-select-searchbox input").attr('name', 'searchbox');
                 });
 
                 function generatePass(data) {

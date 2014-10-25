@@ -1,6 +1,6 @@
 package mx.ipn.cidetec.virtual.utils;
 
-import com.sun.faces.renderkit.html_basic.ListboxRenderer;
+import com.sun.faces.renderkit.html_basic.MenuRenderer;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -15,7 +15,7 @@ import java.io.IOException;
  * @version rev: %I%
  * @date 4/08/14 10:38 PM
  */
-public class CustomSelectinputRenderer extends ListboxRenderer {
+public class CustomSelectinputRenderer extends MenuRenderer {
 
 	private static final String[] attributes = new String[]{
 			"placeholder", "type",
@@ -24,7 +24,8 @@ public class CustomSelectinputRenderer extends ListboxRenderer {
 			"data-parsley-trim-value", "data-parsley-ui-enabled", "data-parsley-errors-messages-disabled",
 			"data-parsley-required", "data-parsley-type", "data-parsley-minlength", "data-parsley-maxlength",
 			"data-parsley-length", "data-parsley-min", "data-parsley-max", "data-parsley-range", "data-parsley-pattern",
-			"data-parsley-mincheck", "data-parsley-maxcheck", "data-parsley-check", "data-parsley-equalto"
+			"data-parsley-mincheck", "data-parsley-maxcheck", "data-parsley-check", "data-parsley-equalto",
+            "data-size", "data-live-search", "data-style", "data-parsley-class-handler", "data-container"
 	};
 
 	/*@Override

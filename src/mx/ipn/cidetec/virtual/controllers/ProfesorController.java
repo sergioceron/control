@@ -1,7 +1,6 @@
 package mx.ipn.cidetec.virtual.controllers;
 
-import mx.ipn.cidetec.virtual.entities.Profesor;
-import mx.ipn.cidetec.virtual.entities.User;
+import mx.ipn.cidetec.virtual.entities.*;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.*;
 import org.jboss.seam.security.RunAsOperation;
@@ -10,6 +9,8 @@ import org.jboss.seam.security.management.JpaIdentityStore;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * -
@@ -26,12 +27,16 @@ public class ProfesorController {
 
 	private boolean register = false;
     private boolean persisting = false;
+    private boolean removable = true;
 
 	@In
 	private EntityManager entityManager;
 
 	@In
 	private IdentityManager identityManager;
+
+    @In(scope = ScopeType.APPLICATION)
+    private SystemController systemController;
 
 	@End
 	public String save() {
@@ -61,6 +66,38 @@ public class ProfesorController {
 		return "success";
 	}
 
+    public List<Hora> horarioOrdenado(Curso curso){
+        List<Hora> horario = new ArrayList<Hora>();
+        if (curso != null) {
+            for (int i = 0; i < 6; i++) {
+                boolean existDay = false;
+                if (curso.getHorario() != null) {
+                    for (Hora hora : curso.getHorario()) {
+                        if (hora.getDiaSemana() == i) {
+                            horario.add(hora);
+                            existDay = true;
+                            break;
+                        }
+                    }
+                }
+                if (!existDay) {
+                    Hora empty = new Hora();
+                    empty.setDiaSemana(i);
+                    empty.setHoraInicio(null);
+                    horario.add(empty);
+                }
+            }
+        }
+        return horario;
+    }
+
+    public void prepareToRemove(Profesor profesor){
+        this.profesor = profesor;
+        Query query = entityManager.createQuery("from Calificacion c where c.curso.profesor =:profesor");
+        query.setParameter("profesor", profesor);
+        removable = query.getResultList().size() == 0;
+    }
+
     public void remove(){Query query = entityManager.createQuery("from User u where u.account=:account");
         query.setParameter("account", profesor);
         for (Object o : query.getResultList()) {
@@ -80,15 +117,14 @@ public class ProfesorController {
         }
 	}
 
-    public int getCursosCount() {
-        if (profesor == null){
-            return 0;
-        }else {
-            if (profesor.getCursos() == null)
-                return 0;
+    public List<Curso> getCurrentCursos(){
+        if (profesor.getClave() != null) {
+            Query query = entityManager.createQuery("from Curso c where c.enabled = true and c.periodo = :periodo and c.profesor = :profesor");
+            query.setParameter("periodo", systemController.getPeriodoActual());
+            query.setParameter("profesor", profesor);
+            return query.getResultList();
         }
-
-        return profesor.getCursos().size();
+        return new ArrayList<Curso>();
     }
 
 	public Profesor.Tipo[] getTipos(){
@@ -117,5 +153,9 @@ public class ProfesorController {
 
     public void setRegister(boolean register) {
         this.register = register;
+    }
+
+    public boolean isRemovable() {
+        return removable;
     }
 }

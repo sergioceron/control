@@ -45,10 +45,12 @@
                                             Académica
                                             <small>Información academica, grado, institución, etc.</small>
                                         </li>
+                                        <f:verbatim  rendered="#{profesorController.profesor.id eq null}">
                                         <li>
                                             Usuario
                                             <small>Información de acceso al sistema.</small>
                                         </li>
+                                        </f:verbatim>
                                     </ol>
 
                                     <div class="wizard-step-1">

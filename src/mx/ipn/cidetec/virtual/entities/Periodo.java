@@ -61,6 +61,20 @@ public class Periodo {
 
     @Override
     public String toString() {
-        return anyo + "/" + semestre;
+        return semestre + "" + (anyo - 2000);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Periodo periodo = (Periodo) o;
+
+        if (anyo != periodo.anyo) return false;
+        if (semestre != null ? !semestre.equals(periodo.semestre) : periodo.semestre != null) return false;
+
+        return true;
+    }
+
 }

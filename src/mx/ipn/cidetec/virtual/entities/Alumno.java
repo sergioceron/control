@@ -79,7 +79,7 @@ public class Alumno extends Account {
 		this.programa = programa;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, orphanRemoval = true)
 	public List<Calificacion> getCalificaciones() {
 		return calificaciones;
 	}
@@ -106,7 +106,19 @@ public class Alumno extends Account {
 		this.planEstudios = planEstudios;
 	}
 
-	public enum Status {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Alumno alumno = (Alumno) o;
+
+        if (matricula != null ? !matricula.equals(alumno.matricula) : alumno.matricula != null) return false;
+
+        return true;
+    }
+
+    public enum Status {
 		NUEVO( "Nuevo" ),
 		DESCONOCIDO( "Desconocido" ),
 		INSCRITO( "Inscrito" ),

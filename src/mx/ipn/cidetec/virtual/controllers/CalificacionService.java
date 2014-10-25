@@ -7,6 +7,7 @@ import org.jboss.seam.annotations.Transactional;
 import org.jboss.seam.annotations.web.RequestParameter;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -29,7 +30,7 @@ public class CalificacionService {
     private String id;
 
     @RequestParameter("value")
-    private String calificacion;
+    private String value;
 
     @Transactional
     @POST
@@ -39,7 +40,7 @@ public class CalificacionService {
         Calificacion c = entityManager.find(Calificacion.class, Long.parseLong(id));
         if (c != null) {
             if (!c.isSetted()) {
-                c.setCalificacion(Double.parseDouble(calificacion));
+                c.setCalificacion(Double.parseDouble(value));
                 c.setSetted(true);
                 entityManager.persist(c);
                 entityManager.flush();
@@ -47,5 +48,33 @@ public class CalificacionService {
             return true;
         }
         return false;
+    }
+
+    @Transactional
+    @POST
+    @Path("/enable")
+    @Produces("application/json")
+    public boolean enable() {
+        Calificacion c = entityManager.find(Calificacion.class, Long.parseLong(id));
+        if (c != null) {
+            c.setSetted(value.equals("1") ? true : false);
+            entityManager.persist(c);
+            entityManager.flush();
+            return true;
+        }
+        return false;
+    }
+
+    @Transactional
+    @POST
+    @Path("/acta")
+    @Produces("application/json")
+    public boolean acta() {
+        Query query = entityManager.createQuery("update Curso c set c.acta=:acta where c.id=:id");
+        query.setParameter("acta", value);
+        query.setParameter("id", Long.parseLong(id));
+        boolean result = query.executeUpdate() > 0;
+        entityManager.flush();
+        return result;
     }
 }

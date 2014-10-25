@@ -41,12 +41,13 @@
                             <div class="table-responsive">
                                 <h:form id="loginForm">
                                     <h:dataTable value="#{listEntitiesController.periodos}" var="periodo"
-                                                 id="data-table" styleClass="table table-striped table-bordered">
-                                        <h:column>
+                                                 id="data-table" styleClass="table table-striped table-bordered"
+                                                 columnClasses="text-center,text-center,,,no-print">
+                                        <h:column headerClass="text-center">
                                             <f:facet name="header">Año</f:facet>
                                             #{periodo.anyo}
                                         </h:column>
-                                        <h:column>
+                                        <h:column headerClass="text-center">
                                             <f:facet name="header">Semestre</f:facet>
                                             #{periodo.semestre}
                                         </h:column>
@@ -62,18 +63,17 @@
                                                 <f:convertDateTime pattern="dd 'de' MMMMM 'de' yyyy" />
                                             </h:outputText>
                                         </h:column>
-                                        <h:column>
+                                        <h:column headerClass="no-print">
                                             <f:facet name="header">Accion</f:facet>
                                             <h:commandLink action="periodo.edit.xhtml" data-toggle="tooltip" data-container="body" data-title="Editar">
                                                 <i class="fa fa-pencil-square-o"></i>
                                                 <f:setPropertyActionListener target="#{periodoController.periodo}"
                                                                              value="#{periodo}"/>
                                             </h:commandLink>
-                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar">
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar"
+                                                    actionListener="#{periodoController.prepareToRemove(periodo)}">
                                                 <i class="fa fa-times"></i>
                                                 <s:conversationPropagation type="begin" />
-                                                <f:setPropertyActionListener target="#{periodoController.periodo}"
-                                                                             value="#{periodo}"/>
                                                 <f:ajax execute="@this" render=":mod:popup"
                                                         onevent="showModal"/>
                                             </h:commandLink>
@@ -93,10 +93,18 @@
                                                         <h4 class="modal-title">Eliminar Periodo</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <div class="alert alert-danger m-b-0">
+                                                        <s:div styleClass="alert alert-danger m-b-0" rendered="#{not periodoController.removable}">
                                                             <h4><i class="fa fa-info-circle"> </i> Alerta</h4>
-                                                            <p>Es posible que no se puedan generar constancias si elimina éste periodo.</p>
-                                                        </div>
+                                                            <p>No se puede eliminar el periodo debido a la(s) siguiente(s) razon(es):</p>
+                                                            <ul>
+                                                                <f:verbatim rendered="#{periodoController.usage[0]}"><li>Es el periodo actual del sistema</li></f:verbatim>
+                                                                <f:verbatim rendered="#{periodoController.usage[1]}"><li>Esta asignado a uno o más cursos</li></f:verbatim>
+                                                            </ul>
+                                                        </s:div>
+                                                        <s:div styleClass="alert alert-warning m-b-0" rendered="#{periodoController.removable}">
+                                                            <h4><i class="fa fa-info-circle"> </i> Advertencia</h4>
+                                                            <p>¿Está seguro que desea eliminar el periodo seleccionado?</p>
+                                                        </s:div>
                                                         <h:panelGroup rendered="#{periodoController.periodo.id != null}">
                                                             <h5>Datos del Periodo</h5>
                                                             <p class="media media-sm">
@@ -123,7 +131,8 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
-                                                        <h:commandLink action="#{periodoController.remove}" styleClass="btn btn-sm btn-danger">
+                                                        <h:commandLink action="#{periodoController.remove}" styleClass="btn btn-sm btn-danger"
+                                                                rendered="#{periodoController.removable}">
                                                             Eliminar
                                                             <f:ajax execute="@this" render=":loginForm:data-table" onevent="hideModal"/>
                                                         </h:commandLink>

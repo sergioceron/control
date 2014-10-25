@@ -14,6 +14,7 @@ public class PlanEstudios {
 	private int creditos;
     private boolean vigente;
 	private Programa programa;
+    private List<Materia> materias;
 
 	public PlanEstudios() {
 		vigente = true;
@@ -60,5 +61,14 @@ public class PlanEstudios {
 
     public void setVigente(boolean vigente) {
         this.vigente = vigente;
+    }
+
+    @ManyToMany
+    public List<Materia> getMaterias() {
+        return materias;
+    }
+
+    public void setMaterias(List<Materia> materias) {
+        this.materias = materias;
     }
 }
