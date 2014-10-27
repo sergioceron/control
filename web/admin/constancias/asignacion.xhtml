@@ -41,7 +41,7 @@
 
         .c2{
             width:365px;
-            text-align: left;
+            text-align: center;
         }
 
         .c3{
@@ -101,33 +101,27 @@
             <code>Constancia/2014</code>
             <p><strong>A QUIEN CORRESPONDA:</strong></p>
             <p style="line-height: 180%;text-align: justify">
-                Por medio de la presente se hace constar que el C. #{alumnoConstanciaController.alumno.fullName}, con No. de Registro #{alumnoConstanciaController.alumno.matricula}-,
-                se encuentra inscrito en el <strong>#{alumnoConstanciaController.semestre} semestre</strong>
-                de la #{alumnoConstanciaController.alumno.programa.nombre} que en este Centro se imparte, el cual inició el
-                #{alumnoConstanciaController.inicioFormateado} y termina el #{alumnoConstanciaController.terminoFormateado} del año en curso, y a la fecha ha cursado las siguientes materias:
+                Por medio del presente, me permito notificarle que dentro de sus actividades academicas correspondientes al semestre #{profesorConstanciaController.periodoFormateado}
+                de el/la #{profesorConstanciaController.programa.nombre}, se le han asignado las materias correspondientes que se indican a continuación:
             </p>
             <div>
-                <h:dataTable value="#{alumnoConstanciaController.calificaciones}" styleClass="tabla" var="calificacion" columnClasses="center,left,center,center">
+                <h:dataTable value="#{profesorConstanciaController.cursos}" styleClass="tabla" var="curso" columnClasses="center,center,center,center,center">
                     <h:column headerClass="c1">
-                        <f:facet name="header">Clave</f:facet>
-                        #{calificacion.curso.materia.clave}
+                        <f:facet name="header">Materia</f:facet>
+                        #{curso.materia.nombre}
                     </h:column>
                     <h:column headerClass="c2">
-                        <f:facet name="header">Materia</f:facet>
-                        #{calificacion.curso.materia.nombre}
+                        <f:facet name="header">Grupo</f:facet>
+                        #{profesorConstanciaController.semestres[curso.semestre]} #{curso.grupo}
                     </h:column>
                     <h:column headerClass="c3">
-                        <f:facet name="header">No. Créditos</f:facet>
-                        #{calificacion.curso.materia.creditos}
-                    </h:column>
-                    <h:column headerClass="c4">
-                        <f:facet name="header">Calificación</f:facet>
-                        #{calificacion.calificacion}
+                        <f:facet name="header">Horario</f:facet>
+                        #{profesorConstanciaController.horarioFormateado(curso)}
                     </h:column>
                 </h:dataTable>
             </div>
             <p>
-                <small>NOTA: AVANCE DEL #{alumnoConstanciaController.porcentajeAvance} % EN CRÉDITOS POR ASIGNATURAS, PROMEDIO GENERAL: #{alumnoConstanciaController.promedioGeneral} (#{alumnoConstanciaController.creditosCursados}).</small>
+                Cualquier cambio al respecto, favor de consultarlo con esta Subdirección.
             </p>
             <br/>
             <p><strong>ATENTAMENTE</strong><br/>

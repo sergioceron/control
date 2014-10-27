@@ -18,6 +18,11 @@
                value="#{activationController.code}"/>
     </page>
 
+    <page view-id="/admin/profile.xhtml">
+        <begin-conversation join="true" />
+        <action execute="#{profileController.setAccount(account)}" />
+    </page>
+
     <page view-id="/admin/periodos.list.xhtml">
         <action execute="#{menuController.setActive('/admin/periodos.list.seam')}" />
     </page>
@@ -117,7 +122,14 @@
     </page>
 
     <page view-id="/admin/profesores.list.xhtml">
+        <begin-conversation join="true" />
         <action execute="#{menuController.setActive('/admin/profesores.list.seam')}" />
+
+        <navigation from-action="#{profesorConstanciaController.prepare}">
+            <rule if-outcome="success">
+                <redirect view-id="/admin/profesor.constancia.xhtml"/>
+            </rule>
+        </navigation>
     </page>
     <page view-id="/admin/profesor.edit.xhtml">
         <begin-conversation join="true" />

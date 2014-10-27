@@ -8,7 +8,7 @@
 
     <ui:composition template="../template.xhtml">
         <ui:define name="title">Constancia</ui:define>
-        <ui:define name="subtitle">(#{constanciaController.alumno.fullName})</ui:define>
+        <ui:define name="subtitle">(#{profesorConstanciaController.profesor.fullName})</ui:define>
 
 
         <ui:define name="content">
@@ -21,12 +21,12 @@
                             <div class="panel-heading-btn">
                                 <a href="#" onclick="window.editor.execCommand( 'print' );" class="btn btn-primary btn-xs">Imprimir</a>
                             </div>
-                            <h4 class="panel-title">Constancia de Avance</h4>
+                            <h4 class="panel-title">Constancia de Profesor</h4>
                         </div>
                         <div class="panel-body">
                             <div id="editor"> </div>
                             <div id="constancia-wrapper" class="hidden">
-                                <ui:include src="/admin/constancias/#{constanciaController.constancia}.xhtml" />
+                                <ui:include src="/admin/constancias/#{profesorConstanciaController.constancia}.xhtml" />
                             </div>
                         </div>
                     </div>

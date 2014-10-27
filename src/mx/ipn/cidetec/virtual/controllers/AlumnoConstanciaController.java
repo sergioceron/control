@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Name( "constanciaController" )
+@Name("alumnoConstanciaController")
 @Scope( ScopeType.CONVERSATION )
-public class ConstanciaController {
+public class AlumnoConstanciaController {
     private final String semestres[] = { "", "primer", "segundo", "tercer", "cuarto", "quinto", "sexto", "séptimo", "octavo" };
 
     private Alumno alumno;

@@ -2,6 +2,7 @@ package mx.ipn.cidetec.virtual.entities;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -57,6 +58,18 @@ public class Periodo {
 
     public void setTermino(Date termino) {
         this.termino = termino;
+    }
+
+    @Transient
+    public int getSemanas(){
+        Calendar c1 = Calendar.getInstance();
+        Calendar c2 = Calendar.getInstance();
+        c1.setTime(inicio);
+        c2.setTime(termino);
+        int startWeek = c1.get(Calendar.WEEK_OF_YEAR);
+        int endWeek = c2.get(Calendar.WEEK_OF_YEAR);
+
+        return endWeek - startWeek;
     }
 
     @Override

@@ -131,9 +131,9 @@
 <table class="fecha" align="right">
     <tr>
         <td>Fecha: </td>
-        <td class="border-bottom border-right">#{constanciaController.date.date}</td>
-        <td class="border-bottom border-right">#{constanciaController.date.month + 1}</td>
-        <td class="border-bottom">#{constanciaController.date.year + 1900}</td>
+        <td class="border-bottom border-right">#{alumnoConstanciaController.date.date}</td>
+        <td class="border-bottom border-right">#{alumnoConstanciaController.date.month + 1}</td>
+        <td class="border-bottom">#{alumnoConstanciaController.date.year + 1900}</td>
     </tr>
     <tr>
         <td></td>
@@ -151,14 +151,14 @@ De acuerdo a lo que marca el reglamento vigente, conjuntamente con los lineamien
 <div>
     <table class="nombre">
         <tr>
-            <td style="width: 20%">#{constanciaController.alumno.apellidoP}</td>
-            <td style="width: 20%">#{constanciaController.alumno.apellidoM}</td>
-            <td style="width: 20%">#{constanciaController.alumno.nombre}</td>
+            <td style="width: 20%">#{alumnoConstanciaController.alumno.apellidoP}</td>
+            <td style="width: 20%">#{alumnoConstanciaController.alumno.apellidoM}</td>
+            <td style="width: 20%">#{alumnoConstanciaController.alumno.nombre}</td>
             <td>
                 <table class="boleta">
                     <tr>
                         <td style="padding-right: 10px"> con registro: </td>
-                        <ui:repeat value="#{constanciaController.matricula}" var="c">
+                        <ui:repeat value="#{alumnoConstanciaController.matricula}" var="c">
                             <td class="numero">#{c}</td>
                         </ui:repeat>
                     </tr>
@@ -180,9 +180,9 @@ De acuerdo a lo que marca el reglamento vigente, conjuntamente con los lineamien
     <table class="tiempo">
         <tr>
             <td style="text-align:left;padding-right:10px">admitido como alumno de tiempo <span class="small">(Marcar con una X):</span> </td>
-            <td style="border: 1px solid #000; width: 20px; height: 20px; text-align: center">#{constanciaController.alumno.tiempo.name eq  'Completo' ? 'X' : ''}</td>
+            <td style="border: 1px solid #000; width: 20px; height: 20px; text-align: center">#{alumnoConstanciaController.alumno.tiempo.name eq  'Completo' ? 'X' : ''}</td>
             <td style="padding-left: 5px; padding-right:10px">Completo</td>
-            <td style="border: 1px solid #000; width: 20px; height: 20px; text-align: center">#{constanciaController.alumno.tiempo.name eq  'Parcial' ? 'X' : ''}</td>
+            <td style="border: 1px solid #000; width: 20px; height: 20px; text-align: center">#{alumnoConstanciaController.alumno.tiempo.name eq  'Parcial' ? 'X' : ''}</td>
             <td style="padding-left: 5px">Parcial</td>
         </tr>
     </table>
@@ -194,7 +194,7 @@ De acuerdo a lo que marca el reglamento vigente, conjuntamente con los lineamien
     <table class="nombre">
         <tr>
             <td width="27%" style="text-align:left;padding-right:10px">para cursar el programa: </td>
-            <td>#{constanciaController.alumno.programa.nombre}</td>
+            <td>#{alumnoConstanciaController.alumno.programa.nombre}</td>
         </tr>
         <tr>
             <td></td>
@@ -249,9 +249,9 @@ De acuerdo a lo que marca el reglamento vigente, conjuntamente con los lineamien
             <p><strong>FOLIO DE ACTA GRUP.</strong></p>
         </th>
     </tr>
-    <ui:repeat value="#{constanciaController.alumno.calificaciones}" var="calificacion">
+    <ui:repeat value="#{alumnoConstanciaController.alumno.calificaciones}" var="calificacion">
     <tr>
-        <ui:repeat value="#{constanciaController.getClaveMateria(calificacion.curso.materia.clave)}" var="car">
+        <ui:repeat value="#{alumnoConstanciaController.getClaveMateria(calificacion.curso.materia.clave)}" var="car">
         <td style="height:28px; width:19px; text-align: center;">
             <p>#{car}</p>
         </td>
@@ -286,15 +286,15 @@ De acuerdo a lo que marca el reglamento vigente, conjuntamente con los lineamien
     <tr>
         <td colspan="7" align="right" style="border:0" class="small">Total de créditos a cursar</td>
         <td colspan="2" style="height:28px; width:38px; text-align: center; border-top: 0">
-            #{constanciaController.alumno.planEstudios.creditos}
+            #{alumnoConstanciaController.alumno.planEstudios.creditos}
         </td>
         <td align="right" style="border:0" class="small">Total de créditos a la fecha cursados:</td>
         <td style="text-align: center;; border-top: 0">
-            #{constanciaController.creditosCursados}
+            #{alumnoConstanciaController.creditosCursados}
         </td>
         <td colspan="3" align="right" style="border:0" class="small">Total de créditos por cursar:</td>
         <td colspan="2" style="text-align: center;; border-top: 0">
-            #{constanciaController.alumno.planEstudios.creditos - constanciaController.creditosCursados}
+            #{alumnoConstanciaController.alumno.planEstudios.creditos - alumnoConstanciaController.creditosCursados}
         </td>
     </tr>
     </tbody>

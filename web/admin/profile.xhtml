@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:seam="http://jboss.org/schema/seam/taglib"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+
+        <ui:define name="title">Usuarios</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/parsley/src/parsley.css" rel="stylesheet"/>
+            <link href="/assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+            <link href="/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
+            <link href="/assets/plugins/password-indicator/css/password-indicator.css" rel="stylesheet" />
+            <link href="/assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+        </ui:define>
+
+        <ui:define name="content">
+
+            <!-- begin row -->
+            <div class="row">
+                <!-- begin col-6 -->
+                <div class="col-md-12">
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#general-tab" data-toggle="tab"><i class="fa fa-fw fa-cogs"></i> <span class="hidden-xs">Datos Generales</span></a></li>
+                        <li class=""><a href="#user-tab" data-toggle="tab"><i class="fa fa-fw fa-list"></i> <span class="hidden-xs">Datos de Acceso</span></a></li>
+                    </ul>
+
+                    <h:form prependId="false" styleClass="form-horizontal form-bordered"
+                            data-parsley-validate="true">
+                        <div class="tab-content">
+                            <div class="tab-pane active fade in" id="general-tab">
+                                <fieldset>
+                                    <legend>Datos Personales</legend>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">Nombre :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <h:inputText value="#{profileController.account.nombre}" styleClass="form-control" placeholder="Nombre"
+                                                         data-parsley-required="true" data-parsley-minlength="4" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">Apellido Paterno :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <h:inputText value="#{profileController.account.apellidoP}" styleClass="form-control" placeholder="Apellido Paterno"
+                                                         data-parsley-required="true" data-parsley-minlength="2" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">Apellido Materno :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <h:inputText value="#{profileController.account.apellidoM}" styleClass="form-control" placeholder="Apellido Materno"
+                                                         data-parsley-required="true" data-parsley-minlength="2" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">Genero :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <h:selectOneMenu value="#{profileController.account.sexo}" styleClass="form-control"
+                                                             data-parsley-required="true">
+                                                <f:selectItem itemLabel="Masculino" itemValue="1"/>
+                                                <f:selectItem itemLabel="Femenino" itemValue="2"/>
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">Fecha Nacimiento :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="input-group date" id="fecha-nacimiento" data-date-format="dd-mm-yyyy">
+                                                <h:inputText value="#{profileController.account.fechaNacimiento}" styleClass="form-control" placeholder="Fecha de nacimiento"
+                                                             data-parsley-required="true" data-parsley-minlength="2" >
+                                                    <f:convertDateTime pattern="dd-MM-yyyy" />
+                                                </h:inputText>
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend>Dirección</legend>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">C.P.:</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="input-group">
+                                                <h:inputText value="#{profileController.account.direccion.cp}" styleClass="form-control" placeholder="Código Postal"
+                                                             data-parsley-type="digits" data-parsley-length="[5, 5]" id="cp">
+
+                                                </h:inputText>
+                                                <div class="input-group-btn">
+                                                    <h:commandLink styleClass="btn btn-success" value="Buscar ubicación">
+                                                        <f:ajax event="click" render="cols" execute="cp" listener="#{profileController.calcularDireccion()}" />
+                                                    </h:commandLink>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h:panelGroup id="cols">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 col-sm-4">Estado :</label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <h:selectOneMenu value="#{profileController.account.direccion.estado}" styleClass="form-control selectpicker"
+                                                                 data-size="10" data-style="btn-white btn-sm">
+                                                    <seam:selectItems value="#{listEntitiesController.estados}" var="estado" label="#{estado.estado}" itemValue="#{estado.estado}" noSelectionLabel="(Seleccione un estado)"/>
+                                                </h:selectOneMenu>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 col-sm-4">Municipio :</label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <h:selectOneMenu value="#{profileController.account.direccion.municipio}" styleClass="form-control selectpicker"
+                                                                 data-size="10" data-live-search="true" data-style="btn-white btn-sm">
+                                                    <seam:selectItems value="#{listEntitiesController.municipios}" var="municipio" label="#{municipio.municipio}" itemValue="#{municipio.municipio}" noSelectionLabel="(Seleccione un municipio)"/>
+                                                </h:selectOneMenu>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 col-sm-4">Colonia :</label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <h:selectOneMenu value="#{profileController.account.direccion.colonia}" styleClass="form-control selectpicker"
+                                                                 data-size="10" data-live-search="true" data-style="btn-white btn-sm">
+                                                    <seam:selectItems value="#{alumnoController.colonias}" var="colonia" label="#{colonia.nombre}" itemValue="#{colonia.nombre}" noSelectionLabel="(Seleccione una colonia)"/>
+                                                </h:selectOneMenu>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">Calle :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <h:inputText value="#{profileController.account.direccion.calle}" styleClass="form-control" placeholder="Calle"
+                                                         data-parsley-minlength="2" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">Num. Ext. :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <h:inputText value="#{profileController.account.direccion.numExt}" styleClass="form-control" placeholder="Número Exterior" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">Num. Int. :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <h:inputText value="#{profileController.account.direccion.numInt}" styleClass="form-control" placeholder="Número Interior" />
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <p class="text-right m-b-0">
+                                    <h:commandLink action="#{profileController.save}" styleClass="btn btn-primary" value="Guardar cambios"/>
+                                </p>
+                            </div>
+
+                            <seam:div styleClass="tab-pane fade in" id="academic-tab" rendered="#{account.type eq 1}">
+                                <fieldset>
+                                    <legend class="pull-left width-full">Académicos</legend>
+                                    <!-- begin row -->
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">Matricula :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <h:outputText value="#{profileController.account.matricula}" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">Semestre :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <h:outputText value="#{profileController.account.semestre}" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">Último Grado :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <h:outputText value="#{profileController.account.grado}" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">Programa :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <h:outputText value="#{profileController.account.programa.nombre}" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">Plan de Estudios :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <h:outputText value="#{profileController.account.planEstudios.nombre}" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">Consejero :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <h:outputText value="#{profileController.account.asesor.fullName}" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4">Tiempo :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <h:outputText value="#{profileController.account.tiempo.name}" />
+                                        </div>
+                                    </div>
+                                    <!-- end row -->
+                                </fieldset>
+                            </seam:div>
+
+                            <div class="tab-pane fade in" id="user-tab">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Usuario :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:inputText value="#{profileController.account.user.username}" styleClass="form-control" placeholder="Nombre de usuario"
+                                                     disabled="true" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Contraseña :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:outputLink value="#" onclick="$('#dialog').modal('toggle'); return false;">Cambiar Contraseña</h:outputLink>
+                                    </div>
+                                </div>
+
+                                <h:panelGroup styleClass="modal fade" id="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Cambiar Contraseña</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4 col-sm-4">Contraseña :</label>
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <h:inputText value="#{profileController.password}" styleClass="form-control" placeholder="Contraseña"
+                                                                     data-parsley-minlength="6" id="password2"  />
+                                                        <div id="passwordStrengthDiv2" class="is0 m-t-5"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4 col-sm-4"></label>
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <h:commandButton value="Guardar" action="#{profileController.changePassword}">
+                                                            <f:ajax execute="password2 @this"
+                                                                    onevent="hideModal"/>
+                                                        </h:commandButton>
+                                                        <a href="#"
+                                                           onclick="$('#dialog').modal('hide'); return false;">Cancelar</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </h:panelGroup>
+                            </div>
+                        </div>
+                    <!-- end col-6 -->
+                    </h:form>
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end #content -->
+
+        </ui:define>
+
+        <ui:define name="scripts">
+            <script src="/assets/plugins/parsley/dist/es.js" type="text/javascript"></script>
+            <script src="/assets/plugins/parsley/dist/parsley.js" type="text/javascript"></script>
+            <script src="/assets/plugins/switchery/switchery.min.js" type="text/javascript"></script>
+            <script src="/assets/js/form-slider-switcher.demo.min.js" type="text/javascript"></script>
+            <script src="/assets/plugins/password-indicator/js/password-indicator.js" type="text/javascript"></script>
+            <script src="/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                window.ParsleyValidator.setLocale('es');
+                function hideModal(data) {
+                    if (data.status === 'success') {
+                        $('#dialog').modal('hide');
+                    }
+                }
+                $(document).ready(function() {
+                    FormSliderSwitcher.init();
+                    $("#fecha-nacimiento").datepicker( { todayHighlight: true, autoclose: true } );
+                    $("#password").passwordStrength();
+                    $("#password2").passwordStrength({targetDiv: "#passwordStrengthDiv2"});
+                });
+            </script>
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>

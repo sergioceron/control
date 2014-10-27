@@ -66,7 +66,7 @@
                                         <h:column headerClass="no-print">
                                             <f:facet name="header">Accion</f:facet>
                                             <h:commandLink data-toggle="tooltip" data-container="body" data-title="Constancias"
-                                                    actionListener="#{constanciaController.prepare(alumno)}">
+                                                    actionListener="#{alumnoConstanciaController.prepare(alumno)}">
                                                 <i class="fa fa-book"></i>
                                                 <s:conversationPropagation type="begin" />
                                                 <f:ajax execute="@this" render=":const:popup_constancias"
@@ -156,12 +156,12 @@
                                                         <h4 class="modal-title">Seleccione la constancia</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <h:panelGroup rendered="#{constanciaController.alumno.id != null}">
-                                                            <ui:repeat value="#{constanciaController.constancias}" var="constancia">
-                                                                <h:commandLink action="/admin/constancia.xhtml" value="#{constancia}" styleClass="btn btn-white btn-block"
+                                                        <h:panelGroup rendered="#{alumnoConstanciaController.alumno.id != null}">
+                                                            <ui:repeat value="#{alumnoConstanciaController.constancias}" var="constancia">
+                                                                <h:commandLink action="/admin/alumno.constancia.xhtml" value="#{constancia}" styleClass="btn btn-white btn-block"
                                                                         style="text-transform: uppercase">
                                                                     <s:conversationPropagation type="join" />
-                                                                    <f:setPropertyActionListener target="#{constanciaController.constancia}"
+                                                                    <f:setPropertyActionListener target="#{alumnoConstanciaController.constancia}"
                                                                                                  value="#{constancia}"/>
                                                                 </h:commandLink>
                                                             </ui:repeat>

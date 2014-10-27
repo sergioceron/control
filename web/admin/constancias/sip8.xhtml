@@ -121,9 +121,9 @@
 <table class="fecha" align="right">
     <tr>
         <td>Fecha: </td>
-        <td class="border-bottom border-right">#{constanciaController.date.date}</td>
-        <td class="border-bottom border-right">#{constanciaController.date.month + 1}</td>
-        <td class="border-bottom">#{constanciaController.date.year + 1900}</td>
+        <td class="border-bottom border-right">#{alumnoConstanciaController.date.date}</td>
+        <td class="border-bottom border-right">#{alumnoConstanciaController.date.month + 1}</td>
+        <td class="border-bottom">#{alumnoConstanciaController.date.year + 1900}</td>
     </tr>
     <tr>
         <td></td>
@@ -138,7 +138,7 @@
 <table class="boleta" align="right">
     <tr>
         <td style="padding-right: 10px">Con el número de registro: </td>
-        <ui:repeat value="#{constanciaController.matricula}" var="c">
+        <ui:repeat value="#{alumnoConstanciaController.matricula}" var="c">
             <td class="numero">#{c}</td>
         </ui:repeat>
     </tr>
@@ -150,9 +150,9 @@
     <table class="nombre">
         <tr>
             <td width="22%" style="text-align:left;padding-right:10px">En virtud de que el C. </td>
-            <td>#{constanciaController.alumno.apellidoP}</td>
-            <td>#{constanciaController.alumno.apellidoM}</td>
-            <td>#{constanciaController.alumno.nombre}</td>
+            <td>#{alumnoConstanciaController.alumno.apellidoP}</td>
+            <td>#{alumnoConstanciaController.alumno.apellidoM}</td>
+            <td>#{alumnoConstanciaController.alumno.nombre}</td>
         </tr>
         <tr>
             <td></td>
@@ -169,9 +169,9 @@
     <table class="tiempo">
         <tr>
             <td style="text-align:left;padding-right:10px">cumplió con los requisitos de admisión como alumno de tiempo <span class="small">(Marcar con una X):</span> </td>
-            <td style="border: 1px solid #000; width: 20px; height: 20px; text-align: center">#{constanciaController.alumno.tiempo.name eq  'Completo' ? 'X' : ''}</td>
+            <td style="border: 1px solid #000; width: 20px; height: 20px; text-align: center">#{alumnoConstanciaController.alumno.tiempo.name eq  'Completo' ? 'X' : ''}</td>
             <td style="padding-left: 5px; padding-right:10px">Completo</td>
-            <td style="border: 1px solid #000; width: 20px; height: 20px; text-align: center">#{constanciaController.alumno.tiempo.name eq  'Parcial' ? 'X' : ''}</td>
+            <td style="border: 1px solid #000; width: 20px; height: 20px; text-align: center">#{alumnoConstanciaController.alumno.tiempo.name eq  'Parcial' ? 'X' : ''}</td>
             <td style="padding-left: 5px">Parcial</td>
         </tr>
     </table>
@@ -183,7 +183,7 @@
     <table class="nombre">
         <tr>
             <td width="27%" style="text-align:left;padding-right:10px">para cursar el programa de: </td>
-            <td>#{constanciaController.alumno.programa.nombre}</td>
+            <td>#{alumnoConstanciaController.alumno.programa.nombre}</td>
         </tr>
         <tr>
             <td></td>
@@ -215,9 +215,9 @@
     de estudios al C.
     <table class="nombre" style="float:right;width:85%;">
         <tr>
-            <td>#{constanciaController.alumno.asesor.apellidoP}</td>
-            <td>#{constanciaController.alumno.asesor.apellidoM}</td>
-            <td>#{constanciaController.alumno.asesor.nombre}</td>
+            <td>#{alumnoConstanciaController.alumno.asesor.apellidoP}</td>
+            <td>#{alumnoConstanciaController.alumno.asesor.apellidoM}</td>
+            <td>#{alumnoConstanciaController.alumno.asesor.nombre}</td>
         </tr>
         <tr>
             <td class="border-top small">Apellido Paterno</td>
@@ -249,9 +249,9 @@
             <p><strong>LUGAR DE REALIZACIÓN</strong></p>
         </th>
     </tr>
-    <ui:repeat value="#{constanciaController.alumno.calificaciones}" var="calificacion">
+    <ui:repeat value="#{alumnoConstanciaController.alumno.calificaciones}" var="calificacion">
     <tr>
-        <ui:repeat value="#{constanciaController.getClaveMateria(calificacion.curso.materia.clave)}" var="car">
+        <ui:repeat value="#{alumnoConstanciaController.getClaveMateria(calificacion.curso.materia.clave)}" var="car">
         <td style="height:28px; width:19px; text-align: center;">
             <p>#{car}</p>
         </td>
@@ -279,7 +279,7 @@
             <strong>Total de créditos mínimos a cubrir de acuerdo al programa registrado vigente autorizado:</strong>
         </td>
         <td style="height:23px; width:66px;border: 1px solid #000;text-align: center;">
-            #{constanciaController.alumno.planEstudios.creditos}
+            #{alumnoConstanciaController.alumno.planEstudios.creditos}
         </td>
     </tr>
     </tbody>

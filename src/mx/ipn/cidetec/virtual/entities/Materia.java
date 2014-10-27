@@ -104,19 +104,34 @@ public class Materia {
     }
 
     public enum Tipo {
-		OBLIGATORIA("Obligatoria"),
-		SEMINARIO("Seminario"),
-		OPTATIVA("Optativa");
+		OBLIGATORIA("Obligatoria", 2, 2),
+		SEMINARIO("Seminario", 2, 0),
+		OPTATIVA("Optativa", 2, 2);
 
 		private String name;
+        private int horasTeoria;
+        private int horasPractica;
 
 		Tipo( String name ) {
 			this.name = name;
+		}
+		Tipo( String name, int horasTeoria, int horasPractica ) {
+			this.name = name;
+            this.horasTeoria = horasTeoria;
+            this.horasPractica = horasPractica;
 		}
 
 		public String getName() {
 			return name;
 		}
-	}
+
+        public int getHorasTeoria() {
+            return horasTeoria;
+        }
+
+        public int getHorasPractica() {
+            return horasPractica;
+        }
+    }
 
 }

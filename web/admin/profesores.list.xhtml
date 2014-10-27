@@ -65,6 +65,14 @@
                                         </h:column>
                                         <h:column headerClass="no-print">
                                             <f:facet name="header">Accion</f:facet>
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Constancias">
+                                                <i class="fa fa-book"></i>
+                                                <s:conversationPropagation type="begin" />
+                                                <f:setPropertyActionListener target="#{profesorConstanciaController.profesor}"
+                                                                             value="#{profesor}"/>
+                                                <f:ajax execute="@this" render=":const:popup_constancias"
+                                                        onevent="showModal_constancia"/>
+                                            </h:commandLink>
                                             <h:commandLink data-toggle="tooltip" data-container="body" data-title="Horario">
                                                 <i class="fa fa-list"></i>
                                                 <f:setPropertyActionListener target="#{profesorController.profesor}"
@@ -117,7 +125,7 @@
                                                                     <tbody>
                                                                     <ui:repeat value="#{profesorController.currentCursos}" var="curso">
                                                                     <tr>
-                                                                        <td><small>#{curso.materia.nombre}</td>
+                                                                        <td>#{curso.materia.nombre}</td>
                                                                         <ui:repeat value="#{profesorController.horarioOrdenado(curso)}" var="hora" >
                                                                             <td class="text-center">
                                                                                 <h:outputText style="width: 84px" value="#{hora.horaInicio}" rendered="#{hora.horaInicio ne null}"/>
@@ -200,6 +208,71 @@
                                     </h:panelGroup>
                                 </h:form>
 
+                                <h:form id="const" styleClass="form-horizontal form-bordered">
+                                    <h:panelGroup id="popup_constancias">
+                                        <div class="modal fade" id="modal_constancias">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title">Seleccione el periodo y programa:</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h:panelGroup rendered="#{profesorConstanciaController.profesor.id != null}">
+                                                            <div class="row">
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-4 col-sm-4">Profesor :</label>
+                                                                    <div class="col-md-6 col-sm-6">
+                                                                        #{profesorConstanciaController.profesor.fullName}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-4 col-sm-4">Programa :</label>
+                                                                    <div class="col-md-6 col-sm-6">
+                                                                        <h:selectOneMenu value="#{profesorConstanciaController.programa}" styleClass="form-control"
+                                                                                         data-parsley-required="true">
+                                                                            <f:selectItems value="#{listEntitiesController.programas}" var="programa"
+                                                                                           itemLabel="#{programa.nombre}" itemValue="#{programa}"/>
+                                                                            <s:convertEntity/>
+                                                                        </h:selectOneMenu>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-4 col-sm-4">Periodo :</label>
+                                                                    <div class="col-md-6 col-sm-6">
+                                                                        <h:selectOneMenu value="#{profesorConstanciaController.periodo}" styleClass="form-control"
+                                                                                         data-parsley-required="true">
+                                                                            <f:selectItems value="#{listEntitiesController.periodos}" var="periodo"
+                                                                                           itemLabel="#{periodo}" itemValue="#{periodo}"/>
+                                                                            <s:convertEntity/>
+                                                                        </h:selectOneMenu>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-4 col-sm-4">Constancia :</label>
+                                                                    <div class="col-md-6 col-sm-6">
+                                                                        <h:selectOneMenu value="#{profesorConstanciaController.constancia}" styleClass="form-control"
+                                                                                         data-parsley-required="true">
+                                                                            <f:selectItem itemValue="asignacion" itemLabel="Carga Académica" />
+                                                                            <f:selectItem itemValue="carga" itemLabel="Asignación de Cursos" />
+                                                                        </h:selectOneMenu>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </h:panelGroup>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                                                        <h:commandLink action="#{profesorConstanciaController.prepare}" value="Generar" styleClass="btn btn-sm btn-primary"
+                                                                       style="text-transform: uppercase">
+                                                        </h:commandLink>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                </h:form>
+
                             </div>
                         </div>
                     </div>
@@ -228,6 +301,11 @@
                 function showModal(data) {
                     if (data.status === 'success') {
                         $('#modal').modal('show');
+                    }
+                }
+                function showModal_constancia(data) {
+                    if (data.status === 'success') {
+                        $('#modal_constancias').modal('show');
                     }
                 }
                 function hideModal(data) {

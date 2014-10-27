@@ -22,6 +22,7 @@ public class Account {
 	private Date fechaNacimiento;
     private Direccion direccion = new Direccion();
 	private int sexo;
+    private User user;
 
 	@Id
 	@GeneratedValue( strategy = GenerationType.AUTO )
@@ -91,7 +92,16 @@ public class Account {
 		this.sexo = sexo;
 	}
 
-	@Transient
+    @OneToOne
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Transient
 	public String getFullName(){
 		return nombre + " " + apellidoP + " " + apellidoM;
 	}

@@ -46,6 +46,7 @@ public class UserController {
                         entityManager.flush();
                     } else {
                         entityManager.persist(user);
+                        entityManager.flush();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
