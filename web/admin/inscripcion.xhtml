@@ -28,50 +28,79 @@
                 <div class="col-md-12">
                     <!-- begin panel -->
                     <div class="table-responsive">
-                                <h:form id="loginForm">
-                                    <div class="text-right">
-                                        <h:commandLink value="Finalizar Inscripción" action="#{inscripcionController.save}"
-                                                       styleClass="btn btn-success m-r-5 m-b-5"
-                                                        rendered="#{systemController.getConfiguration('inscripciones') eq 'true' and (account.status eq 'DESCONOCIDO' or account.status eq 'NUEVO')}"/>
-                                    </div>
-                                    <h:dataTable value="#{inscripcionController.cursosDisponibles}" var="curso"
-                                                 id="data-table" styleClass="table">
-                                        <h:column>
-                                            <f:facet name="header">Cursos disponibles</f:facet>
+                        <h:form id="loginForm">
+                            <div class="text-right">
+                                <a href="#" class="btn btn-success m-r-5 m-b-5" onclick="$('#modal_confirm').modal('show');">Finalizar Inscripción</a>
 
-                                            <ul class="result-list">
-                                                <li>
-                                                    <div class="result-info">
-                                                        <h4 class="title"><a href="javascript:;">#{curso.materia.nombre}</a></h4>
-                                                        <p class="location">
-                                                            <span class="label label-warning">#{curso.materia.categoria.nombre}</span> - <span class="label label-primary">#{curso.materia.tipo.name}</span>
-                                                        </p>
-                                                        <p class="desc" style="margin-bottom: 10px">
-                                                            #{curso.materia.descripcion}
-                                                        </p>
-                                                        <div class="btn-row">
-                                                            <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Temario" data-original-title="" title=""><i class="fa fa-list-alt"></i></a>
-                                                            <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Horario" data-original-title="" title=""><i class="fa fa-calendar"></i></a>
-                                                            <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Profesor" data-original-title="" title=""><i class="fa fa-user"></i></a>
-                                                            <span class="text-success" style="margin-left: 10px">#{curso.profesor.fullName}</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="result-price" style="padding-top: 0px">
-                                                        #{curso.materia.creditos} <small>CREDITOS</small>
-                                                        <h:commandLink action="#{inscripcionController.inscribir}"
-                                                                       styleClass="btn #{inscripcionController.hasCurso(curso) ? 'btn-danger' : 'btn-inverse'} btn-block"
-                                                                       value="#{inscripcionController.hasCurso(curso) ? 'Dar de baja' : 'Inscribirme'}">
-                                                            <f:setPropertyActionListener target="#{inscripcionController.curso}"
-                                                                                         value="#{curso}"/>
-                                                            <f:ajax execute="@this" render="@this" />
-                                                        </h:commandLink>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </h:column>
-                                    </h:dataTable>
-                                </h:form>
                             </div>
+                            <h:dataTable value="#{inscripcionController.cursosDisponibles}" var="curso"
+                                         id="data-table" styleClass="table">
+                                <h:column>
+                                    <f:facet name="header">Cursos disponibles</f:facet>
+
+                                    <ul class="result-list">
+                                        <li>
+                                            <div class="result-info">
+                                                <h4 class="title"><a href="javascript:;">#{curso.materia.nombre}</a></h4>
+                                                <p class="location">
+                                                    <span class="label label-warning">#{curso.materia.categoria.nombre}</span> - <span class="label label-primary">#{curso.materia.tipo.name}</span>
+                                                </p>
+                                                <p class="desc" style="margin-bottom: 10px">
+                                                    #{curso.materia.descripcion}
+                                                </p>
+                                                <div class="btn-row">
+                                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Temario" data-original-title="" title=""><i class="fa fa-list-alt"></i></a>
+                                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Horario" data-original-title="" title=""><i class="fa fa-calendar"></i></a>
+                                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Profesor" data-original-title="" title=""><i class="fa fa-user"></i></a>
+                                                    <span class="text-success" style="margin-left: 10px">#{curso.profesor.fullName}</span>
+                                                </div>
+                                            </div>
+                                            <div class="result-price" style="padding-top: 0px">
+                                                #{curso.materia.creditos} <small>CREDITOS</small>
+                                                <h:commandLink action="#{inscripcionController.inscribir}"
+                                                               styleClass="btn #{inscripcionController.hasCurso(curso) ? 'btn-danger' : 'btn-inverse'} btn-block"
+                                                               value="#{inscripcionController.hasCurso(curso) ? 'Dar de baja' : 'Inscribirme'}">
+                                                    <f:setPropertyActionListener target="#{inscripcionController.curso}"
+                                                                                 value="#{curso}"/>
+                                                    <f:ajax execute="@this" render="@this" />
+                                                </h:commandLink>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </h:column>
+                            </h:dataTable>
+                        </h:form>
+
+                        <h:form id="confirm">
+                            <h:panelGroup id="popup_confirm">
+                                <div class="modal fade" id="modal_confirm">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title">Confirmar inscripción</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="alert alert-warning m-b-0">
+                                                    <h4><i class="fa fa-info-circle"> </i> Alerta</h4>
+                                                    <p>Esta seguro que desea inscribirse a los cursos seleccionados?</p>
+                                                    <p>Una vez confirmada su inscripción, no es posible hacer cambios.</p>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                                                <h:commandLink action="#{inscripcionController.save}" styleClass="btn btn-sm btn-primary"
+                                                               rendered="#{systemController.getConfiguration('inscripciones') eq 'true' and (account.status eq 'DESCONOCIDO' or account.status eq 'NUEVO')}">
+                                                    Finalizar inscripción
+                                                </h:commandLink>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </h:panelGroup>
+                        </h:form>
+
+                    </div>
                     <!-- end panel -->
                 </div>
                 <!-- end col-12 -->

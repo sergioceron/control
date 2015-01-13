@@ -15,9 +15,7 @@ import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Name("profesorConstanciaController")
 @Scope( ScopeType.CONVERSATION )
@@ -59,12 +57,18 @@ public class ProfesorConstanciaController {
 
     public String horarioFormateado(Curso curso){
         List<Hora> horas = curso.getHorario();
-        Hora primera = horas.get(0);
+	    Collections.sort( horas );
+	    Hora primera = horas.get(0);
         Hora segunda = horas.size() > 1 ? horas.get(1) : null;
         String hora = primera.getHoraInicio() + "-" + primera.getHoraFin();
+	    String hora0 = "";
         String dia = dias[primera.getDiaSemana()];
         if (segunda != null){
-            dia += " y " + dias[segunda.getDiaSemana()];
+	        if( !segunda.getHoraInicio().equals( primera.getHoraInicio() ) ) {
+		        hora0 = hora;
+		        hora  = segunda.getHoraInicio() + "-" + segunda.getHoraFin();
+	        }
+            dia += " " + hora0 + " y " + dias[segunda.getDiaSemana()];
         }
         return dia + " " +  hora;
     }

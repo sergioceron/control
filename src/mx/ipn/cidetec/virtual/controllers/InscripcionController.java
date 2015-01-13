@@ -78,7 +78,7 @@ public class InscripcionController {
     }
 
     public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
+        this.alumno = entityManager.find(Alumno.class, alumno.getId());
     }
 
     public Curso getCurso() {

@@ -58,6 +58,7 @@
                                         <h:column headerClass="text-center">
                                             <f:facet name="header">Grupo</f:facet>
                                             #{curso.grupo}
+                                            #{curso.turno eq 1 ? 'Matutino' : (curso.turno eq 2 ? 'Vespertino' : 'Completo')}
                                         </h:column>
                                         <h:column headerClass="text-center">
                                             <f:facet name="header">Lugar</f:facet>
@@ -167,7 +168,10 @@
                                                             </p>
                                                             <p class="media media-sm">
                                                                 <label class="col-md-4 col-sm-4"><b>Grupo:</b></label>
-                                                                <span class="col-md-8 col-sm-8">#{cursoController.curso.grupo} </span>
+                                                                <span class="col-md-8 col-sm-8">
+                                                                    #{cursoController.curso.turno eq 1 ? 'Matutino' : (cursoController.curso.turno eq 2 ? 'Vespertino' : 'Completo')}
+                                                                    #{cursoController.curso.grupo}
+                                                                </span>
                                                             </p>
                                                         </h:panelGroup>
                                                     </div>

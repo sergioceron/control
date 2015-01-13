@@ -24,6 +24,7 @@ import java.util.List;
 @Scope( ScopeType.CONVERSATION )
 public class MateriaController {
 	private Materia materia = new Materia();
+    private byte[] dataTemario;
     private boolean removable = true;
 
 	@In
@@ -31,6 +32,8 @@ public class MateriaController {
 
 	@End
 	public String save(){
+
+        materia.setTemario( materia.getClave() + ".pdf");
 		entityManager.persist( materia );
 		entityManager.flush();
 		return "success";
@@ -65,7 +68,15 @@ public class MateriaController {
 		this.materia = materia;
 	}
 
-	public Materia.Tipo[] getTipos(){
+    public byte[] getDataTemario() {
+        return dataTemario;
+    }
+
+    public void setDataTemario(byte[] dataTemario) {
+        this.dataTemario = dataTemario;
+    }
+
+    public Materia.Tipo[] getTipos(){
 		return Materia.Tipo.values();
 	}
 

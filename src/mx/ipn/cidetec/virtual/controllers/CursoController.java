@@ -35,7 +35,7 @@ public class CursoController {
 
 	@End
 	public String save(){
-        curso.setPeriodo(systemController.getPeriodoActual());
+        //curso.setPeriodo(systemController.getPeriodoActual());
 		entityManager.persist( curso );
 		entityManager.flush();
 		return "success";

@@ -12,7 +12,7 @@ public class Curso {
 	private Long id;
 	private Materia materia;
 	private Profesor profesor;
-	private String lugar;
+	private String lugar = "CIDETEC";
 	private String semestre;
 	private int turno;
 	private List<Hora> horario;

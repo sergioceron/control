@@ -22,8 +22,6 @@ import java.util.List;
 @Name("profileController")
 @Scope(ScopeType.CONVERSATION)
 public class ProfileController {
-    private User user = new User();
-
     private Account account;
     private String password = "";
 
@@ -47,7 +45,7 @@ public class ProfileController {
             new RunAsOperation() {
                 public void execute() {
                     try {
-                        identityManager.changePassword(user.getUsername(), password);
+                        identityManager.changePassword(account.getUser().getUsername(), password);
                         entityManager.flush();
                     } catch (Exception e) {
                         e.printStackTrace();

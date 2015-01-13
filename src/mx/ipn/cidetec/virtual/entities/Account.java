@@ -92,7 +92,7 @@ public class Account {
 		this.sexo = sexo;
 	}
 
-    @OneToOne
+    @OneToOne(mappedBy = "account")
     public User getUser() {
         return user;
     }

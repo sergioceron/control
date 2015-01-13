@@ -1,14 +1,12 @@
 package mx.ipn.cidetec.virtual.controllers;
 
-import mx.ipn.cidetec.virtual.entities.Account;
-import mx.ipn.cidetec.virtual.entities.Alumno;
-import mx.ipn.cidetec.virtual.entities.Menu;
-import mx.ipn.cidetec.virtual.entities.User;
+import mx.ipn.cidetec.virtual.entities.*;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.*;
 import org.jboss.seam.security.Identity;
 
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,12 +55,15 @@ public class SessionController {
 		captcha = false;
 
         String username = identity.getCredentials().getUsername();
-        Query query = entityManager.createQuery("from User u where u.username=:username");
+        Query query = entityManager.createQuery("from Account a where a.user.username=:username");
         query.setParameter("username", username);
-        Object object = query.getSingleResult();
-        if( object != null ) {
-            User user = (User) object;
-            account = entityManager.find(Account.class, user.getAccount().getId());
+        List accounts = query.getResultList();
+        if( accounts.size() > 0 ) {
+            account = (Account) accounts.get(0);
+            if (account.getDireccion() == null){
+                account.setDireccion(new Direccion());
+            }
+            entityManager.lock(account, LockModeType.NONE);
         } else {
             account = null;
         }
@@ -92,4 +93,12 @@ public class SessionController {
 	public void setCaptcha( boolean captcha ) {
 		this.captcha = captcha;
 	}
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 }

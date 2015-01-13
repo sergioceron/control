@@ -28,7 +28,7 @@
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <h:form id="loginForm">
-                                    <h:dataTable value="#{account.cursos}" var="curso"
+                                    <h:dataTable value="#{sessionController.account.cursos}" var="curso"
                                                  id="data-table" styleClass="table table-striped table-bordered">
                                         <h:column>
                                             <f:facet name="header">Materia</f:facet>
@@ -40,15 +40,23 @@
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">Semestre</f:facet>
-                                            #{curso.semestre}
+                                            #{curso.semestre eq 1 ? 'Primero' : ''}
+                                            #{curso.semestre eq 2 ? 'Segundo' : ''}
+                                            #{curso.semestre eq 3 ? 'Tercero' : ''}
+                                            #{curso.semestre eq 4 ? 'Cuarto' : ''}
+                                            #{curso.semestre eq 5 ? 'Quinto' : ''}
+                                            #{curso.semestre eq 6 ? 'Sexto' : ''}
+                                            #{curso.semestre eq 7 ? 'Séptimo' : ''}
+                                            #{curso.semestre eq 8 ? 'Octavo' : ''}
+                                            #{curso.semestre eq 9 ? 'Noveno' : ''}
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">Turno</f:facet>
-                                            #{curso.turno}
+                                            #{curso.turno eq 1 ? 'Matutino' : (curso.turno eq 2 ? 'Vespertino' : 'Completo')}
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">Grupo</f:facet>
-                                            #{curso.grupo}
+                                            Grupo #{not empty curso.grupo ? curso.grupo : 'No Asignado'}
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">Accion</f:facet>

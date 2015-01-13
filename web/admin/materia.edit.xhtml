@@ -22,7 +22,7 @@
             <!-- begin row -->
             <div class="row">
                 <!-- begin col-6 -->
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <!-- begin panel -->
                     <div class="panel panel-inverse">
                         <div class="panel-heading">
@@ -101,6 +101,13 @@
                                     <label class="control-label col-md-4 col-sm-4">Externa :</label>
                                     <div class="col-md-6 col-sm-6">
                                         <h:selectBooleanCheckbox value="#{materiaController.materia.externa}" data-render="switchery" data-theme="default" data-switchery="true"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Temario :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <seam:fileUpload data="#{materiaController.dataTemario}"
+                                                      accept="application/pdf" />
                                     </div>
                                 </div>
                                 <div class="form-group">

@@ -19,6 +19,7 @@ public class Materia {
 	private boolean externa;
     private String descripcion;
     private List<Curso> cursos;
+    private String temario;
 
 	public Materia() {
 		tipo = Tipo.OBLIGATORIA;
@@ -91,6 +92,14 @@ public class Materia {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getTemario() {
+        return temario;
+    }
+
+    public void setTemario(String temario) {
+        this.temario = temario;
     }
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,

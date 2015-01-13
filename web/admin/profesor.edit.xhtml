@@ -76,7 +76,7 @@
                                                     <label class="control-label col-md-4 col-sm-4">Apellido Materno :</label>
                                                     <div class="col-md-6 col-sm-6">
                                                         <h:inputText value="#{profesorController.profesor.apellidoM}" styleClass="form-control" placeholder="Apellido Materno"
-                                                                     data-parsley-required="true" data-parsley-minlength="2" data-parsley-group="wizard-step-1" />
+                                                                      data-parsley-minlength="2" data-parsley-group="wizard-step-1" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,7 +93,7 @@
                                                     <label class="control-label col-md-4 col-sm-4">Registro :</label>
                                                     <div class="col-md-6 col-sm-6">
                                                         <h:inputText value="#{profesorController.profesor.clave}" styleClass="form-control" placeholder="Número de Registro"
-                                                                     data-parsley-required="true" data-parsley-type="alphanum" data-parsley-length="[5, 15]" data-parsley-group="wizard-step-2" />
+                                                                     data-parsley-required="true" data-parsley-length="[5, 15]" data-parsley-group="wizard-step-2" />
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -176,7 +176,7 @@
                                                     <label class="control-label col-md-4 col-sm-4">Correo :</label>
                                                     <div class="col-md-6 col-sm-6">
                                                         <h:inputText value="#{profesorController.profesor.correo}" styleClass="form-control" placeholder="Correo Electronico"
-                                                                     data-parsley-type="email" data-parsley-required="true" data-parsley-minlength="4" data-parsley-group="wizard-step-3" />
+                                                                     data-parsley-type="email" data-parsley-minlength="4" data-parsley-group="wizard-step-3" />
                                                     </div>
                                                 </h:panelGroup>
                                                 <h:panelGroup styleClass="form-group" rendered="#{profesorController.register}">
@@ -189,7 +189,7 @@
                                                 <h:panelGroup styleClass="form-group" rendered="#{profesorController.register}">
                                                     <label class="control-label col-md-4 col-sm-4">Contraseña :</label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <h:inputSecret value="#{profesorController.user.hash}" styleClass="form-control" placeholder="Contraseña"
+                                                        <h:inputText value="#{profesorController.user.hash}" styleClass="form-control" placeholder="Contraseña"
                                                                      data-parsley-required="true" data-parsley-minlength="6" id="password" data-parsley-group="wizard-step-3" />
                                                         <div id="passwordStrengthDiv" class="is0 m-t-5"></div>
                                                     </div>

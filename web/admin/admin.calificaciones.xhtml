@@ -45,7 +45,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6" style="min-height: 25px">Turno:</div>
-                                <div class="col-md-6" style="min-height: 25px">#{calificacionController.curso.turno}</div>
+                                <div class="col-md-6" style="min-height: 25px">
+                                    #{calificacionController.curso.turno eq 1 ? 'Matutino' : '' }
+                                    #{calificacionController.curso.turno eq 2 ? 'Vespertino' : '' }
+                                    #{calificacionController.curso.turno eq 3 ? 'Completo' : '' }
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6" style="min-height: 25px">Grupo:</div>

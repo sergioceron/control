@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by sergio on 12/06/2014.
  */
 @Entity
-public class Hora {
+public class Hora implements Comparable{
 	private final String[] dias = new String[]{ "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" };
 	private Long id;
 
@@ -73,9 +73,17 @@ public class Hora {
 		Hora hora = (Hora) o;
 
 		if( diaSemana != hora.diaSemana ) return false;
-		if( hora.horaFin.equals( horaFin ) ) return false;
-		if( hora.horaInicio.equals( horaInicio ) ) return false;
+		if( !hora.horaFin.equals( horaFin ) ) return false;
+		if( !hora.horaInicio.equals( horaInicio ) ) return false;
 
 		return true;
+	}
+
+	@Override
+	public int compareTo( Object o ) {
+		if( o instanceof Hora ){
+			return this.getDiaSemana() - ( (Hora) o ).getDiaSemana();
+		}
+		return -10000;
 	}
 }

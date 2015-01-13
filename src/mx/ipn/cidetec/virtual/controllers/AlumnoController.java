@@ -68,10 +68,11 @@ public class AlumnoController {
         query.setParameter("alumno", alumno);
         removable = query.getResultList().size() == 0;
     }
-
+    // TODO: fix, if empty password submit -> no generator works. fix, if no boleta entered, bypass wizard and block
     @End
     public String save() {
         if (register && alumno.getId() == null) {
+            user.setUsername(alumno.getMatricula());
             new RunAsOperation() {
                 public void execute() {
                     try {
@@ -132,6 +133,8 @@ public class AlumnoController {
 
     public void setAlumno(Alumno alumno) {
         this.alumno = alumno;
+        if (alumno.getDireccion()==null)
+            alumno.setDireccion(new Direccion());
     }
 
     public List<Colonia> getColonias() {

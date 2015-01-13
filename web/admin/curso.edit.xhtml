@@ -24,7 +24,7 @@
             <!-- begin row -->
             <div class="row">
                 <!-- begin col-6 -->
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <!-- begin panel -->
                     <div class="panel panel-inverse">
                         <div class="panel-heading">
@@ -38,12 +38,15 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-4 col-sm-4">Materia :</label>
                                     <div class="col-md-6 col-sm-6">
-                                        <h:selectOneMenu value="#{cursoController.curso.materia}" styleClass="form-control"
-                                                         data-parsley-required="true">
-                                            <f:selectItems var="materia" value="#{listEntitiesController.materias}"
-                                                           itemLabel="#{materia.nombre}" itemValue="#{materia}"/>
-                                            <seam:convertEntity/>
-                                        </h:selectOneMenu>
+                                        <div id="materia_wrapper">
+                                            <h:selectOneMenu value="#{cursoController.curso.materia}" styleClass="form-control selectpicker" data-parsley-required="true"
+                                                             data-size="10" data-live-search="true" data-style="btn-white btn-sm" data-parsley-class-handler="#materia_wrapper">
+                                                <f:selectItem itemLabel="(Seleccione una materia)" itemValue="" />
+                                                <f:selectItems var="materia" value="#{listEntitiesController.materias}"
+                                                               itemLabel="#{materia.nombre}" itemValue="#{materia}"/>
+                                                <seam:convertEntity/>
+                                            </h:selectOneMenu>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -68,13 +71,24 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-4 col-sm-4">Turrno :</label>
+                                    <label class="control-label col-md-4 col-sm-4">Turno :</label>
                                     <div class="col-md-6 col-sm-6">
                                         <h:selectOneMenu value="#{cursoController.curso.turno}" styleClass="form-control"
                                                          data-parsley-required="true">
                                             <f:selectItem itemLabel="Matutino" itemValue="1"/>
                                             <f:selectItem itemLabel="Vespertino" itemValue="2"/>
                                             <f:selectItem itemLabel="Completo" itemValue="3"/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Periodo :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:selectOneMenu value="#{cursoController.curso.periodo}"
+                                                             styleClass="form-control" collectionType="java.util.ArrayList"
+                                                             data-parsley-required="true">
+                                            <f:selectItems value="#{listEntitiesController.periodos}" var="periodo" itemLabel="#{periodo}" itemValue="#{periodo}"/>
+                                            <seam:convertEntity/>
                                         </h:selectOneMenu>
                                     </div>
                                 </div>
@@ -95,28 +109,31 @@
                                     <div class="col-md-6 col-sm-6">
                                         <h:selectOneMenu value="#{cursoController.curso.semestre}" styleClass="form-control"
                                                          data-parsley-required="true">
-                                            <f:selectItem itemLabel="1" itemValue="1"/>
-                                            <f:selectItem itemLabel="2" itemValue="2"/>
-                                            <f:selectItem itemLabel="3" itemValue="3"/>
-                                            <f:selectItem itemLabel="4" itemValue="4"/>
-                                            <f:selectItem itemLabel="5" itemValue="5"/>
-                                            <f:selectItem itemLabel="6" itemValue="6"/>
-                                            <f:selectItem itemLabel="7" itemValue="7"/>
-                                            <f:selectItem itemLabel="8" itemValue="8"/>
-                                            <f:selectItem itemLabel="9" itemValue="9"/>
-                                            <f:selectItem itemLabel="10" itemValue="10"/>
+                                            <f:selectItem itemLabel="1er Semestre" itemValue="1"/>
+                                            <f:selectItem itemLabel="2do Semestre" itemValue="2"/>
+                                            <f:selectItem itemLabel="3er Semestre" itemValue="3"/>
+                                            <f:selectItem itemLabel="4to Semestre" itemValue="4"/>
+                                            <f:selectItem itemLabel="5to Semestre" itemValue="5"/>
+                                            <f:selectItem itemLabel="6to Semestre" itemValue="6"/>
+                                            <f:selectItem itemLabel="7mo Semestre" itemValue="7"/>
+                                            <f:selectItem itemLabel="8vo Semestre" itemValue="8"/>
+                                            <f:selectItem itemLabel="9no Semestre" itemValue="9"/>
+                                            <f:selectItem itemLabel="10mo Semestre" itemValue="10"/>
                                         </h:selectOneMenu>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-4 col-sm-4">Horario :</label>
                                     <div class="col-md-6 col-sm-6">
-                                        <h:selectManyListbox value="#{cursoController.curso.horario}" var="hora"
-                                                       id="horas" styleClass="form-control" collectionType="java.util.ArrayList"
-                                                       data-parsley-required="true">
-                                            <f:selectItems value="#{listEntitiesController.horas}"/>
-                                            <seam:convertEntity/>
-                                        </h:selectManyListbox>
+                                        <seam:div id="hora_wrapper">
+                                            <h:selectManyListbox value="#{cursoController.curso.horario}" var="hora"
+                                                           id="horas" styleClass="form-control selectpicker" collectionType="java.util.ArrayList"
+                                                           data-parsley-required="true" size="10"
+                                                           data-size="10" data-live-search="true" data-style="btn-white btn-sm" data-parsley-class-handler="#hora_wrapper">
+                                                <f:selectItems value="#{listEntitiesController.horas}"/>
+                                                <seam:convertEntity/>
+                                            </h:selectManyListbox>
+                                        </seam:div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -182,7 +199,7 @@
                                                     <label class="control-label col-md-4 col-sm-4"></label>
                                                     <div class="col-md-6 col-sm-6">
                                                         <h:commandButton value="Guardar" action="#{horaController.save}">
-                                                            <f:ajax execute="dia inicio fin @this" render="horas"
+                                                            <f:ajax execute="dia inicio fin @this" render="hora_wrapper"
                                                                     onevent="hideModal"/>
                                                         </h:commandButton>
                                                         <a href="#"
@@ -219,6 +236,8 @@
                 function hideModal(data) {
                     if (data.status === 'success') {
                         $('#dialog').modal('hide');
+                        $(".selectpicker").selectpicker("render");
+                        $(".bootstrap-select-searchbox input").attr('name', 'searchbox');
                     }
                 }
                 $("#inicio").timepicker({

@@ -78,7 +78,10 @@ public class Profesor extends Account {
 
 	public enum Tipo {
 		COLEGIADO("Colegiado"),
-		TITULAR("Asignatura");
+		TITULAR("Asignatura"),
+		ASISTENTE("Asistente"),
+		INVITADO("Invitado"),
+		VISITANTE("Visitante");
 
 		private String name;
 

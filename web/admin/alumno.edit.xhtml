@@ -43,10 +43,12 @@
                                             General
                                             <small>Información personal del alumno </small>
                                         </li>
+                                        <f:verbatim rendered="#{alumnoController.alumno.id ne null}">
                                         <li>
                                             Direccion
                                             <small>Información de domicilio del estudiante.</small>
                                         </li>
+                                        </f:verbatim>
                                         <li>
                                             Académicos
                                             <small>Información academica, programa y plan de estudios.</small>
@@ -100,7 +102,7 @@
                                                     <div class="col-md-6 col-sm-6">
                                                         <div class="input-group date" id="fecha-nacimiento" data-date-format="dd-mm-yyyy">
                                                             <h:inputText value="#{alumnoController.alumno.fechaNacimiento}" styleClass="form-control" placeholder="Fecha de nacimiento"
-                                                                         data-parsley-required="true" data-parsley-minlength="2" data-parsley-group="wizard-step-2" >
+                                                                         data-parsley-group="wizard-step-1" >
                                                                 <f:convertDateTime pattern="dd-MM-yyyy" />
                                                             </h:inputText>
                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
@@ -112,7 +114,7 @@
                                         </fieldset>
                                     </div>
 
-                                    <div class="wizard-step-2">
+                                    <seam:div styleClass="wizard-step-2" rendered="#{alumnoController.alumno.id ne null}">
                                         <fieldset>
                                             <legend class="pull-left width-full">Dirección</legend>
                                             <!-- begin row -->
@@ -186,7 +188,7 @@
                                             </div>
                                             <!-- end row -->
                                         </fieldset>
-                                    </div>
+                                    </seam:div>
 
                                     <div class="wizard-step-3">
                                         <fieldset>
@@ -301,20 +303,13 @@
                                                     <label class="control-label col-md-4 col-sm-4">Correo :</label>
                                                     <div class="col-md-6 col-sm-6">
                                                         <h:inputText value="#{alumnoController.alumno.correo}" styleClass="form-control" placeholder="Correo Electronico"
-                                                                     data-parsley-type="email" data-parsley-required="true" data-parsley-minlength="4" data-parsley-group="wizard-step-4" />
-                                                    </div>
-                                                </h:panelGroup>
-                                                <h:panelGroup styleClass="form-group" rendered="#{alumnoController.register}">
-                                                    <label class="control-label col-md-4 col-sm-4">Usuario :</label>
-                                                    <div class="col-md-6 col-sm-6">
-                                                        <h:inputText value="#{alumnoController.user.username}" styleClass="form-control" placeholder="Nombre de usuario"
-                                                                     data-parsley-required="true" data-parsley-minlength="4" data-parsley-group="wizard-step-4" />
+                                                                     data-parsley-type="email" data-parsley-minlength="4" data-parsley-group="wizard-step-4" />
                                                     </div>
                                                 </h:panelGroup>
                                                 <h:panelGroup styleClass="form-group" rendered="#{alumnoController.register}">
                                                     <label class="control-label col-md-4 col-sm-4">Contraseña :</label>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <h:inputSecret value="#{alumnoController.user.hash}" styleClass="form-control" placeholder="Contraseña"
+                                                        <h:inputText value="#{alumnoController.user.hash}" styleClass="form-control" placeholder="Contraseña"
                                                                      data-parsley-required="true" data-parsley-minlength="6" id="password" data-parsley-group="wizard-step-4" />
                                                         <div id="passwordStrengthDiv" class="is0 m-t-5"></div>
                                                     </div>
