@@ -2,9 +2,11 @@ package mx.ipn.cidetec.virtual.controllers;
 
 import mx.ipn.cidetec.virtual.entities.Calificacion;
 import org.jboss.seam.annotations.In;
+import org.jboss.seam.annotations.Logger;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Transactional;
 import org.jboss.seam.annotations.web.RequestParameter;
+import org.jboss.seam.log.Log;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -26,6 +28,9 @@ public class CalificacionService {
     @In
     private EntityManager entityManager;
 
+	@Logger
+	private Log log;
+
     @RequestParameter("pk")
     private String id;
 
@@ -44,6 +49,7 @@ public class CalificacionService {
                 c.setSetted(true);
                 entityManager.persist(c);
                 entityManager.flush();
+	            log.info("CalificacionService[method=set, object=#1, value=#2]", c, value );
             }
             return true;
         }

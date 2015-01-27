@@ -6,10 +6,8 @@ package mx.ipn.cidetec.virtual.controllers;
 
 import mx.ipn.cidetec.virtual.entities.*;
 import org.jboss.seam.ScopeType;
-import org.jboss.seam.annotations.Begin;
-import org.jboss.seam.annotations.In;
-import org.jboss.seam.annotations.Name;
-import org.jboss.seam.annotations.Scope;
+import org.jboss.seam.annotations.*;
+import org.jboss.seam.log.Log;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
@@ -31,6 +29,9 @@ public class ProfesorConstanciaController {
 
     @In
     private EntityManager entityManager;
+
+	@Logger
+	private Log log;
 
     @Begin(join = true)
     public String prepare() {

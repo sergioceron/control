@@ -4,10 +4,8 @@ import mx.ipn.cidetec.virtual.entities.Materia;
 import mx.ipn.cidetec.virtual.entities.MateriaCategoria;
 import mx.ipn.cidetec.virtual.entities.Programa;
 import org.jboss.seam.ScopeType;
-import org.jboss.seam.annotations.End;
-import org.jboss.seam.annotations.In;
-import org.jboss.seam.annotations.Name;
-import org.jboss.seam.annotations.Scope;
+import org.jboss.seam.annotations.*;
+import org.jboss.seam.log.Log;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -29,6 +27,9 @@ public class MateriaController {
 
 	@In
 	private EntityManager entityManager;
+
+	@Logger
+	private Log log;
 
 	@End
 	public String save(){

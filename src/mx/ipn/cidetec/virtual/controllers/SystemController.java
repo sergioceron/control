@@ -4,6 +4,7 @@ import mx.ipn.cidetec.virtual.entities.Configuration;
 import mx.ipn.cidetec.virtual.entities.Periodo;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.*;
+import org.jboss.seam.log.Log;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -25,6 +26,9 @@ public class SystemController {
 
     @In
     private EntityManager entityManager;
+
+	@Logger
+	private Log log;
 
     @Create
     public void boot(){

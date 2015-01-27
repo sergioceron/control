@@ -3,13 +3,11 @@ package mx.ipn.cidetec.virtual.controllers;
 import mx.ipn.cidetec.virtual.entities.Activation;
 import mx.ipn.cidetec.virtual.entities.User;
 import org.jboss.seam.ScopeType;
-import org.jboss.seam.annotations.In;
-import org.jboss.seam.annotations.Name;
-import org.jboss.seam.annotations.Observer;
-import org.jboss.seam.annotations.Scope;
+import org.jboss.seam.annotations.*;
 import org.jboss.seam.faces.FacesMessages;
 import org.jboss.seam.faces.Renderer;
 import org.jboss.seam.international.StatusMessage;
+import org.jboss.seam.log.Log;
 import org.jboss.seam.security.Identity;
 import org.jboss.seam.security.RunAsOperation;
 import org.jboss.seam.security.digest.DigestUtils;
@@ -34,6 +32,9 @@ public class RegisterController {
 
 	@In
 	EntityManager entityManager;
+
+	@Logger
+	private Log log;
 
 	@In
 	private IdentityManager identityManager;

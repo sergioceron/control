@@ -62,14 +62,15 @@ public class Periodo {
 
     @Transient
     public int getSemanas(){
-        Calendar c1 = Calendar.getInstance();
+        /*Calendar c1 = Calendar.getInstance();
         Calendar c2 = Calendar.getInstance();
         c1.setTime(inicio);
         c2.setTime(termino);
         int startWeek = c1.get(Calendar.WEEK_OF_YEAR);
         int endWeek = c2.get(Calendar.WEEK_OF_YEAR);
 
-        return endWeek - startWeek;
+        return endWeek - startWeek;*/
+	    return 15;
     }
 
     @Override

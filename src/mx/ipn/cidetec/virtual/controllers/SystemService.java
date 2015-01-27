@@ -3,9 +3,11 @@ package mx.ipn.cidetec.virtual.controllers;
 import mx.ipn.cidetec.virtual.entities.Configuration;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.In;
+import org.jboss.seam.annotations.Logger;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Transactional;
 import org.jboss.seam.annotations.web.RequestParameter;
+import org.jboss.seam.log.Log;
 
 import javax.persistence.EntityManager;
 import javax.ws.rs.POST;
@@ -25,6 +27,9 @@ public class SystemService {
 
 	@In
 	private EntityManager entityManager;
+
+	@Logger
+	private Log log;
 
     @In(scope= ScopeType.APPLICATION)
     private SystemController systemController;

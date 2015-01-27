@@ -8,8 +8,10 @@ import mx.ipn.cidetec.virtual.entities.Alumno;
 import mx.ipn.cidetec.virtual.entities.Calificacion;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.In;
+import org.jboss.seam.annotations.Logger;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
+import org.jboss.seam.log.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,6 +29,9 @@ public class AlumnoConstanciaController {
 
     @In
     private SystemController systemController;
+
+	@Logger
+	private Log log;
 
 
     public void prepare(Alumno alumno) {

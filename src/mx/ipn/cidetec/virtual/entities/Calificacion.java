@@ -85,4 +85,16 @@ public class Calificacion {
 
         return true;
     }
+
+	@Override
+	public String toString() {
+		return "Calificacion{" +
+				"id=" + id +
+				", alumno=" + alumno +
+				", curso=" + curso +
+				", calificacion=" + calificacion +
+				", recurse=" + recurse +
+				", setted=" + setted +
+				'}';
+	}
 }

@@ -4,10 +4,8 @@ import mx.ipn.cidetec.virtual.entities.Calificacion;
 import mx.ipn.cidetec.virtual.entities.Curso;
 import mx.ipn.cidetec.virtual.entities.Hora;
 import org.jboss.seam.ScopeType;
-import org.jboss.seam.annotations.End;
-import org.jboss.seam.annotations.In;
-import org.jboss.seam.annotations.Name;
-import org.jboss.seam.annotations.Scope;
+import org.jboss.seam.annotations.*;
+import org.jboss.seam.log.Log;
 
 import javax.persistence.EntityManager;
 
@@ -26,6 +24,9 @@ public class CalificacionController {
 
 	@In
 	private EntityManager entityManager;
+
+	@Logger
+	private Log log;
 
     @In(create = true)
     private InscripcionController inscripcionController;

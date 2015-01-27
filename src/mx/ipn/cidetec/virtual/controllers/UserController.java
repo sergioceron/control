@@ -4,10 +4,8 @@ import mx.ipn.cidetec.virtual.entities.Programa;
 import mx.ipn.cidetec.virtual.entities.Role;
 import mx.ipn.cidetec.virtual.entities.User;
 import org.jboss.seam.ScopeType;
-import org.jboss.seam.annotations.End;
-import org.jboss.seam.annotations.In;
-import org.jboss.seam.annotations.Name;
-import org.jboss.seam.annotations.Scope;
+import org.jboss.seam.annotations.*;
+import org.jboss.seam.log.Log;
 import org.jboss.seam.security.RunAsOperation;
 import org.jboss.seam.security.management.IdentityManager;
 
@@ -29,6 +27,9 @@ public class UserController {
 
     @In
     private EntityManager entityManager;
+
+	@Logger
+	private Log log;
 
     @End
     public String save() {

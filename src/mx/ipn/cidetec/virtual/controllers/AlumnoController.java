@@ -3,6 +3,7 @@ package mx.ipn.cidetec.virtual.controllers;
 import mx.ipn.cidetec.virtual.entities.*;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.*;
+import org.jboss.seam.log.Log;
 import org.jboss.seam.security.RunAsOperation;
 import org.jboss.seam.security.management.IdentityManager;
 import org.jboss.seam.security.management.JpaIdentityStore;
@@ -37,6 +38,9 @@ public class AlumnoController {
 
     @In
     private EntityManager entityManager;
+
+	@Logger
+	private Log log;
 
     private List<Colonia> colonias;
 

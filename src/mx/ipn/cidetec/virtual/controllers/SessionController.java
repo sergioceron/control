@@ -3,6 +3,7 @@ package mx.ipn.cidetec.virtual.controllers;
 import mx.ipn.cidetec.virtual.entities.*;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.*;
+import org.jboss.seam.log.Log;
 import org.jboss.seam.security.Identity;
 
 import javax.persistence.EntityManager;
@@ -38,6 +39,9 @@ public class SessionController {
 
     @In
     private EntityManager entityManager;
+
+	@Logger
+	private Log log;
 
 	@Observer("org.jboss.seam.security.loginFailed")
 	public void loginFailed(){
