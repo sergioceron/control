@@ -104,6 +104,7 @@ $.extend( $.fn.dataTableExt.oPagination, {
 					$('li:last', an[i]).removeClass('disabled');
 				}
 			}
+            $("[data-toggle=tooltip]").tooltip();
 		}
 	}
 } );

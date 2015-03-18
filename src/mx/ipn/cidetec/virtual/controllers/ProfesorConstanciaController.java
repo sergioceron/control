@@ -9,7 +9,6 @@ import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.*;
 import org.jboss.seam.log.Log;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.text.SimpleDateFormat;
@@ -46,6 +45,11 @@ public class ProfesorConstanciaController {
 
     public Date getDate(){
         return new Date();
+    }
+
+    public String getFecha(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd 'de' MMMM 'del' yyyy");
+        return sdf.format(new Date());
     }
 
     public String getPeriodoFormateado(){

@@ -225,20 +225,23 @@
             <script src="/assets/js/apps.min.js" type="text/javascript"></script>
             <script type="text/javascript">
                 //<![CDATA[
-                $(".editable").editable({
-                    success: function(response, newValue){
-                        $(this).editable("disable");
-                    },
-                    validate: function(value) {
-                        if(!(!isNaN(value) && value >= 0 && value <= 10)) {
-                            return 'La calificación debe ser un número entrre 0 y 10';
+                function makeEditable() {
+                    $(".editable").editable({
+                        success: function (response, newValue) {
+                            $(this).editable("disable");
+                        },
+                        validate: function (value) {
+                            if (!(!isNaN(value) && value >= 0 && value <= 10)) {
+                                return 'La calificación debe ser un número entrre 0 y 10';
+                            }
                         }
-                    }
-                });
-                $(".editable_boolean").editable({
-                    source: [{value: "1", text: "Establecida"}, {value: "2", text: "No establecida"}]
-                });
-                $(".editable_acta").editable();
+                    });
+                    $(".editable_boolean").editable({
+                        source: [{value: "1", text: "Establecida"}, {value: "2", text: "No establecida"}]
+                    });
+                    $(".editable_acta").editable();
+                }
+                makeEditable();
                 //]]>
             </script>
             <script type="text/javascript">
@@ -262,6 +265,7 @@
                 function hideModal_inscripcion(data) {
                     if (data.status === 'success') {
                         $('#modal_inscripcion').modal('hide');
+                        makeEditable();
                     }
                 }
             </script>

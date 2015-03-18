@@ -60,9 +60,11 @@ public class AlumnoController {
         }
         for (EvaluacionAlumno evaluacionAlumno : alumno.getEvaluaciones()) {
             entityManager.remove(evaluacionAlumno);
+            log.debug("AlumnoController[method=remove, object=#1]", evaluacionAlumno);
         }
         entityManager.remove( alumno );
         entityManager.flush();
+        log.debug("AlumnoController[method=remove, persisted]");
         alumno = null;
     }
 
@@ -72,6 +74,7 @@ public class AlumnoController {
         query.setParameter("alumno", alumno);
         removable = query.getResultList().size() == 0;
     }
+
     // TODO: fix, if empty password submit -> no generator works. fix, if no boleta entered, bypass wizard and block
     @End
     public String save() {

@@ -47,6 +47,11 @@ public class AlumnoConstanciaController {
         this.alumno = alumno;
     }
 
+    public String getFecha(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd 'de' MMMM 'del' yyyy");
+        return sdf.format(new Date());
+    }
+
     public List<Calificacion> getCalificaciones(){
         List<Calificacion> calificaciones = new ArrayList<Calificacion>();
         for (Calificacion calificacion : alumno.getCalificaciones()) {

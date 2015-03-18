@@ -70,4 +70,16 @@ public class EvaluacionAlumno {
     public void setTerminada(boolean terminada) {
         this.terminada = terminada;
     }
+
+    @Override
+    public String toString() {
+        return "EvaluacionAlumno{" +
+                "id=" + id +
+                ", alumno=" + alumno +
+                ", evaluacion=" + evaluacion +
+                ", curso=" + curso +
+                ", respuestas=" + respuestas +
+                ", terminada=" + terminada +
+                '}';
+    }
 }
