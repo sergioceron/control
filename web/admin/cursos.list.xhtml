@@ -84,6 +84,10 @@
                                                 <f:setPropertyActionListener target="#{cursoController.curso}"
                                                                              value="#{curso}"/>
                                             </h:commandLink>
+                                            <h:commandLink action="curso.edit.xhtml" data-toggle="tooltip" data-container="body" data-title="Clonar"
+                                                actionListener="#{cursoController.prepareToCopy(curso)}">
+                                                <i class="fa fa-copy"></i>
+                                            </h:commandLink>
                                             <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar"
                                                     actionListener="#{cursoController.prepareToRemove(curso)}">
                                                 <i class="fa fa-times"></i>

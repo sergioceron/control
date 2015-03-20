@@ -73,6 +73,18 @@ public class CursoController {
         removable = query.getResultList().size() == 0;
     }
 
+    public void prepareToCopy(Curso curso){
+        Curso copy = new Curso();
+        copy.setMateria( curso.getMateria() );
+        copy.setProfesor( curso.getProfesor() );
+        copy.setPeriodo( curso.getPeriodo() );
+        copy.setLugar( curso.getLugar() );
+        copy.setEnabled( curso.isEnabled() );
+        copy.setGrupo( curso.getGrupo() );
+
+        this.curso = copy;
+    }
+
     public void remove(){
         entityManager.remove( curso );
         entityManager.flush();
