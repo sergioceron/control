@@ -79,6 +79,8 @@ public class CursoController {
         copy.setProfesor( curso.getProfesor() );
         copy.setPeriodo( curso.getPeriodo() );
         copy.setLugar( curso.getLugar() );
+        copy.setTurno( curso.getTurno() );
+        copy.setSemestre( curso.getSemestre() );
         copy.setEnabled( curso.isEnabled() );
         copy.setGrupo( curso.getGrupo() );
 
