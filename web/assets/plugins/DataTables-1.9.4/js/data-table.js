@@ -153,6 +153,7 @@ $(document).ready(function() {
         $('#loginForm\\:data-table').dataTable( {
             "sDom": "<'row'<'col-md-6 col-sm-6'l><'col-md-6 col-sm-6'f>r>t<'row'<'col-md-6 col-sm-6'i><'col-md-6 col-sm-6'p>>",
             "sPaginationType": "bootstrap",
+            "bStateSave": true,
             "oLanguage": {
                 "sLengthMenu": "_MENU_ registros por página",
                 "sSearch": "Busqueda: ",
