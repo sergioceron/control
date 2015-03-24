@@ -63,6 +63,9 @@ public class ProfesorConstanciaController {
     public String horarioFormateado(Curso curso){
         List<Hora> horas = curso.getHorario();
 	    Collections.sort( horas );
+
+        if( horas.size() == 0 ) return "";
+
 	    Hora primera = horas.get(0);
         Hora segunda = horas.size() > 1 ? horas.get(1) : null;
         String hora = primera.getHoraInicio() + "-" + primera.getHoraFin();
