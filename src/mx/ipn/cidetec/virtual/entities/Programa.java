@@ -57,4 +57,15 @@ public class Programa {
 	public void setMaterias(List<Materia> materias) {
 		this.materias = materias;
 	}
+
+    @Transient
+    public String getAbbr(){
+        String[] palabras = nombre.split(" ");
+        String abbr = new String();
+        for (String palabra : palabras) {
+            if( Character.isUpperCase( palabra.charAt(0) ) )
+                abbr += palabra.charAt(0);
+        }
+        return abbr;
+    }
 }

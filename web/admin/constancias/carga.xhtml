@@ -54,6 +54,14 @@
             text-align: center;
         }
 
+        .colspan-2{
+            column-span: 2;
+            -webkit-column-span: 2;
+            -moz-column-span: 2;
+            -ms-column-span: 2;
+            -o-column-span: 2;
+        }
+
         .left{
             text-align: left;
         }
@@ -116,12 +124,14 @@
                         <f:facet name="header">Horas/Semana<br/>Teoría</f:facet>
                         #{curso.materia.tipo.horasTeoria}
                     </h:column>
-                    <h:column headerClass="c4">
+                    <h:column headerClass="c4" footerClass="c4 colspan-2">
                         <f:facet name="header">Horas/Semana<br/>Práctica</f:facet>
+                        <f:facet name="footer">Total</f:facet>
                         #{curso.materia.tipo.horasPractica}
                     </h:column>
-                    <h:column headerClass="center">
+                    <h:column headerClass="center" footerClass="center">
                         <f:facet name="header">Horas/Semestre<br/>Total</f:facet>
+                        <f:facet name="footer">#{profesorConstanciaController.totalHoras}</f:facet>
                         #{(curso.materia.tipo.horasTeoria+curso.materia.tipo.horasPractica)*profesorConstanciaController.periodo.semanas}
                     </h:column>
                 </h:dataTable>

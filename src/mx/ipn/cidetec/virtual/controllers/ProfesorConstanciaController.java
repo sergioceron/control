@@ -81,6 +81,15 @@ public class ProfesorConstanciaController {
         return dia + " " +  hora;
     }
 
+    public int getTotalHoras(){
+        int total = 0;
+        for (Curso curso : cursos) {
+            Materia.Tipo tipo = curso.getMateria().getTipo();
+            total += (tipo.getHorasPractica() + tipo.getHorasTeoria()) * periodo.getSemanas();
+        }
+        return total;
+    }
+
     public Periodo getPeriodo() {
         return periodo;
     }

@@ -50,6 +50,7 @@
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">Nombre</f:facet>
+                                            <h:outputText styleClass="label label-#{materia.programa.abbr eq 'MTC' ? 'success' : 'info'}" value="#{materia.programa.abbr}"/>
                                             #{materia.nombre}
                                             <h:outputText styleClass="label label-warning" value="Externa" rendered="#{materia.externa}"/>
                                         </h:column>

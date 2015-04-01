@@ -6,10 +6,6 @@
        no-conversation-view-id="/login.xhtml"
        login-view-id="/login.xhtml">
 
-    <page view-id="/login.xhtml">
-        <rewrite pattern="/" />
-    </page>
-
 
     <page view-id="/activation.xhtml" action="#{activationController.activate}">
         <rewrite pattern="/activation/{code}" />
@@ -235,7 +231,7 @@
         </navigation>
     </page>
 
-    <page view-id="/*" login-required="true">
+    <page view-id="/admin/*" login-required="true">
     </page>
 
     <exception class="org.jboss.seam.security.NotLoggedInException" log="false">
