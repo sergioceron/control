@@ -70,7 +70,7 @@ public class Periodo {
         int endWeek = c2.get(Calendar.WEEK_OF_YEAR);
 
         return endWeek - startWeek;*/
-	    return 15;
+	    return 18;
     }
 
     @Override
