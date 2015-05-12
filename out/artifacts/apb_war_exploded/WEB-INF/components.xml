@@ -22,6 +22,7 @@
 
     <core:manager conversation-timeout="120000"
                   concurrent-request-timeout="500"
+                  default-flush-mode="MANUAL"
                   conversation-id-parameter="cid"/>
 
     <transaction:entity-transaction entity-manager="#{entityManager}"/>
@@ -43,12 +44,12 @@
 
     <security:identity-manager identity-store="#{jpaIdentityStore}" />
     <security:jpa-identity-store
-            user-class="com.allplacesbook.www.entities.User"
-            role-class="com.allplacesbook.www.entities.Role" entity-manager="#{entityManager}"/>
+            user-class="mx.ipn.cidetec.virtual.entities.User"
+            role-class="mx.ipn.cidetec.virtual.entities.Role" entity-manager="#{entityManager}"/>
 
 
-    <security:jpa-permission-store user-permission-class="com.allplacesbook.www.entities.Permission" entity-manager="#{entityManager}"/>
-    <security:jpa-token-store token-class="com.allplacesbook.www.entities.UserToken" entity-manager="#{entityManager}" />
+    <security:jpa-permission-store user-permission-class="mx.ipn.cidetec.virtual.entities.Permission" entity-manager="#{entityManager}"/>
+    <security:jpa-token-store token-class="mx.ipn.cidetec.virtual.entities.UserToken" entity-manager="#{entityManager}" />
 
     <security:rule-based-permission-resolver security-rules="#{securityRules}" />
     <security:remember-me mode="autoLogin" cookie-max-age="3600" />
@@ -78,4 +79,6 @@
         </core:bundle-names>
     </core:resource-loader>
 
+    <component name="calificacionService" class="mx.ipn.cidetec.virtual.controllers.CalificacionService" />
+    <component name="systemService" class="mx.ipn.cidetec.virtual.controllers.SystemService" />
 </components>

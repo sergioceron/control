@@ -88,7 +88,7 @@
                 <img src="/assets/img/cidetec.png" style="float: right; margin-left: 8px" width="50px" alt="CIDETEC" />
             </div>
             <div style="clear: both; height: 10px"> </div>
-            <div style="text-align: right; font-family: 'Arial Narrow'; font-size: 10px; margin-right: 45px; " class="eee">
+            <div style="text-align: right; font-family: 'Arial Narrow'; font-size: 10px; margin-right: 45px;" class="eee">
                 “2015 Año del Generalismo José Maria Morelos y Pavón”<br/>
             </div>
         </div>
@@ -96,15 +96,16 @@
         <div style="margin: 10px 45px 10px 45px">
             <code>Constancia/2014</code>
             <div style="text-align: right">México D.F. a #{profesorConstanciaController.fecha}</div>
-            <p><strong>A QUIEN CORRESPONDA:</strong></p>
+            <p><strong>#{profesorConstanciaController.profesor.fullName.toUpperCase()}</strong></p>
+            <p><strong>P R E S E N T E .</strong></p>
             <p style="line-height: 180%;text-align: justify">
-                Por medio del presente, me permito notificarle que dentro de sus actividades academicas correspondientes al semestre #{profesorConstanciaController.periodoFormateado}
+                Por medio del presente, me permito notificarle que dentro de sus actividades académicas correspondientes al semestre #{profesorConstanciaController.periodoFormateado}
                 de el/la #{profesorConstanciaController.programa.nombre}, se le han asignado las unidades de aprendizaje correspondientes que se indican a continuación:
             </p>
             <div>
                 <h:dataTable value="#{profesorConstanciaController.cursos}" styleClass="tabla" var="curso" columnClasses="center,center,center,center,center">
                     <h:column headerClass="c1">
-                        <f:facet name="header">Materia</f:facet>
+                        <f:facet name="header"></f:facet>
                         #{curso.materia.nombre}
                     </h:column>
                     <h:column headerClass="c2">
@@ -134,8 +135,8 @@
             </p>
         </div>
         <div style="width: 100%" class="bottom-center">
-            <p>c.i.p. expediente</p>
-            <p>/STM/</p>
+            <p><span style="font-size: small;">c.i.p. expediente</span></p>
+            <p><span style="font-size: small;">/STM/</span></p>
             <p style="font-size: 10px; margin: 0 auto; text-align: center; " class="eee">
                 “Unidad Profesional Adolfo López Mateos”, Av. Juan de Dios Bátiz s/n Esq. Miguel Othón de Mendizábal,<br/>
                 Col. Nueva Industrial Vallejo, Deleg. Gustavo A. Madero, México, D.F., C.P. 07700<br/>

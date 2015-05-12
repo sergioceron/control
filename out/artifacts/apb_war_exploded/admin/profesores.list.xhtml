@@ -4,52 +4,317 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:rich="http://richfaces.org/rich"
-      xmlns:seam="http://jboss.org/schema/seam/taglib"
+      xmlns:s="http://jboss.org/schema/seam/taglib"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 
-    <ui:composition template="../index.xhtml">
+    <ui:composition template="../template.xhtml">
+        <ui:define name="title">Profesores</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/DataTables-1.9.4/css/data-table.css" rel="stylesheet"/>
+            <link href="/assets/css/tables.extra.css" rel="stylesheet"/>
+        </ui:define>
 
         <ui:define name="content">
+            <div class="row">
+                <!-- begin col-12 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <div class="btn-group">
+                                    <a href="javascript:;" data-toggle="dropdown" class="btn btn-warning dropdown-toggle btn-xs">Exportar <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#" onclick ="$('#loginForm\\:data-table').tableExport({type:'csv',escape:'false',filename:'profesores',ignoreColumn:[5]});">Excel</a></li>
+                                        <li><a href="#" onclick ="$('#loginForm\\:data-table').tableExport({type:'xml',escape:'false',filename:'profesores',ignoreColumn:[5]});">XML</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#" onclick="window.print();">Imprimir</a></li>
+                                    </ul>
+                                </div>
+                                <a href="/admin/profesor.edit.seam" class="btn btn-primary btn-xs">Nuevo Profesor</a>
+                            </div>
+                            <h4 class="panel-title">Materias</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <h:form id="loginForm">
+                                    <h:dataTable value="#{listEntitiesController.profesores}" var="profesor"
+                                                 id="data-table" styleClass="table table-striped table-bordered"
+                                                 columnClasses=",,,,text-center,no-print">
+                                        <h:column>
+                                            <f:facet name="header">Registro</f:facet>
+                                            #{profesor.clave}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Nombre</f:facet>
+                                            #{profesor.fullName}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Tipo</f:facet>
+                                            #{profesor.tipo.name}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Institucion</f:facet>
+                                            #{profesor.institucion}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Plantel</f:facet>
+                                            #{profesor.plantel}
+                                        </h:column>
+                                        <h:column headerClass="no-print">
+                                            <f:facet name="header">Accion</f:facet>
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Constancias">
+                                                <i class="fa fa-book"></i>
+                                                <s:conversationPropagation type="begin" />
+                                                <f:setPropertyActionListener target="#{profesorConstanciaController.profesor}"
+                                                                             value="#{profesor}"/>
+                                                <f:ajax execute="@this" render=":const:popup_constancias"
+                                                        onevent="showModal_constancia"/>
+                                            </h:commandLink>
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Horario">
+                                                <i class="fa fa-list"></i>
+                                                <f:setPropertyActionListener target="#{profesorController.profesor}"
+                                                                             value="#{profesor}"/>
+                                                <f:ajax execute="@this" render=":horario:popup_horario"
+                                                        onevent="showModal_horario"/>
+                                            </h:commandLink>
+                                            <h:commandLink action="profesor.edit.xhtml" data-toggle="tooltip" data-container="body" data-title="Editar">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                                <f:setPropertyActionListener target="#{profesorController.profesor}"
+                                                                             value="#{profesor}"/>
+                                            </h:commandLink>
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar"
+                                                    actionListener="#{profesorController.prepareToRemove(profesor)}">
+                                                <i class="fa fa-times"></i>
+                                                <s:conversationPropagation type="begin" />
+                                                <f:ajax execute="@this" render=":mod:popup"
+                                                        onevent="showModal"/>
+                                            </h:commandLink>
+                                        </h:column>
 
-            <h:messages/>
-            Hola, #{identity.username}
-            <rich:panel id="loginPanel" width="320" height="240" modal="true" show="true" moveable="false">
-                <f:facet name="header">
-                    <h:panelGroup>
-                        <h:outputText value="Profesores"/>
-                    </h:panelGroup>
-                </f:facet>
-                <h:form id="loginForm">
-                    <rich:dataTable value="#{listEntitiesController.profesores}" var="profesor" style="width: 100%;">
-                        <rich:column>
-                            <f:facet name="header">Nombre</f:facet>
-                            #{profesor.fullName}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Institucion</f:facet>
-                            #{profesor.institucion}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Plantel</f:facet>
-                            #{profesor.plantel}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Cursos actuales</f:facet>
-                            #{profesor.cursos.size()}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Accion</f:facet>
-                            Editar
-                        </rich:column>
+                                    </h:dataTable>
 
-                    </rich:dataTable>
-                </h:form>
-            </rich:panel>
+                                </h:form>
+
+                                <h:form id="horario">
+                                    <h:panelGroup id="popup_horario">
+                                        <div class="modal fade" id="modal_horario">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title"><h:outputText value="#{profesorController.profesor.fullName}" rendered="#{profesorController.profesor.clave != null}" /></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h:panelGroup rendered="#{profesorController.profesor.clave != null}">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-bordered">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>Materia</th>
+                                                                        <th>Lunes</th>
+                                                                        <th>Martes</th>
+                                                                        <th>Miercoles</th>
+                                                                        <th>Jueves</th>
+                                                                        <th>Viernes</th>
+                                                                        <th>Sabado</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <ui:repeat value="#{profesorController.currentCursos}" var="curso">
+                                                                    <tr>
+                                                                        <td>#{curso.materia.nombre}</td>
+                                                                        <ui:repeat value="#{profesorController.horarioOrdenado(curso)}" var="hora" >
+                                                                            <td class="text-center">
+                                                                                <h:outputText style="width: 84px" value="#{hora.horaInicio}" rendered="#{hora.horaInicio ne null}"/>
+                                                                                <br/>-<br/>
+                                                                                <h:outputText style="width: 84px" value="#{hora.horaFin}" rendered="#{hora.horaInicio ne null}"/>
+                                                                            </td>
+                                                                        </ui:repeat>
+                                                                    </tr>
+                                                                    </ui:repeat>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </h:panelGroup>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                </h:form>
+
+                                <h:form id="mod">
+                                    <h:panelGroup id="popup">
+                                        <div class="modal fade" id="modal">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title">Eliminar Profesor</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <s:div styleClass="alert alert-danger m-b-0" rendered="#{not profesorController.removable}">
+                                                            <h4><i class="fa fa-info-circle"> </i> Alerta</h4>
+                                                            <p>No se puede eliminar el profesor debido a que tiene cursos asignados con alumnos inscritos en ellos.</p>
+                                                            <p>Debe dar de baja todos los alumnos inscritos a los cursos del profesor.</p>
+                                                        </s:div>
+                                                        <s:div styleClass="alert alert-warning m-b-0" rendered="#{profesorController.removable}">
+                                                            <h4><i class="fa fa-info-circle"> </i> Advertencia</h4>
+                                                            <p>
+                                                                Se eliminarán los siguientes cursos asociados al profesor.
+                                                                <br/><br/>
+                                                                <b>Cursos</b>
+                                                                <ul>
+                                                                    <ui:repeat value="#{profesorController.profesor.cursos}" var="curso">
+                                                                        <li><h:outputText value="#{curso.materia.clave}"/> - <h:outputText value="#{curso.materia.nombre}"/></li>
+                                                                    </ui:repeat>
+                                                                </ul>
+                                                            </p>
+                                                        </s:div>
+                                                        <h:panelGroup rendered="#{profesorController.profesor.id != null}">
+                                                            <h5>Datos del Profesor</h5>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Nombre:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{profesorController.profesor.fullName} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Tipo:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{profesorController.profesor.tipo.name} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Institucion:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{profesorController.profesor.institucion} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Plantel:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{profesorController.profesor.plantel} </span>
+                                                            </p>
+                                                        </h:panelGroup>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                                                        <h:commandLink action="#{profesorController.remove}" styleClass="btn btn-sm btn-danger"
+                                                                rendered="#{profesorController.removable}">
+                                                            Eliminar
+                                                            <f:ajax execute="@this" render=":loginForm:data-table" onevent="hideModal"/>
+                                                        </h:commandLink>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                </h:form>
+
+                                <h:form id="const" styleClass="form-horizontal form-bordered">
+                                    <h:panelGroup id="popup_constancias">
+                                        <div class="modal fade" id="modal_constancias">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title">Seleccione el periodo y programa:</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h:panelGroup rendered="#{profesorConstanciaController.profesor.id != null}">
+                                                            <div class="row">
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-4 col-sm-4">Profesor :</label>
+                                                                    <div class="col-md-6 col-sm-6">
+                                                                        #{profesorConstanciaController.profesor.fullName}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-4 col-sm-4">Programa :</label>
+                                                                    <div class="col-md-6 col-sm-6">
+                                                                        <h:selectOneMenu value="#{profesorConstanciaController.programa}" styleClass="form-control"
+                                                                                         data-parsley-required="true">
+                                                                            <f:selectItems value="#{listEntitiesController.programas}" var="programa"
+                                                                                           itemLabel="#{programa.nombre}" itemValue="#{programa}"/>
+                                                                            <s:convertEntity/>
+                                                                        </h:selectOneMenu>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-4 col-sm-4">Periodo :</label>
+                                                                    <div class="col-md-6 col-sm-6">
+                                                                        <h:selectOneMenu value="#{profesorConstanciaController.periodo}" styleClass="form-control"
+                                                                                         data-parsley-required="true">
+                                                                            <f:selectItems value="#{listEntitiesController.periodos}" var="periodo"
+                                                                                           itemLabel="#{periodo}" itemValue="#{periodo}"/>
+                                                                            <s:convertEntity/>
+                                                                        </h:selectOneMenu>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-4 col-sm-4">Constancia :</label>
+                                                                    <div class="col-md-6 col-sm-6">
+                                                                        <h:selectOneMenu value="#{profesorConstanciaController.constancia}" styleClass="form-control"
+                                                                                         data-parsley-required="true">
+                                                                            <f:selectItem itemValue="asignacion" itemLabel="Asignación de Cursos" />
+                                                                            <f:selectItem itemValue="carga" itemLabel="Carga Académica" />
+                                                                        </h:selectOneMenu>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </h:panelGroup>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                                                        <h:commandLink action="#{profesorConstanciaController.prepare}" value="Generar" styleClass="btn btn-sm btn-primary"
+                                                                       style="text-transform: uppercase">
+                                                        </h:commandLink>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                </h:form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+            </div>
 
         </ui:define>
 
+        <ui:define name="scripts">
+            <script src="/assets/plugins/DataTables-1.9.4/js/jquery.dataTables.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/tableExport.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jquery.base64.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/libs/sprintf.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/jspdf.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/libs/base64.js" type="text/javascript"></script>
+            <script src="/assets/plugins/DataTables-1.9.4/js/data-table.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                function showModal_horario(data) {
+                    if (data.status === 'success') {
+                        $('#modal_horario').modal('show');
+                    }
+                }
+                function showModal(data) {
+                    if (data.status === 'success') {
+                        $('#modal').modal('show');
+                    }
+                }
+                function showModal_constancia(data) {
+                    if (data.status === 'success') {
+                        $('#modal_constancias').modal('show');
+                    }
+                }
+                function hideModal(data) {
+                    if (data.status === 'success') {
+                        $('#modal').modal('hide');
+                    }
+                }
+            </script>
+        </ui:define>
     </ui:composition>
 
 </h:body>

@@ -4,68 +4,153 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:rich="http://richfaces.org/rich"
       xmlns:seam="http://jboss.org/schema/seam/taglib"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 
-    <ui:composition template="../index.xhtml">
+    <ui:composition template="../template.xhtml">
+
+        <ui:define name="title">Materias</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/parsley/src/parsley.css" rel="stylesheet" />
+            <link href="/assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+        </ui:define>
 
         <ui:define name="content">
 
-            <h:messages/>
-            <rich:popupPanel id="loginPanel" width="420" height="540" modal="true" show="true" moveable="false">
-                <f:facet name="header">
-                    <h:panelGroup>
-                        <h:outputText value="Nueva Materia"/>
-                    </h:panelGroup>
-                </f:facet>
-                <h:form id="loginForm">
-                    <rich:focus />
-                    <h:panelGrid columns="1" footerClass="regFooter">
-                        <h:panelGroup styleClass="col0">
-                            <h:panelGrid columns="1" cellpadding="5" footerClass="prefFooter">
-                                <h:panelGrid columns="2" columnClasses="col0,col1" cellpadding="5">
-                                    <h:outputText value="Clave"/>
-                                    <h:inputText required="true" value="#{materiaController.materia.clave}" maxlength="10">
-                                        <f:validateLength minimum="4" maximum="10"/>
-                                    </h:inputText>
-                                    <h:outputText value="Nombre"/>
-                                    <h:inputText required="true" value="#{materiaController.materia.nombre}">
-                                        <f:validateLength minimum="4" />
-                                    </h:inputText>
-                                    <h:outputText value="Creditos"/>
-                                    <h:inputText required="true" value="#{materiaController.materia.creditos}" size="17" maxlength="30" />
-                                    <h:outputText value="Tipo"/>
-                                    <h:selectOneMenu value="#{materiaController.materia.tipo}">
-                                        <f:selectItems var="tipo" value="#{materiaController.tipos}" itemLabel="#{tipo.name}" />
-                                    </h:selectOneMenu>
-                                    <h:outputText value="Categoria"/>
-                                    <h:selectOneMenu value="#{materiaController.materia.categoria}">
-                                        <f:selectItems var="categoria" value="#{materiaController.categorias}" itemLabel="#{categoria.nombre}" />
-                                        <seam:convertEntity />
-                                    </h:selectOneMenu>
-                                    <h:outputText value="Programa"/>
-                                    <h:selectOneMenu value="#{materiaController.materia.programa}">
-                                        <f:selectItems var="programa" value="#{listEntitiesController.programas}" itemLabel="#{programa.nombre}" />
-                                        <seam:convertEntity />
-                                    </h:selectOneMenu>
-                                    <h:outputText value="Externa"/>
-                                    <h:selectBooleanCheckbox value="#{materiaController.materia.externa}" />
-                                </h:panelGrid>
-                            </h:panelGrid>
-                        </h:panelGroup>
-                        <f:facet name="footer">
-                            <h:panelGroup>
-                                <h:commandButton value="Guardar" action="#{materiaController.save}"/>
-                                <h:commandButton type="button" value="Cancelar" action="materias.list.xhtml"/>
-                            </h:panelGroup>
-                        </f:facet>
-                    </h:panelGrid>
+            <!-- begin row -->
+            <div class="row">
+                <!-- begin col-6 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">#{materiaController.materia.clave eq null ? "Nueva Materia" : "Editar Materia" }</h4>
+                        </div>
+                        <div class="panel-body panel-form">
 
-                </h:form>
-            </rich:popupPanel>
+                            <h:form prependId="false" styleClass="form-horizontal form-bordered" data-parsley-validate="true">
 
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Clave :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:inputText value="#{materiaController.materia.clave}" styleClass="form-control" placeholder="Clave de la materia"
+                                                     data-type="alphanum" data-parsley-required="true" data-parsley-length="[4, 10]" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Nombre :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:inputText value="#{materiaController.materia.nombre}" styleClass="form-control" placeholder="Nombre de la materia"
+                                                     data-parsley-required="true" data-parsley-minlength="2" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Creditos :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:selectOneMenu value="#{materiaController.materia.creditos}" styleClass="form-control"
+                                                     data-parsley-required="true">
+                                            <f:selectItem itemLabel="0" itemValue="0"/>
+                                            <f:selectItem itemLabel="1" itemValue="1"/>
+                                            <f:selectItem itemLabel="2" itemValue="2"/>
+                                            <f:selectItem itemLabel="3" itemValue="3"/>
+                                            <f:selectItem itemLabel="4" itemValue="4"/>
+                                            <f:selectItem itemLabel="5" itemValue="5"/>
+                                            <f:selectItem itemLabel="6" itemValue="6"/>
+                                            <f:selectItem itemLabel="7" itemValue="7"/>
+                                            <f:selectItem itemLabel="8" itemValue="8"/>
+                                            <f:selectItem itemLabel="9" itemValue="9"/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Tipo :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:selectOneMenu value="#{materiaController.materia.tipo}" styleClass="form-control"
+                                                         data-parsley-required="true">
+                                            <f:selectItems var="tipo" value="#{materiaController.tipos}"
+                                                           itemLabel="#{tipo.name}"/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Categoria :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:selectOneMenu value="#{materiaController.materia.categoria}" styleClass="form-control"
+                                                         data-parsley-required="true">
+                                            <f:selectItems var="categoria"
+                                                           value="#{materiaController.categorias}"
+                                                           itemLabel="#{categoria.nombre}"/>
+                                            <seam:convertEntity/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Programa :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:selectOneMenu value="#{materiaController.materia.programa}" styleClass="form-control"
+                                                         data-parsley-required="true">
+                                            <f:selectItems var="programa"
+                                                           value="#{listEntitiesController.programas}"
+                                                           itemLabel="#{programa.nombre}"/>
+                                            <seam:convertEntity/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Externa :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:selectBooleanCheckbox value="#{materiaController.materia.externa}" data-render="switchery" data-theme="default" data-switchery="true"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Temario :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <seam:fileUpload data="#{materiaController.dataTemario}"
+                                                      accept="application/pdf" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4">Descripción :</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:inputTextarea value="#{materiaController.materia.descripcion}" styleClass="form-control" rows="5" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label class="control-label col-md-4 col-sm-4"></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <h:commandButton value="Guardar" action="#{materiaController.save}" styleClass="btn btn-sm btn-primary m-r-5"/>
+                                        <a href="materias.list.seam">Cancelar</a>
+                                    </div>
+                                </div>
+
+                            </h:form>
+                        </div>
+                        <!-- end panel -->
+                    </div>
+                    <!-- end col-6 -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end #content -->
+
+        </ui:define>
+
+        <ui:define name="scripts">
+            <script src="/assets/plugins/parsley/dist/es.js" type="text/javascript"></script>
+            <script src="/assets/plugins/switchery/switchery.min.js" type="text/javascript"></script>
+            <script src="/assets/js/form-slider-switcher.demo.min.js" type="text/javascript"></script>
+            <script src="/assets/plugins/parsley/dist/parsley.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                window.ParsleyValidator.setLocale('es');
+                $(document).ready(function() {
+                    FormSliderSwitcher.init();
+                });
+            </script>
         </ui:define>
 
     </ui:composition>

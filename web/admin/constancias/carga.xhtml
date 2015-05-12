@@ -102,18 +102,18 @@
         </div>
 
         <div style="margin: 10px 45px 10px 45px">
-            <code>Constancia/2014</code>
+            <code style="display: block; text-align: center; font-weight: bold;">CONSTANCIA</code>
             <div style="text-align: right">México D.F. a #{profesorConstanciaController.fecha}</div>
             <p><strong>A QUIEN CORRESPONDA:</strong></p>
             <p style="line-height: 180%;text-align: justify">
-                Por este medio se hace constar que el Prof. #{profesorConstanciaController.profesor.fullName}, durante el periodo #{profesorConstanciaController.periodoFormateado}
+                Por este medio se hace constar que el Prof. <strong>#{profesorConstanciaController.profesor.fullName}</strong>, durante el periodo #{profesorConstanciaController.periodoFormateado}
                 desempeño actividades docentes frente a grupo en las siguientes unidades de aprendizaje que a continuación se describen, correspondientes a el/la #{profesorConstanciaController.programa.nombre}
                 que se imparte en este Centro.
             </p>
             <div>
                 <h:dataTable value="#{profesorConstanciaController.cursos}" styleClass="tabla" var="curso" columnClasses="center,center,center,center,center">
                     <h:column headerClass="c1">
-                        <f:facet name="header">Materia</f:facet>
+                        <f:facet name="header"></f:facet>
                         #{curso.materia.nombre}
                     </h:column>
                     <h:column headerClass="c2">
@@ -153,8 +153,8 @@
             </p>
         </div>
         <div style="width: 100%" class="bottom-center">
-            <p>c.i.p. expediente</p>
-            <p>/STM/</p>
+            <p><span style="font-size: small;">c.i.p. expediente</span></p>
+            <p><span style="font-size: small;">/STM/</span></p>
             <p style="font-size: 10px; margin: 0 auto; text-align: center; " class="eee">
                 “Unidad Profesional Adolfo López Mateos”, Av. Juan de Dios Bátiz s/n Esq. Miguel Othón de Mendizábal,<br/>
                 Col. Nueva Industrial Vallejo, Deleg. Gustavo A. Madero, México, D.F., C.P. 07700<br/>

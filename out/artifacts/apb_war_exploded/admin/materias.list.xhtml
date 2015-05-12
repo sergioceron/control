@@ -4,60 +4,186 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:rich="http://richfaces.org/rich"
-      xmlns:seam="http://jboss.org/schema/seam/taglib"
-      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:s="http://jboss.org/schema/seam/taglib"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 
-    <ui:composition template="../index.xhtml">
+    <ui:composition template="../template.xhtml">
+        <ui:define name="title">Materias</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/DataTables-1.9.4/css/data-table.css" rel="stylesheet" />
+            <link href="/assets/css/tables.extra.css" rel="stylesheet"/>
+        </ui:define>
 
         <ui:define name="content">
+            <div class="row">
+                <!-- begin col-12 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <div class="btn-group">
+                                    <a href="javascript:;" data-toggle="dropdown" class="btn btn-warning dropdown-toggle btn-xs">Exportar <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#" onclick ="$('#loginForm\\:data-table').tableExport({type:'csv',escape:'false',filename:'materias',ignoreColumn:[5]});">Excel</a></li>
+                                        <li><a href="#" onclick ="$('#loginForm\\:data-table').tableExport({type:'xml',escape:'false',filename:'materias',ignoreColumn:[5]});">XML</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#" onclick="window.print();">Imprimir</a></li>
+                                    </ul>
+                                </div>
+                                <a href="/admin/materia.edit.seam" class="btn btn-primary btn-xs">Nueva Materia</a>
+                            </div>
+                            <h4 class="panel-title">Materias</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
 
-            <h:messages/>
-            Hola, #{identity.username}
-            <rich:panel id="loginPanel" width="320" height="240" modal="true" show="true" moveable="false">
-                <f:facet name="header">
-                    <h:panelGroup>
-                        <h:outputText value="Materias"/>
-                    </h:panelGroup>
-                </f:facet>
-                <h:form id="loginForm">
-                    <rich:dataTable value="#{listEntitiesController.materias}" var="materia"
-                                            style="width: 100%;" id="table" rows="20">
-                        <rich:column sortBy="#{materia.clave}" >
-                            <f:facet name="header">Clave</f:facet>
-                            #{materia.clave}
-                        </rich:column>
-                        <rich:column sortBy="#{materia.nombre}">
-                            <f:facet name="header">Nombre</f:facet>
-                            #{materia.nombre}
-                        </rich:column>
-                        <rich:column sortBy="#{materia.creditos}">
-                            <f:facet name="header">Creditos</f:facet>
-                            #{materia.creditos}
-                        </rich:column>
-                        <rich:column sortBy="#{materia.categoria.nombre}" >
-                            <f:facet name="header">Categoria</f:facet>
-                            #{materia.categoria.nombre}
-                        </rich:column>
-                        <rich:column sortBy="#{materia.tipo}" >
-                            <f:facet name="header">Tipo</f:facet>
-                            #{materia.tipo.name}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Accion</f:facet>
-                            <h:commandLink action="materia.edit.xhtml">
-                                Editar
-                                <f:setPropertyActionListener target="#{materiaController.materia}" value="#{materia}" />
-                            </h:commandLink>
-                        </rich:column>
+                                <h:form id="loginForm">
+                                    <h:dataTable value="#{listEntitiesController.materias}" var="materia"
+                                                 id="data-table" styleClass="table table-striped table-bordered"
+                                                 columnClasses=",,text-center,,,no-print">
+                                        <h:column>
+                                            <f:facet name="header">Clave</f:facet>
+                                            #{materia.clave}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Nombre</f:facet>
+                                            <h:outputText styleClass="label label-#{materia.programa.abbr eq 'MTC' ? 'success' : 'info'}" value="#{materia.programa.abbr}"/>
+                                            #{materia.nombre}
+                                            <h:outputText styleClass="label label-warning" value="Externa" rendered="#{materia.externa}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Creditos</f:facet>
+                                            #{materia.creditos}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Categoria</f:facet>
+                                            #{materia.categoria.nombre}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Tipo</f:facet>
+                                            #{materia.tipo.name}
+                                        </h:column>
+                                        <h:column headerClass="no-print">
+                                            <f:facet name="header">Accion</f:facet>
+                                            <h:commandLink action="materia.edit.xhtml" data-toggle="tooltip" data-container="body" data-title="Editar">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                                <f:setPropertyActionListener target="#{materiaController.materia}"
+                                                                             value="#{materia}"/>
+                                            </h:commandLink>
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar"
+                                                    actionListener="#{materiaController.prepareToRemove(materia)}">
+                                                <i class="fa fa-times"></i>
+                                                <s:conversationPropagation type="begin" />
+                                                <f:ajax execute="@this" render=":mod:popup"
+                                                        onevent="showModal"/>
+                                            </h:commandLink>
+                                        </h:column>
+                                    </h:dataTable>
 
-                    </rich:dataTable>
-                    <rich:dataScroller for="table" maxPages="5" />
-                </h:form>
-            </rich:panel>
+                                </h:form>
 
+                                <h:form id="mod">
+                                    <h:panelGroup id="popup">
+                                        <div class="modal fade" id="modal">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title">Eliminar Materia</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <s:div styleClass="alert alert-danger m-b-0" rendered="#{not materiaController.removable}">
+                                                            <h4><i class="fa fa-info-circle"> </i> Alerta</h4>
+                                                            <p>No se puede eliminar la materia debido a que existen cursos asociados a la misma, los cuales tiene a su vez alumnos inscritos</p>
+                                                        </s:div>
+                                                        <s:div styleClass="alert alert-warning m-b-0" rendered="#{materiaController.removable and materiaController.materia.clave != null}">
+                                                            <h4><i class="fa fa-info-circle"> </i> Advertencia</h4>
+                                                            <p>¿Está seguro que desea eliminar la materia?</p>
+                                                            <f:verbatim rendered="#{materiaController.cursosCount > 0}">
+                                                            <p>Se eliminarán los siguientes cursos asociados a la materia:</p>
+                                                            </f:verbatim>
+                                                            <ul>
+                                                                <ui:repeat value="#{materiaController.materia.cursos}" var="curso">
+                                                                <li>#{curso.grupo} - #{curso.profesor.fullName}</li>
+                                                                </ui:repeat>
+                                                            </ul>
+                                                        </s:div>
+                                                        <h:panelGroup rendered="#{materiaController.materia.clave != null}">
+                                                            <h5>Datos de la Materia</h5>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Clave:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{materiaController.materia.clave} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Nombre:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{materiaController.materia.nombre} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Tipo:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{materiaController.materia.tipo.name} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Categoria:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{materiaController.materia.categoria.nombre} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Externa:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{materiaController.materia.externa ? 'Si' : 'No'} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Cursos:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{materiaController.cursosCount} </span>
+                                                            </p>
+                                                        </h:panelGroup>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                                                        <h:commandLink action="#{materiaController.remove}" styleClass="btn btn-sm btn-danger"
+                                                                rendered="#{materiaController.removable}">
+                                                            Eliminar
+                                                            <f:ajax execute="@this" render=":loginForm:data-table" onevent="hideModal"/>
+                                                        </h:commandLink>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                </h:form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+            </div>
+
+        </ui:define>
+
+        <ui:define name="scripts">
+            <script src="/assets/plugins/DataTables-1.9.4/js/jquery.dataTables.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/tableExport.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jquery.base64.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/libs/sprintf.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/jspdf.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/libs/base64.js" type="text/javascript"></script>
+            <script src="/assets/plugins/DataTables-1.9.4/js/data-table.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                function showModal(data) {
+                    if (data.status === 'success') {
+                        $('#modal').modal('show');
+                    }
+                }
+                function hideModal(data) {
+                    if (data.status === 'success') {
+                        $('#modal').modal('hide');
+                    }
+                }
+            </script>
         </ui:define>
 
     </ui:composition>

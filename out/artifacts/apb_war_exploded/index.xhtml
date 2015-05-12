@@ -11,18 +11,24 @@
         .rf-edt-tbl{
             width: 100%;
         }
+        .rf-pick-sel {
+            background-color: #CCC!important;
+        }
     </h:outputStylesheet>
 </h:head>
 <h:body>
 
 <h:form>
+        <div style="width: 100%; background-color: #ff9988; height: 150px">
+            <img src="/assets/img/segi%20ipn.png" />
+        </div>
         <rich:toolbar height="26px">
                 <rich:dropDownMenu mode="ajax">
                     <f:facet name="label">
                             <h:outputText value="Programas" />
                     </f:facet>
-                    <rich:menuItem label="Nuevo" />
-                    <rich:menuItem label="Lista" />
+                    <rich:menuItem label="Nuevo" action="/admin/programa.edit.xhtml" />
+                    <rich:menuItem label="Lista" action="/admin/programas.list.xhtml" />
      
                 </rich:dropDownMenu>
      
@@ -46,19 +52,19 @@
                     <f:facet name="label">
                             <h:outputText value="Cursos" />
                     </f:facet>
-                    <rich:menuItem label="Nuevo" />
-                    <rich:menuItem label="Lista" />
+                    <rich:menuItem label="Nuevo" action="/admin/curso.edit.xhtml" />
+                    <rich:menuItem label="Lista" action="/admin/cursos.list.xhtml" />
                     <rich:menuSeparator />
-                    <rich:menuItem label="Horarios" />
-                    <rich:menuItem label="Calificaciones" />
+                    <rich:menuItem label="Horarios" action="/admin/cursos.horarios.xhtml" />
+                    <rich:menuItem label="Calificaciones" action="/admin/cursos.calificaciones.xhtml" />
                 </rich:dropDownMenu>
          
                 <rich:dropDownMenu mode="ajax">
                     <f:facet name="label">
                             <h:outputText value="Usuarios" />
                     </f:facet>
-                    <rich:menuItem label="Alumnos" />
-                    <rich:menuItem label="Profesores" />
+                    <rich:menuItem label="Alumnos" action="/admin/alumnos.list.xhtml" />
+                    <rich:menuItem label="Profesores" action="/admin/profesores.list.xhtml" />
                 </rich:dropDownMenu>
      
                 <rich:dropDownMenu mode="ajax">

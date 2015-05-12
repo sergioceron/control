@@ -48,7 +48,7 @@ public class ProfesorConstanciaController {
     }
 
     public String getFecha(){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd 'de' MMMM 'del' yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy");
         return sdf.format(new Date());
     }
 

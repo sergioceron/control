@@ -4,52 +4,212 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:rich="http://richfaces.org/rich"
-      xmlns:seam="http://jboss.org/schema/seam/taglib"
+      xmlns:s="http://jboss.org/schema/seam/taglib"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 
-    <ui:composition template="../index.xhtml">
+    <ui:composition template="../template.xhtml">
+        <ui:define name="title">Alumnos</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/DataTables-1.9.4/css/data-table.css" rel="stylesheet"/>
+            <link href="/assets/css/tables.extra.css" rel="stylesheet"/>
+        </ui:define>
 
         <ui:define name="content">
+            <div class="row">
+                <!-- begin col-12 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <div class="btn-group">
+                                    <a href="javascript:;" data-toggle="dropdown" class="btn btn-warning dropdown-toggle btn-xs">Exportar <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#" onclick ="$('#loginForm\\:data-table').tableExport({type:'csv',escape:'false',filename:'alumnos',ignoreColumn:[5]});">Excel</a></li>
+                                        <li><a href="#" onclick ="$('#loginForm\\:data-table').tableExport({type:'xml',escape:'false',filename:'alumnos',ignoreColumn:[5]});">XML</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#" onclick="window.print();">Imprimir</a></li>
+                                    </ul>
+                                </div>
+                                <a href="/admin/alumno.edit.seam" class="btn btn-primary btn-xs">Nuevo Alumno</a>
+                            </div>
+                            <h4 class="panel-title">Alumnos</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <h:form id="loginForm">
+                                    <h:dataTable value="#{listEntitiesController.alumnos}" var="alumno"
+                                                 id="data-table" styleClass="table table-striped table-bordered"
+                                                 columnClasses=",,,,,no-print">
+                                        <h:column>
+                                            <f:facet name="header">Matricula</f:facet>
+                                            #{alumno.matricula}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Nombre</f:facet>
+                                            #{alumno.fullName}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Programa</f:facet>
+                                            #{alumno.programa.nombre}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Plan</f:facet>
+                                            #{alumno.planEstudios.nombre}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Status</f:facet>
+                                            #{alumno.status.name}
+                                        </h:column>
+                                        <h:column headerClass="no-print">
+                                            <f:facet name="header">Accion</f:facet>
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Constancias"
+                                                    actionListener="#{alumnoConstanciaController.prepare(alumno)}">
+                                                <i class="fa fa-book"></i>
+                                                <s:conversationPropagation type="begin" />
+                                                <f:ajax execute="@this" render=":const:popup_constancias"
+                                                        onevent="showModal_constancia"/>
+                                            </h:commandLink>
+                                            <h:commandLink action="alumno.edit.xhtml" data-toggle="tooltip" data-container="body" data-title="Editar">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                                <f:setPropertyActionListener target="#{alumnoController.alumno}"
+                                                                             value="#{alumno}"/>
+                                            </h:commandLink>
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar"
+                                                    actionListener="#{alumnoController.prepareToRemove(alumno)}">
+                                                <i class="fa fa-times"></i>
+                                                <s:conversationPropagation type="begin" />
+                                                <f:ajax execute="@this" render=":mod:popup"
+                                                        onevent="showModal"/>
+                                            </h:commandLink>
+                                        </h:column>
 
-            <h:messages/>
-            Hola, #{identity.username}
-            <rich:panel id="loginPanel" width="320" height="240" modal="true" show="true" moveable="false">
-                <f:facet name="header">
-                    <h:panelGroup>
-                        <h:outputText value="Lista de alumnos"/>
-                    </h:panelGroup>
-                </f:facet>
-                <h:form id="loginForm">
-                    <rich:dataTable value="#{alumnoController.alumnos}" var="alumno" style="width: 100%;">
-                        <rich:column>
-                            <f:facet name="header">Matricula</f:facet>
-                            #{alumno.matricula}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Semestre</f:facet>
-                            #{alumno.semestre}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Status</f:facet>
-                            #{alumno.status.name}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Asesor</f:facet>
-                            #{alumno.asesor.nombre}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Accion</f:facet>
-                            Editar
-                        </rich:column>
+                                    </h:dataTable>
 
-                    </rich:dataTable>
-                </h:form>
-            </rich:panel>
+                                </h:form>
+
+                                <h:form id="mod">
+                                    <h:panelGroup id="popup">
+                                        <div class="modal fade" id="modal">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title">Eliminar Alumno</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <s:div styleClass="alert alert-danger m-b-0" rendered="#{not alumnoController.removable}">
+                                                            <h4><i class="fa fa-info-circle"> </i> Alerta</h4>
+                                                            <p>No se puede eliminar el alumno seleccionado debido a que tiene materias inscritas.</p>
+                                                            <p>Debe dar de baja las materias que tiene inscritas al alumno.</p>
+                                                        </s:div>
+                                                        <s:div styleClass="alert alert-warning m-b-0" rendered="#{alumnoController.removable}">
+                                                            <h4><i class="fa fa-info-circle"> </i> Advertencia</h4>
+                                                            <p>Se eliminarán los usuarios asociados al alumno, asi como, las evaluaciónes que haya realizado</p>
+                                                        </s:div>
+                                                        <h:panelGroup rendered="#{alumnoController.alumno.id != null}">
+                                                            <h5>Datos del Alumno</h5>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Matricula:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{alumnoController.alumno.matricula} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Nombre:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{alumnoController.alumno.fullName} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Asesor:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{alumnoController.alumno.asesor.fullName} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Status:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{alumnoController.alumno.status.name} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Semestre:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{alumnoController.alumno.semestre} </span>
+                                                            </p>
+                                                        </h:panelGroup>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                                                        <h:commandLink action="#{alumnoController.remove}" styleClass="btn btn-sm btn-danger" rendered="#{alumnoController.removable}">
+                                                            Eliminar
+                                                            <f:ajax execute="@this" render=":loginForm:data-table" onevent="hideModal"/>
+                                                        </h:commandLink>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                </h:form>
+
+                                <h:form id="const">
+                                    <h:panelGroup id="popup_constancias">
+                                        <div class="modal fade" id="modal_constancias">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title">Seleccione la constancia</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h:panelGroup rendered="#{alumnoConstanciaController.alumno.id != null}">
+                                                            <ui:repeat value="#{alumnoConstanciaController.constancias}" var="constancia">
+                                                                <h:commandLink action="/admin/alumno.constancia.xhtml" value="#{constancia}" styleClass="btn btn-white btn-block"
+                                                                        style="text-transform: uppercase">
+                                                                    <s:conversationPropagation type="join" />
+                                                                    <f:setPropertyActionListener target="#{alumnoConstanciaController.constancia}"
+                                                                                                 value="#{constancia}"/>
+                                                                </h:commandLink>
+                                                            </ui:repeat>
+                                                        </h:panelGroup>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                </h:form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+            </div>
 
         </ui:define>
 
+        <ui:define name="scripts">
+            <script src="/assets/plugins/DataTables-1.9.4/js/jquery.dataTables.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/tableExport.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jquery.base64.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/libs/sprintf.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/jspdf.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/libs/base64.js" type="text/javascript"></script>
+            <script src="/assets/plugins/DataTables-1.9.4/js/data-table.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                function showModal(data) {
+                    if (data.status === 'success') {
+                        $('#modal').modal('show');
+                    }
+                }
+                function showModal_constancia(data) {
+                    if (data.status === 'success') {
+                        $('#modal_constancias').modal('show');
+                    }
+                }
+                function hideModal(data) {
+                    if (data.status === 'success') {
+                        $('#modal').modal('hide');
+                    }
+                }
+            </script>
+        </ui:define>
     </ui:composition>
 
 </h:body>

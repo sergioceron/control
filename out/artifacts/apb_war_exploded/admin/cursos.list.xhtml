@@ -4,56 +4,232 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:rich="http://richfaces.org/rich"
-      xmlns:seam="http://jboss.org/schema/seam/taglib"
+      xmlns:s="http://jboss.org/schema/seam/taglib"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 
-    <ui:composition template="../index.xhtml">
+    <ui:composition template="../template.xhtml">
+        <ui:define name="title">Cursos</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/DataTables-1.9.4/css/data-table.css" rel="stylesheet"/>
+            <link href="/assets/css/tables.extra.css" rel="stylesheet"/>
+        </ui:define>
 
         <ui:define name="content">
+            <div class="row">
+                <!-- begin col-12 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <div class="btn-group">
+                                    <a href="javascript:;" data-toggle="dropdown" class="btn btn-warning dropdown-toggle btn-xs">Exportar <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#" onclick ="$('#loginForm\\:data-table').tableExport({type:'csv',escape:'false',filename:'cursos',ignoreColumn:[5]});">Excel</a></li>
+                                        <li><a href="#" onclick ="$('#loginForm\\:data-table').tableExport({type:'xml',escape:'false',filename:'cursos',ignoreColumn:[5]});">XML</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#" onclick="window.print();">Imprimir</a></li>
+                                    </ul>
+                                </div>
+                                <a href="/admin/curso.edit.seam" class="btn btn-primary btn-xs">Nuevo Curso</a>
+                            </div>
+                            <h4 class="panel-title">Cursos</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <h:form id="loginForm">
+                                    <h:dataTable value="#{listEntitiesController.cursos}" var="curso"
+                                                 id="data-table" styleClass="table table-striped table-bordered"
+                                                 columnClasses=",,text-center,text-center,text-center,no-print">
+                                        <h:column>
+                                            <f:facet name="header">Materia</f:facet>
+                                            #{curso.materia.nombre}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Profesor</f:facet>
+                                            #{curso.profesor.fullName}
+                                        </h:column>
+                                        <h:column headerClass="text-center">
+                                            <f:facet name="header">Periodo</f:facet>
+                                            #{curso.periodo}
+                                        </h:column>
+                                        <h:column headerClass="text-center">
+                                            <f:facet name="header">Grupo</f:facet>
+                                            #{curso.grupo}
+                                            #{curso.turno eq 1 ? 'Matutino' : (curso.turno eq 2 ? 'Vespertino' : 'Completo')}
+                                        </h:column>
+                                        <h:column headerClass="text-center">
+                                            <f:facet name="header">Lugar</f:facet>
+                                            #{curso.lugar}
+                                        </h:column>
+                                        <h:column headerClass="no-print">
+                                            <f:facet name="header">Accion</f:facet>
+                                            <h:commandLink action="admin.calificaciones.xhtml" data-toggle="tooltip" data-container="body" data-title="Calificaciones">
+                                                <i class="fa fa-check-square-o"></i>
+                                                <s:conversationPropagation type="begin" />
+                                                <f:setPropertyActionListener target="#{calificacionController.curso}"
+                                                                             value="#{curso}"/>
+                                            </h:commandLink>
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Horario">
+                                                <i class="fa fa-list"></i>
+                                                <f:setPropertyActionListener target="#{cursoController.curso}"
+                                                                             value="#{curso}"/>
+                                                <f:ajax execute="@this" render=":horario:popup_horario"
+                                                        onevent="showModal_horario"/>
+                                            </h:commandLink>
+                                            <h:commandLink action="curso.edit.xhtml" data-toggle="tooltip" data-container="body" data-title="Editar">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                                <f:setPropertyActionListener target="#{cursoController.curso}"
+                                                                             value="#{curso}"/>
+                                            </h:commandLink>
+                                            <h:commandLink action="curso.edit.xhtml" data-toggle="tooltip" data-container="body" data-title="Clonar"
+                                                actionListener="#{cursoController.prepareToCopy(curso)}">
+                                                <i class="fa fa-copy"></i>
+                                            </h:commandLink>
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar"
+                                                    actionListener="#{cursoController.prepareToRemove(curso)}">
+                                                <i class="fa fa-times"></i>
+                                                <s:conversationPropagation type="begin" />
+                                                <f:ajax execute="@this" render=":mod:popup"
+                                                        onevent="showModal"/>
+                                            </h:commandLink>
+                                        </h:column>
+                                    </h:dataTable>
 
-            <h:messages/>
-            Hola, #{identity.username}
-            <rich:panel id="loginPanel" width="320" height="240" modal="true" show="true" moveable="false">
-                <f:facet name="header">
-                    <h:panelGroup>
-                        <h:outputText value="Cursos"/>
-                    </h:panelGroup>
-                </f:facet>
-                <h:form id="loginForm">
-                    <rich:dataTable value="#{listEntitiesController.cursos}" var="curso" style="width: 100%;">
-                        <rich:column>
-                            <f:facet name="header">Materia</f:facet>
-                            #{curso.materia.nombre}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Profesor</f:facet>
-                            #{curso.profesor.nombre}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Semestre</f:facet>
-                            #{curso.semestre}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Lugar</f:facet>
-                            #{curso.lugar}
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Horario</f:facet>
-                            Ver horario
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">Accion</f:facet>
-                            Editar
-                        </rich:column>
+                                </h:form>
+                                <h:form id="horario">
+                                    <h:panelGroup id="popup_horario">
+                                        <div class="modal fade" id="modal_horario">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title"><h:outputText value="#{cursoController.curso.materia.nombre}" rendered="#{cursoController.curso.id != null}" /></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h:panelGroup rendered="#{cursoController.curso.id != null}">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-bordered">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>Lunes</th>
+                                                                        <th>Martes</th>
+                                                                        <th>Miercoles</th>
+                                                                        <th>Jueves</th>
+                                                                        <th>Viernes</th>
+                                                                        <th>Sabado</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <ui:repeat value="#{cursoController.horarioOrdenado}" var="hora" >
+                                                                        <td class="text-center">
+                                                                            <h:outputText style="width: 84px" value="#{hora.horaInicio}" rendered="#{hora.horaInicio ne null}"/>
+                                                                            <br/>-<br/>
+                                                                            <h:outputText style="width: 84px" value="#{hora.horaFin}" rendered="#{hora.horaInicio ne null}"/>
+                                                                        </td>
+                                                                        </ui:repeat>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </h:panelGroup>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                </h:form>
+                                <h:form id="mod">
+                                    <h:panelGroup id="popup">
+                                        <div class="modal fade" id="modal">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title">Eliminar curso</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <s:div styleClass="alert alert-danger m-b-0" rendered="#{not cursoController.removable}">
+                                                            <h4><i class="fa fa-info-circle"> </i> Alerta</h4>
+                                                            <p>No se puede eliminar el curso debido a que existen alumnos inscritos al mismo.</p>
+                                                        </s:div>
+                                                        <s:div styleClass="alert alert-warning m-b-0" rendered="#{cursoController.removable}">
+                                                            <h4><i class="fa fa-info-circle"> </i> Advertencia</h4>
+                                                            <p>¿Está seguro que desea eliminar el curso?</p>
+                                                        </s:div>
+                                                        <h:panelGroup rendered="#{cursoController.curso.id != null}">
+                                                            <h5>Datos del curso</h5>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Materia:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{cursoController.curso.materia.nombre} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Profesor:</b></label>
+                                                                <span class="col-md-8 col-sm-8">#{cursoController.curso.profesor.fullName} </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Grupo:</b></label>
+                                                                <span class="col-md-8 col-sm-8">
+                                                                    #{cursoController.curso.turno eq 1 ? 'Matutino' : (cursoController.curso.turno eq 2 ? 'Vespertino' : 'Completo')}
+                                                                    #{cursoController.curso.grupo}
+                                                                </span>
+                                                            </p>
+                                                        </h:panelGroup>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                                                        <h:commandLink action="#{cursoController.remove}" styleClass="btn btn-sm btn-danger"
+                                                                rendered="#{cursoController.removable}">
+                                                            Eliminar
+                                                            <f:ajax execute="@this" render=":loginForm:data-table" onevent="hideModal"/>
+                                                        </h:commandLink>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                </h:form>
 
-                    </rich:dataTable>
-                </h:form>
-            </rich:panel>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-12 -->
+            </div>
 
         </ui:define>
 
+        <ui:define name="scripts">
+            <script src="/assets/plugins/DataTables-1.9.4/js/jquery.dataTables.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/tableExport.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jquery.base64.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/libs/sprintf.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/jspdf.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/libs/base64.js" type="text/javascript"></script>
+            <script src="/assets/plugins/DataTables-1.9.4/js/data-table.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                function showModal_horario(data) {
+                    if (data.status === 'success') {
+                        $('#modal_horario').modal('show');
+                    }
+                }
+                function showModal(data) {
+                    if (data.status === 'success') {
+                        $('#modal').modal('show');
+                    }
+                }
+                function hideModal(data) {
+                    if (data.status === 'success') {
+                        $('#modal').modal('hide');
+                    }
+                }
+            </script>
+        </ui:define>
     </ui:composition>
 
 </h:body>
