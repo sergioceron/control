@@ -18,6 +18,10 @@
             font-size: 15px;
         }
 
+        #header{
+            visibility: hidden;
+        }
+
         .tabla{
             margin: 0px auto;
             border-collapse: collapse;
@@ -103,7 +107,37 @@
                 de el/la #{profesorConstanciaController.programa.nombre}, se le han asignado las unidades de aprendizaje correspondientes que se indican a continuación:
             </p>
             <div>
-                <h:dataTable value="#{profesorConstanciaController.cursos}" styleClass="tabla" var="curso" columnClasses="center,center,center,center,center">
+                <h:dataTable value="#{profesorConstanciaController.cursosMaestria}" styleClass="tabla" var="curso" columnClasses="center,center,center,center,center" rendered="#{not profesorConstanciaController.all}">
+                    <h:column headerClass="c1">
+                        <f:facet name="header"></f:facet>
+                        #{curso.materia.nombre}
+                    </h:column>
+                    <h:column headerClass="c2">
+                        <f:facet name="header">Grupo</f:facet>
+                        #{profesorConstanciaController.semestres[curso.semestre]} #{curso.grupo}
+                    </h:column>
+                    <h:column headerClass="c3">
+                        <f:facet name="header">Horario</f:facet>
+                        #{profesorConstanciaController.horarioFormateado(curso)}
+                    </h:column>
+                </h:dataTable>
+                <h:outputText style="display:block; text-align: center; font-size: 14px; font-weight: bold; margin-bottom: 10px" rendered="#{profesorConstanciaController.maestria and profesorConstanciaController.all}" value="MAESTRÍA" />
+                <h:dataTable value="#{profesorConstanciaController.cursosMaestria}" styleClass="tabla" var="curso" columnClasses="center,center,center,center,center" rendered="#{profesorConstanciaController.maestria and profesorConstanciaController.all}">
+                    <h:column headerClass="c1">
+                        <f:facet name="header"></f:facet>
+                        #{curso.materia.nombre}
+                    </h:column>
+                    <h:column headerClass="c2">
+                        <f:facet name="header">Grupo</f:facet>
+                        #{profesorConstanciaController.semestres[curso.semestre]} #{curso.grupo}
+                    </h:column>
+                    <h:column headerClass="c3">
+                        <f:facet name="header">Horario</f:facet>
+                        #{profesorConstanciaController.horarioFormateado(curso)}
+                    </h:column>
+                </h:dataTable>
+                <h:outputText style="display:block; text-align: center; font-size: 14px; font-weight: bold; margin-bottom: 10px; margin-top: 10px" rendered="#{profesorConstanciaController.doctorado and profesorConstanciaController.all}" value="DOCTORADO" />
+                <h:dataTable value="#{profesorConstanciaController.cursosDoctorado}" styleClass="tabla" var="curso" columnClasses="center,center,center,center,center" rendered="#{profesorConstanciaController.doctorado and profesorConstanciaController.all}">
                     <h:column headerClass="c1">
                         <f:facet name="header"></f:facet>
                         #{curso.materia.nombre}

@@ -81,4 +81,5 @@
 
     <component name="calificacionService" class="mx.ipn.cidetec.virtual.controllers.CalificacionService" />
     <component name="systemService" class="mx.ipn.cidetec.virtual.controllers.SystemService" />
+    <component name="chartsService" class="mx.ipn.cidetec.virtual.controllers.ChartsService" />
 </components>

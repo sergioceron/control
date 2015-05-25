@@ -162,7 +162,13 @@ $(document).ready(function() {
                 "sInfoEmpty": "Ningún registro encontrado",
                 "sNext": "Siguiente",
                 "sPrevious": "Anterior"
-            }
+            },
+			"aoColumnDefs": [
+				{
+					"sType": 'natural',
+					"aTargets": [ 2 ]
+				}
+			]
         });
         $('#loginForm\\:data-table_filter input').attr('id','loginForm:data-table_search');
         $('#loginForm\\:data-table_filter input').attr('name','loginForm:data-table_search');

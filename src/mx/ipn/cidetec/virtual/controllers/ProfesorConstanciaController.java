@@ -25,6 +25,9 @@ public class ProfesorConstanciaController {
     private Programa programa;
     private String constancia;
     private List<Curso> cursos;
+    private List<Curso> cursosMaestria;
+    private List<Curso> cursosDoctorado;
+    private boolean all = false;
 
     @In
     private EntityManager entityManager;
@@ -34,11 +37,30 @@ public class ProfesorConstanciaController {
 
     @Begin(join = true)
     public String prepare() {
-        Query query = entityManager.createQuery("from Curso c where c.profesor = :profesor and c.periodo = :periodo and c.materia.programa = :programa");
-        query.setParameter("profesor", profesor);
-        query.setParameter("periodo", periodo);
-        query.setParameter("programa", programa);
+        cursosDoctorado = new ArrayList<Curso>();
+        cursosMaestria = new ArrayList<Curso>();
+        Query query;
+        if( programa == null ){
+            query = entityManager.createQuery("from Curso c where c.profesor = :profesor and c.periodo = :periodo");
+            query.setParameter("profesor", profesor);
+            query.setParameter("periodo", periodo);
+            all = true;
+        } else {
+            query = entityManager.createQuery("from Curso c where c.profesor = :profesor and c.periodo = :periodo and c.materia.programa = :programa");
+            query.setParameter("profesor", profesor);
+            query.setParameter("periodo", periodo);
+            query.setParameter( "programa", programa );
+            all = false;
+        }
         cursos = query.getResultList();
+
+        for( Curso curso : cursos ) {
+            if( curso.getMateria().getPrograma().getAbbr().equals( "MTC" ) ){
+                cursosMaestria.add( curso );
+            } else {
+                cursosDoctorado.add( curso );
+            }
+        }
 
         return "success";
     }
@@ -90,6 +112,28 @@ public class ProfesorConstanciaController {
         return total;
     }
 
+    public int getTotalHorasMaestria(){
+        int total = 0;
+        for (Curso curso : cursos) {
+            if( curso.getMateria().getPrograma().getAbbr().equals( "MTC" ) ) {
+                Materia.Tipo tipo = curso.getMateria().getTipo();
+                total += ( tipo.getHorasPractica() + tipo.getHorasTeoria() ) * periodo.getSemanas();
+            }
+        }
+        return total;
+    }
+
+    public int getTotalHorasDoctorado(){
+        int total = 0;
+        for (Curso curso : cursos) {
+            if( !curso.getMateria().getPrograma().getAbbr().equals( "MTC" ) ) {
+                Materia.Tipo tipo = curso.getMateria().getTipo();
+                total += ( tipo.getHorasPractica() + tipo.getHorasTeoria() ) * periodo.getSemanas();
+            }
+        }
+        return total;
+    }
+
     public Periodo getPeriodo() {
         return periodo;
     }
@@ -128,5 +172,25 @@ public class ProfesorConstanciaController {
 
     public List<Curso> getCursos() {
         return cursos;
+    }
+
+    public List<Curso> getCursosMaestria() {
+        return cursosMaestria;
+    }
+
+    public List<Curso> getCursosDoctorado() {
+        return cursosDoctorado;
+    }
+
+    public boolean isAll() {
+        return all;
+    }
+
+    public boolean isMaestria() {
+        return cursosMaestria.size() > 0;
+    }
+
+    public boolean isDoctorado() {
+        return cursosDoctorado.size() > 0;
     }
 }

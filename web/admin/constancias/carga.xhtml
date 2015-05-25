@@ -18,6 +18,10 @@
             font-size: 15px;
         }
 
+        #header{
+            visibility: hidden;
+        }
+
         .tabla{
             margin: 0px auto;
             border-collapse: collapse;
@@ -111,7 +115,7 @@
                 que se imparte en este Centro.
             </p>
             <div>
-                <h:dataTable value="#{profesorConstanciaController.cursos}" styleClass="tabla" var="curso" columnClasses="center,center,center,center,center">
+                <h:dataTable value="#{profesorConstanciaController.cursos}" styleClass="tabla" var="curso" columnClasses="center,center,center,center,center" rendered="#{not profesorConstanciaController.all}">
                     <h:column headerClass="c1">
                         <f:facet name="header"></f:facet>
                         #{curso.materia.nombre}
@@ -132,6 +136,56 @@
                     <h:column headerClass="center" footerClass="center">
                         <f:facet name="header">Horas/Semestre<br/>Total</f:facet>
                         <f:facet name="footer">#{profesorConstanciaController.totalHoras}</f:facet>
+                        #{(curso.materia.tipo.horasTeoria+curso.materia.tipo.horasPractica)*profesorConstanciaController.periodo.semanas}
+                    </h:column>
+                </h:dataTable>
+                <h:outputText style="display:block; text-align: center; font-size: 14px; font-weight: bold; margin-bottom: 10px" rendered="#{profesorConstanciaController.maestria and profesorConstanciaController.all}" value="MAESTRÍA" />
+                <h:dataTable value="#{profesorConstanciaController.cursosMaestria}" styleClass="tabla" var="curso" columnClasses="center,center,center,center,center">
+                    <h:column headerClass="c1">
+                        <f:facet name="header"></f:facet>
+                        #{curso.materia.nombre}
+                    </h:column>
+                    <h:column headerClass="c2">
+                        <f:facet name="header">Grupo</f:facet>
+                        #{profesorConstanciaController.semestres[curso.semestre]}<br/>#{curso.grupo}
+                    </h:column>
+                    <h:column headerClass="c3">
+                        <f:facet name="header">Horas/Semana<br/>Teoría</f:facet>
+                        #{curso.materia.tipo.horasTeoria}
+                    </h:column>
+                    <h:column headerClass="c4" footerClass="c4 colspan-2">
+                        <f:facet name="header">Horas/Semana<br/>Práctica</f:facet>
+                        <f:facet name="footer">Total</f:facet>
+                        #{curso.materia.tipo.horasPractica}
+                    </h:column>
+                    <h:column headerClass="center" footerClass="center">
+                        <f:facet name="header">Horas/Semestre<br/>Total</f:facet>
+                        <f:facet name="footer">#{profesorConstanciaController.totalHorasMaestria}</f:facet>
+                        #{(curso.materia.tipo.horasTeoria+curso.materia.tipo.horasPractica)*profesorConstanciaController.periodo.semanas}
+                    </h:column>
+                </h:dataTable>
+                <h:outputText style="display:block; text-align: center; font-size: 14px; font-weight: bold; margin-bottom: 10px; margin-top: 10px" rendered="#{profesorConstanciaController.doctorado and profesorConstanciaController.all}" value="DOCTORADO" />
+                <h:dataTable value="#{profesorConstanciaController.cursosDoctorado}" styleClass="tabla" var="curso" columnClasses="center,center,center,center,center">
+                    <h:column headerClass="c1">
+                        <f:facet name="header"></f:facet>
+                        #{curso.materia.nombre}
+                    </h:column>
+                    <h:column headerClass="c2">
+                        <f:facet name="header">Grupo</f:facet>
+                        #{profesorConstanciaController.semestres[curso.semestre]}<br/>#{curso.grupo}
+                    </h:column>
+                    <h:column headerClass="c3">
+                        <f:facet name="header">Horas/Semana<br/>Teoría</f:facet>
+                        #{curso.materia.tipo.horasTeoria}
+                    </h:column>
+                    <h:column headerClass="c4" footerClass="c4 colspan-2">
+                        <f:facet name="header">Horas/Semana<br/>Práctica</f:facet>
+                        <f:facet name="footer">Total</f:facet>
+                        #{curso.materia.tipo.horasPractica}
+                    </h:column>
+                    <h:column headerClass="center" footerClass="center">
+                        <f:facet name="header">Horas/Semestre<br/>Total</f:facet>
+                        <f:facet name="footer">#{profesorConstanciaController.totalHorasDoctorado}</f:facet>
                         #{(curso.materia.tipo.horasTeoria+curso.materia.tipo.horasPractica)*profesorConstanciaController.periodo.semanas}
                     </h:column>
                 </h:dataTable>
