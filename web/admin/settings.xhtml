@@ -55,14 +55,14 @@
                                     <h:dataTable value="#{listEntitiesController.menus}" var="menu" styleClass="table table-striped table-bordered">
                                         <h:column>
                                             <f:facet name="header">Menu</f:facet>
-                                            #{config.name}
+                                            #{menu.label}
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">Url</f:facet>
-                                            <a href="#" data-type="text" data-pk="#{config.name}"
+                                            <a href="#" data-type="text" data-pk="#{menu.id}"
                                                data-url="/seam/resource/rest/system/set" data-title="Introduzca el valor"
                                                class="editable editable-click" data-original-title="" title="" style="background-color: rgba(0, 0, 0, 0);">
-                                                #{config.value ne null ? config.value : 'No definid@'}
+                                                #{menu.action ne null ? menu.action : 'No definid@'}
                                             </a>
                                         </h:column>
                                         <h:column>

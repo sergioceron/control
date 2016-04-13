@@ -90,6 +90,11 @@ public class ListEntitiesController {
         return query.getResultList();
     }
 
+    public List<Announcement> getAnnouncements(){
+        Query query = entityManager.createQuery( "from Announcement a" );
+        return query.getResultList();
+    }
+
     public List<Menu> getMenus(){
         Query query = entityManager.createQuery( "from Menu m" );
         return query.getResultList();

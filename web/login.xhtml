@@ -32,7 +32,7 @@
     <!-- end #page-loader -->
 
     <div class="login-cover">
-        <div class="login-cover-image"><img src="/assets/img/login-bg/cidetec.jpg" data-id="login-cover-image" alt="" /></div>
+        <div class="login-cover-image"><img src="/assets/img/login-bg/cidetec2.jpg" data-id="login-cover-image" alt="" /></div>
         <div class="login-cover-bg"></div>
     </div>
     <!-- begin #page-container -->
@@ -51,7 +51,7 @@
             </div>
             <!-- end brand -->
             <div class="login-content">
-                <h:form styleClass="margin-bottom-0">
+                <h:form styleClass="margin-bottom-0" prependId="false">
                     <div class="form-group m-b-20">
                         <h:inputText id="username" value="#{identity.username}" styleClass="form-control input-lg" placeholder="Nombre de usuario"/>
                     </div>
@@ -96,6 +96,7 @@
         $(document).ready(function() {
             App.init();
             LoginV2.init();
+            $('#username').focus();
         });
     </script>
 

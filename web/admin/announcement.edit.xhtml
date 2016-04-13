@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:seam="http://jboss.org/schema/seam/taglib"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+
+        <ui:define name="title">Anuncios</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/parsley/src/parsley.css" rel="stylesheet" />
+            <link href="/assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+            <link href="/assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+            <link href="/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
+        </ui:define>
+
+        <ui:define name="content">
+
+            <!-- begin row -->
+            <div class="row">
+                <!-- begin col-6 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">#{announcementController.announcement.id eq null ? "Nuevo Anuncio" : "Editar Anuncio" }</h4>
+                        </div>
+                        <div class="panel-body panel-form">
+
+                            <h:form prependId="false" styleClass="form-horizontal form-bordered" data-parsley-validate="true">
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3">Titulo :</label>
+                                    <div class="col-md-7 col-sm-7">
+                                        <h:inputText value="#{announcementController.announcement.titulo}" styleClass="form-control" placeholder="Titulo del anuncio"
+                                                     data-parsley-required="true" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3">Anuncio :</label>
+                                    <div class="col-md-7 col-sm-7">
+                                        <h:inputTextarea value="#{announcementController.announcement.contenido}" rows="5" id="editor" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3">Inicio :</label>
+                                    <div class="col-md-7 col-sm-7">
+                                        <div class="input-group date" id="fecha-inicio" data-date-format="dd-mm-yyyy">
+                                            <h:inputText value="#{announcementController.announcement.inicio}" styleClass="form-control" placeholder="Fecha de inicio"
+                                                         data-parsley-required="true" data-parsley-minlength="2" data-parsley-group="wizard-step-2" >
+                                                <f:convertDateTime pattern="dd-MM-yyyy" />
+                                            </h:inputText>
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3">Termino :</label>
+                                    <div class="col-md-7 col-sm-7">
+                                        <div class="input-group date" id="fecha-termino" data-date-format="dd-mm-yyyy">
+                                            <h:inputText value="#{announcementController.announcement.termino}" styleClass="form-control" placeholder="Fecha de termino"
+                                                         data-parsley-required="true" data-parsley-minlength="2" data-parsley-group="wizard-step-2" >
+                                                <f:convertDateTime pattern="dd-MM-yyyy" />
+                                            </h:inputText>
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3">Roles :</label>
+                                    <div class="col-md-7 col-sm-7">
+                                        <h:selectManyListbox value="#{announcementController.announcement.roles}" styleClass="form-control"
+                                                             collectionType="java.util.ArrayList" data-parsley-required="true">
+                                            <f:selectItems var="role" value="#{listEntitiesController.roles}"
+                                                           itemLabel="#{role.rolename}" itemValue="#{role}"/>
+                                            <seam:convertEntity/>
+                                        </h:selectManyListbox>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3">Sticky :</label>
+                                    <div class="col-md-7 col-sm-7">
+                                        <h:selectOneMenu value="#{announcementController.announcement.estilo}">
+                                            <f:selectItem itemLabel="Blanco" itemValue="" />
+                                            <f:selectItem itemLabel="Verde" itemValue="panel-success" />
+                                            <f:selectItem itemLabel="Amarillo" itemValue="panel-warning" />
+                                            <f:selectItem itemLabel="Rojo" itemValue="panel-danger" />
+                                            <f:selectItem itemLabel="Negro" itemValue="panel-inverse" />
+                                            <f:selectItem itemLabel="Azul" itemValue="panel-primary" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label class="control-label col-md-3 col-sm-3"></label>
+                                    <div class="col-md-7 col-sm-7">
+                                        <h:commandButton value="Guardar" action="#{announcementController.save}" styleClass="btn btn-sm btn-primary m-r-5"/>
+                                        <a href="announcements.list.seam">Cancelar</a>
+                                    </div>
+                                </div>
+
+                            </h:form>
+                        </div>
+                        <!-- end panel -->
+                    </div>
+                    <!-- end col-6 -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end #content -->
+
+        </ui:define>
+
+        <ui:define name="scripts">
+            <script src="/assets/plugins/parsley/dist/es.js" type="text/javascript"></script>
+            <script src="/assets/plugins/parsley/dist/parsley.js" type="text/javascript"></script>
+            <script src="/assets/js/form-slider-switcher.demo.min.js" type="text/javascript"></script>
+            <script src="/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+            <script src="/assets/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                window.ParsleyValidator.setLocale('es');
+                $("#fecha-inicio").datepicker( { todayHighlight: true, autoclose: true } );
+                $("#fecha-termino").datepicker( { todayHighlight: true, autoclose: true } );
+                var config = {
+                     toolbarGroups: [
+                         { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+                         { name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+                         { name: 'links', groups: [ 'links' ] },
+                         { name: 'insert', groups: [ 'insert' ] },
+                         { name: 'forms', groups: [ 'forms' ] },
+                         { name: 'tools', groups: [ 'tools' ] },
+                         { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+                         { name: 'others', groups: [ 'others' ] },
+                         { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                         { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+                         '/',
+                         { name: 'styles', groups: [ 'styles' ] },
+                         { name: 'colors', groups: [ 'colors' ] },
+                         { name: 'about', groups: [ 'about' ] }
+                     ],
+                    removeButtons: 'Underline,Cut,Copy,Paste,PasteText,PasteFromWord,Redo,Undo,Scayt,Anchor,Maximize,Source,Strike,RemoveFormat,Styles,Format,About',
+                    extraPlugins: 'print',
+                    height: '250px'
+                };
+                window.editor = CKEDITOR.replace( 'editor', config );
+
+                $(document).ready(function() {
+
+                });
+            </script>
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>
