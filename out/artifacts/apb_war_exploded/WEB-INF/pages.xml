@@ -19,12 +19,18 @@
         <action execute="#{profileController.setAccount(account)}" />
     </page>
 
+    <page view-id="/admin/evaluacion.list.alumnos.xhtml">
+        <action execute="#{navigationController.setActive('/admin/evaluacion.list.alumnos.seam')}" />
+    </page>
     <page view-id="/admin/periodos.list.xhtml">
-        <action execute="#{menuController.setActive('/admin/periodos.list.seam')}" />
+        <restrict>#{s:hasRole('admin')}</restrict>
+        <begin-conversation join="true" />
+        <action execute="#{navigationController.setActive('/admin/periodos.list.seam')}" />
     </page>
     <page view-id="/admin/periodo.edit.xhtml">
+        <restrict>#{s:hasRole('admin')}</restrict>
         <begin-conversation join="true" />
-        <action execute="#{menuController.setActive('/admin/periodos.list.seam')}" />
+        <action execute="#{navigationController.setActive('/admin/periodos.list.seam')}" />
 
         <navigation from-action="#{periodoController.save}">
             <rule if-outcome="success">
@@ -33,12 +39,32 @@
         </navigation>
     </page>
 
+    <page view-id="/admin/announcements.list.xhtml">
+        <restrict>#{s:hasRole('admin')}</restrict>
+        <begin-conversation join="true" />
+        <action execute="#{navigationController.setActive('/admin/announcements.list.seam')}" />
+    </page>
+    <page view-id="/admin/announcement.edit.xhtml">
+        <restrict>#{s:hasRole('admin')}</restrict>
+        <begin-conversation join="true" />
+        <action execute="#{navigationController.setActive('/admin/announcements.list.seam')}" />
+
+        <navigation from-action="#{announcementController.save}">
+            <rule if-outcome="success">
+                <redirect view-id="/admin/announcements.list.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+
     <page view-id="/admin/roles.list.xhtml">
-        <action execute="#{menuController.setActive('/admin/roles.list.seam')}" />
+        <restrict>#{s:hasRole('super')}</restrict>
+        <begin-conversation join="true" />
+        <action execute="#{navigationController.setActive('/admin/roles.list.seam')}" />
     </page>
     <page view-id="/admin/role.edit.xhtml">
+        <restrict>#{s:hasRole('super')}</restrict>
         <begin-conversation join="true" />
-        <action execute="#{menuController.setActive('/admin/roles.list.seam')}" />
+        <action execute="#{navigationController.setActive('/admin/roles.list.seam')}" />
 
         <navigation from-action="#{roleController.save}">
             <rule if-outcome="success">
@@ -47,12 +73,78 @@
         </navigation>
     </page>
 
+    <page view-id="/admin/evaluacion.periodo.xhtml">
+        <action execute="#{navigationController.setActive('/admin/evaluacion.periodo.seam')}" />
+        <navigation from-action="#{evaluacionController.save}">
+            <rule if-outcome="success">
+                <redirect view-id="/admin/evaluacion.list.xhtml"/>
+            </rule>
+            <rule  if-outcome="failure">
+                <redirect  view-id="/admin/evaluacion.periodo.xhtml">
+                    <param name="err" value="1"/>
+                </redirect>
+            </rule>
+            <rule  if-outcome="failureB">
+                <redirect  view-id="/admin/evaluacion.periodo.xhtml">
+                    <param name="err" value="2"/>
+                </redirect>
+            </rule>
+        </navigation>
+
+
+    </page>
+    <page view-id="/admin/evaluacion.list.xhtml">
+        <action execute="#{navigationController.setActive('/admin/evaluacion.list.seam')}" />
+    </page>
+    <page view-id="/admin/alumno.constancia.xhtml">
+        <action execute="#{navigationController.setActive('/admin/alumno.constancia.seam')}" />
+    </page>
+    <page view-id="/admin/evaluacion.docente.xhtml">
+        <action execute="#{navigationController.setActive('/admin/evaluacion.docente.seam')}" />
+    </page>
+
+    <page view-id="/admin/evaluacion.xhtml">
+        <action execute="#{alumnoController.setAlumno(account)}" />
+        <action execute="#{navigationController.setActive('/admin/evaluacion.seam')}" />
+
+        <navigation from-action="#{evaluacionController.saveEvaluacionRespuesta}">
+            <rule if-outcome="success">
+                <redirect  include-page-params="true" view-id="/admin/alumno.calificaciones.xhtml"></redirect>
+            </rule>
+            <rule if-outcome="final">
+                <redirect  include-page-params="true" view-id="/admin/index.xhtml"></redirect>
+            </rule>
+        </navigation>
+    </page>
+
+    <page view-id="/admin/respuestas.xhtml">
+        <action execute="#{navigationController.setActive('/admin/respuestas.seam')}" />
+        <action execute="#{alumnoController.setAlumno(account)}" />
+    </page>
+
+    <page view-id="/admin/users.super.list.xhtml">
+        <restrict>#{s:hasRole('admin')}</restrict>
+        <navigation from-action="#{superController.finish}">
+            <rule if-outcome="success">
+                <redirect view-id="/admin/users.list.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+
     <page view-id="/admin/users.list.xhtml">
-        <action execute="#{menuController.setActive('/admin/users.list.seam')}" />
+        <restrict>#{s:hasRole('admin')}</restrict>
+        <begin-conversation join="true" />
+        <action execute="#{navigationController.setActive('/admin/users.list.seam')}" />
+        <navigation from-action="#{superController.init}">
+            <rule if-outcome="success">
+                <redirect view-id="/admin/users.super.list.xhtml"/>
+            </rule>
+        </navigation>
     </page>
     <page view-id="/admin/user.edit.xhtml">
+        <restrict>#{s:hasRole('admin')}</restrict>
         <begin-conversation join="true" />
-        <action execute="#{menuController.setActive('/admin/users.list.seam')}" />
+        <action execute="#{navigationController.setActive('/admin/users.list.seam')}" />
 
         <navigation from-action="#{userController.save}">
             <rule if-outcome="success">
@@ -62,11 +154,14 @@
     </page>
 
     <page view-id="/admin/cursos.list.xhtml">
-        <action execute="#{menuController.setActive('/admin/cursos.list.seam')}" />
+        <restrict>#{s:hasRole('admin')}</restrict>
+        <begin-conversation join="true" />
+        <action execute="#{navigationController.setActive('/admin/cursos.list.seam')}" />
     </page>
     <page view-id="/admin/curso.edit.xhtml">
+        <restrict>#{s:hasRole('admin')}</restrict>
         <begin-conversation join="true" />
-        <action execute="#{menuController.setActive('/admin/cursos.list.seam')}" />
+        <action execute="#{navigationController.setActive('/admin/cursos.list.seam')}" />
 
         <navigation from-action="#{cursoController.save}">
             <rule if-outcome="success">
@@ -76,11 +171,14 @@
     </page>
 
     <page view-id="/admin/materias.list.xhtml">
-        <action execute="#{menuController.setActive('/admin/materias.list.seam')}" />
+        <restrict>#{s:hasRole('admin')}</restrict>
+        <begin-conversation join="true" />
+        <action execute="#{navigationController.setActive('/admin/materias.list.seam')}" />
     </page>
     <page view-id="/admin/materia.edit.xhtml">
+        <restrict>#{s:hasRole('admin')}</restrict>
         <begin-conversation join="true" />
-        <action execute="#{menuController.setActive('/admin/materias.list.seam')}" />
+        <action execute="#{navigationController.setActive('/admin/materias.list.seam')}" />
 
         <navigation from-action="#{materiaController.save}">
             <rule if-outcome="success">
@@ -90,11 +188,14 @@
     </page>
 
     <page view-id="/admin/programas.list.xhtml">
-        <action execute="#{menuController.setActive('/admin/programas.list.seam')}" />
+        <restrict>#{s:hasRole('admin')}</restrict>
+        <begin-conversation join="true" />
+        <action execute="#{navigationController.setActive('/admin/programas.list.seam')}" />
     </page>
     <page view-id="/admin/programa.edit.xhtml">
+        <restrict>#{s:hasRole('admin')}</restrict>
         <begin-conversation join="true" />
-        <action execute="#{menuController.setActive('/admin/programas.list.seam')}" />
+        <action execute="#{navigationController.setActive('/admin/programas.list.seam')}" />
 
         <navigation from-action="#{programaController.save}">
             <rule if-outcome="success">
@@ -104,11 +205,14 @@
     </page>
 
     <page view-id="/admin/plan.list.xhtml">
-        <action execute="#{menuController.setActive('/admin/plan.list.seam')}" />
+        <restrict>#{s:hasRole('admin')}</restrict>
+        <begin-conversation join="true" />
+        <action execute="#{navigationController.setActive('/admin/plan.list.seam')}" />
     </page>
     <page view-id="/admin/plan.edit.xhtml">
+        <restrict>#{s:hasRole('admin')}</restrict>
         <begin-conversation join="true" />
-        <action execute="#{menuController.setActive('/admin/plan.list.seam')}" />
+        <action execute="#{navigationController.setActive('/admin/plan.list.seam')}" />
 
         <navigation from-action="#{planEstudiosController.save}">
             <rule if-outcome="success">
@@ -118,8 +222,9 @@
     </page>
 
     <page view-id="/admin/profesores.list.xhtml">
+        <restrict>#{s:hasRole('admin')}</restrict>
         <begin-conversation join="true" />
-        <action execute="#{menuController.setActive('/admin/profesores.list.seam')}" />
+        <action execute="#{navigationController.setActive('/admin/profesores.list.seam')}" />
 
         <navigation from-action="#{profesorConstanciaController.prepare}">
             <rule if-outcome="success">
@@ -128,8 +233,9 @@
         </navigation>
     </page>
     <page view-id="/admin/profesor.edit.xhtml">
+        <restrict>#{s:hasRole('admin')}</restrict>
         <begin-conversation join="true" />
-        <action execute="#{menuController.setActive('/admin/profesores.list.seam')}" />
+        <action execute="#{navigationController.setActive('/admin/profesores.list.seam')}" />
 
         <navigation from-action="#{profesorController.save}">
             <rule if-outcome="success">
@@ -139,11 +245,14 @@
     </page>
 
     <page view-id="/admin/alumnos.list.xhtml">
-        <action execute="#{menuController.setActive('/admin/alumnos.list.seam')}" />
+        <restrict>#{s:hasRole('admin')}</restrict>
+        <begin-conversation join="true" />
+        <action execute="#{navigationController.setActive('/admin/alumnos.list.seam')}" />
     </page>
     <page view-id="/admin/alumno.edit.xhtml">
+        <restrict>#{s:hasRole('admin')}</restrict>
         <begin-conversation join="true" />
-        <action execute="#{menuController.setActive('/admin/alumnos.list.seam')}" />
+        <action execute="#{navigationController.setActive('/admin/alumnos.list.seam')}" />
 
         <navigation from-action="#{alumnoController.save}">
             <rule if-outcome="success">
@@ -153,8 +262,9 @@
     </page>
 
     <page view-id="/admin/inscripcion.xhtml">
+        <restrict>#{s:hasRole('alumno')}</restrict>
         <begin-conversation join="true" />
-        <action execute="#{menuController.setActive('/admin/inscripcion.seam')}" />
+        <action execute="#{navigationController.setActive('/admin/inscripcion.seam')}" />
         <action execute="#{inscripcionController.setAlumno(account)}" />
 
         <navigation from-action="#{inscripcionController.save}">
@@ -165,24 +275,27 @@
     </page>
 
     <page view-id="/admin/alumno.horario.xhtml">
+        <restrict>#{s:hasRole('alumno')}</restrict>
         <begin-conversation join="true" />
-        <action execute="#{menuController.setActive('/admin/alumno.horario.seam')}" />
+        <action execute="#{navigationController.setActive('/admin/alumno.horario.seam')}" />
         <action execute="#{alumnoController.setAlumno(account)}" />
     </page>
 
     <page view-id="/admin/alumno.calificaciones.xhtml">
+        <restrict>#{s:hasRole('alumno')}</restrict>
         <begin-conversation join="true" />
-        <action execute="#{menuController.setActive('/admin/alumno.calificaciones.seam')}" />
+        <action execute="#{navigationController.setActive('/admin/alumno.calificaciones.seam')}" />
         <action execute="#{alumnoController.setAlumno(account)}" />
     </page>
 
     <page view-id="/admin/profesor.cursos.xhtml">
+        <restrict>#{s:hasRole('profesor')}</restrict>
         <begin-conversation join="true" />
-        <action execute="#{menuController.setActive('/admin/profesor.cursos.seam')}" />
+        <action execute="#{navigationController.setActive('/admin/profesor.cursos.seam')}" />
     </page>
 
     <page view-id="/admin/index.xhtml">
-        <begin-conversation join="true" />
+        <begin-conversation join="true"  />
     </page>
 
     <page view-id="/search.xhtml">
@@ -227,16 +340,28 @@
             </rule>
         </navigation>
         <navigation from-action="#{identity.logout}">
-            <redirect view-id="/index.xhtml"/>
+            <redirect view-id="/login.xhtml"/>
         </navigation>
     </page>
 
-    <page view-id="/admin/*" login-required="true">
+    <page view-id="/admin/settings.xhtml">
+        <restrict>#{s:hasRole('super')}</restrict>
+        <begin-conversation join="true"  />
     </page>
+
+    <!--<page view-id="/admin/*" login-required="true">
+    </page>-->
 
     <exception class="org.jboss.seam.security.NotLoggedInException" log="false">
         <redirect view-id="/login.xhtml">
             <message severity="WARN">Primero debe iniciar sesión</message>
+        </redirect>
+    </exception>
+
+    <exception class="org.jboss.seam.security.AuthorizationException">
+        <end-conversation/>
+        <redirect view-id="/login.xhtml">
+            <message>You do not have the necessary security privileges to perform this action.</message>
         </redirect>
     </exception>
 </pages>

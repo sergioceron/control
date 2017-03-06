@@ -77,6 +77,18 @@
                                                 <f:ajax execute="@this" render=":mod:popup"
                                                         onevent="showModal"/>
                                             </h:commandLink>
+                                            <h:panelGroup rendered="#{!evaluacionController.status and periodo.termino.equals(systemController.periodoActual.termino)}">
+                                                <h:commandLink  action="evaluacion.periodo.xhtml" data-toggle="tooltip" data-container="body" data-title="Activar evaluación"
+                                                    >
+                                                    <i class="fa fa-pencil"></i>
+                                                </h:commandLink>
+                                            </h:panelGroup>
+                                            <h:panelGroup rendered="#{evaluacionController.status  and periodo.termino.equals(systemController.periodoActual.termino)}">
+                                                <h:commandLink  action="evaluacion.list.xhtml" data-toggle="tooltip" data-container="body" data-title="Administrar evaluación"
+                                                        >
+                                                    <i class="fa fa-pencil"></i>
+                                                </h:commandLink>
+                                            </h:panelGroup>
                                         </h:column>
 
                                     </h:dataTable>
@@ -115,7 +127,7 @@
                                                                 <label class="col-md-4 col-sm-4"><b>Inicio:</b></label>
                                                                 <span class="col-md-8 col-sm-8">
                                                                     <h:outputText value="#{periodoController.periodo.inicio}">
-                                                                        <f:convertDateTime pattern="dd 'de' MMMMM 'de' yyyy" />
+                                                                        <f:convertDateTime pattern="dd 'de' MMM 'de' yyyy" />
                                                                     </h:outputText>
                                                                 </span>
                                                             </p>
@@ -123,7 +135,7 @@
                                                                 <label class="col-md-4 col-sm-4"><b>Termino:</b></label>
                                                                 <span class="col-md-8 col-sm-8">
                                                                     <h:outputText value="#{periodoController.periodo.termino}">
-                                                                        <f:convertDateTime pattern="dd 'de' MMMMM 'de' yyyy" />
+                                                                        <f:convertDateTime pattern="dd 'de' MMM 'de' yyyy" />
                                                                     </h:outputText>
                                                                 </span>
                                                             </p>
@@ -174,6 +186,7 @@
                         $('#modal').modal('hide');
                     }
                 }
+
             </script>
         </ui:define>
     </ui:composition>

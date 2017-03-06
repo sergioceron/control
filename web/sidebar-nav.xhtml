@@ -13,7 +13,7 @@
             </a>
         </li>
 
-        <ui:repeat value="#{menuController.menuList}" var="menu">
+        <ui:repeat value="#{navigationController.menuList}" var="menu">
         <li class="#{menu.hasSub ? 'has-sub' : ''} #{menu.active ? 'active' : ''}">
             <a href="#{menu.hasSub ? 'javascript:;' : menu.action}">
                 <h:verbatim rendered="#{menu.hasSub}"><b class="caret pull-right"> </b></h:verbatim>

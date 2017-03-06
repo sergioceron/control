@@ -1,8 +1,11 @@
 package mx.ipn.cidetec.virtual.controllers;
 
+import mx.ipn.cidetec.virtual.entities.Alumno;
 import mx.ipn.cidetec.virtual.entities.Announcement;
 import org.jboss.seam.ScopeType;
-import org.jboss.seam.annotations.*;
+import org.jboss.seam.annotations.In;
+import org.jboss.seam.annotations.Logger;
+import org.jboss.seam.annotations.Name;
 import org.jboss.seam.log.Log;
 import org.jboss.seam.security.Identity;
 
@@ -21,51 +24,53 @@ import java.util.List;
 @Name( "dashboardController" )
 public class DashboardController {
 
-	@In
-	private EntityManager entityManager;
+    @In
+    private EntityManager entityManager;
 
-	@In
-	private Identity identity;
+    @In
+    private Identity identity;
 
-	@Logger
-	private Log log;
+    @Logger
+    private Log log;
 
-    @In(scope = ScopeType.APPLICATION)
+    @In( scope = ScopeType.APPLICATION )
     private SystemController systemController;
 
 
-    public long getAlumnosCount(){
-        Query query = entityManager.createQuery("select count(*) from Alumno");
-        return (Long)query.getSingleResult();
+    public long getAlumnosCount() {
+        Query query = entityManager.createQuery( "select count(*) from Alumno a where a.status = :status" );
+        query.setParameter( "status", Alumno.Status.INSCRITO );
+        return (Long) query.getSingleResult();
     }
 
-	public long getProfesoresCount(){
-		Query query = entityManager.createQuery("select count(*) from Profesor ");
-		return (Long)query.getSingleResult();
-	}
+    public long getProfesoresCount() {
+        Query query = entityManager.createQuery( "select count(*) from Profesor " );
+        return (Long) query.getSingleResult();
+    }
 
-	public long getCursosCount(){
-		Query query = entityManager.createQuery("select count(*) from Curso ");
-		return (Long)query.getSingleResult();
-	}
+    public long getCursosCount() {
+        Query query = entityManager.createQuery( "select count(*) from Curso c where c.periodo = :periodo" );
+        query.setParameter( "periodo", systemController.getPeriodoActual() );
+        return (Long) query.getSingleResult();
+    }
 
-	public long getProgramasCount(){
-		Query query = entityManager.createQuery("select count(*) from Programa");
-		return (Long)query.getSingleResult();
-	}
+    public long getProgramasCount() {
+        Query query = entityManager.createQuery( "select count(*) from Programa" );
+        return (Long) query.getSingleResult();
+    }
 
-	public List<Announcement> getAnnouncements(){
-		Query query = entityManager.createQuery( "from Announcement a" );
-		List<Announcement> announcements = (List<Announcement>) query.getResultList();
-		List<Announcement> myAnnouncements = new ArrayList<Announcement>();
-		for( Announcement announcement : announcements ) {
-			for( mx.ipn.cidetec.virtual.entities.Role role : announcement.getRoles() ) {
-				if( identity.hasRole( role.getRolename() ) ){
-					myAnnouncements.add( announcement );
-					break;
-				}
-			}
-		}
-		return myAnnouncements;
-	}
+    public List<Announcement> getAnnouncements() {
+        Query query = entityManager.createQuery( "from Announcement a" );
+        List<Announcement> announcements = (List<Announcement>) query.getResultList();
+        List<Announcement> myAnnouncements = new ArrayList<Announcement>();
+        for( Announcement announcement : announcements ) {
+            for( mx.ipn.cidetec.virtual.entities.Role role : announcement.getRoles() ) {
+                if( identity.hasRole( role.getRolename() ) ) {
+                    myAnnouncements.add( announcement );
+                    break;
+                }
+            }
+        }
+        return myAnnouncements;
+    }
 }

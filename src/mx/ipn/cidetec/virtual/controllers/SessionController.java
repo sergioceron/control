@@ -1,6 +1,7 @@
 package mx.ipn.cidetec.virtual.controllers;
 
 import mx.ipn.cidetec.virtual.entities.*;
+import mx.ipn.cidetec.virtual.entities.Role;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.*;
 import org.jboss.seam.log.Log;
@@ -32,7 +33,7 @@ public class SessionController {
     private Account account;
 
     @In(create = true)
-    private MenuController menuController;
+    private NavigationController navigationController;
 
     @In
     private SystemController systemController;
@@ -87,8 +88,19 @@ public class SessionController {
                 }
             }
         }
-        menuController.setMenuList(menuList);
+        navigationController.setMenuList(menuList);
 	}
+
+    public boolean hasPermission(){
+	    if( account != null ) {
+            for( Role role : account.getUser().getRoles() ) {
+                if( role.getRolename().equals( "admin" ) ) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
 	public boolean isCaptcha() {
 		return captcha;

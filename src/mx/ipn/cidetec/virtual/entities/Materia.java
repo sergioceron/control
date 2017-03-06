@@ -44,7 +44,7 @@ public class Materia {
         this.nombre = name;
     }
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	public Programa getPrograma() {
 		return programa;
 	}

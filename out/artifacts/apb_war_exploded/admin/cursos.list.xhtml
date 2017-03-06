@@ -68,7 +68,7 @@
                                             <f:facet name="header">Accion</f:facet>
                                             <h:commandLink action="admin.calificaciones.xhtml" data-toggle="tooltip" data-container="body" data-title="Calificaciones">
                                                 <i class="fa fa-check-square-o"></i>
-                                                <s:conversationPropagation type="begin" />
+                                                <s:conversationPropagation type="join" />
                                                 <f:setPropertyActionListener target="#{calificacionController.curso}"
                                                                              value="#{curso}"/>
                                             </h:commandLink>
@@ -91,7 +91,7 @@
                                             <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar"
                                                     actionListener="#{cursoController.prepareToRemove(curso)}">
                                                 <i class="fa fa-times"></i>
-                                                <s:conversationPropagation type="begin" />
+                                                <s:conversationPropagation type="join" />
                                                 <f:ajax execute="@this" render=":mod:popup"
                                                         onevent="showModal"/>
                                             </h:commandLink>
@@ -205,6 +205,7 @@
 
         <ui:define name="scripts">
             <script src="/assets/plugins/DataTables-1.9.4/js/jquery.dataTables.js" type="text/javascript"></script>
+            <script src="/assets/plugins/DataTables-1.9.4/js/natural.js" type="text/javascript"></script>
             <script src="/assets/plugins/table-exporter/tableExport.js" type="text/javascript"></script>
             <script src="/assets/plugins/table-exporter/jquery.base64.js" type="text/javascript"></script>
             <script src="/assets/plugins/table-exporter/jspdf/libs/sprintf.js" type="text/javascript"></script>

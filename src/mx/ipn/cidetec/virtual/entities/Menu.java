@@ -14,6 +14,7 @@ public class Menu {
     private String action;
     private String icon;
     private List<Menu> submenu = new ArrayList<Menu>();
+    private boolean enabled = true;
     private boolean active;
     private String role;
 
@@ -64,13 +65,21 @@ public class Menu {
         this.icon = icon;
     }
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public List<Menu> getSubmenu() {
         return submenu;
     }
 
     public void setSubmenu(List<Menu> submenu) {
         this.submenu = submenu;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled( boolean enabled ) {
+        this.enabled = enabled;
     }
 
     @Transient

@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:s="http://jboss.org/schema/seam/taglib"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 
@@ -11,6 +12,9 @@
         <ui:define name="title">Configuración del Sistema</ui:define>
 
         <ui:define name="styles">
+            <link href="/assets/plugins/parsley/src/parsley.css" rel="stylesheet"/>
+            <link href="/assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+            <link href="/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
             <link href="/assets/plugins/DataTables-1.9.4/css/data-table.css" rel="stylesheet"/>
             <link href="/assets/plugins/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
         </ui:define>
@@ -52,7 +56,20 @@
                         <div class="tab-pane fade in" id="menu-tab">
                             <div class="table-responsive">
                                 <h:form id="menusForm">
-                                    <h:dataTable value="#{listEntitiesController.menus}" var="menu" styleClass="table table-striped table-bordered">
+                                    <div align="right">
+                                        <a href="#" class="btn btn-primary btn-xs" onclick="showModal()">
+                                            Nuevo menu
+                                        </a>
+                                    </div>
+                                    <h:dataTable value="#{listEntitiesController.menus}" var="menu" styleClass="table table-striped table-bordered" id="menus-table">
+                                        <h:column>
+                                            <f:facet name="header">ID</f:facet>
+                                            #{menu.id}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Icono</f:facet>
+                                            <i class="fa #{menu.icon}"> </i>
+                                        </h:column>
                                         <h:column>
                                             <f:facet name="header">Menu</f:facet>
                                             #{menu.label}
@@ -66,13 +83,155 @@
                                             </a>
                                         </h:column>
                                         <h:column>
-                                            <f:facet name="header">Descripcion</f:facet>
-                                            #{config.description}
+                                            <f:facet name="header">Role</f:facet>
+                                            #{menu.role}
+                                        </h:column>
+                                        <h:column headerClass="no-print">
+                                            <f:facet name="header">Accion</f:facet>
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Eliminar"
+                                                           actionListener="#{menuController.prepareToRemove(menu)}">
+                                                <i class="fa fa-times"></i>
+                                                <s:conversationPropagation type="begin" />
+                                                <f:ajax execute="@this" render=":delete-menu:delete-menu-popup"
+                                                        onevent="showModalDelete"/>
+                                            </h:commandLink>
                                         </h:column>
 
                                     </h:dataTable>
                                 </h:form>
                             </div>
+
+                            <h:form prependId="false" styleClass="form-horizontal form-bordered">
+                                <h:panelGroup id="popup">
+                                    <div class="modal fade" id="menu_dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    <h4 class="modal-title">Nuevo menu</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-4 col-sm-4">Etiqueta :</label>
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <h:inputText value="#{menuController.menu.label}" styleClass="form-control" placeholder="Texto del menu"
+                                                                         data-type="alphanum" data-parsley-required="true" data-parsley-minlength="2" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-4 col-sm-4">URL :</label>
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <h:inputText value="#{menuController.menu.action}" styleClass="form-control" placeholder="Dirección URL relativa"
+                                                                         data-type="alphanum" data-parsley-required="true" data-parsley-minlength="2" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-4 col-sm-4">Icono :</label>
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <h:inputText value="#{menuController.menu.icon}" styleClass="form-control" placeholder="fa-folder"
+                                                                         data-type="alphanum" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-4 col-sm-4">Habilitado :</label>
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <h:selectBooleanCheckbox value="#{menuController.menu.enabled}" data-render="switchery" data-theme="blue" data-switchery="true"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-4 col-sm-4">Parent :</label>
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <h:selectOneMenu value="#{menuController.parent}" styleClass="form-control selectpicker"
+                                                                             data-size="10" data-live-search="true" data-style="btn-white btn-sm">
+                                                                <f:selectItem itemLabel="(Seleccione un menu padre si existe)" itemValue="" />
+                                                                <f:selectItems var="menu" value="#{listEntitiesController.menus}"
+                                                                               itemLabel="#{menu.label} (#{menu.action})" itemValue="#{menu}"/>
+                                                                <s:convertEntity/>
+                                                            </h:selectOneMenu>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-4 col-sm-4">Role :</label>
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <h:selectOneMenu value="#{menuController.menu.role}" styleClass="form-control" data-parsley-required="true">
+                                                                <f:selectItems var="role" value="#{listEntitiesController.roles}"
+                                                                               itemLabel="#{role.rolename}" itemValue="#{role.rolename}"/>
+                                                            </h:selectOneMenu>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                                                    <h:commandLink action="#{menuController.save}" styleClass="btn btn-sm btn-success">
+                                                        Guardar
+                                                        <f:ajax execute="@form" render=":menusForm:menus-table" onevent="hideModal"/>
+                                                    </h:commandLink>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </h:panelGroup>
+                            </h:form>
+
+                            <h:form id="delete-menu">
+                                <h:panelGroup id="delete-menu-popup">
+                                    <div class="modal fade" id="menu_delete">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    <h4 class="modal-title">Eliminar Menu</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <s:div styleClass="alert alert-warning m-b-0">
+                                                        <h4><i class="fa fa-info-circle"> </i> Advertencia</h4>
+                                                        <p>¿Está seguro que desea eliminar el menu?</p>
+                                                        <f:verbatim rendered="#{menuController.menu.hasSub}">
+                                                            <p>Se eliminarán los siguientes cursos asociados a la materia:</p>
+                                                        </f:verbatim>
+                                                        <ul>
+                                                            <ui:repeat value="#{menuController.menu.submenu}" var="submenu">
+                                                                <li>#{submenu.label} - #{submenu.action}</li>
+                                                            </ui:repeat>
+                                                        </ul>
+                                                    </s:div>
+                                                    <h:panelGroup rendered="#{menuController.menu.id != null}">
+                                                        <h5>Datos del Menu</h5>
+                                                        <p class="media media-sm">
+                                                            <label class="col-md-4 col-sm-4"><b>ID:</b></label>
+                                                            <span class="col-md-8 col-sm-8">#{menuController.menu.id} </span>
+                                                        </p>
+                                                        <p class="media media-sm">
+                                                            <label class="col-md-4 col-sm-4"><b>Label:</b></label>
+                                                            <span class="col-md-8 col-sm-8">#{menuController.menu.label} </span>
+                                                        </p>
+                                                        <p class="media media-sm">
+                                                            <label class="col-md-4 col-sm-4"><b>URL:</b></label>
+                                                            <span class="col-md-8 col-sm-8">#{menuController.menu.action} </span>
+                                                        </p>
+                                                        <p class="media media-sm">
+                                                            <label class="col-md-4 col-sm-4"><b>Habilitado:</b></label>
+                                                            <span class="col-md-8 col-sm-8">#{menuController.menu.enabled ? 'Si' : 'No'} </span>
+                                                        </p>
+                                                        <p class="media media-sm">
+                                                            <label class="col-md-4 col-sm-4"><b>Role:</b></label>
+                                                            <span class="col-md-8 col-sm-8">#{menuController.menu.role} </span>
+                                                        </p>
+                                                    </h:panelGroup>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                                                    <h:commandLink action="#{menuController.remove}" styleClass="btn btn-sm btn-danger">
+                                                        Eliminar
+                                                        <f:ajax execute="@this" render=":menusForm:menus-table" onevent="hideModalDelete"/>
+                                                    </h:commandLink>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </h:panelGroup>
+                            </h:form>
+
                         </div>
                     </div>
                 </div>
@@ -82,15 +241,40 @@
         </ui:define>
 
         <ui:define name="scripts">
+            <script src="/assets/plugins/parsley/dist/es.js" type="text/javascript"></script>
+            <script src="/assets/plugins/parsley/dist/parsley.js" type="text/javascript"></script>
+            <script src="/assets/plugins/switchery/switchery.min.js" type="text/javascript"></script>
+            <script src="/assets/js/form-slider-switcher.demo.min.js" type="text/javascript"></script>
             <script src="/assets/plugins/DataTables-1.9.4/js/jquery.dataTables.js" type="text/javascript"></script>
             <script src="/assets/plugins/DataTables-1.9.4/js/natural.js" type="text/javascript"></script>
             <script src="/assets/plugins/DataTables-1.9.4/js/data-table.js" type="text/javascript"></script>
             <script src="/assets/plugins/bootstrap3-editable/js/bootstrap-editable.min.js" type="text/javascript"></script>
             <script src="/assets/js/apps.min.js" type="text/javascript"></script>
             <script type="text/javascript">
-                //<![CDATA[
+                //window.ParsleyValidator.setLocale('es');
+
+                function showModal() {
+                    $('#menu_dialog').modal('show');
+                }
+                function showModalDelete() {
+                    $('#menu_delete').modal('show');
+                }
+                function hideModal(data) {
+                    if (data.status === 'success') {
+                        $('#menu_dialog').modal('hide');
+                    }
+                }
+                function hideModalDelete(data) {
+                    if (data.status === 'success') {
+                        $('#menu_delete').modal('hide');
+                    }
+                }
+
                 $(".editable").editable();
-                //]]>
+
+                $(document).ready(function() {
+                    FormSliderSwitcher.init();
+                });
             </script>
         </ui:define>
     </ui:composition>

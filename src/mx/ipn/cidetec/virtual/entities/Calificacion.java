@@ -38,7 +38,7 @@ public class Calificacion {
 		this.alumno = alumno;
 	}
 
-	@ManyToOne(cascade = CascadeType.DETACH)
+	@ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
 	public Curso getCurso() {
 		return curso;
 	}

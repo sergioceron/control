@@ -32,7 +32,7 @@ public class Curso {
 		this.id = id;
 	}
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	public Materia getMateria() {
 		return materia;
 	}
@@ -41,7 +41,7 @@ public class Curso {
 		this.materia = materia;
 	}
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	public Profesor getProfesor() {
 		return profesor;
 	}
@@ -74,7 +74,7 @@ public class Curso {
 		this.turno = turno;
 	}
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	public List<Hora> getHorario() {
 		return horario;
 	}
@@ -109,7 +109,7 @@ public class Curso {
     }
 
     // TODO: change to mapped by owner class
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     public Periodo getPeriodo() {
         return periodo;
     }

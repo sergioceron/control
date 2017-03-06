@@ -284,7 +284,7 @@
                                         </fieldset>
                                     </div>
 
-                                    <seam:div styleClass="wizard-step-4" rendered="#{alumnoController.alumno.id eq null}">
+                                    <seam:div styleClass="wizard-step-4" rendered="#{alumnoController.alumno.id eq null or alumnoController.user eq null}">
                                         <fieldset>
                                             <legend class="pull-left width-full">Usuario</legend>
                                             <!-- begin row -->

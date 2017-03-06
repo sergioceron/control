@@ -11,6 +11,7 @@ import org.jboss.seam.security.management.IdentityManager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.List;
 
 /**
  * Created by Usuario on 16/09/2014.
@@ -104,5 +105,17 @@ public class UserController {
 
     public boolean isRemovable() {
         return removable;
+    }
+
+    public boolean accessRoleUser(String userId){
+        Query query = entityManager.createQuery("from User");
+        List<User> lista = query.getResultList();
+        for(User user : lista)
+            for(Role role: user.getRoles())
+                if(userId.equals(role.getRolename()) || userId.isEmpty())
+                    if(role.getRoleId() == 50 || role.getRoleId() == 20)
+                        return true;
+        return false;
+
     }
 }

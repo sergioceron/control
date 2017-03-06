@@ -53,7 +53,7 @@ public class Alumno extends Account {
 		this.status = status;
 	}
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	public Profesor getAsesor() {
 		return asesor;
 	}
@@ -70,7 +70,7 @@ public class Alumno extends Account {
         this.tiempo = tiempo;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
 	public Programa getPrograma() {
 		return programa;
 	}
@@ -97,7 +97,7 @@ public class Alumno extends Account {
         this.evaluaciones = evaluaciones;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
 	public PlanEstudios getPlanEstudios() {
 		return planEstudios;
 	}

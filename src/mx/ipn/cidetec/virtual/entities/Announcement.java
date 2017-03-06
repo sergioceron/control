@@ -74,7 +74,7 @@ public class Announcement {
         this.url = url;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     public User getAutor() {
         return autor;
     }

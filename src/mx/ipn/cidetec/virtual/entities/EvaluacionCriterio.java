@@ -6,13 +6,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Created by sergio on 12/06/2014.
+ * Created by root on 20/09/15.
  */
 @Entity
 public class EvaluacionCriterio {
     private Long id;
-    private String texto;
-    private String categoria;
+    private String pregunta;
+    private String criterio;
+    private char identificador;
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -24,19 +25,27 @@ public class EvaluacionCriterio {
         this.id = id;
     }
 
-    public String getTexto() {
-        return texto;
+    public String getPregunta() {
+        return pregunta;
     }
 
-    public void setTexto(String texto) {
-        this.texto = texto;
+    public void setPregunta(String pregunta) {
+        this.pregunta = pregunta;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getCriterio() {
+        return criterio;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setCriterio( String criterio ) {
+        this.criterio = criterio;
+    }
+
+    public char getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador( char identificador ) {
+        this.identificador = identificador;
     }
 }

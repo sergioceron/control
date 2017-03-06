@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:s="http://jboss.org/schema/seam/taglib"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:c="http://java.sun.com/jstl/core">
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <ui:define name="title">Docentes</ui:define>
+
+        <ui:define name="styles">
+            <link href="/assets/plugins/DataTables-1.9.4/css/data-table.css" rel="stylesheet"/>
+            <link href="/assets/css/tables.extra.css" rel="stylesheet"/>
+        </ui:define>
+
+        <ui:define name="content">
+            <div class="row">
+                <!-- begin col-12 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <div class="btn-group">
+                                    <a href="javascript:;" data-toggle="dropdown" class="btn btn-warning dropdown-toggle btn-xs">Exportar <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" >
+                                        <li>
+                                            <h:form>
+                                            <h:commandLink  action="#{evaluacionConstanciaController.generalEvaluationReport}"> <i class="fa fa-file-pdf-o"></i>PDF</h:commandLink>
+                                            </h:form>
+                                        </li>
+
+                                        <li class="divider"></li>
+                                        <li><a href="#" onclick="window.print();">Imprimir</a></li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                            <h4 class="panel-title">Evaluaciones finalizadas</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <h:form id="loginForm">
+                                    <h:dataTable rendered="#{evaluacionController.materiasImpartidas.size() != 0}" value="#{evaluacionController.materiasImpartidas}" var="docente"
+                                                 id="data-table"    styleClass="table table-striped table-bordered"
+                                                 columnClasses="text-center,text-center,,,no-print">
+                                        <h:column  headerClass="text-center">
+                                            <f:facet name="header">Id</f:facet>
+                                            <h:outputText value="#{rowcounter.row1}"></h:outputText>
+                                        </h:column>
+                                        <h:column headerClass="text-center">
+                                            <f:facet name="header">Profesor</f:facet>
+                                            #{docente}
+                                        </h:column>
+
+                                        <h:column>
+                                            <f:facet name="header">Acción</f:facet>
+                                            <h:commandLink data-toggle="tooltip" data-container="body" data-title="Ver evaluaciones"
+                                                           actionListener="#{evaluacionController.setMateriasActivas(docente)}" action="docentes">
+                                                <i class="glyphicon glyphicon-edit"></i>
+                                            </h:commandLink>
+                                        </h:column>
+                                    </h:dataTable>
+                                </h:form>
+
+
+                                <h:form id="mod">
+                                    <h:panelGroup id="popup">
+                                        <div class="modal fade" id="modal">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title">Constancia</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                        <s:div  styleClass="alert alert-warning m-b-0" >
+                                                            <h4><i class="fa fa-info-circle"> </i> Advertencia</h4>
+                                                            <p>¿Está seguro que desea eliminar el periodo seleccionado?</p>
+                                                        </s:div>
+
+                                                        <h:panelGroup rendered="#{listEntitiesController.evaluacionDocente.size() > 0}">
+
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Inicio:</b></label>
+                                                                <span class="col-md-8 col-sm-8">
+                                                                    <h:outputText value="#{listEntitiesController.evaluacionDocente.get(0).inicio}">
+                                                                        <f:convertDateTime pattern="dd 'de' MMMMM 'de' yyyy" />
+                                                                    </h:outputText>
+                                                                </span>
+                                                            </p>
+                                                            <p class="media media-sm">
+                                                                <label class="col-md-4 col-sm-4"><b>Termino:</b></label>
+                                                                <span class="col-md-8 col-sm-8">
+                                                                    <h:outputText value="#{listEntitiesController.evaluacionDocente.get(0).termino}">
+                                                                        <f:convertDateTime pattern="dd 'de' MMMMM 'de' yyyy" />
+                                                                    </h:outputText>
+                                                                </span>
+                                                            </p>
+                                                        </h:panelGroup>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                                                        <h:commandLink  action="#{evaluacionController.remove}" styleClass="btn btn-sm btn-danger"
+                                                                >
+                                                            Eliminar
+
+                                                        </h:commandLink>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                </h:form>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+
+
+                </div>
+                <!-- end col-12 -->
+            </div>
+
+        </ui:define>
+
+        <ui:define name="scripts">
+            <script src="/assets/plugins/DataTables-1.9.4/js/jquery.dataTables.js" type="text/javascript"></script>
+            <script src="/assets/plugins/DataTables-1.9.4/js/natural.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/tableExport.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jquery.base64.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/libs/sprintf.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/jspdf.js" type="text/javascript"></script>
+            <script src="/assets/plugins/table-exporter/jspdf/libs/base64.js" type="text/javascript"></script>
+            <script src="/assets/plugins/DataTables-1.9.4/js/data-table.js" type="text/javascript"></script>
+            <script src="/assets/js/dashboard.min.js" type="text/javascript"></script>-->
+            <script src="/assets/js/apps.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                function showModal(data) {
+                    if (data.status === 'success') {
+                        $('#modal').modal('show');
+                    }
+                }
+                function hideModal(data) {
+                    if (data.status === 'success') {
+                        $('#modal').modal('hide');
+                    }
+                }
+            </script>
+        </ui:define>
+    </ui:composition>
+
+</h:body>
+
+</html>

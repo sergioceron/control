@@ -17,7 +17,7 @@ import java.util.*;
 @Name("profesorConstanciaController")
 @Scope( ScopeType.CONVERSATION )
 public class ProfesorConstanciaController {
-    private final String dias[] = { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" };
+    private final String dias[] = { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado" };
     private final String semestres[] = { "", "1er semestre", "2do semestre", "3er semestre", "4to Semestre", "5to Semestre", "6to Semestre", "7mo Semestre", "8vo Semestre" };
 
     private Profesor profesor;

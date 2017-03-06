@@ -8,8 +8,9 @@
         <non-jta-data-source>java:jboss/datasources/cidetec</non-jta-data-source>
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
-            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.JBossTransactionManagerLookup"/>
+
             <!-- Binds the EntityManagerFactory to JNDI where Seam can look it up.
                  This is only relevant when the container automatically loads the persistence unit, as is the case in JBoss AS 5. -->
             <property name="jboss.entity.manager.factory.jndi.name" value="java:/bookingEntityManagerFactory"/>

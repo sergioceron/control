@@ -26,7 +26,7 @@ public class EvaluacionAlumno {
         this.id = id;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     public Alumno getAlumno() {
         return alumno;
     }
@@ -35,7 +35,7 @@ public class EvaluacionAlumno {
         this.alumno = alumno;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     public Evaluacion getEvaluacion() {
         return evaluacion;
     }
@@ -44,8 +44,7 @@ public class EvaluacionAlumno {
         this.evaluacion = evaluacion;
     }
 
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     public Curso getCurso() {
         return curso;
     }

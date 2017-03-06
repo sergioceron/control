@@ -78,6 +78,10 @@ public class Periodo {
         return semestre + "" + (anyo - 2000);
     }
 
+    public String toStringOrder() {
+        return (anyo - 2000) + "" +  semestre;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

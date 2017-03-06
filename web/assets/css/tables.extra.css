@@ -28,4 +28,9 @@
     .dataTables_filter{
         display: none;
     }
+.center-table
+{
+  margin: 0 auto !important;
+  float: none !important;
+}
 }

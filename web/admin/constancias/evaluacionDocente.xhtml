@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+    <style type="text/css">
+        #constancia {
+            height: 11in;
+            width: 8.5in;
+        }
+
+        #constancia {
+            font-family: "Arial";
+            font-size: 15px;
+        }
+
+        #header{
+            visibility: hidden;
+        }
+
+        .tabla{
+            margin: 0px auto;
+            border-collapse: collapse;
+        }
+
+        .tabla,
+        .tabla td,
+        .tabla th{
+            font-size: 14px;
+            border: 1px solid black;
+        }
+
+        small{
+            font-size: 11px;
+        }
+
+        .c1{
+            width:62px;
+            text-align: center;
+        }
+
+        .c2{
+            width:365px;
+            text-align: center;
+        }
+
+        .c3{
+            width:71px;
+            text-align: center;
+        }
+
+        .c4{
+            width:88px;
+            text-align: center;
+        }
+
+        .left{
+            text-align: left;
+        }
+
+        .center{
+            text-align: center;
+        }
+
+        @media print {
+            .eee {
+                color: #eee;;
+            }
+            .bottom-center{
+                position: absolute;
+                bottom: 0px;
+            }
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div id="constancia">
+        <div id="header">
+            <div style="text-align:right; font-size:12px; height:100px; vertical-align: bottom; line-height: 100px; color: #ccc">
+                <img src="/assets/img/sep.png" style="float: left" width="200px" alt="SEP" />
+                <b>Instituto Politécnico Nacional</b>
+                <img src="/assets/img/ipn.png" style="float: right; margin-left: 8px" width="50px" alt="IPN" />
+            </div>
+            <div style="clear: both;"> </div>
+            <div style="text-align:right; font-size:12px;vertical-align: bottom; height: 55px; line-height: 55px; margin-right: 45px;" class="eee">
+                <b>Centro de Innovación y Desarrollo Tecnológico en Cómputo</b>
+                <img src="/assets/img/cidetec.png" style="float: right; margin-left: 8px" width="50px" alt="CIDETEC" />
+            </div>
+            <div style="clear: both; height: 10px"> </div>
+            <div style="text-align: right; font-family: 'Arial Narrow'; font-size: 10px; margin-right: 45px;" class="eee">
+                “2015 Año del Generalismo José Maria Morelos y Pavón”<br/>
+            </div>
+        </div>
+
+        <div style="margin: 10px 45px 10px 45px">
+            <code>Constancia/2014</code>
+            <div style="text-align: right">Ciudad de México a #{profesorConstanciaController.fecha}</div>
+            <p><strong>#{profesorConstanciaController.profesor.fullName.toUpperCase()}</strong></p>
+            <p><strong>P R E S E N T E .</strong></p>
+            <p style="line-height: 180%;text-align: justify">
+                Por medio del presente, me permito notificarle que dentro de sus actividades académicas correspondientes al semestre #{profesorConstanciaController.periodoFormateado}
+                de el/la #{profesorConstanciaController.programa.nombre}, se le han asignado las unidades de aprendizaje correspondientes que se indican a continuación:
+            </p>
+            <div>
+                <h:dataTable value="#{profesorConstanciaController.cursosMaestria}" styleClass="tabla" var="curso" columnClasses="center,center,center,center,center" rendered="#{not profesorConstanciaController.all}">
+                    <h:column headerClass="c1">
+                        <f:facet name="header"></f:facet>
+                        #{curso.materia.nombre}
+                    </h:column>
+                    <h:column headerClass="c2">
+                        <f:facet name="header">Grupo</f:facet>
+                        #{profesorConstanciaController.semestres[curso.semestre]} #{curso.grupo}
+                    </h:column>
+                    <h:column headerClass="c3">
+                        <f:facet name="header">Horario</f:facet>
+                        #{profesorConstanciaController.horarioFormateado(curso)}
+                    </h:column>
+                </h:dataTable>
+                <h:outputText style="display:block; text-align: center; font-size: 14px; font-weight: bold; margin-bottom: 10px" rendered="#{profesorConstanciaController.maestria and profesorConstanciaController.all}" value="MAESTRÍA" />
+                <h:dataTable value="#{profesorConstanciaController.cursosMaestria}" styleClass="tabla" var="curso" columnClasses="center,center,center,center,center" rendered="#{profesorConstanciaController.maestria and profesorConstanciaController.all}">
+                    <h:column headerClass="c1">
+                        <f:facet name="header"></f:facet>
+                        #{curso.materia.nombre}
+                    </h:column>
+                    <h:column headerClass="c2">
+                        <f:facet name="header">Grupo</f:facet>
+                        #{profesorConstanciaController.semestres[curso.semestre]} #{curso.grupo}
+                    </h:column>
+                    <h:column headerClass="c3">
+                        <f:facet name="header">Horario</f:facet>
+                        #{profesorConstanciaController.horarioFormateado(curso)}
+                    </h:column>
+                </h:dataTable>
+                <h:outputText style="display:block; text-align: center; font-size: 14px; font-weight: bold; margin-bottom: 10px; margin-top: 10px" rendered="#{profesorConstanciaController.doctorado and profesorConstanciaController.all}" value="DOCTORADO" />
+                <h:dataTable value="#{profesorConstanciaController.cursosDoctorado}" styleClass="tabla" var="curso" columnClasses="center,center,center,center,center" rendered="#{profesorConstanciaController.doctorado and profesorConstanciaController.all}">
+                    <h:column headerClass="c1">
+                        <f:facet name="header"></f:facet>
+                        #{curso.materia.nombre}
+                    </h:column>
+                    <h:column headerClass="c2">
+                        <f:facet name="header">Grupo</f:facet>
+                        #{profesorConstanciaController.semestres[curso.semestre]} #{curso.grupo}
+                    </h:column>
+                    <h:column headerClass="c3">
+                        <f:facet name="header">Horario</f:facet>
+                        #{profesorConstanciaController.horarioFormateado(curso)}
+                    </h:column>
+                </h:dataTable>
+            </div>
+            <p>
+                Cualquier cambio al respecto, favor de consultarlo con esta Subdirección.
+            </p>
+            <br/>
+            <p><strong>ATENTAMENTE</strong><br/>
+                <strong>"LA TÉCNICA AL SERVICIO DE LA PATRIA"</strong></p>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <p>
+                <strong>COORDINADOR DE LA MAESTRÍA</strong><br/>
+                <strong>O SUBDIRECTOR ACADÉMICO</strong><br/>
+                <strong>O DIRECTOR</strong>
+            </p>
+        </div>
+        <div style="width: 100%" class="bottom-center">
+            <p><span style="font-size: small;">c.i.p. expediente</span></p>
+            <p><span style="font-size: small;">/STM/</span></p>
+
+        </div>
+    </div>
+
+</h:body>
+
+</html>

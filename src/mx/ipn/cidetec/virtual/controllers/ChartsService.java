@@ -3,6 +3,7 @@ package mx.ipn.cidetec.virtual.controllers;
 import mx.ipn.cidetec.virtual.entities.Alumno;
 import mx.ipn.cidetec.virtual.entities.Curso;
 import mx.ipn.cidetec.virtual.entities.Periodo;
+import mx.ipn.cidetec.virtual.utils.PeriodoComparator;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 
@@ -20,16 +21,16 @@ import java.util.*;
  * @version rev: %I%
  * @date 6/08/14 09:00 PM
  */
-@Name("chartsService")
-@Path("/charts")
+@Name( "chartsService" )
+@Path( "/charts" )
 public class ChartsService {
 
     @In
     private EntityManager entityManager;
 
     @GET
-    @Path("/alumnos")
-    @Produces("application/json")
+    @Path( "/alumnos" )
+    @Produces( "application/json" )
     public Map<String, Object[][]> alumnosChart() {
         Query alumnosQuery = entityManager.createQuery( "from Alumno a" );
         Query cursosQuery = entityManager.createQuery( "from Curso c" );
@@ -37,7 +38,8 @@ public class ChartsService {
 
         List<Alumno> alumnos = alumnosQuery.getResultList();
         List<Curso> cursos = cursosQuery.getResultList();
-        List<Periodo> periodos = periodosQuery.getResultList();
+        List<Periodo> periodos = new LinkedList<Periodo>( periodosQuery.getResultList() );
+        Collections.sort( periodos, new PeriodoComparator() );
 
         Map<String, Object[][]> chart = new HashMap<String, Object[][]>();
 
@@ -45,36 +47,36 @@ public class ChartsService {
         Object[][] chartCursos = new Object[periodos.size()][2];
         Object[][] chartPeriodos = new Object[periodos.size()][2];
 
-        for (int i = 0; i < periodos.size(); i++) {
-            Periodo periodo = periodos.get(i);
+        for( int i = 0; i < periodos.size(); i++ ) {
+            Periodo periodo = periodos.get( i );
             int countAlumnos = 0;
-            for (Alumno alumno : alumnos) {
-                if (alumno.getMatricula().startsWith(periodo.toString())) {
+            for( Alumno alumno : alumnos ) {
+                if( alumno.getMatricula().startsWith( periodo.toString() ) ) {
                     countAlumnos++;
                 }
             }
             int countCursos = 0;
-            for (Curso curso : cursos) {
-                if (curso.getPeriodo().equals(periodo)) {
+            for( Curso curso : cursos ) {
+                if( curso.getPeriodo().toString().equals( periodo.toString() ) ) {
                     countCursos++;
                 }
             }
-            chartAlumnos[i] = new Object[]{i, countAlumnos};
-            chartCursos[i] = new Object[]{i, countCursos};
-            chartPeriodos[i] = new Object[]{i, periodo.toString()};
+            chartAlumnos[i] = new Object[]{ i, countAlumnos };
+            chartCursos[i] = new Object[]{ i, countCursos };
+            chartPeriodos[i] = new Object[]{ i, periodo.toString() };
         }
 
-        chart.put("alumnos", chartAlumnos);
-        chart.put("cursos", chartCursos);
-        chart.put("periodos", chartPeriodos);
+        chart.put( "alumnos", chartAlumnos );
+        chart.put( "cursos", chartCursos );
+        chart.put( "periodos", chartPeriodos );
 
         return chart;
     }
 
 
     @GET
-    @Path("/alumnosByAge")
-    @Produces("application/json")
+    @Path( "/alumnosByAge" )
+    @Produces( "application/json" )
     public List<DonoutPojo> alumnosByAgeChart() {
         Query alumnosQuery = entityManager.createQuery( "from Alumno a" );
 
@@ -82,7 +84,7 @@ public class ChartsService {
 
         Map<Integer, Integer> ages = new HashMap<Integer, Integer>();
 
-        for (Alumno alumno : alumnos) {
+        for( Alumno alumno : alumnos ) {
             if( alumno.getFechaNacimiento() != null ) {
                 int age = 2015 - alumno.getFechaNacimiento().getYear();
                 if( ages.containsKey( age ) ) {
@@ -104,8 +106,8 @@ public class ChartsService {
     }
 
     @GET
-    @Path("/alumnosByGender")
-    @Produces("application/json")
+    @Path( "/alumnosByGender" )
+    @Produces( "application/json" )
     public List<DonoutPojo> alumnosByAgeGender() {
         Query alumnosQuery = entityManager.createQuery( "from Alumno a" );
 
@@ -113,7 +115,7 @@ public class ChartsService {
 
         Map<String, Integer> ages = new HashMap<String, Integer>();
 
-        for (Alumno alumno : alumnos) {
+        for( Alumno alumno : alumnos ) {
             String sexo = alumno.getSexo() == 1 ? "Masculino" : "Femenino";
             if( ages.containsKey( sexo ) ) {
                 ages.put( sexo, ages.get( sexo ) + 1 );
@@ -133,8 +135,8 @@ public class ChartsService {
     }
 
     @GET
-    @Path("/alumnosBySemester")
-    @Produces("application/json")
+    @Path( "/alumnosBySemester" )
+    @Produces( "application/json" )
     public List<DonoutPojo> alumnosBySemester() {
         Query alumnosQuery = entityManager.createQuery( "from Alumno a" );
 
@@ -142,7 +144,7 @@ public class ChartsService {
 
         Map<Integer, Integer> semesters = new HashMap<Integer, Integer>();
 
-        for (Alumno alumno : alumnos) {
+        for( Alumno alumno : alumnos ) {
             int semestre = alumno.getSemestre();
             if( semesters.containsKey( semestre ) ) {
                 semesters.put( semestre, semesters.get( semestre ) + 1 );

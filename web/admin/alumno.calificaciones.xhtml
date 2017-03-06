@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:s="http://jboss.org/schema/seam/taglib"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 
@@ -26,7 +27,7 @@
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <h:form id="loginForm">
-                                    <h:dataTable value="#{alumnoController.calificacionesActuales}" var="calificacion"
+                                    <h:dataTable rendered="#{evaluacionController.status and alumnoController.status and !alumnoController.activacion }" value="#{alumnoController.calificacionesActuales}" var="calificacion"
                                                  id="data-table" styleClass="table table-striped table-bordered">
                                         <h:column>
                                             <f:facet name="header">Materia</f:facet>
@@ -44,9 +45,59 @@
                                             <f:facet name="header">Calificacion</f:facet>
                                             #{calificacion.setted ? calificacion.calificacion : 'No asignada'}
                                         </h:column>
+                                    </h:dataTable>
+
+                                    <h:panelGroup rendered="#{!evaluacionController.status}">
+                                        <h:column>
+                                            <div class=" text-center" >
+                                                <div class="alert alert-info">
+                                                    <strong>¡Advertencia!</strong> Aun no es periodo de evaluaciones.
+                                                </div>
+                                            </div>
+                                        </h:column>
+                                    </h:panelGroup>
+                                    <h:panelGroup rendered="#{!alumnoController.status and !alumnoController.activacion and !alumnoController.excepcion}">
+                                            <div class=" text-center" >
+                                                <div class="alert alert-info">
+                                                    <strong>¡Advertencia!</strong> Evalúa a tus profesores para poder visualizar tus calificaciones.
+                                                </div>
+                                                <h:commandButton value="Reaizar evaluación" actionListener="#{alumnoController.setActivacion}" action="alumno.calificaciones.xhtml" styleClass="btn btn-sm btn-primary m-r-5"/>
+                                            </div>
+                                    </h:panelGroup>
+                                    <h:panelGroup rendered="#{alumnoController.excepcion}">
+                                        <div class=" text-center" >
+                                            <div class="alert alert-danger">
+                                                <strong>¡Advertencia!</strong> Acude a gestión escolar para agregar una excepción de evaluación a tu cuenta y poder realizar las evaluaciones correspondientes.
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                </h:form>
+                                <h:form id="login">
+                                <h:dataTable rendered="#{!alumnoController.status and alumnoController.activacion and !alumnoController.excepcion}" value="#{alumnoController.evaluacionActuales }"  var="calificacion"
+                                             id="data-table" styleClass="table table-striped table-bordered">
+                                    <h:column>
+                                        <f:facet name="header">Profesor</f:facet>
+                                        #{calificacion.curso.profesor}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Grupo</f:facet>
+                                        #{calificacion.curso.grupo}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Materia</f:facet>
+                                        #{calificacion.curso.materia.nombre}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Accion</f:facet>
+                                        <h:commandLink data-toggle="tooltip" data-container="body" data-title="Evaluar"
+                                                      actionListener="#{evaluacionController.setEvaluacionMateria(calificacion)}" action="evaluacion">
+                                            <i class="glyphicon glyphicon-edit"></i>
+                                        </h:commandLink>
+                                    </h:column>
 
                                     </h:dataTable>
                                 </h:form>
+
                             </div>
                         </div>
                     </div>

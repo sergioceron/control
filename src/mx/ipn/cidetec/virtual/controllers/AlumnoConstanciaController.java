@@ -6,6 +6,7 @@ package mx.ipn.cidetec.virtual.controllers;
 
 import mx.ipn.cidetec.virtual.entities.Alumno;
 import mx.ipn.cidetec.virtual.entities.Calificacion;
+import mx.ipn.cidetec.virtual.utils.CalificacionComparator;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Logger;
@@ -14,9 +15,7 @@ import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.log.Log;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Name("alumnoConstanciaController")
 @Scope( ScopeType.CONVERSATION )
@@ -75,7 +74,7 @@ public class AlumnoConstanciaController {
     }
 
     public List<String> getClaveMateria(String clave){
-        String claveZeros = String.format("%8s", clave);
+        String claveZeros = String.format("%7s", clave);
         List<String> m = new ArrayList<String>();
         for (int i = 0; i < claveZeros.length(); i++) {
             m.add(claveZeros.charAt(i) + "");
@@ -125,6 +124,16 @@ public class AlumnoConstanciaController {
 
     public Alumno getAlumno() {
         return alumno;
+    }
+
+    public List<Calificacion> getCalificacionesOrdenadas(){
+        List<Calificacion> calificaciones = alumno.getCalificaciones();
+
+        Map<Long, List<Calificacion>> hashMap = new HashMap<Long, List<Calificacion>>();
+        List<Calificacion> ordered = new LinkedList<Calificacion>( calificaciones );
+        Collections.sort( ordered, new CalificacionComparator() );
+
+        return ordered;
     }
 
     public List<String> getConstancias() {

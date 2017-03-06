@@ -102,7 +102,8 @@ public class ProfesorController {
         removable = query.getResultList().size() == 0;
     }
 
-    public void remove(){Query query = entityManager.createQuery("from User u where u.account=:account");
+    public void remove(){
+        Query query = entityManager.createQuery("from User u where u.account=:account");
         query.setParameter("account", profesor);
         for (Object o : query.getResultList()) {
             User u = (User) o;

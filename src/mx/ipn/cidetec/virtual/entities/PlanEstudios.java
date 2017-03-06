@@ -46,7 +46,7 @@ public class PlanEstudios {
 		this.creditos = creditos;
 	}
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	public Programa getPrograma() {
 		return programa;
 	}

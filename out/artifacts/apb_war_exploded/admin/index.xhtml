@@ -3,12 +3,13 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:s="http://jboss.org/schema/seam/taglib"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
 
     <ui:composition template="../template.xhtml">
 
-        <ui:define name="title">Panel de Control</ui:define>
+        <ui:define name="title">Inicio</ui:define>
 
         <ui:define name="styles">
             <link href="/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
@@ -19,75 +20,115 @@
 
         <ui:define name="content">
 
-            <div class="row">
-                <!-- begin col-3 -->
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget widget-stats bg-green">
-                        <div class="stats-icon stats-icon-lg"><i class="fa fa-navicon fa-fw"></i></div>
-                        <div class="stats-title underline">CURSOS</div>
-                        <div class="stats-number">#{dashboardController.cursosCount}</div>
-                        <div class="stats-progress progress">
-                            <div class="progress-bar" style="width: 70.1%;"></div>
+            <s:div rendered="#{s:hasRole('admin')}">
+                <div class="row">
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget-stats bg-green">
+                            <div class="stats-icon stats-icon-lg"><i class="fa fa-navicon fa-fw"></i></div>
+                            <div class="stats-title underline">CURSOS</div>
+                            <div class="stats-number">#{dashboardController.cursosCount}</div>
+                            <div class="stats-progress progress">
+                                <div class="progress-bar" style="width: 70.1%;"></div>
+                            </div>
+                            <div class="stats-desc">Cursos impartiendose este semestre</div>
                         </div>
-                        <div class="stats-desc">Cursos impartiendose éste semestre</div>
+                    </div>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget-stats bg-blue">
+                            <div class="stats-icon stats-icon-lg"><i class="fa fa-users fa-fw"></i></div>
+                            <div class="stats-title">ALUMNOS</div>
+                            <div class="stats-number">#{dashboardController.alumnosCount}</div>
+                            <div class="stats-progress progress">
+                                <div class="progress-bar" style="width: 40.5%;"></div>
+                            </div>
+                            <div class="stats-desc">Alumnos inscritos éste semestre</div>
+                        </div>
+                    </div>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget-stats bg-purple">
+                            <div class="stats-icon stats-icon-lg"><i class="fa fa-user fa-fw"></i></div>
+                            <div class="stats-title">PROFESORES</div>
+                            <div class="stats-number">#{dashboardController.profesoresCount}</div>
+                            <div class="stats-progress progress">
+                                <div class="progress-bar" style="width: 76.3%;"></div>
+                            </div>
+                            <div class="stats-desc">Profesores impartiendo clases</div>
+                        </div>
+                    </div>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget-stats bg-black">
+                            <div class="stats-icon stats-icon-lg"><i class="fa fa-university fa-fw"></i></div>
+                            <div class="stats-title">PROGRAMAS</div>
+                            <div class="stats-number">#{dashboardController.programasCount}</div>
+                            <div class="stats-progress progress">
+                                <div class="progress-bar" style="width: 54.9%;"></div>
+                            </div>
+                            <div class="stats-desc">Maestría y Doctorado</div>
+                        </div>
+                    </div>
+                    <!-- end col-3 -->
+                </div>
+
+                <div class="row">
+                    <!-- begin col-8 -->
+                    <div class="col-md-12">
+                        <div class="panel panel-inverse">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Información Estadística</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div id="interactive-chart" class="height-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="panel panel-inverse">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Alumnos por genero</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div id="donut-chart" class="height-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="panel panel-inverse">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Alumnos por semestre</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div id="donut-chart-2" class="height-sm"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- end col-3 -->
-                <!-- begin col-3 -->
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget widget-stats bg-blue">
-                        <div class="stats-icon stats-icon-lg"><i class="fa fa-users fa-fw"></i></div>
-                        <div class="stats-title">ALUMNOS</div>
-                        <div class="stats-number">#{dashboardController.alumnosCount}</div>
-                        <div class="stats-progress progress">
-                            <div class="progress-bar" style="width: 40.5%;"></div>
-                        </div>
-                        <div class="stats-desc">Alumnos inscritos éste semestre</div>
-                    </div>
-                </div>
-                <!-- end col-3 -->
-                <!-- begin col-3 -->
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget widget-stats bg-purple">
-                        <div class="stats-icon stats-icon-lg"><i class="fa fa-user fa-fw"></i></div>
-                        <div class="stats-title">PROFESORES</div>
-                        <div class="stats-number">#{dashboardController.profesoresCount}</div>
-                        <div class="stats-progress progress">
-                            <div class="progress-bar" style="width: 76.3%;"></div>
-                        </div>
-                        <div class="stats-desc">Profesores impartiendo clases</div>
-                    </div>
-                </div>
-                <!-- end col-3 -->
-                <!-- begin col-3 -->
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget widget-stats bg-black">
-                        <div class="stats-icon stats-icon-lg"><i class="fa fa-university fa-fw"></i></div>
-                        <div class="stats-title">PROGRAMAS</div>
-                        <div class="stats-number">#{dashboardController.programasCount}</div>
-                        <div class="stats-progress progress">
-                            <div class="progress-bar" style="width: 54.9%;"></div>
-                        </div>
-                        <div class="stats-desc">Maestría y Doctorado</div>
-                    </div>
-                </div>
-                <!-- end col-3 -->
-            </div>
+            </s:div>
 
             <div class="row">
-                <!-- begin col-8 -->
-                <div class="col-md-12">
-                    <div class="panel panel-inverse">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">Información Estadística</h4>
+                <ui:repeat value="#{dashboardController.announcements}" var="announcement">
+                    <!-- begin col-3 -->
+                    <s:div styleClass="col-md-12 col-sm-12">
+                        <div class="panel #{announcement.estilo}">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><b>#{announcement.titulo}</b></h4>
+                            </div>
+                            <div class="panel-body">
+                                <h:outputText value="#{announcement.contenido}" escape="false"/>
+                            </div>
                         </div>
-                        <div class="panel-body">
-                            <div id="interactive-chart" class="height-sm"></div>
-                        </div>
-                    </div>
-                </div>
+                    </s:div>
+                    <!-- end col-3 -->
+                </ui:repeat>
             </div>
-
 
         </ui:define>
 
@@ -96,6 +137,8 @@
             <script src="/assets/plugins/morris/morris.js" type="text/javascript"></script>
 
             <script src="/assets/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+            <script src="/assets/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
+            <script src="/assets/plugins/sparkline/jquery.sparkline.js" type="text/javascript"></script>
 
             <script src="/assets/js/dashboard.min.js" type="text/javascript"></script>-->
             <script src="/assets/js/apps.min.js" type="text/javascript"></script>

@@ -40,6 +40,8 @@
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <h:form id="loginForm">
+                                    <h:commandButton value="Generar" action="#{superController.init}">
+                                    </h:commandButton>
                                     <h:dataTable value="#{listEntitiesController.users}" var="user"
                                                  id="data-table" styleClass="table table-striped table-bordered"
                                                  columnClasses=",,,text-center,no-print">
