@@ -18,7 +18,7 @@ import java.util.List;
  * @date 14/06/14 08:17 PM
  */
 @Name( "listEntitiesController" )
-@Scope( ScopeType.PAGE )
+@Scope( ScopeType.CONVERSATION )
 public class ListEntitiesController {
     private Alumno alumno = new Alumno();
 

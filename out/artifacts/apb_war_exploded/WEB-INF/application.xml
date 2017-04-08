@@ -4,7 +4,7 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd"
              version="6">
 
-    <display-name>JBossDukesBank</display-name>
+    <display-name>SAE</display-name>
     <module id="apb-Web">
         <web>
             <web-uri>apb.war</web-uri>

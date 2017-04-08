@@ -62,14 +62,6 @@ public class Periodo {
 
     @Transient
     public int getSemanas(){
-        /*Calendar c1 = Calendar.getInstance();
-        Calendar c2 = Calendar.getInstance();
-        c1.setTime(inicio);
-        c2.setTime(termino);
-        int startWeek = c1.get(Calendar.WEEK_OF_YEAR);
-        int endWeek = c2.get(Calendar.WEEK_OF_YEAR);
-
-        return endWeek - startWeek;*/
 	    return 18;
     }
 
@@ -89,10 +81,13 @@ public class Periodo {
 
         Periodo periodo = (Periodo) o;
 
-        if (anyo != periodo.anyo) return false;
-        if (semestre != null ? !semestre.equals(periodo.semestre) : periodo.semestre != null) return false;
+        if (id != null ? !id.equals(periodo.id) : periodo.id != null) return false;
 
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }

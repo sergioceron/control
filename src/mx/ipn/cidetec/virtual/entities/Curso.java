@@ -109,7 +109,7 @@ public class Curso {
     }
 
     // TODO: change to mapped by owner class
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     public Periodo getPeriodo() {
         return periodo;
     }

@@ -35,6 +35,11 @@
         <param-value>ALL</param-value>
     </context-param>
 
+    <context-param>
+        <param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
     <!-- Cache Filter -->
     <filter>
         <filter-name>CacheFilterOneWeek</filter-name>

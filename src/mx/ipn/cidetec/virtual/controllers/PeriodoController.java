@@ -8,6 +8,7 @@ import org.jboss.seam.log.Log;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.Arrays;
 
 /**
  * Created by Usuario on 28/09/2014.
@@ -67,4 +68,5 @@ public class PeriodoController {
     public boolean[] getUsage() {
         return usage;
     }
+
 }
