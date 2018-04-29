@@ -19,9 +19,6 @@
         <action execute="#{profileController.setAccount(account)}" />
     </page>
 
-    <page view-id="/admin/evaluacion.list.alumnos.xhtml">
-        <action execute="#{navigationController.setActive('/admin/evaluacion.list.alumnos.seam')}" />
-    </page>
     <page view-id="/admin/periodos.list.xhtml">
         <restrict>#{s:hasRole('admin')}</restrict>
         <begin-conversation join="true" />
@@ -73,54 +70,10 @@
         </navigation>
     </page>
 
-    <page view-id="/admin/evaluacion.periodo.xhtml">
-        <action execute="#{navigationController.setActive('/admin/evaluacion.periodo.seam')}" />
-        <navigation from-action="#{evaluacionController.save}">
-            <rule if-outcome="success">
-                <redirect view-id="/admin/evaluacion.list.xhtml"/>
-            </rule>
-            <rule  if-outcome="failure">
-                <redirect  view-id="/admin/evaluacion.periodo.xhtml">
-                    <param name="err" value="1"/>
-                </redirect>
-            </rule>
-            <rule  if-outcome="failureB">
-                <redirect  view-id="/admin/evaluacion.periodo.xhtml">
-                    <param name="err" value="2"/>
-                </redirect>
-            </rule>
-        </navigation>
-
-
-    </page>
-    <page view-id="/admin/evaluacion.list.xhtml">
-        <action execute="#{navigationController.setActive('/admin/evaluacion.list.seam')}" />
-    </page>
     <page view-id="/admin/alumno.constancia.xhtml">
         <action execute="#{navigationController.setActive('/admin/alumno.constancia.seam')}" />
     </page>
-    <page view-id="/admin/evaluacion.docente.xhtml">
-        <action execute="#{navigationController.setActive('/admin/evaluacion.docente.seam')}" />
-    </page>
 
-    <page view-id="/admin/evaluacion.xhtml">
-        <action execute="#{alumnoController.setAlumno(account)}" />
-        <action execute="#{navigationController.setActive('/admin/evaluacion.seam')}" />
-
-        <navigation from-action="#{evaluacionController.saveEvaluacionRespuesta}">
-            <rule if-outcome="success">
-                <redirect  include-page-params="true" view-id="/admin/alumno.calificaciones.xhtml"></redirect>
-            </rule>
-            <rule if-outcome="final">
-                <redirect  include-page-params="true" view-id="/admin/index.xhtml"></redirect>
-            </rule>
-        </navigation>
-    </page>
-
-    <page view-id="/admin/respuestas.xhtml">
-        <action execute="#{navigationController.setActive('/admin/respuestas.seam')}" />
-        <action execute="#{alumnoController.setAlumno(account)}" />
-    </page>
 
     <page view-id="/admin/users.super.list.xhtml">
         <restrict>#{s:hasRole('admin')}</restrict>

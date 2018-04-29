@@ -253,7 +253,7 @@
             <p><strong>LUGAR DE REALIZACIÓN</strong></p>
         </th>
     </tr>
-    <ui:repeat value="#{alumnoConstanciaController.alumno.calificaciones}" var="calificacion">
+    <ui:repeat value="#{alumnoConstanciaController.noRepeatedCalificaciones(alumnoConstanciaController.alumno)}" var="calificacion">
     <tr>
         <ui:repeat value="#{alumnoConstanciaController.getClaveMateria(calificacion.curso.materia.clave)}" var="car">
         <td style="height:28px; width:19px; text-align: center;">

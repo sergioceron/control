@@ -18,7 +18,6 @@ public class Alumno extends Account {
     private Tiempo tiempo;
 	private Programa programa;
 	private List<Calificacion> calificaciones;
-    private List<EvaluacionAlumno> evaluaciones;
 	private PlanEstudios planEstudios;
 
 	public String getMatricula() {
@@ -88,14 +87,6 @@ public class Alumno extends Account {
 		this.calificaciones = calificaciones;
 	}
 
-    @OneToMany
-    public List<EvaluacionAlumno> getEvaluaciones() {
-        return evaluaciones;
-    }
-
-    public void setEvaluaciones(List<EvaluacionAlumno> evaluaciones) {
-        this.evaluaciones = evaluaciones;
-    }
 
     @ManyToOne(fetch = FetchType.LAZY)
 	public PlanEstudios getPlanEstudios() {

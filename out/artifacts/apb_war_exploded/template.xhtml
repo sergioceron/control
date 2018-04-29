@@ -31,7 +31,7 @@
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
     <ui:insert name="styles" />
     <!-- ================== END PAGE LEVEL STYLE ================== -->
-
+    <!--<link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet" />-->
 </h:head>
 <h:body>
 <!-- begin #page-loader -->
@@ -141,17 +141,7 @@
     //]]>
 </script>
 </f:verbatim>
-    <f:verbatim rendered="#{ evaluacionController.isFindAlumnoEvaluacion(alumnoController.alumno.matricula)}" >
-    <script>
-        //<![CDATA[
-        $(window).load(function() {
-            setTimeout(function() {
-                     $.gritter.add({title: "Evaluación docente inconclusa",  text:"#{evaluacionController.estadoEvaluacionAlumno(alumnoController.alumno.matricula)}.<br><br><a href='/admin/alumno.calificaciones.seam' class='gritter-add-primary btn btn-primary btn-block'>#{evaluacionController.getProceso()}</a>",sticky: true,time:"20",class_name: "my-sticky-class" })
-            }, 1e3)
-        });
-        //]]>
-        </script>
-</f:verbatim>
+<!--<script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>-->
 </h:body>
 
 </html>

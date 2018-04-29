@@ -64,10 +64,6 @@ public class AlumnoController {
             User u = (User) o;
             entityManager.remove( u );
         }
-        for( EvaluacionAlumno evaluacionAlumno : alumno.getEvaluaciones() ) {
-            entityManager.remove( evaluacionAlumno );
-            log.debug( "AlumnoController[method=remove, object=#1]", evaluacionAlumno );
-        }
         entityManager.remove( alumno );
         entityManager.flush();
         log.debug( "AlumnoController[method=remove, persisted]" );

@@ -72,6 +72,11 @@ public class Calificacion {
         this.setted = setted;
     }
 
+    @Transient
+    public boolean isReprobada(){
+		return calificacion < 8;
+	}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

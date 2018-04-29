@@ -77,18 +77,6 @@
                                                 <f:ajax execute="@this" render=":mod:popup"
                                                         onevent="showModal"/>
                                             </h:commandLink>
-                                            <h:panelGroup rendered="#{!evaluacionController.status and periodo.termino.equals(systemController.periodoActual.termino)}">
-                                                <h:commandLink  action="evaluacion.periodo.xhtml" data-toggle="tooltip" data-container="body" data-title="Activar evaluación"
-                                                    >
-                                                    <i class="fa fa-pencil"></i>
-                                                </h:commandLink>
-                                            </h:panelGroup>
-                                            <h:panelGroup rendered="#{evaluacionController.status  and periodo.termino.equals(systemController.periodoActual.termino)}">
-                                                <h:commandLink  action="evaluacion.list.xhtml" data-toggle="tooltip" data-container="body" data-title="Administrar evaluación"
-                                                        >
-                                                    <i class="fa fa-pencil"></i>
-                                                </h:commandLink>
-                                            </h:panelGroup>
                                         </h:column>
 
                                     </h:dataTable>

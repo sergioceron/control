@@ -100,29 +100,4 @@ public class ListEntitiesController {
         return query.getResultList();
     }
 
-    public List<EvaluacionCriterio> getEvaluacionPreguntas7() {
-        Query query = entityManager.createQuery( "from EvaluacionCriterio e group by e.id  " );
-        return query.getResultList();
-    }
-
-    public List<RespuestaCriterio> getRespuestaCriterio() {
-        Query query = entityManager.createQuery( "from RespuestaCriterio r order by r.id desc" );
-        return query.getResultList();
-    }
-
-    public List<EvaluacionDocente> getEvaluacionDocente() {
-        Query query = entityManager.createQuery( "from EvaluacionDocente " );
-        return query.getResultList();
-    }
-
-    public List<EvaluacionRespuesta> getEvaluacionRespuesta() {
-        Query query = entityManager.createQuery( "from EvaluacionRespuesta " );
-        return query.getResultList();
-    }
-
-    public List<EvaluacionPeriodo> getEvaluacionPeriodo() {
-        Query query = entityManager.createQuery( "from EvaluacionPeriodo " );
-        return query.getResultList();
-    }
-
 }

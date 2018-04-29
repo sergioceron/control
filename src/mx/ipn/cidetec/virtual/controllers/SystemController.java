@@ -36,11 +36,10 @@ public class SystemController {
         int month = new Date().getMonth();
         Query query = entityManager.createQuery("from Periodo p");
         List<Periodo> periodos = query.getResultList();
+        Date current = new Date();
         for (Periodo periodo : periodos) {
-            if (periodo.getAnyo() == year ){
-                if ((month <= 6 && periodo.getSemestre().equals("A")) || (month > 6 && periodo.getSemestre().equals("B"))){
-                    this.actual = periodo;
-                }
+            if( current.after( periodo.getInicio() ) && current.before( periodo.getTermino() ) ){
+                this.actual = periodo;
             }
         }
 
