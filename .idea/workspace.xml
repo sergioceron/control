@@ -6,41 +6,169 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="346ee933-8a84-44ff-b899-b16407a3f280" name="- Pagination  - Favorites Front End  - Edit &amp; Delete My Places (cherry picked from commit bbb369b)" comment="- Estable pero con problemas en la Evaluacion de profesores">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/EvaluacionOpciones.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/SuperController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Evaluacion.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/EvaluacionAlumno.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/EvaluacionDocente.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/EvaluacionGeneral.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/EvaluacionPeriodo.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/EvaluacionRespuesta.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Evaluados.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/MateriasActivas.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/RespuestaCriterio.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/RowCounter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/SuperUser.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/EvaluacionCriterio.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/EvaluacionPregunta.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/apb_war/apb_war.war" afterPath="$PROJECT_DIR$/out/artifacts/apb_war/apb_war.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/pages.xml" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/pages.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/template.xhtml" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/template.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/AlumnoConstanciaController.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/AlumnoConstanciaController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/AlumnoController.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/AlumnoController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/ListEntitiesController.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/ListEntitiesController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/SystemController.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/SystemController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Alumno.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Alumno.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Calificacion.java" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Calificacion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/pages.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/pages.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/admin/constancias/sip8.xhtml" afterPath="$PROJECT_DIR$/web/admin/constancias/sip8.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/admin/periodos.list.xhtml" afterPath="$PROJECT_DIR$/web/admin/periodos.list.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/template.xhtml" afterPath="$PROJECT_DIR$/web/template.xhtml" />
+    <list default="true" id="346ee933-8a84-44ff-b899-b16407a3f280" name="- Pagination  - Favorites Front End  - Edit &amp; Delete My Places (cherry picked from commit bbb369b)" comment="- Ultimos cambios">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/JPA_2_0_JPA_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/apb_ear_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/apb_ear_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/control.iml" beforeDir="false" afterPath="$PROJECT_DIR$/control.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/activation-1.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/activation-1.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/activation.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/activation.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/antlr-2.7.6.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/antlr-2.7.6.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/antlr-2.7.7.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/antlr-2.7.7.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/antlr-3.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/antlr-3.3.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/antlr-runtime-3.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/antlr-runtime-3.3.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/avro-1.6.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/avro-1.6.3.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bsh-2.0b4.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bsh-2.0b4.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/commons-beanutils-1.7.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.7.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/commons-codec-1.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/commons-codec-1.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/commons-codec-1.5.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/commons-codec-1.5.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/commons-fileupload-1.3.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/commons-fileupload-1.3.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/commons-io-1.3.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/commons-io-1.3.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/commons-lang-2.6.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/commons-lang-2.6.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/cssparser-0.9.5.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cssparser-0.9.5.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dom4j-1.6.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dom4j-1.6.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-compiler.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/drools-compiler.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-core.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/drools-core.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-decisiontables.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/drools-decisiontables.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-templates.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/drools-templates.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/el-api-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/el-api-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/guava-12.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/guava-12.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/hamcrest-core-1.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/hamcrest-core-1.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/hibernate-commons-annotations-4.0.1.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/hibernate-commons-annotations-4.0.1.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/hibernate-commons-annotations-4.0.2.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/hibernate-commons-annotations-4.0.2.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/hibernate-core-4.2.0.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/hibernate-core-4.2.0.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/hibernate-search-4.3.0.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/hibernate-search-4.3.0.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/hibernate-search-analyzers-4.3.0.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/hibernate-search-analyzers-4.3.0.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/hibernate-search-engine-4.3.0.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/hibernate-search-engine-4.3.0.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/hibernate-search-orm-4.3.0.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/hibernate-search-orm-4.3.0.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/infinispan-core-5.2.4.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/infinispan-core-5.2.4.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/infinispan-tree-5.2.4.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/infinispan-tree-5.2.4.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jackson-core-asl-1.8.8.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jackson-core-asl-1.8.8.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jackson-mapper-asl-1.8.8.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jackson-mapper-asl-1.8.8.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/javassist-3.15.0-GA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/javassist-3.15.0-GA.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jaxrs-api-2.0.1.GA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jaxrs-api-2.0.1.GA.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jboss-el-1.0_02.CR6.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jboss-el-1.0_02.CR6.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jboss-logging-3.1.0.GA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jboss-logging-3.1.0.GA.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jboss-logging-3.1.1.GA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jboss-logging-3.1.1.GA.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jboss-marshalling-1.3.15.GA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jboss-marshalling-1.3.15.GA.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jboss-marshalling-river-1.3.15.GA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jboss-marshalling-river-1.3.15.GA.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jboss-seam-2.3.1.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jboss-seam-2.3.1.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jboss-seam-excel.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jboss-seam-excel.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jboss-seam-mail.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jboss-seam-mail.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jboss-seam-resteasy-2.3.1.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jboss-seam-resteasy-2.3.1.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jboss-seam-ui-2.3.1.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jboss-seam-ui-2.3.1.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jboss-servlet-api_3.0_spec-1.0.2.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jboss-servlet-api_3.0_spec-1.0.2.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jboss-transaction-api_1.1_spec-1.0.0.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jboss-transaction-api_1.1_spec-1.0.0.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jcaptcha-1.0-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jcaptcha-1.0-all.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jcip-annotations-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jcip-annotations-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jcl-over-slf4j-1.5.8.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jcl-over-slf4j-1.5.8.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jcommander-1.12.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jcommander-1.12.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jgroups-3.2.7.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jgroups-3.2.7.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jsr305-1.3.9.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jsr305-1.3.9.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-4.10.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/junit-4.10.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-4.8.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/junit-4.8.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jxl.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jxl.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jxl.jar.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/knowledge-api-5.3.3.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/knowledge-api-5.3.3.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lucene-analyzers-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lucene-analyzers-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lucene-core-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lucene-core-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lucene-facet-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lucene-facet-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lucene-grouping-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lucene-grouping-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lucene-highlighter-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lucene-highlighter-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lucene-kuromoji-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lucene-kuromoji-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lucene-memory-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lucene-memory-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lucene-misc-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lucene-misc-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lucene-phonetic-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lucene-phonetic-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lucene-smartcn-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lucene-smartcn-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lucene-spatial-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lucene-spatial-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lucene-spellchecker-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lucene-spellchecker-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lucene-stempel-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lucene-stempel-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mail.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mail.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mvel2-2.1.0.drools16.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mvel2-2.1.0.drools16.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/omnifaces-2.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/paranamer-2.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/paranamer-2.3.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/resteasy-jaxrs-2.0.1.GA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/resteasy-jaxrs-2.0.1.GA.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/richfaces-components-api-4.3.3.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/richfaces-components-api-4.3.3.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/richfaces-components-ui-4.3.3.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/richfaces-components-ui-4.3.3.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/richfaces-core-api-4.3.3.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/richfaces-core-api-4.3.3.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/richfaces-core-impl-4.3.3.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/richfaces-core-impl-4.3.3.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/sac-1.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sac-1.3.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/slf4j-api-1.6.4.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/slf4j-api-1.6.4.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/snakeyaml-1.6.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/snakeyaml-1.6.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/snappy-java-1.0.4.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/snappy-java-1.0.4.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/solr-analysis-extras-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/solr-analysis-extras-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/solr-core-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/solr-core-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/solr-solrj-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/solr-solrj-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/staxmapper-1.1.0.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/staxmapper-1.1.0.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/testng-5.14.10.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/testng-5.14.10.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war/apb_war.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war/apb_war.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/avro-1.6.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/avro-1.6.3.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/bsh-2.0b4.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/bsh-2.0b4.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/commons-beanutils-1.7.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/commons-beanutils-1.7.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/commons-codec-1.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/commons-codec-1.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/commons-io-1.3.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/commons-io-1.3.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/commons-lang-2.6.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/commons-lang-2.6.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/cssparser-0.9.5.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/cssparser-0.9.5.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/el-api-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/el-api-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/guava-12.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/guava-12.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/hamcrest-core-1.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/hamcrest-core-1.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/hibernate-commons-annotations-4.0.2.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/hibernate-commons-annotations-4.0.2.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/hibernate-search-4.3.0.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/hibernate-search-4.3.0.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/hibernate-search-analyzers-4.3.0.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/hibernate-search-analyzers-4.3.0.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/hibernate-search-engine-4.3.0.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/hibernate-search-engine-4.3.0.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/hibernate-search-orm-4.3.0.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/hibernate-search-orm-4.3.0.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/infinispan-core-5.2.4.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/infinispan-core-5.2.4.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/infinispan-tree-5.2.4.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/infinispan-tree-5.2.4.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jackson-core-asl-1.8.8.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jackson-core-asl-1.8.8.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jackson-mapper-asl-1.8.8.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jackson-mapper-asl-1.8.8.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jboss-el-1.0_02.CR6.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jboss-el-1.0_02.CR6.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jboss-logging-3.1.1.GA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jboss-logging-3.1.1.GA.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jboss-marshalling-1.3.15.GA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jboss-marshalling-1.3.15.GA.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jboss-marshalling-river-1.3.15.GA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jboss-marshalling-river-1.3.15.GA.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jboss-seam-2.3.1.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jboss-seam-2.3.1.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jboss-seam-ui-2.3.1.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jboss-seam-ui-2.3.1.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jcommander-1.12.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jcommander-1.12.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jsr305-1.3.9.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/jsr305-1.3.9.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/junit-4.10.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/junit-4.10.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-analyzers-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-analyzers-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-core-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-core-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-facet-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-facet-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-grouping-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-grouping-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-highlighter-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-highlighter-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-kuromoji-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-kuromoji-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-memory-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-memory-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-misc-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-misc-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-phonetic-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-phonetic-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-smartcn-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-smartcn-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-spatial-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-spatial-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-spellchecker-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-spellchecker-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-stempel-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/lucene-stempel-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/paranamer-2.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/paranamer-2.3.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/richfaces-components-api-4.3.3.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/richfaces-components-api-4.3.3.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/richfaces-components-ui-4.3.3.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/richfaces-components-ui-4.3.3.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/richfaces-core-api-4.3.3.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/richfaces-core-api-4.3.3.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/richfaces-core-impl-4.3.3.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/richfaces-core-impl-4.3.3.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/sac-1.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/sac-1.3.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/slf4j-api-1.6.4.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/slf4j-api-1.6.4.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/snakeyaml-1.6.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/snakeyaml-1.6.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/snappy-java-1.0.4.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/snappy-java-1.0.4.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/solr-analysis-extras-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/solr-analysis-extras-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/solr-core-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/solr-core-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/solr-solrj-3.6.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/solr-solrj-3.6.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/staxmapper-1.1.0.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/staxmapper-1.1.0.Final.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/testng-5.14.10.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/apb_war_exploded/WEB-INF/lib/testng-5.14.10.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Alumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Alumno.java" afterDir="false" />
     </list>
     <list id="4e0f8c4e-93c0-4ccd-a8dd-01fff014d59c" name="Default" comment="Latest Version">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/apb_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/apb_war.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/apb_war.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/apb_war.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
     </list>
     <ignored path="apb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,8 +176,6 @@
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" ignored="false" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -115,6 +241,47 @@
     </line_breakpoints>
     <breakpoint_rules converted="true" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1956573733">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="5" />
+          <entry key="project.open.time.16" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="5" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="36" />
+          <entry key="xml" value="37" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="36" />
+          <entry key="XML" value="37" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="8" />
+          <entry key="xhtml" value="1" />
+          <entry key="xml" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="8" />
+          <entry key="XHTML" value="1" />
+          <entry key="XML" value="7" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="apb" />
   </component>
@@ -130,90 +297,98 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CalificacionService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/CalificacionService.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/AlumnoConstanciaController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="832">
-              <caret line="44" column="38" lean-forward="false" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="38" />
-              <folding />
+            <state relative-caret-position="2760">
+              <caret line="128" column="55" selection-start-line="128" selection-start-column="55" selection-end-line="128" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlumnoConstanciaController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/AlumnoConstanciaController.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/SystemController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1222">
-              <caret line="58" column="36" lean-forward="false" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
+            <state relative-caret-position="314">
+              <caret line="53" column="38" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
               <folding>
-                <element signature="e#885#893#0" expanded="true" />
-                <element signature="e#1639#1661#0" expanded="true" />
-                <element signature="e#2456#2470#0" expanded="true" />
-                <element signature="e#2791#2799#0" expanded="true" />
-                <element signature="e#3184#3192#0" expanded="true" />
-                <element signature="e#4981#5007#0" expanded="true" />
-                <element signature="e#5062#5076#0" expanded="true" />
+                <element signature="e#1414#1415#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlumnoController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/AlumnoController.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/admin/constancias/sip8.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="33" column="33" lean-forward="true" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
-              <folding />
+            <state relative-caret-position="6120">
+              <caret line="255" column="51" selection-start-line="255" selection-start-column="51" selection-end-line="255" selection-end-column="51" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jboss-web.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/jboss-web.xml">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Announcement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="192">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/application.xml">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Alumno.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="1128">
+              <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="components.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/components.xml">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Periodo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="1" column="20" lean-forward="false" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-              <folding />
+            <state relative-caret-position="192">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="125" column="24" lean-forward="false" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="standalone.xml" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/standalone.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="103" column="63" lean-forward="true" selection-start-line="103" selection-start-column="63" selection-end-line="103" selection-end-column="63" />
-              <folding />
+            <state relative-caret-position="2496">
+              <caret line="104" column="46" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/InscripcionController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/PlanEstudiosController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/utils/CacheHeaderFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -229,10 +404,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>inscripcion</find>
-      <find>modal</find>
-      <find>pagesºº</find>
-      <find>profesor.ca</find>
       <find>flush</find>
       <find>categ</find>
       <find>flu</find>
@@ -259,6 +430,10 @@
       <find>hib</find>
       <find>jpa</find>
       <find>bookin</find>
+      <find>cidetec</find>
+      <find>mysql</find>
+      <find>semestre</find>
+      <find>norepeated</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -272,6 +447,9 @@
   <component name="Git.Push.Settings">
     <option name="myUpdateMethod" value="REBASE" />
   </component>
+  <component name="Git.Rebase.Settings">
+    <option name="ONTO" value="refs/heads/master" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -280,16 +458,9 @@
       </map>
     </option>
   </component>
-  <component name="GradleLocalSettings">
-    <option name="externalProjectsViewState">
-      <projects_view />
-    </option>
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/admin/programas.list.xhtml" />
-        <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/ProgramaController.java" />
         <option value="$PROJECT_DIR$/web/admin/cursos.list.xhtml" />
         <option value="$PROJECT_DIR$/web/admin/admin.calificaciones.xhtml" />
         <option value="$PROJECT_DIR$/web/admin/index.xhtml" />
@@ -312,7 +483,6 @@
         <option value="$PROJECT_DIR$/web/admin/users.super.list.xhtml" />
         <option value="$PROJECT_DIR$/web/admin/users.list.xhtml" />
         <option value="$PROJECT_DIR$/src/META-INF/security.drl" />
-        <option value="$PROJECT_DIR$/src/META-INF/persistence.xml" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/SuperController.java" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/User.java" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/EvaluacionController.java" />
@@ -326,19 +496,22 @@
         <option value="$PROJECT_DIR$/web/admin/curso.edit.xhtml" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Curso.java" />
         <option value="$PROJECT_DIR$/web/admin/periodos.list.xhtml" />
-        <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Alumno.java" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/ListEntitiesController.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/pages.xml" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/EvaluacionCriterio.java" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/EvaluacionOpciones.java" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/EvaluacionPregunta.java" />
         <option value="$PROJECT_DIR$/web/template.xhtml" />
-        <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/SystemController.java" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Calificacion.java" />
         <option value="$PROJECT_DIR$/web/admin/constancias/sip8.xhtml" />
         <option value="$PROJECT_DIR$/web/admin/constancias/avance.xhtml" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/AlumnoConstanciaController.java" />
         <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/AlumnoController.java" />
+        <option value="$PROJECT_DIR$/standalone.xml" />
+        <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/utils/CacheHeaderFilter.java" />
+        <option value="$PROJECT_DIR$/src/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Alumno.java" />
+        <option value="$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/SystemController.java" />
       </list>
     </option>
   </component>
@@ -358,7 +531,14 @@
     <option name="FILTER_DEBUG" value="false" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="800" />
   </component>
@@ -398,22 +578,17 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages ProjectPane="true" />
       <showMembers ProjectPane="false" />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
       <abbreviatePackageNames ProjectPane="false" />
       <autoscrollToSource ProjectPane="false" />
       <autoscrollFromSource ProjectPane="false" />
-      <sortByType />
-      <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -430,20 +605,7 @@
               <item name="control" type="b2602c69:ProjectViewProjectNode" />
               <item name="ControlEscolar" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="control" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ControlEscolar" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="virtual" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="control" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ControlEscolar" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="virtual" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="control" type="b2602c69:ProjectViewProjectNode" />
@@ -452,27 +614,15 @@
               <item name="virtual" type="462c0819:PsiDirectoryNode" />
               <item name="entities" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="control" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ControlEscolar" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="control" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ControlEscolar" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path" value="C:\Users\sergio\Proyectos\Java\IntelliJ\apb\lib" />
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
@@ -489,6 +639,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="181" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="188" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="690" />
+    <property name="GO_FMT" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -506,6 +657,7 @@
     <property name="SearchEverywhereHistoryKey" value="profesor.java&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/src/mx/ipn/cidetec/virtual/entities/Profesor.java&#10;periodo.java&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/src/mx/ipn/cidetec/virtual/entities/Periodo.java&#10;error de validación&#9;null&#9;null&#10;profesor.edit&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/profesor.edit.xhtml&#10;periodo.edit&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/periodo.edit.xhtml&#10;materia.ed&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/materia.edit.xhtml&#10;curso.edi&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/curso.edit.xhtml&#10;persist&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/src/META-INF/persistence.xml&#10;users.list&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/users.list.xhtml&#10;users.li&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/users.super.list.xhtml&#10;user.edit&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/user.edit.xhtml&#10;user.java&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/src/mx/ipn/cidetec/virtual/entities/User.java&#10;service&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/src/mx/ipn/cidetec/virtual/controllers/SystemService.java&#10;LOGIN&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/login.xhtml&#10;profesores.l&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/profesores.list.xhtml&#10;profesorcontroller&#9;PSI&#9;JAVA://mx.ipn.cidetec.virtual.controllers.ProfesorController&#10;profesorecontroller&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/src/mx/ipn/cidetec/virtual/entities/Profesor.java&#10;SIP8BIS&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/constancias/sip8bis.xhtml&#10;sip8&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/constancias/sip8.xhtml&#10;alumnocons&#9;PSI&#9;JAVA://mx.ipn.cidetec.virtual.controllers.AlumnoConstanciaController&#10;mate&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/materias.list.xhtml&#10;materia.edi&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/materia.edit.xhtml&#10;pa&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/WEB-INF/pages.xml&#10;programas.list&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/programas.list.xhtml&#10;curso&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/src/mx/ipn/cidetec/virtual/entities/Curso.java&#10;hora&#9;PSI&#9;JAVA://mx.ipn.cidetec.virtual.entities.Hora&#10;pages&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/WEB-INF/pages.xml&#10;paes&#9;PSI&#9;JAVA://antlr.debug.ParserEventSupport&#10;materias.lis&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/materias.list.xhtml&#10;materia.list&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/materias.list.xhtml&#10;setti&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/settings.xhtml&#10;SIDE&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/sidebar-nav.xhtml&#10;side&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/sidebar-nav.xhtml&#10;user.edi&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/user.edit.xhtml&#10;cursos.li&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/cursos.list.xhtml&#10;curso.list&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/ControlEscolar/web/admin/cursos.list.xhtml&#10;cur&#9;PSI&#9;JAVA://mx.ipn.cidetec.virtual.controllers.CursoController&#10;chart&#9;PSI&#9;JAVA://mx.ipn.cidetec.virtual.controllers.ChartsService&#10;index&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/control/web/admin/index.xhtml&#10;login&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/control/web/login.xhtml&#10;das&#9;PSI&#9;JAVA://mx.ipn.cidetec.virtual.controllers.DashboardController&#10;periodo.l&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/control/web/admin/periodos.list.xhtml&#10;announcementCo&#9;PSI&#9;JAVA://mx.ipn.cidetec.virtual.controllers.AnnouncementController&#10;pers&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/control/src/META-INF/persistence.xml&#10;settings.xhtml&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/control/web/admin/settings.xhtml&#10;period&#9;PSI&#9;JAVA://mx.ipn.cidetec.virtual.controllers.PeriodoController&#10;inscr&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/control/web/admin/inscripcion.xhtml&#10;inscripcion.x&#9;FILE&#9;file:///Users/sergio/Documents/Proyectos/control/web/admin/inscripcion.xhtml&#10;ALUMNO&#9;PSI&#9;JAVA://mx.ipn.cidetec.virtual.controllers.AlumnoController&#10;INSCR&#9;PSI&#9;JAVA://mx.ipn.cidetec.virtual.controllers.InscripcionController" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548019374645" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="JSON&#10;JAVA" />
     <property name="dynamic.classpath" value="false" />
     <property name="full.screen.before.presentation.mode" value="true" />
@@ -524,9 +676,8 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.26923078" />
     <property name="recentsLimit" value="5" />
-    <property name="restartRequiresConfirmation" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="gradle.compiler" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -716,11 +867,72 @@
     </option>
   </component>
   <component name="RunManager" selected="JBoss Server.JBoss 7.1.1">
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="GAPID_DISABLE_PCS" value="false" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="">
       <option name="arquillianRunConfiguration">
@@ -728,20 +940,11 @@
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="ArquillianTestNG" factoryName="">
       <option name="arquillianRunConfiguration">
@@ -749,26 +952,13 @@
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
       <option name="BCName" value="" />
@@ -803,6 +993,9 @@
       <option name="screenWidth" value="0" />
       <option name="url" value="http://" />
       <option name="usbDebugPort" value="7936" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
       <option name="BCName" value="" />
@@ -816,6 +1009,9 @@
       </option>
       <option name="moduleName" value="" />
       <option name="trusted" value="true" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
       <setting name="vmparams" value="" />
@@ -825,10 +1021,11 @@
       <setting name="launchBrowserUrl" value="" />
       <setting name="depsClasspath" value="false" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method v="2" />
     </configuration>
-    <configuration name="JBoss 7.1.1" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss 7.1.1.Final" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="" show_console_on_std_err="true" show_console_on_std_out="true">
+    <configuration name="JBoss 7.1.1" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss 7.1.1.Final" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.7" show_console_on_std_err="true" show_console_on_std_out="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost/" />
-      <option name="COMMON_VM_ARGUMENTS" value="-Xmx512m -XX:MaxPermSize=300m" />
+      <option name="COMMON_VM_ARGUMENTS" value="-XX:MaxPermSize=2080M" />
       <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
         <artifact name="apb:war">
@@ -898,52 +1095,146 @@
           <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
       </ConfigurationWrapper>
-      <method>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="apb:war" />
+        </option>
+      </method>
+    </configuration>
+    <configuration name="Wildfly 10.2" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss 10.2.0.Final" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8" show_console_on_std_err="true" show_console_on_std_out="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost/" />
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
+      <deployment>
+        <artifact name="apb:war">
+          <settings />
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="SERVER" />
+        <option name="BINDING_SET_NAME" value="" />
+        <option name="DOMAIN" value="false" />
+        <option name="SERVER_GROUP" value="main-server-group" />
+        <option name="USERNAME" value="sergio" />
+        <option name="PASSWORD" value="Sxceron345" />
+      </server-settings>
+      <predefined_log_file id="JBoss" enabled="true" />
+      <log_file alias="boot" path="$USER_HOME$/Downloads/jboss-as-7.1.1.Final/standalone/log/boot.log" />
+      <log_file alias="server" path="$USER_HOME$/Downloads/jboss-as-7.1.1.Final/standalone/log/server.log" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="53017" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
           <artifact name="apb:war" />
         </option>
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="moduleWithDependencies" />
       </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="scratch" type="Java Scratch" factoryName="Java Scratch" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="scratch" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
       <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="moduleWithDependencies" />
       </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="Tomcat 6" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 6.0.39" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -1014,7 +1305,8 @@
           <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
       </ConfigurationWrapper>
-      <method>
+      <method v="2">
+        <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true" />
       </method>
     </configuration>
@@ -1087,267 +1379,21 @@
           <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
       </ConfigurationWrapper>
-      <method>
+      <method v="2">
+        <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
           <artifact name="apb:war exploded" />
         </option>
       </method>
-    </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
-      <module name="" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
-        <option name="GAPID_ENABLED" value="false" />
-        <option name="GAPID_DISABLE_PCS" value="false" />
-        <option name="SUPPORT_LIB_ENABLED" value="true" />
-        <option name="INSTRUMENTATION_ENABLED" value="true" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="GAPID_DISABLE_PCS" value="false" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
-        <option name="GAPID_ENABLED" value="false" />
-        <option name="GAPID_DISABLE_PCS" value="false" />
-        <option name="SUPPORT_LIB_ENABLED" value="true" />
-        <option name="INSTRUMENTATION_ENABLED" value="true" />
-      </Profilers>
-      <method />
-    </configuration>
-    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="JBossConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings>
-        <option name="SERVER" value="" />
-        <option name="BINDING_SET_NAME" value="" />
-        <option name="DOMAIN" value="false" />
-        <option name="SERVER_GROUP" value="" />
-        <option name="USERNAME" value="" />
-        <option name="PASSWORD" value="" />
-      </server-settings>
-      <predefined_log_file id="JBoss" enabled="true" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JarApplication" factoryName="JAR Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="SCRATCH_FILE_ID" value="0" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
-      <node-interpreter value="project" />
-      <working-dir value="" />
-      <envs />
-      <scope-kind value="ALL" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
-      <config-file value="" />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="control" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
-      <method />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
-    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
-      <Host>localhost</Host>
-      <Port>5050</Port>
-    </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings />
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run" />
-      <scripts />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory />
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui />
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
-      <method />
-    </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
-      <method />
-    </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
-      <method />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-interpreter>project</node-interpreter>
@@ -1356,9 +1402,11 @@
       <tasks />
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="JBoss Server.JBoss 7.1.1" />
+      <item itemvalue="JBoss Server.Wildfly 10.2" />
       <item itemvalue="Tomcat Server.Tomcat 6" />
       <item itemvalue="Tomcat Server.Tomcat 7" />
       <item itemvalue="Java Scratch.scratch" />
@@ -1369,7 +1417,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SvnConfiguration" myUseAcceleration="nothing">
+  <component name="SvnConfiguration">
     <configuration>C:\Users\sergio\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
@@ -1646,6 +1694,13 @@
       <workItem from="1511502906411" duration="2310000" />
       <workItem from="1511727496372" duration="579000" />
       <workItem from="1516648222823" duration="5877000" />
+      <workItem from="1524966003392" duration="1610000" />
+      <workItem from="1525467862752" duration="85000" />
+      <workItem from="1547880917249" duration="2616000" />
+      <workItem from="1547968968703" duration="6889000" />
+      <workItem from="1548014434917" duration="2071000" />
+      <workItem from="1548018844419" duration="947000" />
+      <workItem from="1548020639504" duration="97000" />
     </task>
     <task id="LOCAL-00001" summary="boot">
       <created>1405105148708</created>
@@ -1822,11 +1877,18 @@
       <option name="project" value="LOCAL" />
       <updated>1491611247956</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="- Ultimos cambios">
+      <created>1524966231165</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1524966231166</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="990935000" />
+    <option name="totallyTimeSpent" value="1005250000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1849,103 +1911,130 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.51455027" sideWeight="0.503231" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.48929664" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14529915" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.51455027" sideWeight="0.49676898" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32673267" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31707317" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41666666" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3278328" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25444266" sideWeight="0.5259939" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3602585" sideWeight="0.46693122" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21108742" sideWeight="0.5027523" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Seam" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23504274" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3546042" sideWeight="0.5330688" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hibernate Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="JPA Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3486631" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2989418" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32539684" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48109967" visible="true" weight="0.22174536" />
+      <window_info id="Structure" order="1" sideWeight="0.48929664" side_tool="true" weight="0.24959612" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Palette&#9;" order="6" />
+      <window_info id="Favorites" order="7" sideWeight="0.5330688" side_tool="true" weight="0.3546042" />
+      <window_info id="Seam" order="8" sideWeight="0.51890033" side_tool="true" weight="0.38197425" />
+      <window_info id="Web" order="9" sideWeight="0.5027523" side_tool="true" weight="0.21108742" />
+      <window_info id="Persistence" order="10" sideWeight="0.5259939" side_tool="true" weight="0.25444266" />
+      <window_info id="JavaEE:App" order="11" side_tool="true" weight="0.23504274" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3253012" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49570817" weight="0.42771083" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49570817" weight="0.33012047" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32964602" />
+      <window_info anchor="bottom" id="IDEtalk Messages" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50429183" side_tool="true" weight="0.42771083" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.31566265" />
+      <window_info anchor="bottom" id="Changes" order="10" weight="0.3486631" />
+      <window_info anchor="bottom" id="Application Servers" order="11" weight="0.32891566" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.3278328" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="REST Client" order="14" weight="0.32964602" />
+      <window_info anchor="bottom" id="JPA Console" order="15" weight="0.32964602" />
+      <window_info anchor="bottom" id="Hibernate Console" order="16" weight="0.32964602" />
+      <window_info anchor="bottom" id="Messages" order="17" sideWeight="0.49642345" weight="0.2987952" />
+      <window_info anchor="bottom" id="Java Enterprise" order="18" weight="0.32650602" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32967034" />
+      <window_info anchor="right" id="IDEtalk" order="4" />
+      <window_info anchor="right" id="Designer" order="5" />
+      <window_info anchor="right" id="JSF" order="6" weight="0.14529915" />
+      <window_info anchor="right" id="Palette" order="7" />
+      <window_info anchor="right" id="Properties" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info anchor="right" id="Theme Preview" order="10" />
+      <window_info anchor="right" id="Remote Host" order="11" />
+      <window_info anchor="right" id="Capture Analysis" order="12" />
+      <window_info anchor="right" id="Maven Projects" order="13" weight="0.3297568" />
     </layout>
     <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hibernate Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.51455027" sideWeight="0.503231" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="JPA Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.48929664" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14529915" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.51455027" sideWeight="0.49676898" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3486631" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2989418" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32673267" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31707317" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41666666" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3278328" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25444266" sideWeight="0.5259939" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3085622" sideWeight="0.47136563" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21108742" sideWeight="0.5027523" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32539684" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Seam" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23504274" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29453126" sideWeight="0.52863437" order="7" side_tool="true" content_ui="tabs" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.47136563" visible="true" weight="0.3085622" />
+      <window_info id="Structure" order="1" sideWeight="0.48929664" weight="0.24959612" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Palette&#9;" order="6" />
+      <window_info id="Favorites" order="7" sideWeight="0.52863437" side_tool="true" weight="0.29453126" />
+      <window_info id="Seam" order="8" side_tool="true" weight="0.24969475" />
+      <window_info id="Web" order="9" sideWeight="0.5027523" side_tool="true" weight="0.21108742" />
+      <window_info id="Persistence" order="10" sideWeight="0.5259939" side_tool="true" weight="0.25444266" />
+      <window_info id="JavaEE:App" order="11" side_tool="true" weight="0.23504274" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32539684" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.41666666" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49676898" weight="0.51455027" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32964602" />
+      <window_info anchor="bottom" id="IDEtalk Messages" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.503231" side_tool="true" weight="0.51455027" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.31707317" />
+      <window_info anchor="bottom" id="Changes" order="10" weight="0.3486631" />
+      <window_info anchor="bottom" id="Application Servers" order="11" weight="0.32930845" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.3278328" />
+      <window_info anchor="bottom" id="REST Client" order="13" weight="0.32964602" />
+      <window_info anchor="bottom" id="JPA Console" order="14" weight="0.32964602" />
+      <window_info anchor="bottom" id="Hibernate Console" order="15" weight="0.32964602" />
+      <window_info anchor="bottom" id="Messages" order="16" weight="0.2989418" />
+      <window_info anchor="bottom" id="Java Enterprise" order="17" weight="0.32673267" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32967034" />
+      <window_info anchor="right" id="IDEtalk" order="4" />
+      <window_info anchor="right" id="Designer" order="5" />
+      <window_info anchor="right" id="JSF" order="6" weight="0.14529915" />
+      <window_info anchor="right" id="Palette" order="7" />
+      <window_info anchor="right" id="Properties" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info anchor="right" id="Theme Preview" order="10" />
+      <window_info anchor="right" id="Remote Host" order="11" />
+      <window_info anchor="right" id="Capture Analysis" order="12" />
+      <window_info anchor="right" id="Maven Projects" order="13" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1984,7 +2073,8 @@
     <MESSAGE value="- Se puede ordenar por semestre en las tablas&#10;- Constancia global para profesores (Maestria y Doctorado)&#10;- Graficas en el Dashboard" />
     <MESSAGE value="Latest Version" />
     <MESSAGE value="- Estable pero con problemas en la Evaluacion de profesores" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Estable pero con problemas en la Evaluacion de profesores" />
+    <MESSAGE value="- Ultimos cambios" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Ultimos cambios" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2019,7 +2109,6 @@
           <option name="timeStamp" value="56" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="77" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JBossConfiguration">
@@ -2032,367 +2121,333 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/PeriodoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="40" column="31" lean-forward="true" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/ListEntitiesController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="100" column="5" lean-forward="false" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/messages.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="44" lean-forward="true" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/seam.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/admin/alumnos.list.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="108" column="96" lean-forward="false" selection-start-line="108" selection-start-column="96" selection-end-line="108" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/utils/CacheHeaderFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1875">
-          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/utils/NaturalComparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1045">
-          <caret line="41" column="13" lean-forward="false" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/MateriaCategoria.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/MateriasActivas.java" />
-    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/FooterPdf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/RowCounter.java" />
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/SuperUser.java" />
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/SuperController.java" />
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/RegisterController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1785">
-          <caret line="99" column="33" lean-forward="false" selection-start-line="99" selection-start-column="27" selection-end-line="99" selection-end-column="33" />
+          <caret line="99" column="33" selection-start-line="99" selection-start-column="27" selection-end-line="99" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/ProfileController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
-          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/NavigationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
-          <caret line="28" column="15" lean-forward="false" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
+          <caret line="28" column="15" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/utils/CustomTextinputRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="756">
-          <caret line="44" column="61" lean-forward="false" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
+          <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/admin/periodos.list.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
-          <caret line="76" column="34" lean-forward="false" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+          <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Configuration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Permission.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Profesor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Materia.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/admin/alumno.edit.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
-          <caret line="85" column="99" lean-forward="false" selection-start-line="85" selection-start-column="99" selection-end-line="85" selection-end-column="99" />
+          <caret line="85" column="99" selection-start-line="85" selection-start-column="99" selection-end-line="85" selection-end-column="99" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Account.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="13" column="47" lean-forward="false" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="47" />
+          <caret line="13" column="47" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/PlanEstudios.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/SessionController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
-          <caret line="28" column="7" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/faces-config.xml">
-      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <caret line="28" column="7" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/MateriaController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
-          <caret line="39" column="23" lean-forward="false" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="23" />
-          <folding />
+          <caret line="39" column="23" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/admin/materia.edit.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3224">
-          <caret line="124" column="105" lean-forward="false" selection-start-line="124" selection-start-column="101" selection-end-line="124" selection-end-column="105" />
+          <caret line="124" column="105" selection-start-line="124" selection-start-column="101" selection-end-line="124" selection-end-column="105" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/pages.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4342">
-          <caret line="167" column="49" lean-forward="false" selection-start-line="167" selection-start-column="49" selection-end-line="167" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/admin/materias.list.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/EvaluacionOpciones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="10" column="2" lean-forward="false" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/EvaluacionPregunta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+          <caret line="167" column="49" selection-start-line="167" selection-start-column="49" selection-end-line="167" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/template.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="759">
-          <caret line="33" column="98" lean-forward="false" selection-start-line="33" selection-start-column="98" selection-end-line="33" selection-end-column="98" />
+          <caret line="33" column="98" selection-start-line="33" selection-start-column="98" selection-end-line="33" selection-end-column="98" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/CalificacionService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="832">
-          <caret line="44" column="38" lean-forward="false" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Alumno.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="81" column="30" lean-forward="false" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
-          <folding>
-            <element signature="e#1589#1590#0" expanded="false" />
-            <element signature="e#1617#1618#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/SystemController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="639">
-          <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
-          <folding />
+        <state relative-caret-position="672">
+          <caret line="44" column="38" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Calificacion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="451">
-          <caret line="76" column="32" lean-forward="false" selection-start-line="76" selection-start-column="32" selection-end-line="76" selection-end-column="32" />
+          <caret line="76" column="32" selection-start-line="76" selection-start-column="32" selection-end-line="76" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/admin/alumno.constancia.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/admin/constancias/avance.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
-          <caret line="110" column="85" lean-forward="false" selection-start-line="110" selection-start-column="85" selection-end-line="110" selection-end-column="85" />
-          <folding />
+          <caret line="110" column="85" selection-start-line="110" selection-start-column="85" selection-end-line="110" selection-end-column="85" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/admin/constancias/sip8bis.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
-          <caret line="260" column="74" lean-forward="false" selection-start-line="260" selection-start-column="51" selection-end-line="260" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/admin/constancias/sip8.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="257" column="59" lean-forward="false" selection-start-line="257" selection-start-column="59" selection-end-line="257" selection-end-column="59" />
-          <folding />
+          <caret line="260" column="74" selection-start-line="260" selection-start-column="51" selection-end-line="260" selection-end-column="74" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/jboss-web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jboss-deployment-structure.xml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/application.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/components.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="1" column="20" lean-forward="false" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-          <folding />
+        <state relative-caret-position="-1718">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="125" column="24" lean-forward="false" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/standalone.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="103" column="63" lean-forward="true" selection-start-line="103" selection-start-column="63" selection-end-line="103" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/AlumnoConstanciaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1222">
-          <caret line="58" column="36" lean-forward="false" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
-          <folding>
-            <element signature="e#885#893#0" expanded="true" />
-            <element signature="e#1639#1661#0" expanded="true" />
-            <element signature="e#2456#2470#0" expanded="true" />
-            <element signature="e#2791#2799#0" expanded="true" />
-            <element signature="e#3184#3192#0" expanded="true" />
-            <element signature="e#4981#5007#0" expanded="true" />
-            <element signature="e#5062#5076#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="3000">
+          <caret line="125" column="24" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/AlumnoController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="33" column="33" lean-forward="true" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
-          <folding />
+        <state relative-caret-position="672">
+          <caret line="44" column="40" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/EvaluacionOpciones.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/EvaluacionPregunta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Hora.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Direccion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/FooterPdf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/persistence.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/AlumnoConstanciaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2760">
+          <caret line="128" column="55" selection-start-line="128" selection-start-column="55" selection-end-line="128" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/admin/constancias/sip8.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6120">
+          <caret line="255" column="51" selection-start-line="255" selection-start-column="51" selection-end-line="255" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Announcement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Alumno.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1128">
+          <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/entities/Periodo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/standalone.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2496">
+          <caret line="104" column="46" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/InscripcionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/PlanEstudiosController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/utils/CacheHeaderFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mx/ipn/cidetec/virtual/controllers/SystemController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="53" column="38" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+          <folding>
+            <element signature="e#1414#1415#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2403,9 +2458,9 @@
         <settings>
           <artifact-editor>
             <show-content>
-              <type id="artifact" />
-              <type id="jpa-descriptors" />
               <type id="javaee-facet-resources" />
+              <type id="jpa-descriptors" />
+              <type id="artifact" />
               <type id="library" />
             </show-content>
           </artifact-editor>
@@ -2446,7 +2501,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.7</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -2470,7 +2525,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>itext</last-edited>
+          <last-edited>drools-compiler</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -78,7 +78,7 @@ public class Alumno extends Account {
 		this.programa = programa;
 	}
 
-	@OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	public List<Calificacion> getCalificaciones() {
 		return calificaciones;
 	}
