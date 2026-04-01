@@ -1,0 +1,1 @@
+[{"old": "def health_check(status):\n    # Handle the health check logic", "new": "def health_check(status):\n    if status not in ['healthy', 'unhealthy', 'unknown']:\n        raise ValueError('Invalid status parameter')\n    # Handle the health check logic"}]
