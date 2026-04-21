@@ -1,0 +1,14 @@
+* text=auto
+
+*.py linguist-language=Python
+*.json text
+*.md text
+*.sh text eol=lf
+
+# Ensure all files in this repository are treated as text
+* text=auto
+
+# Ignore binary data
+*.jpg binary
+*.png binary
+
